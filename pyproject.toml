@@ -1,0 +1,25 @@
+[project]
+name = "no-shortcuts-race"
+version = "0.1.0"
+description = "Build an import-ready draft course map for the No Shortcuts Time Trial."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+build-nstt-course = "nstt_course_planner.build_course:main"
+
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+python-preference = "only-system"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
