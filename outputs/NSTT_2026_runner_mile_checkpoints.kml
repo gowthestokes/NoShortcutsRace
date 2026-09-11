@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>NSTT 2026 - Mile Checkpoints</name>
+    <description>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed route mile and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. Google walking routes are beta and can miss clear sidewalks or paths; inspect every section before running. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The route deliberately has a gap from San Mateo Point to the Oceanside Chevron restart because the organizer directs the car—not runners—to use I-5 for that transfer.</description>
+    <Style id="mileMarker"><IconStyle><color>ff00a5ff</color><scale>0.9</scale></IconStyle></Style>
+    <Folder><name>Runner mile checkpoints</name>
+      <description>Start, finish, and one checkpoint at every completed runner mile.</description>
+
+    <Placemark>
+      <name>Start - Santa Monica Pier</name>
+      <description>200 Santa Monica Pier, Santa Monica, CA 90401</description>
+      <Point><coordinates>-118.4966405,34.0100103,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Finish - Milestone Running Shop</name>
+      <description>1892 Garnet Avenue, San Diego, CA 92109</description>
+      <Point><coordinates>-117.2356012,32.8010272,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Mile 001</name>
+      <description>Completed runner mile 1. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.4853422772602,34.00357984567416,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 002</name>
+      <description>Completed runner mile 2. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.47492409525967,33.99331837317108,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 003</name>
+      <description>Completed runner mile 3. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.46035583856064,33.9881669053047,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 004</name>
+      <description>Completed runner mile 4. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.44551552299595,33.9914712133977,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 005</name>
+      <description>Completed runner mile 5. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.43107643904398,33.99669161336874,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 006</name>
+      <description>Completed runner mile 6. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.4171455102731,33.99454748405179,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 007</name>
+      <description>Completed runner mile 7. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.40487272300332,33.98866069288127,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 008</name>
+      <description>Completed runner mile 8. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.39440444366709,33.97886768371516,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 009</name>
+      <description>Completed runner mile 9. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.3899985517478,33.96896064577233,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 010</name>
+      <description>Completed runner mile 10. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.37584218233629,33.96468053781851,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 011</name>
+      <description>Completed runner mile 11. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.362543290564,33.96177482618982,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 012</name>
+      <description>Completed runner mile 12. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.34699833247377,33.9606501449551,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 013</name>
+      <description>Completed runner mile 13. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.33103153162364,33.96011672300813,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 014</name>
+      <description>Completed runner mile 14. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.3147241322022,33.9601,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 015</name>
+      <description>Completed runner mile 15. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.29874996520672,33.95990096187301,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 016</name>
+      <description>Completed runner mile 16. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.28244258313651,33.95997,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 017</name>
+      <description>Completed runner mile 17. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.26610561007207,33.960015502074086,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 018</name>
+      <description>Completed runner mile 18. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.25062759046824,33.96029,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 019</name>
+      <description>Completed runner mile 19. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.23440415374591,33.96027281153094,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 020</name>
+      <description>Completed runner mile 20. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.2202681845721,33.95548465960727,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 021</name>
+      <description>Completed runner mile 21. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.20430313002521,33.953922195941644,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 022</name>
+      <description>Completed runner mile 22. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.18849358867227,33.95232954204802,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 023</name>
+      <description>Completed runner mile 23. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.18126226584965,33.9431790588299,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 024</name>
+      <description>Completed runner mile 24. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.18401447434458,33.9299397274124,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 025</name>
+      <description>Completed runner mile 25. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.18928944204939,33.91715757513273,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 026</name>
+      <description>Completed runner mile 26. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.19414,33.90426164274638,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 027</name>
+      <description>Completed runner mile 27. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.18320855138076,33.90202530045003,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 028</name>
+      <description>Completed runner mile 28. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.18690107461302,33.888923851083014,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 029</name>
+      <description>Completed runner mile 29. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.18926978044345,33.8754365069748,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 030</name>
+      <description>Completed runner mile 30. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.19582944129542,33.862989478085964,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 031</name>
+      <description>Completed runner mile 31. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.20221828813698,33.85052781919652,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 032</name>
+      <description>Completed runner mile 32. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.20328934678284,33.83691487711412,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 033</name>
+      <description>Completed runner mile 33. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.20478267753315,33.82333954763935,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 034</name>
+      <description>Completed runner mile 34. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.20473781377048,33.8096766386914,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 035</name>
+      <description>Completed runner mile 35. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.20437004367305,33.79602103137985,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 036</name>
+      <description>Completed runner mile 36. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.19540512328629,33.78975099541669,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 037</name>
+      <description>Completed runner mile 37. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.17895653489725,33.789767094800034,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 038</name>
+      <description>Completed runner mile 38. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.16250794779067,33.7897852768588,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 039</name>
+      <description>Completed runner mile 39. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.14605979252228,33.78974710495086,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 040</name>
+      <description>Completed runner mile 40. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.13281897049362,33.78264280421454,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 041</name>
+      <description>Completed runner mile 41. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.1205734320831,33.77351744192432,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 042</name>
+      <description>Completed runner mile 42. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.1142672,33.7610931,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 043</name>
+      <description>Completed runner mile 43. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.10603685021441,33.75054875093925,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 044</name>
+      <description>Completed runner mile 44. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.10113072557597,33.74363031564177,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 045</name>
+      <description>Completed runner mile 45. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.0865483805957,33.73595564734285,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 046</name>
+      <description>Completed runner mile 46. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.077369883072,33.72428715076622,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 047</name>
+      <description>Completed runner mile 47. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.06556033930863,33.71382724232429,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 048</name>
+      <description>Completed runner mile 48. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.05415389067076,33.702907464148026,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 049</name>
+      <description>Completed runner mile 49. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.04990476346138,33.69826732644114,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 050</name>
+      <description>Completed runner mile 50. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.04869177339843,33.69696361983969,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 051</name>
+      <description>Completed runner mile 51. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.03826814897867,33.68604269224393,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 052</name>
+      <description>Completed runner mile 52. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.02664983260254,33.675248633721836,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 053</name>
+      <description>Completed runner mile 53. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.01370023641975,33.665547535678776,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 054</name>
+      <description>Completed runner mile 54. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-118.00055226308886,33.656021398971035,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 055</name>
+      <description>Completed runner mile 55. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.98657266633452,33.647393901025445,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 056</name>
+      <description>Completed runner mile 56. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.97228759256106,33.63908954635096,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 057</name>
+      <description>Completed runner mile 57. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.9577077171704,33.631219797074415,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 058</name>
+      <description>Completed runner mile 58. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.94262417763588,33.624485834080545,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 059</name>
+      <description>Completed runner mile 59. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.93027912230353,33.617963897833256,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 060</name>
+      <description>Completed runner mile 60. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.925315992078,33.62080059128581,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 061</name>
+      <description>Completed runner mile 61. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.90937197862895,33.61607472810537,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 062</name>
+      <description>Completed runner mile 62. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.89317661136936,33.61307722528291,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 063</name>
+      <description>Completed runner mile 63. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.87789999120598,33.606939051286105,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 064</name>
+      <description>Completed runner mile 64. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.86927981451791,33.59493320967861,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 065</name>
+      <description>Completed runner mile 65. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.85475767673037,33.58695135414598,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 066</name>
+      <description>Completed runner mile 66. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.84141511588267,33.577630207472104,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 067</name>
+      <description>Completed runner mile 67. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.83023601352326,33.566787961023955,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 068</name>
+      <description>Completed runner mile 68. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.81994396215616,33.56774919796472,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 069</name>
+      <description>Completed runner mile 69. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.81921624382421,33.55857380206228,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 070</name>
+      <description>Completed runner mile 70. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.80517770965604,33.55076748062165,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 071</name>
+      <description>Completed runner mile 71. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.78969527512261,33.54434491744051,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 072</name>
+      <description>Completed runner mile 72. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.77829078591789,33.5358607916455,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 073</name>
+      <description>Completed runner mile 73. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.76678758895312,33.52507899574011,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 074</name>
+      <description>Completed runner mile 74. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.75553030620706,33.514131755394075,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 075</name>
+      <description>Completed runner mile 75. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.74476152064948,33.502868421461315,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 076</name>
+      <description>Completed runner mile 76. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.73369696872572,33.4919717946922,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 077</name>
+      <description>Completed runner mile 77. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.72101984667974,33.489843593126004,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 078</name>
+      <description>Completed runner mile 78. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.72788924209897,33.50071482163724,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 079</name>
+      <description>Completed runner mile 79. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.73386481672837,33.50556,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 080</name>
+      <description>Completed runner mile 80. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.72498358465613,33.497130294981694,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 081</name>
+      <description>Completed runner mile 81. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.7114229166037,33.489798875471664,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 082</name>
+      <description>Completed runner mile 82. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.71459320607445,33.47646823598705,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 083</name>
+      <description>Completed runner mile 83. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.70773859403727,33.47270445957557,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 084</name>
+      <description>Completed runner mile 84. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.69807664067442,33.46643791422559,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 085</name>
+      <description>Completed runner mile 85. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.69770042342515,33.47373729724544,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 086</name>
+      <description>Completed runner mile 86. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.69348120975803,33.46383294114501,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 087</name>
+      <description>Completed runner mile 87. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.67850521343524,33.461986951247,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 088</name>
+      <description>Completed runner mile 88. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.669249808764,33.4584260764944,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 089</name>
+      <description>Completed runner mile 89. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.65579908935142,33.45041985586573,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 090</name>
+      <description>Completed runner mile 90. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.64476868810925,33.44222866257928,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 091</name>
+      <description>Completed runner mile 91. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.63287569895753,33.43285032672261,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 092</name>
+      <description>Completed runner mile 92. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.61658146977084,33.4300141301003,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 093</name>
+      <description>Completed runner mile 93. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.6062917869886,33.41908457047131,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 094</name>
+      <description>Completed runner mile 94. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.59939097163364,33.4068389735851,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 095</name>
+      <description>Completed runner mile 95. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.59260435800756,33.393951126354246,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 096</name>
+      <description>Completed runner mile 96. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.3844296520253,33.204183388480665,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 097</name>
+      <description>Completed runner mile 97. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.37625681751445,33.19188096993239,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 098</name>
+      <description>Completed runner mile 98. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.36644099424593,33.18010800223834,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 099</name>
+      <description>Completed runner mile 99. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.35647241687049,33.16853015344159,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 100</name>
+      <description>Completed runner mile 100. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.35095742345563,33.1557883257106,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 101</name>
+      <description>Completed runner mile 101. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.34204897102789,33.14349073839815,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 102</name>
+      <description>Completed runner mile 102. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.33421908825883,33.13058751427247,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 103</name>
+      <description>Completed runner mile 103. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.32564055546362,33.118614390819566,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 104</name>
+      <description>Completed runner mile 104. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.3194467706804,33.105099033592644,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 105</name>
+      <description>Completed runner mile 105. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.31362934842721,33.09155052194944,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 106</name>
+      <description>Completed runner mile 106. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.30681308952471,33.078436822167276,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 107</name>
+      <description>Completed runner mile 107. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.30216426493477,33.064466030128976,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 108</name>
+      <description>Completed runner mile 108. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.29481018828487,33.051437829498525,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 109</name>
+      <description>Completed runner mile 109. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.29263857653821,33.03739144134551,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 110</name>
+      <description>Completed runner mile 110. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.28537709781357,33.024288894034115,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 111</name>
+      <description>Completed runner mile 111. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.27907355089586,33.01087029872467,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 112</name>
+      <description>Completed runner mile 112. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.27350283954156,32.997420512894,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 113</name>
+      <description>Completed runner mile 113. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.26960054373767,32.98337837062282,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 114</name>
+      <description>Completed runner mile 114. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.26800766066404,32.96929815422061,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 115</name>
+      <description>Completed runner mile 115. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.26442104200501,32.957467239375056,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 116</name>
+      <description>Completed runner mile 116. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.26062625597925,32.9437129790921,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 117</name>
+      <description>Completed runner mile 117. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.25985037294281,32.92938551109779,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 118</name>
+      <description>Completed runner mile 118. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.24900667239194,32.918819858718294,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 119</name>
+      <description>Completed runner mile 119. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.24361112852701,32.90528406732068,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 120</name>
+      <description>Completed runner mile 120. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.24138836074918,32.891367410689824,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 121</name>
+      <description>Completed runner mile 121. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.24402928877923,32.87745431023378,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 122</name>
+      <description>Completed runner mile 122. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.2516870645427,32.86982529242371,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 123</name>
+      <description>Completed runner mile 123. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.25377569576847,32.855602881663614,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 124</name>
+      <description>Completed runner mile 124. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.26517597008714,32.84799014926704,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 125</name>
+      <description>Completed runner mile 125. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.27281737355459,32.837494661035834,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 126</name>
+      <description>Completed runner mile 126. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.27679366899876,32.82694976574163,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 127</name>
+      <description>Completed runner mile 127. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.2697437099335,32.81407269813345,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 128</name>
+      <description>Completed runner mile 128. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.25806040248453,32.8045711269567,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mile 129</name>
+      <description>Completed runner mile 129. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>-117.24841054178384,32.798074759120624,0</coordinates></Point>
+    </Placemark>
+    </Folder>
+  </Document>
+</kml>

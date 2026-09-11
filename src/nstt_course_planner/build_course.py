@@ -7,6 +7,7 @@ import heapq
 import json
 import math
 import os
+import re
 import time
 import xml.sax.saxutils
 from dataclasses import dataclass
@@ -16,7 +17,7 @@ from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from nstt_course_planner.route_spec import CAR_CHECKPOINTS, CAR_INSTRUCTIONS, ROUTE_CHECKPOINTS
+from nstt_course_planner.route_spec import ROUTE_CHECKPOINTS
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs"
@@ -27,6 +28,8 @@ DEFAULT_GOOGLE_USAGE = PROJECT_ROOT / "data" / "google-routes-usage.json"
 USER_AGENT = "NSTT-course-planner/0.1 (personal relay map)"
 GOOGLE_ROUTES_REQUEST_LIMIT = 9_500
 GOOGLE_ROUTES_URL = "https://routes.googleapis.com/directions/v2:computeRoutes"
+MILE_METERS = 1609.344
+SEGMENT_NAME_PATTERN = re.compile(r"^Segment\s+(\d{3})([a-z]?)\s+-", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -46,6 +49,22 @@ class Point:
     display_name: str
 
 
+@dataclass(frozen=True)
+class RunnerRouteSection:
+    """One independently editable runner-route line for the KML export."""
+
+    label: str
+    coordinates: tuple[tuple[float, float], ...]
+
+
+@dataclass(frozen=True)
+class ApprovedRouteProgress:
+    """User-edited one-mile sections that must remain unchanged on rebuild."""
+
+    sections: tuple[RunnerRouteSection, ...]
+    through_segment: int
+
+
 class UnsafePedestrianRouteError(RuntimeError):
     """Raised when routing proposes a non-running transport mode."""
 
@@ -56,7 +75,6 @@ class GoogleRoutesRequestLimitError(RuntimeError):
 
 # Keep the router coupled to the reviewed organizer turn sheet.
 CHECKPOINTS = tuple(Checkpoint(point.label, point.query) for point in ROUTE_CHECKPOINTS)
-CAR_LAYER_CHECKPOINTS = tuple(Checkpoint(point.label, point.query) for point in CAR_CHECKPOINTS)
 
 # A handful of stable route-shaping coordinates avoid ambiguous public geocoder
 # results. They remain visible as reference checkpoints in the generated KML.
@@ -318,6 +336,96 @@ def haversine_meters(start: tuple[float, float], end: tuple[float, float]) -> fl
     return 6_371_000 * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
+def parse_kml_coordinates(raw_coordinates: str) -> tuple[tuple[float, float], ...]:
+    """Read KML longitude,latitude coordinates into this module's latitude,longitude form."""
+    coordinates: list[tuple[float, float]] = []
+    for raw_coordinate in raw_coordinates.split():
+        values = raw_coordinate.split(",")
+        if len(values) < 2:
+            raise RuntimeError(f"Invalid KML coordinate: {raw_coordinate!r}")
+        longitude, latitude = map(float, values[:2])
+        coordinates.append((latitude, longitude))
+    if len(coordinates) < 2:
+        raise RuntimeError("An approved runner segment must contain at least two coordinates.")
+    return tuple(coordinates)
+
+
+def load_approved_route_progress(path: Path, through_segment: int) -> ApprovedRouteProgress:
+    """Load and validate user-edited route sections exported by Google My Maps."""
+    try:
+        import xml.etree.ElementTree as element_tree
+
+        root = element_tree.parse(path).getroot()
+    except (OSError, element_tree.ParseError) as error:
+        raise RuntimeError(f"Could not read approved segment KML: {path}") from error
+
+    namespace = {"kml": "http://www.opengis.net/kml/2.2"}
+    found: dict[int, list[RunnerRouteSection]] = {}
+    for placemark in root.findall(".//kml:Placemark", namespace):
+        name = placemark.findtext("kml:name", default="", namespaces=namespace).strip()
+        match = SEGMENT_NAME_PATTERN.match(name)
+        if not match or match.group(2):
+            continue
+        segment_number = int(match.group(1))
+        if segment_number > through_segment:
+            continue
+        raw_coordinates = placemark.findtext(
+            ".//kml:LineString/kml:coordinates", default="", namespaces=namespace
+        )
+        if not raw_coordinates:
+            continue
+        # My Maps can split a manually edited line into adjacent pieces while
+        # retaining its original name. Keep them in export order and stitch
+        # their geometry below.
+        found.setdefault(segment_number, []).append(
+            RunnerRouteSection(name, parse_kml_coordinates(raw_coordinates))
+        )
+
+    if 1 not in found or through_segment not in found:
+        raise RuntimeError(
+            f"Approved KML must contain Segment 001 and Segment {through_segment:03d}."
+        )
+    sections_list: list[RunnerRouteSection] = []
+    for number in sorted(found):
+        pieces = found[number]
+        coordinates = list(pieces[0].coordinates)
+        for previous, current in zip(pieces, pieces[1:], strict=False):
+            if haversine_meters(previous.coordinates[-1], current.coordinates[0]) > 25:
+                raise RuntimeError(
+                    f"Google My Maps split Segment {number:03d} into pieces that do not connect; "
+                    "join or rename those lines before rebuilding."
+                )
+            coordinates.extend(current.coordinates[1:])
+        sections_list.append(RunnerRouteSection(pieces[0].label, tuple(coordinates)))
+    sections = tuple(sections_list)
+    for previous, current in zip(sections, sections[1:], strict=False):
+        if haversine_meters(previous.coordinates[-1], current.coordinates[0]) > 25:
+            raise RuntimeError(
+                f"{previous.label} does not connect to {current.label}; join their endpoints in My Maps before rebuilding."
+            )
+    return ApprovedRouteProgress(sections, through_segment)
+
+
+def approved_mile_markers(progress: ApprovedRouteProgress) -> list[tuple[int, float, float]]:
+    """Recreate fixed mile markers along the approved geometry through its named segment."""
+    return mile_markers([approved_route_geometry(progress)], progress.through_segment * MILE_METERS)
+
+
+def approved_route_geometry(progress: ApprovedRouteProgress) -> list[tuple[float, float]]:
+    """Join approved My Maps line pieces into the user's exact edited route shape."""
+    geometry = list(progress.sections[0].coordinates)
+    for section in progress.sections[1:]:
+        geometry.extend(section.coordinates[1:])
+    return geometry
+
+
+def approved_route_sections(progress: ApprovedRouteProgress) -> list[RunnerRouteSection]:
+    """Restore one editable mile line per approved mile after My Maps merges lines."""
+    return runner_route_sections(
+        [approved_route_geometry(progress)], progress.through_segment * MILE_METERS
+    )
+
+
 def shoreline_beach_path_geometry(
     start: Point,
     end: Point,
@@ -437,6 +545,11 @@ def is_highway_1_pair(start: Point, end: Point) -> bool:
         start.label == "PCH / river-trail exit area"
         and end.label == "Del Prado / Golden Lantern"
     )
+
+
+def highway_1_via_points_from(start: Point) -> tuple[tuple[float, float], ...]:
+    """Keep only Highway 1 pins ahead of a manual eastbound PCH diversion."""
+    return tuple(point for point in HIGHWAY_1_VIA_POINTS if point[1] > start.longitude)
 
 
 def pedestrian_route_payload(chunk: list[Point]) -> dict[str, object]:
@@ -575,6 +688,7 @@ def trace(
     google_api_key: str,
     google_usage: dict[str, object],
     google_usage_path: Path,
+    manual_highway_1_resume: bool = False,
 ) -> tuple[list[list[tuple[float, float]]], float]:
     """Trace the course, using road alignment only where the turn sheet requires it."""
     segments: list[list[tuple[float, float]]] = [[]]
@@ -588,13 +702,16 @@ def trace(
             if segments[-1]:
                 segments.append([])
             continue
-        if is_highway_1_pair(*chunk):
+        if is_highway_1_pair(*chunk) or (
+            manual_highway_1_resume and start == 0 and chunk[1].label == "Del Prado / Golden Lantern"
+        ):
             # The turn sheet says "Pick up PCH" and continues to Del Prado.
             # This is a road-alignment visualization, not a claim that every
             # section is pedestrian-safe; the team still needs field review.
-            cache_key = route_cache_key(*chunk, travel_mode="DRIVE", variant="highway-1-v1")
+            variant = "manual-highway-1-v1" if manual_highway_1_resume and start == 0 else "highway-1-v1"
+            cache_key = route_cache_key(*chunk, travel_mode="DRIVE", variant=variant)
             travel_mode = "DRIVE"
-            via_points = HIGHWAY_1_VIA_POINTS
+            via_points = highway_1_via_points_from(chunk[0]) if manual_highway_1_resume and start == 0 else HIGHWAY_1_VIA_POINTS
         elif is_strict_road_pair(*chunk):
             cache_key = route_cache_key(*chunk, travel_mode="DRIVE", variant="organizer-turn-v1")
             travel_mode = "DRIVE"
@@ -622,114 +739,269 @@ def trace(
     return [segment for segment in segments if segment], total_meters
 
 
+def interpolate_coordinate(
+    start: tuple[float, float], end: tuple[float, float], fraction: float
+) -> tuple[float, float]:
+    """Return the coordinate fractionally along a short route-geometry edge."""
+    start_latitude, start_longitude = start
+    end_latitude, end_longitude = end
+    return (
+        start_latitude + (end_latitude - start_latitude) * fraction,
+        start_longitude + (end_longitude - start_longitude) * fraction,
+    )
+
+
+def mile_markers(
+    segments: list[list[tuple[float, float]]],
+    distance_meters: float | None = None,
+    *,
+    first_mile_number: int = 1,
+) -> list[tuple[int, float, float]]:
+    """Place a marker at each completed runner mile without bridging route gaps.
+
+    The organiser's I-5 transfer creates separate geometry segments. Mileage is
+    cumulative across those runner segments, but this function never draws or
+    places a point in the non-runner gap between them. When supplied, the route
+    provider's total distance calibrates the simplified route geometry.
+    """
+    geometry_meters = sum(
+        haversine_meters(start, end)
+        for segment in segments
+        for start, end in zip(segment, segment[1:], strict=False)
+    )
+    if geometry_meters == 0:
+        return []
+    # Google reports route distance separately from its simplified polyline.
+    # Scale each polyline edge to that authoritative total so Mile 001, etc.
+    # match routed mileage rather than the line's approximation.
+    geometry_scale = distance_meters / geometry_meters if distance_meters is not None else 1.0
+    markers: list[tuple[int, float, float]] = []
+    route_meters = 0.0
+    next_mile = first_mile_number
+    next_target_meters = MILE_METERS
+    for segment in segments:
+        for start, end in zip(segment, segment[1:], strict=False):
+            edge_meters = haversine_meters(start, end) * geometry_scale
+            if edge_meters == 0:
+                continue
+            while route_meters + edge_meters + 1e-6 >= next_target_meters:
+                fraction = max(0.0, min(1.0, (next_target_meters - route_meters) / edge_meters))
+                latitude, longitude = interpolate_coordinate(start, end, fraction)
+                markers.append((next_mile, latitude, longitude))
+                next_mile += 1
+                next_target_meters += MILE_METERS
+            route_meters += edge_meters
+    return markers
+
+
+def runner_route_sections(
+    segments: list[list[tuple[float, float]]],
+    distance_meters: float,
+    *,
+    first_segment_number: int = 1,
+    start_label: str = "Start",
+) -> list[RunnerRouteSection]:
+    """Split runner geometry into independently editable one-mile KML lines.
+
+    Each trace segment is retained as a separate physical path. This matters at
+    the organizer-directed I-5 transfer: its two partial mile lines are never
+    connected across the non-runner gap.
+    """
+    geometry_meters = sum(
+        haversine_meters(start, end)
+        for segment in segments
+        for start, end in zip(segment, segment[1:], strict=False)
+    )
+    if geometry_meters == 0:
+        return []
+    geometry_scale = distance_meters / geometry_meters
+    sections: list[RunnerRouteSection] = []
+    route_meters = 0.0
+    next_mile = first_segment_number
+    next_target_meters = MILE_METERS
+    suffix = ""
+
+    for segment_index, segment in enumerate(segments):
+        if len(segment) < 2:
+            continue
+        section_coordinates = [segment[0]]
+        for start, end in zip(segment, segment[1:], strict=False):
+            edge_meters = haversine_meters(start, end) * geometry_scale
+            if edge_meters == 0:
+                continue
+            while route_meters + edge_meters + 1e-6 >= next_target_meters:
+                fraction = max(0.0, min(1.0, (next_target_meters - route_meters) / edge_meters))
+                marker = interpolate_coordinate(start, end, fraction)
+                if section_coordinates[-1] != marker:
+                    section_coordinates.append(marker)
+                sections.append(
+                    RunnerRouteSection(
+                        f"Segment {next_mile:03d}{suffix} - {start_label} to Mile {next_mile:03d}",
+                        tuple(section_coordinates),
+                    )
+                )
+                section_coordinates = [marker]
+                start_label = f"Mile {next_mile:03d}"
+                suffix = ""
+                next_mile += 1
+                next_target_meters += MILE_METERS
+            if section_coordinates[-1] != end:
+                section_coordinates.append(end)
+            route_meters += edge_meters
+
+        if segment_index < len(segments) - 1:
+            if len(section_coordinates) > 1:
+                sections.append(
+                    RunnerRouteSection(
+                        f"Segment {next_mile:03d}{suffix} - {start_label} to runner transfer gap",
+                        tuple(section_coordinates),
+                    )
+                )
+            # The next geometry begins after an intentional non-runner gap.
+            start_label = "Runner restart"
+            suffix = "b"
+        elif len(section_coordinates) > 1:
+            sections.append(
+                RunnerRouteSection(
+                    f"Final segment - {start_label} to Finish", tuple(section_coordinates)
+                )
+            )
+    return sections
+
+
 def write_outputs(
     output_dir: Path,
     points: list[Point],
     segments: list[list[tuple[float, float]]],
     distance_meters: float,
-    car_points: list[Point],
+    *,
+    route_sections_override: list[RunnerRouteSection] | None = None,
+    markers_override: list[tuple[int, float, float]] | None = None,
+    gpx_segments_override: list[list[tuple[float, float]]] | None = None,
 ) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
+    markers = markers_override if markers_override is not None else mile_markers(segments, distance_meters)
+    route_sections = route_sections_override if route_sections_override is not None else runner_route_sections(segments, distance_meters)
+    gpx_segments_source = gpx_segments_override if gpx_segments_override is not None else segments
     description = (
-        "Draft master runner course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). "
-        "Built from the organizer's published turn list. It intentionally has no pod assignments, relay handoffs, "
-        "or vehicle logistics. Important: validate the LA River Trail and coastal portions against the organizer's notes; "
+        "Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). "
+        "Built from the organizer's published runner turn list. It includes one checkpoint at each completed route mile "
+        "and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail "
+        "and coastal portions against the organizer's notes; "
         "this is a planning map, not a safety or navigation authority. Google walking routes are beta and can miss clear sidewalks or paths; "
         "inspect every section before running. The PCH exit is interpreted as Ocean Blue Environmental "
         "at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor "
-        "and is a road-alignment reference, not a pedestrian-safety validation."
+        "and is a road-alignment reference, not a pedestrian-safety validation. The route deliberately has a gap from San Mateo Point "
+        "to the Oceanside Chevron restart because the organizer directs the car—not runners—to use I-5 for that transfer."
     )
-    course_geometries = "".join(
-        f"<LineString><tessellate>1</tessellate><coordinates>{' '.join(f'{longitude},{latitude},0' for latitude, longitude in segment)}</coordinates></LineString>"
-        for segment in segments
+    route_section_placemarks = "".join(
+        f"""
+      <Placemark>
+        <name>{xml.sax.saxutils.escape(section.label)}</name>
+        <description>Editable runner-route segment. Delete or redraw this line independently without changing the other mile segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
+        <styleUrl>#{'segmentGreen' if index % 2 else 'segmentBlue'}</styleUrl>
+        <LineString><tessellate>1</tessellate><coordinates>{' '.join(f'{longitude},{latitude},0' for latitude, longitude in section.coordinates)}</coordinates></LineString>
+      </Placemark>"""
+        for index, section in enumerate(route_sections, start=1)
     )
-    runner_checkpoint_placemarks = "".join(
+    start_finish_placemarks = "".join(
         f"""
     <Placemark>
-      <name>{index:02d} - {xml.sax.saxutils.escape(point.label)}</name>
+      <name>{xml.sax.saxutils.escape(label)}</name>
       <description>{xml.sax.saxutils.escape(point.query)}</description>
       <Point><coordinates>{point.longitude},{point.latitude},0</coordinates></Point>
     </Placemark>"""
-        for index, point in enumerate(points, start=1)
+        for label, point in (("Start - Santa Monica Pier", points[0]), ("Finish - Milestone Running Shop", points[-1]))
     )
-    instructions_by_checkpoint: dict[str, list[str]] = {}
-    for instruction in CAR_INSTRUCTIONS:
-        if instruction.checkpoint_label:
-            instructions_by_checkpoint.setdefault(instruction.checkpoint_label, []).append(
-                f"{instruction.action.capitalize()}: {instruction.road_or_place}."
-            )
-    car_placemarks = "".join(
+    mile_marker_placemarks = "".join(
         f"""
     <Placemark>
-      <name>{xml.sax.saxutils.escape(point.label)}</name>
-      <description>{xml.sax.saxutils.escape('Provisional support-car logistics point. ' + ' '.join(instructions_by_checkpoint.get(point.label, [])))}</description>
-      <styleUrl>#carMarker</styleUrl>
-      <Point><coordinates>{point.longitude},{point.latitude},0</coordinates></Point>
+      <name>Mile {mile:03d}</name>
+      <description>Completed runner mile {mile}. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
+      <styleUrl>#mileMarker</styleUrl>
+      <Point><coordinates>{longitude},{latitude},0</coordinates></Point>
     </Placemark>"""
-        for point in car_points
+        for mile, latitude, longitude in markers
     )
     distance_miles = distance_meters / 1609.344
-    car_folder = f'''    <Folder><name>Support car logistics - provisional</name>
-      <description>Support-car markers only. A continuous car route is intentionally omitted until the organizer confirms safe trail-access, Coast Highway rendezvous, and the exit 54C Chevron pins.</description>
-{car_placemarks}
-    </Folder>
-'''
-    kml = f'''<?xml version="1.0" encoding="UTF-8"?>
+    route_segments_kml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>NSTT 2026 - Master Runner Course (Draft)</name>
+    <name>NSTT 2026 - Runner Route Segments</name>
     <description>{xml.sax.saxutils.escape(description)}</description>
-    <Style id="courseLine"><LineStyle><color>ff1e88e5</color><width>5</width></LineStyle></Style>
-    <Style id="carMarker"><IconStyle><color>ff00a5ff</color><scale>1.2</scale></IconStyle></Style>
-    <Folder><name>Runner route - organizer-aligned draft</name>
-      <Placemark><name>NSTT 2026 master runner course</name>
-        <description>{xml.sax.saxutils.escape(description)} Approximate routed distance: {distance_miles:.1f} mi.</description>
-        <styleUrl>#courseLine</styleUrl>
-        <MultiGeometry>{course_geometries}</MultiGeometry>
-      </Placemark>
-{runner_checkpoint_placemarks}
+    <Style id="segmentGreen"><LineStyle><color>ff00aa00</color><width>5</width></LineStyle></Style>
+    <Style id="segmentBlue"><LineStyle><color>ffe57300</color><width>5</width></LineStyle></Style>
+    <Folder><name>Runner route segments - alternating green and blue</name>
+      <description>{xml.sax.saxutils.escape(description)} Approximate routed distance: {distance_miles:.1f} mi. Each line is independently editable.</description>
+{route_section_placemarks}
     </Folder>
-{car_folder}
+  </Document>
+</kml>
+'''
+    checkpoints_kml = f'''<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>NSTT 2026 - Mile Checkpoints</name>
+    <description>{xml.sax.saxutils.escape(description)}</description>
+    <Style id="mileMarker"><IconStyle><color>ff00a5ff</color><scale>0.9</scale></IconStyle></Style>
+    <Folder><name>Runner mile checkpoints</name>
+      <description>Start, finish, and one checkpoint at every completed runner mile.</description>
+{start_finish_placemarks}
+{mile_marker_placemarks}
+    </Folder>
   </Document>
 </kml>
 '''
     gpx_segments = "\n".join(
         "  <trkseg>\n" + "\n".join(f'      <trkpt lat="{latitude}" lon="{longitude}"/>' for latitude, longitude in segment) + "\n  </trkseg>"
-        for segment in segments
+        for segment in gpx_segments_source
+    )
+    gpx_waypoints = "\n".join(
+        f'  <wpt lat="{latitude}" lon="{longitude}"><name>Mile {mile:03d}</name><desc>Completed runner mile {mile}.</desc></wpt>'
+        for mile, latitude, longitude in markers
     )
     gpx = f'''<?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="NSTT course planner" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata><name>NSTT 2026 Master Runner Course (Draft)</name><desc>{xml.sax.saxutils.escape(description)}</desc></metadata>
-  <trk><name>NSTT 2026 Master Runner Course (Draft)</name>
+  <metadata><name>NSTT 2026 Runner Route with Mile Checkpoints</name><desc>{xml.sax.saxutils.escape(description)}</desc></metadata>
+{gpx_waypoints}
+  <trk><name>NSTT 2026 Runner Route</name>
 {gpx_segments}
   </trk>
 </gpx>
 '''
-    import_notes = '''NSTT 2026 master runner course - draft
+    import_notes = f'''NSTT 2026 runner route - one-mile checkpoints
 
 Files
-- NSTT_2026_master_runner_course_draft.kml: import into a blank Google My Map.
-- NSTT_2026_master_runner_course_draft.gpx: portable route backup; it can also be imported into My Maps or Footpath.
+- NSTT_2026_runner_route_segments.kml: import into one Google My Maps layer; contains individually editable, alternating green/blue route lines.
+- NSTT_2026_runner_mile_checkpoints.kml: import into a second Google My Maps layer; contains start, finish, and mile checkpoints.
+- NSTT_2026_runner_route.gpx: portable route backup; it can also be imported into My Maps or Footpath.
 
-This is intentionally unsegmented: no runner assignments, pod blocks, or handoffs have been added.
+This export is runner-only: no vehicle routing, support-car markers, runner assignments, pod blocks, or handoffs are included.
 
-Map layers
-- Runner route - organizer-aligned draft: the primary runner line plus organizer checkpoints.
-- Support car logistics - provisional: support-car access/rendezvous markers. It deliberately has no continuous car line until the organizer confirms safe vehicle access points.
+Checkpoints
+- Mile 001 through Mile {len(markers):03d}: one point at each completed runner mile, positioned along the exported route geometry and calibrated to the routing provider's reported distance.
+- Start - Santa Monica Pier and Finish - Milestone Running Shop: course endpoints.
+- The final partial mile has no separate marker; the finish point is its endpoint.
+
+Editable route lines
+- Each alternating green/blue line is an individual one-mile runner segment, named Segment 001, Segment 002, and so on.
+- Delete or redraw one line in Google My Maps without changing the remaining route segments or checkpoints.
+- The San Mateo Point to Oceanside restart transfer remains physically split; no orange line crosses that non-runner gap.
 
 Important verification note
-The organizer's turn list is the source of truth. This route uses Google walking data for normal legs and road-alignment geometry for the explicit Sepulveda/W 78th/W 79th turns and the required Highway 1/PCH corridor from Ocean Blue to Del Prado. Those road-aligned portions are not pedestrian-safety validation and must be reviewed in the field, especially at the LA River Trail and Coast Highway portions. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street, Long Beach. The line has an intentional gap from San Mateo Point to the Chevron restart because the organizer directs the support car—not runners—to use I-5 exit 54C.
+The organizer's turn list is the source of truth. This route uses Google walking data for normal legs and road-alignment geometry for the explicit Sepulveda/W 78th/W 79th turns and the required Highway 1/PCH corridor from Ocean Blue to Del Prado. Those road-aligned portions are not pedestrian-safety validation and must be reviewed in the field, especially at the LA River Trail and Coast Highway portions. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line has an intentional gap from San Mateo Point to the Chevron restart because the organizer directs the car—not runners—to use I-5 exit 54C. Mile numbering continues across runner mileage on either side of that gap, but no line or marker is created within it.
 
 Google My Maps import
 1. Go to https://www.google.com/mymaps and create a new map.
 2. Click Import in its first layer.
-3. Select the .kml file.
-4. The import creates two layers: Runner route - organizer-aligned draft and Support car logistics - provisional.
+3. Select NSTT_2026_runner_route_segments.kml.
+4. Click Add layer, then Import, and select NSTT_2026_runner_mile_checkpoints.kml.
+5. You will have separate route-segment and checkpoint layers.
 '''
-    (output_dir / "NSTT_2026_master_runner_course_draft.kml").write_text(kml, encoding="utf-8")
-    (output_dir / "NSTT_2026_runner_route_preview.kml").write_text(kml.replace(car_folder, ""), encoding="utf-8")
-    (output_dir / "NSTT_2026_master_runner_course_draft.gpx").write_text(gpx, encoding="utf-8")
-    (output_dir / "NSTT_2026_master_runner_course_README.txt").write_text(import_notes, encoding="utf-8")
+    (output_dir / "NSTT_2026_runner_route_segments.kml").write_text(route_segments_kml, encoding="utf-8")
+    (output_dir / "NSTT_2026_runner_mile_checkpoints.kml").write_text(checkpoints_kml, encoding="utf-8")
+    (output_dir / "NSTT_2026_runner_route.gpx").write_text(gpx, encoding="utf-8")
+    (output_dir / "NSTT_2026_runner_route_README.txt").write_text(import_notes, encoding="utf-8")
 
 
 def main() -> None:
@@ -759,6 +1031,21 @@ def main() -> None:
         default=DEFAULT_GOOGLE_USAGE,
         help="Conservative local Google Routes request counter (default: data/google-routes-usage.json).",
     )
+    parser.add_argument(
+        "--approved-segments-kml",
+        type=Path,
+        help="Google My Maps KML containing user-edited route segments to preserve unchanged.",
+    )
+    parser.add_argument(
+        "--approved-through-segment",
+        type=int,
+        help="Last consecutively approved segment number in --approved-segments-kml.",
+    )
+    parser.add_argument(
+        "--resume-at-checkpoint",
+        default="Del Prado / Golden Lantern",
+        help="Organizer checkpoint at which rerouting resumes after approved progress (default: Del Prado / Golden Lantern).",
+    )
     args = parser.parse_args()
 
     geocoding_cache = load_geocoding_cache(args.geocoding_cache)
@@ -774,24 +1061,92 @@ def main() -> None:
         if not from_cache:
             save_geocoding_cache(args.geocoding_cache, geocoding_cache)
             time.sleep(1.1)  # Respect Nominatim's public-service request policy.
-    print("Tracing pedestrian routes between organizer checkpoints")
-    segments, distance_meters = trace(
-        points, routing_cache, args.routing_cache, path_cache, args.path_cache,
-        google_api_key, google_usage, args.google_usage,
-    )
-    car_points: list[Point] = []
-    for checkpoint in CAR_LAYER_CHECKPOINTS:
-        print(f"Geocoding support-car point: {checkpoint.label}")
-        point, from_cache = geocode(checkpoint, geocoding_cache)
-        car_points.append(point)
-        if not from_cache:
-            save_geocoding_cache(args.geocoding_cache, geocoding_cache)
-            time.sleep(1.1)
-    write_outputs(args.output_dir, points, segments, distance_meters, car_points)
+    if args.approved_segments_kml:
+        if args.approved_through_segment is None:
+            raise RuntimeError("--approved-through-segment is required with --approved-segments-kml.")
+        progress = load_approved_route_progress(
+            args.approved_segments_kml, args.approved_through_segment
+        )
+        try:
+            resume_index = next(
+                index for index, point in enumerate(points) if point.label == args.resume_at_checkpoint
+            )
+        except StopIteration as error:
+            raise RuntimeError(
+                f"Unknown resume checkpoint: {args.resume_at_checkpoint!r}. Use an organizer checkpoint label."
+            ) from error
+        if resume_index == 0:
+            raise RuntimeError("The resume checkpoint must be after the course start.")
+        approved_geometry = approved_route_geometry(progress)
+        approved_sections = approved_route_sections(progress)
+        approved_markers = approved_mile_markers(progress)
+        latitude, longitude = approved_geometry[-1]
+        manual_resume = Point(
+            f"Manual runner resume after Segment {progress.through_segment:03d}",
+            "Approved My Maps route endpoint",
+            latitude,
+            longitude,
+            "Approved My Maps route endpoint",
+        )
+        print(
+            f"Preserving approved My Maps segments through {progress.sections[-1].label}; "
+            f"rerouting from its endpoint to {args.resume_at_checkpoint}."
+        )
+        downstream_segments, downstream_distance_meters = trace(
+            [manual_resume, *points[resume_index:]],
+            routing_cache,
+            args.routing_cache,
+            path_cache,
+            args.path_cache,
+            google_api_key,
+            google_usage,
+            args.google_usage,
+            manual_highway_1_resume=True,
+        )
+        # Google snaps an arbitrary My Maps endpoint to its nearest routable
+        # road coordinate. Retain the user's exact final vertex so Segment 043
+        # visibly joins their approved Segment 042 instead of leaving a gap.
+        if downstream_segments and downstream_segments[0][0] != (latitude, longitude):
+            downstream_segments[0].insert(0, (latitude, longitude))
+        sections = [*approved_sections, *runner_route_sections(
+            downstream_segments,
+            downstream_distance_meters,
+            first_segment_number=progress.through_segment + 1,
+            start_label=f"Mile {progress.through_segment:03d}",
+        )]
+        markers = [
+            *approved_markers,
+            *mile_markers(
+                downstream_segments,
+                downstream_distance_meters,
+                first_mile_number=progress.through_segment + 1,
+            ),
+        ]
+        output_segments = [
+            approved_geometry,
+            *downstream_segments,
+        ]
+        distance_meters = progress.through_segment * MILE_METERS + downstream_distance_meters
+        write_outputs(
+            args.output_dir,
+            points,
+            downstream_segments,
+            distance_meters,
+            route_sections_override=sections,
+            markers_override=markers,
+            gpx_segments_override=output_segments,
+        )
+    else:
+        print("Tracing pedestrian routes between organizer checkpoints")
+        output_segments, distance_meters = trace(
+            points, routing_cache, args.routing_cache, path_cache, args.path_cache,
+            google_api_key, google_usage, args.google_usage,
+        )
+        write_outputs(args.output_dir, points, output_segments, distance_meters)
     print(
-        f"Created {sum(len(segment) for segment in segments)} runner trace points in {len(segments)} runner segments, "
+        f"Created {sum(len(segment) for segment in output_segments)} runner trace points in {len(output_segments)} runner segments, "
         f"{distance_meters / 1609.344:.1f} mi, "
-        f"{len(points)} runner checkpoints, and {len(car_points)} provisional support-car markers."
+        f"{len(markers) if args.approved_segments_kml else len(mile_markers(output_segments, distance_meters))} one-mile checkpoints."
     )
 
 

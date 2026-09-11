@@ -1,6 +1,7 @@
 """Regression tests for the team-supplied September 2026 course turn sheet."""
 
 import json
+import math
 
 import pytest
 
@@ -26,11 +27,12 @@ from nstt_course_planner.build_course import (
     google_route_payload,
     google_walking_route_payload,
     google_route_distance_meters,
+    load_approved_route_progress,
+    mile_markers,
+    runner_route_sections,
     write_outputs,
 )
 from nstt_course_planner.route_spec import (
-    CAR_CHECKPOINTS,
-    CAR_INSTRUCTIONS,
     OPERATIONAL_NOTES,
     ROUTE_CHECKPOINTS,
     RUNNER_INSTRUCTIONS,
@@ -75,33 +77,11 @@ def test_every_direction_that_requires_a_map_location_has_a_checkpoint() -> None
     assert {item.checkpoint_label for item in RUNNER_INSTRUCTIONS if item.checkpoint_label} <= route_labels
 
 
-def test_special_runner_and_car_logistics_are_preserved() -> None:
-    assert [(item.action, item.road_or_place) for item in CAR_INSTRUCTIONS] == [
-        ("during river trail, drive ahead and meet runners where trail meets road", "LA River Trail"),
-        ("send replacement runner onto trail and collect outgoing runner", "LA River Trail"),
-        ("fork right to avoid I-5 / Coast Highway conflict", "after Park Lantern"),
-        ("meet runners on Coast Highway", "coastal section"),
-        ("drive I-5", "to exit 54C"),
-        ("cross road after exit and pull into", "Chevron gas station"),
-    ]
-
-
-def test_car_layer_has_its_own_ordered_waypoints() -> None:
-    assert [point.label for point in CAR_CHECKPOINTS] == [
-        "LA River Trail support access",
-        "Coast Highway car rendezvous",
-        "Chevron - I-5 exit 54C car stop",
-    ]
-    car_labels = {point.label for point in CAR_CHECKPOINTS}
-    assert {item.checkpoint_label for item in CAR_INSTRUCTIONS if item.checkpoint_label} <= car_labels
-
-
 def test_river_and_coast_safety_requirements_remain_explicit() -> None:
     runner_text = " ".join(f"{item.action} {item.road_or_place}".lower() for item in RUNNER_INSTRUCTIONS)
-    car_text = " ".join(f"{item.action} {item.road_or_place}".lower() for item in CAR_INSTRUCTIONS)
     assert "ocean blue environmental" in runner_text
-    assert "la river trail" in car_text
-    assert "coast highway" in car_text
+    assert "la river trail" in runner_text
+    assert "coast highway" in runner_text
 
 
 def test_operational_safety_notes_are_retained_for_future_pod_planning() -> None:
@@ -114,15 +94,81 @@ def test_operational_safety_notes_are_retained_for_future_pod_planning() -> None
     )
 
 
-def test_kml_has_distinct_runner_and_support_car_layers(tmp_path) -> None:
+def test_kml_splits_runner_segments_and_mile_checkpoints_into_separate_layers(tmp_path) -> None:
     runner_point = Point("Runner point", "runner query", 34.0, -118.0, "Runner point")
-    car_point = Point("LA River Trail support access", "car query", 33.9, -118.1, "Car point")
-    write_outputs(tmp_path, [runner_point], [[(34.0, -118.0), (34.1, -118.1)]], 1609.344, [car_point])
+    finish_point = Point("Finish", "finish query", 34.1, -118.1, "Finish point")
+    write_outputs(tmp_path, [runner_point, finish_point], [[(34.0, -118.0), (34.1, -118.1)]], 1609.344)
 
-    kml = (tmp_path / "NSTT_2026_master_runner_course_draft.kml").read_text(encoding="utf-8")
-    assert "Runner route - organizer-aligned draft" in kml
-    assert "Support car logistics - provisional" in kml
-    assert "Provisional support-car logistics point" in kml
+    segments_kml = (tmp_path / "NSTT_2026_runner_route_segments.kml").read_text(encoding="utf-8")
+    checkpoints_kml = (tmp_path / "NSTT_2026_runner_mile_checkpoints.kml").read_text(encoding="utf-8")
+
+    assert "Runner route segments - alternating green and blue" in segments_kml
+    assert "Segment 001 - Start to Mile 001" in segments_kml
+    assert "#segmentGreen" in segments_kml
+    assert 'id="segmentBlue"' in segments_kml
+    assert "<Point>" not in segments_kml
+    assert "<MultiGeometry>" not in segments_kml
+    assert "Mile 001" in checkpoints_kml
+    assert "Segment 001" not in checkpoints_kml
+    assert "Support car" not in checkpoints_kml
+    assert "vehicle logistics" in checkpoints_kml
+
+
+def test_mile_markers_continue_after_a_route_gap_without_bridging_it() -> None:
+    latitude_delta_per_mile = 1609.344 * 180 / (math.pi * 6_371_000)
+    segments = [
+        [(0.0, 0.0), (latitude_delta_per_mile * 1.5, 0.0)],
+        [(10.0, 0.0), (10.0 + latitude_delta_per_mile * 1.5, 0.0)],
+    ]
+
+    markers = mile_markers(segments)
+
+    assert [mile for mile, _, _ in markers] == [1, 2, 3]
+    assert math.isclose(markers[0][1], latitude_delta_per_mile, abs_tol=1e-9)
+    assert math.isclose(markers[1][1], 10.0 + latitude_delta_per_mile * 0.5, abs_tol=1e-9)
+    assert math.isclose(markers[2][1], 10.0 + latitude_delta_per_mile * 1.5, abs_tol=1e-9)
+
+
+def test_route_sections_are_editable_mile_lines_without_bridging_a_gap() -> None:
+    latitude_delta_per_mile = 1609.344 * 180 / (math.pi * 6_371_000)
+    segments = [
+        [(0.0, 0.0), (latitude_delta_per_mile * 1.5, 0.0)],
+        [(10.0, 0.0), (10.0 + latitude_delta_per_mile * 1.5, 0.0)],
+    ]
+
+    sections = runner_route_sections(segments, 1609.344 * 3)
+
+    assert [section.label for section in sections] == [
+        "Segment 001 - Start to Mile 001",
+        "Segment 002 - Mile 001 to runner transfer gap",
+        "Segment 002b - Runner restart to Mile 002",
+        "Segment 003 - Mile 002 to Mile 003",
+    ]
+    assert all(
+        not (min(latitude for latitude, _ in section.coordinates) < 1 and max(latitude for latitude, _ in section.coordinates) > 9)
+        for section in sections
+    )
+
+
+def test_approved_kml_preserves_consecutive_user_edited_segments(tmp_path) -> None:
+    approved_kml = tmp_path / "Runner Segments.kml"
+    approved_kml.write_text(
+        """<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+  <Placemark><name>Segment 001 - Start to Mile 001</name><LineString><coordinates>-118.0,34.0,0 -118.01,34.01,0</coordinates></LineString></Placemark>
+  <Placemark><name>Segment 002 - Mile 001 to Mile 002</name><LineString><coordinates>-118.01,34.01,0 -118.02,34.02,0</coordinates></LineString></Placemark>
+</Document></kml>""",
+        encoding="utf-8",
+    )
+
+    progress = load_approved_route_progress(approved_kml, 2)
+
+    assert progress.through_segment == 2
+    assert [section.label for section in progress.sections] == [
+        "Segment 001 - Start to Mile 001",
+        "Segment 002 - Mile 001 to Mile 002",
+    ]
+    assert progress.sections[-1].coordinates[-1] == (34.02, -118.02)
 
 
 def test_geocoding_cache_round_trips_and_reuses_coordinates(tmp_path) -> None:

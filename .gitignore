@@ -3,7 +3,4 @@ __pycache__/
 *.py[cod]
 .DS_Store
 .env
-data/google-routes-usage.json
-data/geocoding-cache.json
-data/pedestrian-routing-cache.json
-data/path-geometry-cache.json
+data/
