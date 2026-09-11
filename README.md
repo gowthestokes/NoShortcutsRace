@@ -1,10 +1,24 @@
 # No Shortcuts Race
 
 Creates a runner-only, import-ready draft of the No Shortcuts Time Trial course
-from Santa Monica to San Diego. It places a checkpoint at every completed route
-mile so the markers can be adjusted or merged in Google My Maps. It
+from Santa Monica to San Diego. It creates independently editable half-mile
+segments and matching checkpoints so they can be adjusted or merged in Google
+My Maps. It
 intentionally excludes relay pods, runner assignments, handoffs, and support-car
 routing.
+
+## Code structure
+
+`RaceRouteSpec` in `route_spec.py` owns the immutable organizer turn sheet,
+checkpoints, and operational notes. `CourseBuilder` in `build_course.py` is the
+small CLI/orchestration layer. Its collaborators are focused classes: the
+configuration and models in `config.py`/`models.py`, `CheckpointGeocoder`,
+`RunnerRouter`, `ApprovedProgressLoader`, `RouteGeometry`/`RouteSegmenter`,
+`CourseExporter`, `JsonStore`/`GoogleUsageTracker`, and `HttpClient`.
+
+Each production module is under 200 lines; the compatibility imports in
+`build_course.py` preserve the original script-level API while new code uses the
+focused service classes.
 
 ## Run
 
@@ -31,17 +45,17 @@ it counts a request before sending it, including a request that later fails.
 
 By default, it writes these files to `outputs/` inside this project:
 
-- `NSTT_2026_runner_route_segments.kml` - import into the first Google My Maps layer; contains individually editable, alternating green/blue route segments.
-- `NSTT_2026_runner_mile_checkpoints.kml` - import into a second Google My Maps layer; contains the mile checkpoints, start, and finish.
+- `NSTT_2026_runner_route_segments.kml` - import into the first Google My Maps layer; contains individually editable, alternating green/blue half-mile route segments.
+- `NSTT_2026_runner_mile_checkpoints.kml` - import into a second Google My Maps layer; contains the half-mile checkpoints, start, and finish.
 - `NSTT_2026_runner_route.gpx` - a portable route and checkpoint backup for Footpath or other route tools.
 - `NSTT_2026_runner_route_README.txt` - concise import and verification notes.
 
 Import the two KML files into separate My Maps layers: one for route segments
 and one for checkpoints. The route lines alternate green and blue and can be
-deleted or redrawn independently. `Mile 001`, `Mile 002`, and later markers are
-calculated along the exported runner geometry and calibrated to the routing
-provider's reported distance. Neither layer contains support-car routes or
-markers.
+deleted or redrawn independently. `Checkpoint 001`, `Checkpoint 002`, and later
+markers are calculated from the actual KML line geometry, so the distance shown
+by My Maps is 0.5 mi for each complete segment. Neither layer contains
+support-car routes or markers.
 
 The first build calls public geocoders, Google walking Routes, and named-path map data, so it
 takes a few minutes. Resolved coordinates and route geometry are saved in
@@ -69,7 +83,7 @@ uv run build-nstt-course \
 ```
 
 The approved route geometry remains exactly as drawn. If My Maps merges an
-edited line during export, the builder restores one-mile sections and markers
+edited line during export, the builder restores half-mile sections and markers
 along that approved geometry. It then starts at the end of the last approved
 segment, routes to the resume checkpoint, and regenerates all downstream
 green/blue segments and mile checkpoints. For a PCH diversion after Segment
@@ -79,7 +93,7 @@ green/blue segments and mile checkpoints. For a PCH diversion after Segment
 
 The organizer's turn list is the source of truth. The builder geocodes its
 major turns and traces public pedestrian-routing data between them. The resulting
-one-mile checkpoints are convenience markers, not verified relay handoffs. Its
+half-mile checkpoints are convenience markers, not verified relay handoffs. Its
 output is a planning draft, not a safety or navigation authority. In particular,
 validate the LA River Trail and coastal portions with the race organizer before
 the event.
@@ -91,10 +105,8 @@ and rejects any returned segment that contains one; this prevents an export
 that "swims" across harbor water.
 
 The Ocean Blue → Del Prado line is deliberately pinned to the organizer's
-Highway 1/PCH corridor. That road-alignment reference is not a pedestrian-
-safety validation; confirm the exact runnable shoulder, sidewalk, or permitted
-bike-path alternatives in the field before race day. The course has an
-intentional runner-route gap from San Mateo Point to the Oceanside Chevron
-restart, because the organizer directs the car—not runners—to use I-5 for that
-transfer. Mile numbering continues across the runner miles on both sides of the
-gap without drawing a connection through it.
+Highway 1/PCH corridor. Per the supplied directions, the transfer from the
+Segment 162 endpoint to the Oceanside Chevron follows I-5 to Exit 54C. This
+appears in the runner layer solely as a planning reference, not as pedestrian-
+safety validation; confirm the exact runnable shoulder, permissions, and event
+authorization in the field before race day.

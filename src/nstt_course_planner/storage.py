@@ -1,0 +1,68 @@
+"""JSON-backed local cache and Google Routes usage services."""
+
+from __future__ import annotations
+
+import json
+from datetime import UTC, datetime
+from pathlib import Path
+
+from nstt_course_planner.config import GOOGLE_ROUTES_REQUEST_LIMIT
+from nstt_course_planner.models import GoogleRoutesRequestLimitError
+
+
+class JsonStore:
+    """Persists small JSON dictionaries used as local caches."""
+
+    @staticmethod
+    def load_cache(path: Path) -> dict[str, dict[str, object]]:
+        if not path.exists():
+            return {}
+        contents = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(contents, dict):
+            raise RuntimeError(f"Invalid geocoding cache: {path}")
+        return contents
+
+    @staticmethod
+    def save_cache(path: Path, cache: dict[str, dict[str, object]]) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+class GoogleUsageTracker:
+    """Conservatively reserves and records billable Google Routes calls."""
+
+    @staticmethod
+    def default_usage() -> dict[str, object]:
+        return {"request_limit": GOOGLE_ROUTES_REQUEST_LIMIT, "requests_sent": 0, "last_request_at": None, "last_request_status": None}
+
+    @classmethod
+    def load(cls, path: Path) -> dict[str, object]:
+        if not path.exists():
+            return cls.default_usage()
+        usage = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(usage, dict) or not isinstance(usage.get("requests_sent"), int):
+            raise RuntimeError(f"Invalid Google Routes usage file: {path}")
+        usage["request_limit"] = GOOGLE_ROUTES_REQUEST_LIMIT
+        return usage
+
+    @staticmethod
+    def save(path: Path, usage: dict[str, object]) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(usage, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    @classmethod
+    def reserve(cls, usage: dict[str, object], path: Path) -> None:
+        requests_sent = int(usage["requests_sent"])
+        if requests_sent >= GOOGLE_ROUTES_REQUEST_LIMIT:
+            raise GoogleRoutesRequestLimitError(
+                f"Google Routes request limit reached ({GOOGLE_ROUTES_REQUEST_LIMIT:,}); no request was sent."
+            )
+        usage["requests_sent"] = requests_sent + 1
+        usage["last_request_at"] = datetime.now(UTC).isoformat()
+        usage["last_request_status"] = "reserved"
+        cls.save(path, usage)
+
+    @classmethod
+    def set_status(cls, usage: dict[str, object], path: Path, status: str) -> None:
+        usage["last_request_status"] = status
+        cls.save(path, usage)

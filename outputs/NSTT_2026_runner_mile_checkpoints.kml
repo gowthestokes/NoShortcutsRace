@@ -1,797 +1,591 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-  <Document>
-    <name>NSTT 2026 - Mile Checkpoints</name>
-    <description>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed route mile and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. Google walking routes are beta and can miss clear sidewalks or paths; inspect every section before running. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The route deliberately has a gap from San Mateo Point to the Oceanside Chevron restart because the organizer directs the car—not runners—to use I-5 for that transfer.</description>
-    <Style id="mileMarker"><IconStyle><color>ff00a5ff</color><scale>0.9</scale></IconStyle></Style>
-    <Folder><name>Runner mile checkpoints</name>
-      <description>Start, finish, and one checkpoint at every completed runner mile.</description>
-
-    <Placemark>
-      <name>Start - Santa Monica Pier</name>
-      <description>200 Santa Monica Pier, Santa Monica, CA 90401</description>
-      <Point><coordinates>-118.4966405,34.0100103,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Finish - Milestone Running Shop</name>
-      <description>1892 Garnet Avenue, San Diego, CA 92109</description>
-      <Point><coordinates>-117.2356012,32.8010272,0</coordinates></Point>
-    </Placemark>
-
-    <Placemark>
-      <name>Mile 001</name>
-      <description>Completed runner mile 1. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.4853422772602,34.00357984567416,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 002</name>
-      <description>Completed runner mile 2. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.47492409525967,33.99331837317108,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 003</name>
-      <description>Completed runner mile 3. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.46035583856064,33.9881669053047,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 004</name>
-      <description>Completed runner mile 4. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.44551552299595,33.9914712133977,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 005</name>
-      <description>Completed runner mile 5. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.43107643904398,33.99669161336874,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 006</name>
-      <description>Completed runner mile 6. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.4171455102731,33.99454748405179,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 007</name>
-      <description>Completed runner mile 7. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.40487272300332,33.98866069288127,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 008</name>
-      <description>Completed runner mile 8. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.39440444366709,33.97886768371516,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 009</name>
-      <description>Completed runner mile 9. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.3899985517478,33.96896064577233,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 010</name>
-      <description>Completed runner mile 10. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.37584218233629,33.96468053781851,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 011</name>
-      <description>Completed runner mile 11. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.362543290564,33.96177482618982,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 012</name>
-      <description>Completed runner mile 12. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.34699833247377,33.9606501449551,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 013</name>
-      <description>Completed runner mile 13. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.33103153162364,33.96011672300813,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 014</name>
-      <description>Completed runner mile 14. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.3147241322022,33.9601,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 015</name>
-      <description>Completed runner mile 15. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.29874996520672,33.95990096187301,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 016</name>
-      <description>Completed runner mile 16. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.28244258313651,33.95997,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 017</name>
-      <description>Completed runner mile 17. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.26610561007207,33.960015502074086,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 018</name>
-      <description>Completed runner mile 18. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.25062759046824,33.96029,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 019</name>
-      <description>Completed runner mile 19. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.23440415374591,33.96027281153094,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 020</name>
-      <description>Completed runner mile 20. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.2202681845721,33.95548465960727,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 021</name>
-      <description>Completed runner mile 21. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.20430313002521,33.953922195941644,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 022</name>
-      <description>Completed runner mile 22. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.18849358867227,33.95232954204802,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 023</name>
-      <description>Completed runner mile 23. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.18126226584965,33.9431790588299,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 024</name>
-      <description>Completed runner mile 24. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.18401447434458,33.9299397274124,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 025</name>
-      <description>Completed runner mile 25. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.18928944204939,33.91715757513273,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 026</name>
-      <description>Completed runner mile 26. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.19414,33.90426164274638,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 027</name>
-      <description>Completed runner mile 27. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.18320855138076,33.90202530045003,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 028</name>
-      <description>Completed runner mile 28. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.18690107461302,33.888923851083014,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 029</name>
-      <description>Completed runner mile 29. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.18926978044345,33.8754365069748,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 030</name>
-      <description>Completed runner mile 30. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.19582944129542,33.862989478085964,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 031</name>
-      <description>Completed runner mile 31. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.20221828813698,33.85052781919652,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 032</name>
-      <description>Completed runner mile 32. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.20328934678284,33.83691487711412,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 033</name>
-      <description>Completed runner mile 33. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.20478267753315,33.82333954763935,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 034</name>
-      <description>Completed runner mile 34. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.20473781377048,33.8096766386914,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 035</name>
-      <description>Completed runner mile 35. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.20437004367305,33.79602103137985,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 036</name>
-      <description>Completed runner mile 36. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.19540512328629,33.78975099541669,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 037</name>
-      <description>Completed runner mile 37. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.17895653489725,33.789767094800034,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 038</name>
-      <description>Completed runner mile 38. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.16250794779067,33.7897852768588,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 039</name>
-      <description>Completed runner mile 39. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.14605979252228,33.78974710495086,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 040</name>
-      <description>Completed runner mile 40. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.13281897049362,33.78264280421454,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 041</name>
-      <description>Completed runner mile 41. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.1205734320831,33.77351744192432,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 042</name>
-      <description>Completed runner mile 42. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.1142672,33.7610931,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 043</name>
-      <description>Completed runner mile 43. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.10603685021441,33.75054875093925,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 044</name>
-      <description>Completed runner mile 44. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.10113072557597,33.74363031564177,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 045</name>
-      <description>Completed runner mile 45. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.0865483805957,33.73595564734285,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 046</name>
-      <description>Completed runner mile 46. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.077369883072,33.72428715076622,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 047</name>
-      <description>Completed runner mile 47. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.06556033930863,33.71382724232429,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 048</name>
-      <description>Completed runner mile 48. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.05415389067076,33.702907464148026,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 049</name>
-      <description>Completed runner mile 49. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.04990476346138,33.69826732644114,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 050</name>
-      <description>Completed runner mile 50. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.04869177339843,33.69696361983969,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 051</name>
-      <description>Completed runner mile 51. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.03826814897867,33.68604269224393,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 052</name>
-      <description>Completed runner mile 52. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.02664983260254,33.675248633721836,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 053</name>
-      <description>Completed runner mile 53. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.01370023641975,33.665547535678776,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 054</name>
-      <description>Completed runner mile 54. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-118.00055226308886,33.656021398971035,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 055</name>
-      <description>Completed runner mile 55. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.98657266633452,33.647393901025445,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 056</name>
-      <description>Completed runner mile 56. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.97228759256106,33.63908954635096,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 057</name>
-      <description>Completed runner mile 57. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.9577077171704,33.631219797074415,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 058</name>
-      <description>Completed runner mile 58. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.94262417763588,33.624485834080545,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 059</name>
-      <description>Completed runner mile 59. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.93027912230353,33.617963897833256,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 060</name>
-      <description>Completed runner mile 60. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.925315992078,33.62080059128581,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 061</name>
-      <description>Completed runner mile 61. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.90937197862895,33.61607472810537,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 062</name>
-      <description>Completed runner mile 62. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.89317661136936,33.61307722528291,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 063</name>
-      <description>Completed runner mile 63. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.87789999120598,33.606939051286105,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 064</name>
-      <description>Completed runner mile 64. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.86927981451791,33.59493320967861,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 065</name>
-      <description>Completed runner mile 65. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.85475767673037,33.58695135414598,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 066</name>
-      <description>Completed runner mile 66. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.84141511588267,33.577630207472104,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 067</name>
-      <description>Completed runner mile 67. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.83023601352326,33.566787961023955,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 068</name>
-      <description>Completed runner mile 68. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.81994396215616,33.56774919796472,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 069</name>
-      <description>Completed runner mile 69. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.81921624382421,33.55857380206228,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 070</name>
-      <description>Completed runner mile 70. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.80517770965604,33.55076748062165,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 071</name>
-      <description>Completed runner mile 71. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.78969527512261,33.54434491744051,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 072</name>
-      <description>Completed runner mile 72. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.77829078591789,33.5358607916455,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 073</name>
-      <description>Completed runner mile 73. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.76678758895312,33.52507899574011,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 074</name>
-      <description>Completed runner mile 74. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.75553030620706,33.514131755394075,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 075</name>
-      <description>Completed runner mile 75. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.74476152064948,33.502868421461315,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 076</name>
-      <description>Completed runner mile 76. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.73369696872572,33.4919717946922,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 077</name>
-      <description>Completed runner mile 77. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.72101984667974,33.489843593126004,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 078</name>
-      <description>Completed runner mile 78. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.72788924209897,33.50071482163724,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 079</name>
-      <description>Completed runner mile 79. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.73386481672837,33.50556,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 080</name>
-      <description>Completed runner mile 80. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.72498358465613,33.497130294981694,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 081</name>
-      <description>Completed runner mile 81. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.7114229166037,33.489798875471664,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 082</name>
-      <description>Completed runner mile 82. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.71459320607445,33.47646823598705,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 083</name>
-      <description>Completed runner mile 83. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.70773859403727,33.47270445957557,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 084</name>
-      <description>Completed runner mile 84. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.69807664067442,33.46643791422559,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 085</name>
-      <description>Completed runner mile 85. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.69770042342515,33.47373729724544,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 086</name>
-      <description>Completed runner mile 86. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.69348120975803,33.46383294114501,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 087</name>
-      <description>Completed runner mile 87. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.67850521343524,33.461986951247,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 088</name>
-      <description>Completed runner mile 88. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.669249808764,33.4584260764944,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 089</name>
-      <description>Completed runner mile 89. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.65579908935142,33.45041985586573,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 090</name>
-      <description>Completed runner mile 90. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.64476868810925,33.44222866257928,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 091</name>
-      <description>Completed runner mile 91. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.63287569895753,33.43285032672261,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 092</name>
-      <description>Completed runner mile 92. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.61658146977084,33.4300141301003,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 093</name>
-      <description>Completed runner mile 93. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.6062917869886,33.41908457047131,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 094</name>
-      <description>Completed runner mile 94. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.59939097163364,33.4068389735851,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 095</name>
-      <description>Completed runner mile 95. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.59260435800756,33.393951126354246,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 096</name>
-      <description>Completed runner mile 96. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.3844296520253,33.204183388480665,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 097</name>
-      <description>Completed runner mile 97. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.37625681751445,33.19188096993239,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 098</name>
-      <description>Completed runner mile 98. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.36644099424593,33.18010800223834,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 099</name>
-      <description>Completed runner mile 99. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.35647241687049,33.16853015344159,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 100</name>
-      <description>Completed runner mile 100. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.35095742345563,33.1557883257106,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 101</name>
-      <description>Completed runner mile 101. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.34204897102789,33.14349073839815,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 102</name>
-      <description>Completed runner mile 102. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.33421908825883,33.13058751427247,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 103</name>
-      <description>Completed runner mile 103. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.32564055546362,33.118614390819566,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 104</name>
-      <description>Completed runner mile 104. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.3194467706804,33.105099033592644,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 105</name>
-      <description>Completed runner mile 105. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.31362934842721,33.09155052194944,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 106</name>
-      <description>Completed runner mile 106. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.30681308952471,33.078436822167276,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 107</name>
-      <description>Completed runner mile 107. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.30216426493477,33.064466030128976,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 108</name>
-      <description>Completed runner mile 108. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.29481018828487,33.051437829498525,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 109</name>
-      <description>Completed runner mile 109. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.29263857653821,33.03739144134551,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 110</name>
-      <description>Completed runner mile 110. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.28537709781357,33.024288894034115,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 111</name>
-      <description>Completed runner mile 111. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.27907355089586,33.01087029872467,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 112</name>
-      <description>Completed runner mile 112. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.27350283954156,32.997420512894,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 113</name>
-      <description>Completed runner mile 113. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.26960054373767,32.98337837062282,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 114</name>
-      <description>Completed runner mile 114. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.26800766066404,32.96929815422061,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 115</name>
-      <description>Completed runner mile 115. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.26442104200501,32.957467239375056,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 116</name>
-      <description>Completed runner mile 116. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.26062625597925,32.9437129790921,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 117</name>
-      <description>Completed runner mile 117. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.25985037294281,32.92938551109779,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 118</name>
-      <description>Completed runner mile 118. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.24900667239194,32.918819858718294,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 119</name>
-      <description>Completed runner mile 119. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.24361112852701,32.90528406732068,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 120</name>
-      <description>Completed runner mile 120. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.24138836074918,32.891367410689824,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 121</name>
-      <description>Completed runner mile 121. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.24402928877923,32.87745431023378,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 122</name>
-      <description>Completed runner mile 122. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.2516870645427,32.86982529242371,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 123</name>
-      <description>Completed runner mile 123. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.25377569576847,32.855602881663614,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 124</name>
-      <description>Completed runner mile 124. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.26517597008714,32.84799014926704,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 125</name>
-      <description>Completed runner mile 125. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.27281737355459,32.837494661035834,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 126</name>
-      <description>Completed runner mile 126. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.27679366899876,32.82694976574163,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 127</name>
-      <description>Completed runner mile 127. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.2697437099335,32.81407269813345,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 128</name>
-      <description>Completed runner mile 128. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.25806040248453,32.8045711269567,0</coordinates></Point>
-    </Placemark>
-    <Placemark>
-      <name>Mile 129</name>
-      <description>Completed runner mile 129. Position is interpolated along the exported runner route geometry and calibrated to its routed distance.</description>
-      <styleUrl>#mileMarker</styleUrl>
-      <Point><coordinates>-117.24841054178384,32.798074759120624,0</coordinates></Point>
-    </Placemark>
-    </Folder>
-  </Document>
-</kml>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - Half-Mile Checkpoints</name><description>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed half-mile route segment and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The San Mateo Point to Oceanside section is pinned to the Old Pacific Highway corridor rather than an I-5 shortcut; field-verify access and safety before race day.</description>
+  <Style id="mileMarker"><IconStyle><color>ff00a5ff</color><scale>0.9</scale></IconStyle></Style><Folder><name>Runner half-mile checkpoints</name>
+    <description>Start, finish, and one checkpoint at every completed half-mile runner segment.</description>
+    <Placemark><name>Start - Santa Monica Pier</name><description>200 Santa Monica Pier, Santa Monica, CA 90401</description>
+      <Point><coordinates>-118.4966405,34.0100103,0</coordinates></Point></Placemark>
+    <Placemark><name>Finish - Milestone Running Shop</name><description>1892 Garnet Avenue, San Diego, CA 92109</description>
+      <Point><coordinates>-117.2356012,32.8010272,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 001</name><description>Endpoint of completed half-mile Segment 001. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.49048460683026,34.007585667490744,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 002</name><description>Endpoint of completed half-mile Segment 002. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.4847131516026,34.002970147229455,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 003</name><description>Endpoint of completed half-mile Segment 003. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.47921924625831,33.99748623118127,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 004</name><description>Endpoint of completed half-mile Segment 004. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.47355866141947,33.99248896576152,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 005</name><description>Endpoint of completed half-mile Segment 005. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.46524957721371,33.990543,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 006</name><description>Endpoint of completed half-mile Segment 006. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.45753717656348,33.988205,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 007</name><description>Endpoint of completed half-mile Segment 007. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.44950125181397,33.989754876458704,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 008</name><description>Endpoint of completed half-mile Segment 008. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.44223215224356,33.993104926436935,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 009</name><description>Endpoint of completed half-mile Segment 009. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.4348290591622,33.99675698027927,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 010</name><description>Endpoint of completed half-mile Segment 010. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.4266604677629,33.99708995545115,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 011</name><description>Endpoint of completed half-mile Segment 011. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.41934874912228,33.99600083365128,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 012</name><description>Endpoint of completed half-mile Segment 012. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.41302416616487,33.99133716097223,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 013</name><description>Endpoint of completed half-mile Segment 013. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.40637809906154,33.98959706019598,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 014</name><description>Endpoint of completed half-mile Segment 014. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.399883642847,33.98500159991058,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 015</name><description>Endpoint of completed half-mile Segment 015. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.39459696744117,33.9796648655472,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 016</name><description>Endpoint of completed half-mile Segment 016. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.39478907483281,33.97250770417995,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 017</name><description>Endpoint of completed half-mile Segment 017. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.39001021496725,33.968963039073934,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 018</name><description>Endpoint of completed half-mile Segment 018. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.38185999626721,33.96850299653718,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 019</name><description>Endpoint of completed half-mile Segment 019. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.3753950059509,33.964209232085345,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 020</name><description>Endpoint of completed half-mile Segment 020. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.36932079066068,33.961737002406196,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 021</name><description>Endpoint of completed half-mile Segment 021. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.36066739297257,33.96179499802129,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 022</name><description>Endpoint of completed half-mile Segment 022. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.35214408420124,33.96191599896048,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 023</name><description>Endpoint of completed half-mile Segment 023. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.3444832113611,33.95987797604004,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 024</name><description>Endpoint of completed half-mile Segment 024. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.33589457239356,33.96011,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 025</name><description>Endpoint of completed half-mile Segment 025. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.32720093189802,33.96011,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 026</name><description>Endpoint of completed half-mile Segment 026. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.31861935351849,33.96010599829081,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 027</name><description>Endpoint of completed half-mile Segment 027. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.30990868509176,33.96009,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 028</name><description>Endpoint of completed half-mile Segment 028. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.30165346889498,33.95989,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 029</name><description>Endpoint of completed half-mile Segment 029. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.29297918339384,33.95992,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 030</name><description>Endpoint of completed half-mile Segment 030. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.28430532912665,33.95995899884965,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 031</name><description>Endpoint of completed half-mile Segment 031. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.27577642574632,33.95997599889608,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 032</name><description>Endpoint of completed half-mile Segment 032. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.26709696923918,33.96001000018624,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 033</name><description>Endpoint of completed half-mile Segment 033. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.25838520064579,33.96005,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 034</name><description>Endpoint of completed half-mile Segment 034. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.25065082135848,33.96029,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 035</name><description>Endpoint of completed half-mile Segment 035. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.24211391917578,33.96028199700651,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 036</name><description>Endpoint of completed half-mile Segment 036. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.23384152607545,33.95991519060705,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 037</name><description>Endpoint of completed half-mile Segment 037. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.22680272844785,33.95651392604737,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 038</name><description>Endpoint of completed half-mile Segment 038. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.21850109597452,33.95532700961271,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 039</name><description>Endpoint of completed half-mile Segment 039. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20997584323496,33.954468987837195,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 040</name><description>Endpoint of completed half-mile Segment 040. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20148723722598,33.95361503594333,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 041</name><description>Endpoint of completed half-mile Segment 041. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.19331041763272,33.95281405568436,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 042</name><description>Endpoint of completed half-mile Segment 042. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18468668340334,33.95194896878625,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 043</name><description>Endpoint of completed half-mile Segment 043. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18129092171958,33.94634284843577,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 044</name><description>Endpoint of completed half-mile Segment 044. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.1819569994059,33.9392730069792,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 045</name><description>Endpoint of completed half-mile Segment 045. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.1830951296543,33.93221167604183,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 046</name><description>Endpoint of completed half-mile Segment 046. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18587292080153,33.92543219971789,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 047</name><description>Endpoint of completed half-mile Segment 047. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18870407150939,33.918686843229416,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 048</name><description>Endpoint of completed half-mile Segment 048. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.1914858650694,33.9119083260823,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 049</name><description>Endpoint of completed half-mile Segment 049. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.19419796586018,33.905091241673986,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 050</name><description>Endpoint of completed half-mile Segment 050. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18735723671352,33.903511998121644,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 051</name><description>Endpoint of completed half-mile Segment 051. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18318601363623,33.90204698695666,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 052</name><description>Endpoint of completed half-mile Segment 052. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18582297460176,33.895320273519516,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 053</name><description>Endpoint of completed half-mile Segment 053. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.186937976757,33.88815020337629,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 054</name><description>Endpoint of completed half-mile Segment 054. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18808992714463,33.88099443448296,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 055</name><description>Endpoint of completed half-mile Segment 055. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.189615,33.87389461932879,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 056</name><description>Endpoint of completed half-mile Segment 056. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.19314585761458,33.86730422703528,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 057</name><description>Endpoint of completed half-mile Segment 057. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.19713479008486,33.86087032386907,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 058</name><description>Endpoint of completed half-mile Segment 058. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20115371055435,33.85446655980698,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 059</name><description>Endpoint of completed half-mile Segment 059. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20251604110747,33.84735875515815,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 060</name><description>Endpoint of completed half-mile Segment 060. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20299398271241,33.840153240174004,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 061</name><description>Endpoint of completed half-mile Segment 061. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20382496557555,33.83295614381771,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 062</name><description>Endpoint of completed half-mile Segment 062. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20457298758686,33.82575910691318,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 063</name><description>Endpoint of completed half-mile Segment 063. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.2048060087115,33.818553409077026,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 064</name><description>Endpoint of completed half-mile Segment 064. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.2047319979862,33.8113208076821,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 065</name><description>Endpoint of completed half-mile Segment 065. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20456100064087,33.80409502177838,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 066</name><description>Endpoint of completed half-mile Segment 066. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20438300217818,33.79686214269241,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 067</name><description>Endpoint of completed half-mile Segment 067. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.20405065793315,33.78988498226867,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 068</name><description>Endpoint of completed half-mile Segment 068. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.19545041547931,33.78975099968011,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 069</name><description>Endpoint of completed half-mile Segment 069. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.18674300883166,33.789757999992865,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 070</name><description>Endpoint of completed half-mile Segment 070. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.17803560637044,33.789768,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 071</name><description>Endpoint of completed half-mile Segment 071. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.1693282076421,33.78978099968998,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 072</name><description>Endpoint of completed half-mile Segment 072. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.16062079711641,33.789786000069896,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 073</name><description>Endpoint of completed half-mile Segment 073. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.15191338376373,33.78978899986779,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 074</name><description>Endpoint of completed half-mile Segment 074. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.14325831354509,33.78952122493452,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 075</name><description>Endpoint of completed half-mile Segment 075. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.13646791837598,33.78534593977593,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 076</name><description>Endpoint of completed half-mile Segment 076. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.12997688410225,33.78052291357294,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 077</name><description>Endpoint of completed half-mile Segment 077. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.12349645961628,33.77569034274424,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 078</name><description>Endpoint of completed half-mile Segment 078. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.11811412477726,33.77023235840833,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 079</name><description>Endpoint of completed half-mile Segment 079. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.11543701915564,33.76334903697484,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 080</name><description>Endpoint of completed half-mile Segment 080. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.11074395223031,33.757315949742306,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 081</name><description>Endpoint of completed half-mile Segment 081. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.10616312409215,33.75126743644378,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 082</name><description>Endpoint of completed half-mile Segment 082. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.10360472463218,33.74477084557075,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 083</name><description>Endpoint of completed half-mile Segment 083. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.09612587347274,33.74107093742778,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 084</name><description>Endpoint of completed half-mile Segment 084. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.08840117504553,33.737752104325125,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 085</name><description>Endpoint of completed half-mile Segment 085. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.08472612848404,33.73135735328364,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 086</name><description>Endpoint of completed half-mile Segment 086. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.07983478244506,33.72554380714048,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 087</name><description>Endpoint of completed half-mile Segment 087. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.07377222465908,33.720612200545396,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 088</name><description>Endpoint of completed half-mile Segment 088. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.06763405973116,33.71558104759828,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 089</name><description>Endpoint of completed half-mile Segment 089. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.0619991951016,33.71008522631183,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 090</name><description>Endpoint of completed half-mile Segment 090. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.0562411538746,33.70467313020959,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 091</name><description>Endpoint of completed half-mile Segment 091. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.05068001384842,33.69912501507757,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 092</name><description>Endpoint of completed half-mile Segment 092. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.0453170473584,33.693428049617566,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 093</name><description>Endpoint of completed half-mile Segment 093. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.03990812268842,33.68776112854046,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 094</name><description>Endpoint of completed half-mile Segment 094. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.03452904073548,33.68207504117466,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 095</name><description>Endpoint of completed half-mile Segment 095. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.02852662808547,33.6768416843581,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 096</name><description>Endpoint of completed half-mile Segment 096. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.0223549108831,33.67174793639499,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 097</name><description>Endpoint of completed half-mile Segment 097. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.01576082606987,33.667030874847946,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 098</name><description>Endpoint of completed half-mile Segment 098. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.0091842868801,33.662297206520634,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 099</name><description>Endpoint of completed half-mile Segment 099. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-118.00264474606008,33.657529816915755,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 100</name><description>Endpoint of completed half-mile Segment 100. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.99575693703864,33.65315196787219,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 101</name><description>Endpoint of completed half-mile Segment 101. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.98878200211122,33.648839001349955,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 102</name><description>Endpoint of completed half-mile Segment 102. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.9817948716122,33.64454192516147,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 103</name><description>Endpoint of completed half-mile Segment 103. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.97466617391892,33.640401100120606,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 104</name><description>Endpoint of completed half-mile Segment 104. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.96708811810815,33.63688305416882,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 105</name><description>Endpoint of completed half-mile Segment 105. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.9600134468054,33.632682297870275,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 106</name><description>Endpoint of completed half-mile Segment 106. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.9529569839059,33.62846299036608,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 107</name><description>Endpoint of completed half-mile Segment 107. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.94544621064404,33.62509101965127,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 108</name><description>Endpoint of completed half-mile Segment 108. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.93760356584279,33.62222317240279,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 109</name><description>Endpoint of completed half-mile Segment 109. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.92908031421418,33.62103996687199,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 110</name><description>Endpoint of completed half-mile Segment 110. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.92108599283831,33.618851,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 111</name><description>Endpoint of completed half-mile Segment 111. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.91323309430734,33.61602300887212,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 112</name><description>Endpoint of completed half-mile Segment 112. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.90469682278793,33.61671,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 113</name><description>Endpoint of completed half-mile Segment 113. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.8967415223068,33.614316354012345,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 114</name><description>Endpoint of completed half-mile Segment 114. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.88849290880016,33.61229,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 115</name><description>Endpoint of completed half-mile Segment 115. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.88094104052553,33.6090450280744,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 116</name><description>Endpoint of completed half-mile Segment 116. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.87430046932843,33.604382455919044,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 117</name><description>Endpoint of completed half-mile Segment 117. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.871595,33.59755686895759,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 118</name><description>Endpoint of completed half-mile Segment 118. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.86530857133742,33.59285629839079,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 119</name><description>Endpoint of completed half-mile Segment 119. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.85795051844728,33.58900927119542,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 120</name><description>Endpoint of completed half-mile Segment 120. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.85119128554254,33.58447219844686,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 121</name><description>Endpoint of completed half-mile Segment 121. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.84451179621618,33.579847552349484,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 122</name><description>Endpoint of completed half-mile Segment 122. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.8392401559004,33.574282249440635,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 123</name><description>Endpoint of completed half-mile Segment 123. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.83345755370162,33.56893345242287,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 124</name><description>Endpoint of completed half-mile Segment 124. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.82658572754808,33.56451645274973,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 125</name><description>Endpoint of completed half-mile Segment 125. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.82033976512959,33.559543581959026,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 126</name><description>Endpoint of completed half-mile Segment 126. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.81346139488714,33.55527924117268,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 127</name><description>Endpoint of completed half-mile Segment 127. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.80600954347439,33.55195561880747,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 128</name><description>Endpoint of completed half-mile Segment 128. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.79907765399808,33.548004228308876,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 129</name><description>Endpoint of completed half-mile Segment 129. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.79126045547775,33.544911166855925,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 130</name><description>Endpoint of completed half-mile Segment 130. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.78342329817491,33.54196732251572,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 131</name><description>Endpoint of completed half-mile Segment 131. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.7784394838562,33.53604660614951,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 132</name><description>Endpoint of completed half-mile Segment 132. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.77316339087339,33.530364335034335,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 133</name><description>Endpoint of completed half-mile Segment 133. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.76701866598614,33.525253502754246,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 134</name><description>Endpoint of completed half-mile Segment 134. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.76091340299482,33.52016358870671,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 135</name><description>Endpoint of completed half-mile Segment 135. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.75572866742526,33.51437782636744,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 136</name><description>Endpoint of completed half-mile Segment 136. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.75047566540286,33.50867982509955,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 137</name><description>Endpoint of completed half-mile Segment 137. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.74495431439313,33.503159448119355,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 138</name><description>Endpoint of completed half-mile Segment 138. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.73947135931463,33.49769740017316,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 139</name><description>Endpoint of completed half-mile Segment 139. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.73404633289,33.49219921712008,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 140</name><description>Endpoint of completed half-mile Segment 140. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.72779473842803,33.48718763683124,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 141</name><description>Endpoint of completed half-mile Segment 141. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.72178336208484,33.481969315663704,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 142</name><description>Endpoint of completed half-mile Segment 142. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.71695418063784,33.476005271744725,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 143</name><description>Endpoint of completed half-mile Segment 143. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.71275758989954,33.469671938897704,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 144</name><description>Endpoint of completed half-mile Segment 144. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.70681389788652,33.46537281836647,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 145</name><description>Endpoint of completed half-mile Segment 145. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.69864447530652,33.46705790530763,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 146</name><description>Endpoint of completed half-mile Segment 146. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.69037443671546,33.465683094721015,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 147</name><description>Endpoint of completed half-mile Segment 147. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.68776257400233,33.46371192305103,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 148</name><description>Endpoint of completed half-mile Segment 148. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.67985629027308,33.462934001994476,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 149</name><description>Endpoint of completed half-mile Segment 149. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.67292491961805,33.458621129187094,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 150</name><description>Endpoint of completed half-mile Segment 150. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.66597286570632,33.45429673410487,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 151</name><description>Endpoint of completed half-mile Segment 151. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.65847934891224,33.45066988140275,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 152</name><description>Endpoint of completed half-mile Segment 152. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.65176691565861,33.44611084633529,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 153</name><description>Endpoint of completed half-mile Segment 153. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.64520957226054,33.44139586317917,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 154</name><description>Endpoint of completed half-mile Segment 154. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.6385129412833,33.436815841390285,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 155</name><description>Endpoint of completed half-mile Segment 155. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.63166862047403,33.43283423307076,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 156</name><description>Endpoint of completed half-mile Segment 156. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.62321157776327,33.43229002748271,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 157</name><description>Endpoint of completed half-mile Segment 157. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.61546415566981,33.429829108178616,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 158</name><description>Endpoint of completed half-mile Segment 158. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.60991554593708,33.42446296084928,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 159</name><description>Endpoint of completed half-mile Segment 159. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.60645751787277,33.418429712190395,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 160</name><description>Endpoint of completed half-mile Segment 160. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.6021449536024,33.41234369625395,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 161</name><description>Endpoint of completed half-mile Segment 161. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.59897373269524,33.40600131067823,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 162</name><description>Endpoint of completed half-mile Segment 162. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.59559979662657,33.399337523684,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 163</name><description>Endpoint of completed half-mile Segment 163. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.59207299045308,33.39319405735848,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 164</name><description>Endpoint of completed half-mile Segment 164. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.58747299942992,33.38709208205159,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 165</name><description>Endpoint of completed half-mile Segment 165. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.5803579752688,33.38336454260074,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 166</name><description>Endpoint of completed half-mile Segment 166. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.57232521137759,33.380715275355215,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 167</name><description>Endpoint of completed half-mile Segment 167. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.56480275024957,33.37724441447795,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 168</name><description>Endpoint of completed half-mile Segment 168. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.55884979718383,33.37234163468828,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 169</name><description>Endpoint of completed half-mile Segment 169. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.55139761967204,33.368715539956476,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 170</name><description>Endpoint of completed half-mile Segment 170. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.5444423094598,33.36447203277051,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 171</name><description>Endpoint of completed half-mile Segment 171. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.53767728402507,33.35996681134408,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 172</name><description>Endpoint of completed half-mile Segment 172. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.53108460906968,33.355343868323914,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 173</name><description>Endpoint of completed half-mile Segment 173. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.52479326117626,33.35049410352923,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 174</name><description>Endpoint of completed half-mile Segment 174. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.51794152468958,33.34614931509542,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 175</name><description>Endpoint of completed half-mile Segment 175. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.5112993203724,33.34158734722312,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 176</name><description>Endpoint of completed half-mile Segment 176. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.50481254146038,33.33682288862835,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 177</name><description>Endpoint of completed half-mile Segment 177. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.50416492110013,33.33634257029619,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 178</name><description>Endpoint of completed half-mile Segment 178. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.51064191587064,33.341115376136244,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 179</name><description>Endpoint of completed half-mile Segment 179. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.51721314118235,33.34575921819801,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 180</name><description>Endpoint of completed half-mile Segment 180. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.52422470540462,33.34995039935028,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 181</name><description>Endpoint of completed half-mile Segment 181. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.53036248847701,33.354956769195056,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 182</name><description>Endpoint of completed half-mile Segment 182. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.53700508756025,33.35950555685596,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 183</name><description>Endpoint of completed half-mile Segment 183. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.54368054883736,33.364079143484574,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 184</name><description>Endpoint of completed half-mile Segment 184. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.55058846204211,33.368440316022436,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 185</name><description>Endpoint of completed half-mile Segment 185. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.55795863847369,33.37223335173787,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 186</name><description>Endpoint of completed half-mile Segment 186. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.56419754798472,33.376764629599464,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 187</name><description>Endpoint of completed half-mile Segment 187. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.57145113930022,33.3805238478094,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 188</name><description>Endpoint of completed half-mile Segment 188. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.57943457266684,33.38331323556838,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 189</name><description>Endpoint of completed half-mile Segment 189. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.57979802354266,33.38404639486617,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 190</name><description>Endpoint of completed half-mile Segment 190. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.57194615053469,33.380983648199795,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 191</name><description>Endpoint of completed half-mile Segment 191. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.56435884651582,33.37755889367943,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 192</name><description>Endpoint of completed half-mile Segment 192. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.55768159304152,33.37300715878379,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 193</name><description>Endpoint of completed half-mile Segment 193. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.5504370414401,33.36903676816588,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 194</name><description>Endpoint of completed half-mile Segment 194. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.54349114121167,33.36472526390341,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 195</name><description>Endpoint of completed half-mile Segment 195. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.53679123235396,33.3601371014875,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 196</name><description>Endpoint of completed half-mile Segment 196. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.53009132349625,33.3555489390716,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 197</name><description>Endpoint of completed half-mile Segment 197. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.52339141463854,33.3509607766557,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 198</name><description>Endpoint of completed half-mile Segment 198. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.5167333313376,33.34633144617072,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 199</name><description>Endpoint of completed half-mile Segment 199. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.51019784641069,33.34158194325785,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 200</name><description>Endpoint of completed half-mile Segment 200. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.50366727631382,33.3368281925545,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 201</name><description>Endpoint of completed half-mile Segment 201. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.49713670621693,33.332074441851155,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 202</name><description>Endpoint of completed half-mile Segment 202. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.49060613612005,33.32732069114781,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 203</name><description>Endpoint of completed half-mile Segment 203. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.48420121155405,33.32246203578513,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 204</name><description>Endpoint of completed half-mile Segment 204. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.482292246814,33.31553107771407,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 205</name><description>Endpoint of completed half-mile Segment 205. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.48027820413152,33.31158592072289,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 206</name><description>Endpoint of completed half-mile Segment 206. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.47413903135657,33.306483623814614,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 207</name><description>Endpoint of completed half-mile Segment 207. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.46797780904431,33.30139917869587,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 208</name><description>Endpoint of completed half-mile Segment 208. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.46181658673207,33.29631473357712,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 209</name><description>Endpoint of completed half-mile Segment 209. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.45648147467018,33.290666511673905,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 210</name><description>Endpoint of completed half-mile Segment 210. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.45184296448265,33.28455651587858,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 211</name><description>Endpoint of completed half-mile Segment 211. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.4472044542951,33.27844652008324,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 212</name><description>Endpoint of completed half-mile Segment 212. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.4424607893235,33.272400789323505,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 213</name><description>Endpoint of completed half-mile Segment 213. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.43600329499455,33.26758421331331,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 214</name><description>Endpoint of completed half-mile Segment 214. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.43010035746371,33.262351084675956,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 215</name><description>Endpoint of completed half-mile Segment 215. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.42532025089737,33.256318655670135,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 216</name><description>Endpoint of completed half-mile Segment 216. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.42054014433101,33.250286226664315,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 217</name><description>Endpoint of completed half-mile Segment 217. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.4167159503695,33.24383787901185,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 218</name><description>Endpoint of completed half-mile Segment 218. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.41091861833014,33.238672313447395,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 219</name><description>Endpoint of completed half-mile Segment 219. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.4047455620771,33.23362992151973,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 220</name><description>Endpoint of completed half-mile Segment 220. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.398843204091,33.22833914626264,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 221</name><description>Endpoint of completed half-mile Segment 221. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.3930304847403,33.222984002210325,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 222</name><description>Endpoint of completed half-mile Segment 222. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.39041923389202,33.21612670490885,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 223</name><description>Endpoint of completed half-mile Segment 223. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.38836446195852,33.2093319265235,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 224</name><description>Endpoint of completed half-mile Segment 224. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.38442574834694,33.20410921859177,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 225</name><description>Endpoint of completed half-mile Segment 225. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.38116968136866,33.19771352474431,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 226</name><description>Endpoint of completed half-mile Segment 226. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.37623086444077,33.19185017815008,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 227</name><description>Endpoint of completed half-mile Segment 227. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.37135632464101,33.185962115789316,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 228</name><description>Endpoint of completed half-mile Segment 228. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.36644022519256,33.18010708636569,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 229</name><description>Endpoint of completed half-mile Segment 229. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.36149173121338,33.17424603764739,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 230</name><description>Endpoint of completed half-mile Segment 230. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.35649675066261,33.16855915735543,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 231</name><description>Endpoint of completed half-mile Segment 231. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.35427459382205,33.16218591733522,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 232</name><description>Endpoint of completed half-mile Segment 232. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.35094826613174,33.1558599193337,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 233</name><description>Endpoint of completed half-mile Segment 233. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.34706732798999,33.14950850431547,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 234</name><description>Endpoint of completed half-mile Segment 234. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.34211944350743,33.143581866604436,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 235</name><description>Endpoint of completed half-mile Segment 235. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.33835657490873,33.13707806018943,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 236</name><description>Endpoint of completed half-mile Segment 236. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.33430709177308,33.13071253513795,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 237</name><description>Endpoint of completed half-mile Segment 237. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.32912881750485,33.12526972696169,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 238</name><description>Endpoint of completed half-mile Segment 238. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.32573034786593,33.118779781636185,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 239</name><description>Endpoint of completed half-mile Segment 239. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.32246069289224,33.11209943661785,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 240</name><description>Endpoint of completed half-mile Segment 240. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.3195482569574,33.1052999763624,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 241</name><description>Endpoint of completed half-mile Segment 241. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.31672132244803,33.09853507327172,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 242</name><description>Endpoint of completed half-mile Segment 242. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.31370624628819,33.091790931004326,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 243</name><description>Endpoint of completed half-mile Segment 243. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.31097351777171,33.08495001091463,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 244</name><description>Endpoint of completed half-mile Segment 244. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.30689969962111,33.07871899873707,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 245</name><description>Endpoint of completed half-mile Segment 245. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.30459924314962,33.0717488014656,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 246</name><description>Endpoint of completed half-mile Segment 246. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.3022653698786,33.0647828256196,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 247</name><description>Endpoint of completed half-mile Segment 247. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2990866712951,33.05809906056681,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 248</name><description>Endpoint of completed half-mile Segment 248. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.29501390053376,33.051759789613136,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 249</name><description>Endpoint of completed half-mile Segment 249. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.29360303399562,33.04478960551861,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 250</name><description>Endpoint of completed half-mile Segment 250. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2927620768314,33.03777771108768,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 251</name><description>Endpoint of completed half-mile Segment 251. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2893290145199,33.03120497863998,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 252</name><description>Endpoint of completed half-mile Segment 252. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.28561509215464,33.024678365682625,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 253</name><description>Endpoint of completed half-mile Segment 253. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.28175113826717,33.01822341480151,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 254</name><description>Endpoint of completed half-mile Segment 254. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27917266289485,33.0113371319969,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 255</name><description>Endpoint of completed half-mile Segment 255. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27782258514658,33.004194789498364,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 256</name><description>Endpoint of completed half-mile Segment 256. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27373086013583,32.99789409412825,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 257</name><description>Endpoint of completed half-mile Segment 257. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2713683334958,32.99101964033345,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 258</name><description>Endpoint of completed half-mile Segment 258. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26973203235815,32.98391443961398,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 259</name><description>Endpoint of completed half-mile Segment 259. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26938130891564,32.97703033172668,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 260</name><description>Endpoint of completed half-mile Segment 260. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26812628237603,32.96987346952374,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 261</name><description>Endpoint of completed half-mile Segment 261. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26725002972564,32.96281046966519,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 262</name><description>Endpoint of completed half-mile Segment 262. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26463362339915,32.958061142915426,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 263</name><description>Endpoint of completed half-mile Segment 263. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2623135158428,32.95131334674049,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 264</name><description>Endpoint of completed half-mile Segment 264. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26041022270333,32.944344146303926,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 265</name><description>Endpoint of completed half-mile Segment 265. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2612152384506,32.937209136895426,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 266</name><description>Endpoint of completed half-mile Segment 266. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.25996024666621,32.93007239080142,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 267</name><description>Endpoint of completed half-mile Segment 267. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2547923850255,32.92456036900937,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 268</name><description>Endpoint of completed half-mile Segment 268. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24914038889149,32.91954121213542,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 269</name><description>Endpoint of completed half-mile Segment 269. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24531479883066,32.91314858584259,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 270</name><description>Endpoint of completed half-mile Segment 270. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24376949660095,32.90603911510753,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 271</name><description>Endpoint of completed half-mile Segment 271. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24234673237459,32.89890868222968,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 272</name><description>Endpoint of completed half-mile Segment 272. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24065401805625,32.89188213687646,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 273</name><description>Endpoint of completed half-mile Segment 273. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2440057772076,32.885527403891516,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 274</name><description>Endpoint of completed half-mile Segment 274. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24406185813663,32.87829274558464,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 275</name><description>Endpoint of completed half-mile Segment 275. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24620442060689,32.871669479928606,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 276</name><description>Endpoint of completed half-mile Segment 276. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.25157308825374,32.87069639691784,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 277</name><description>Endpoint of completed half-mile Segment 277. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.25306495144211,32.863695786425055,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 278</name><description>Endpoint of completed half-mile Segment 278. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.25372127455985,32.85651464622046,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 279</name><description>Endpoint of completed half-mile Segment 279. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.25599030259899,32.85011505443254,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 280</name><description>Endpoint of completed half-mile Segment 280. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26410965808034,32.84830431250236,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 281</name><description>Endpoint of completed half-mile Segment 281. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27071073933624,32.84400982589199,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 282</name><description>Endpoint of completed half-mile Segment 282. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27311760021136,32.83844788067107,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 283</name><description>Endpoint of completed half-mile Segment 283. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27274573514013,32.832656888959754,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 284</name><description>Endpoint of completed half-mile Segment 284. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.2769068016894,32.82796775623433,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 285</name><description>Endpoint of completed half-mile Segment 285. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27430241771489,32.8213167810766,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 286</name><description>Endpoint of completed half-mile Segment 286. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.27037589901659,32.8149807680117,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 287</name><description>Endpoint of completed half-mile Segment 287. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.26506956941593,32.80958397725841,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 288</name><description>Endpoint of completed half-mile Segment 288. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.25868535559744,32.805040474129925,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 289</name><description>Endpoint of completed half-mile Segment 289. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.25623063153273,32.79862609133449,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 290</name><description>Endpoint of completed half-mile Segment 290. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24971384400439,32.79778866838928,0</coordinates></Point></Placemark>
+    <Placemark><name>Checkpoint 291</name><description>Endpoint of completed half-mile Segment 291. Position is measured along the exported runner route geometry.</description>
+      <styleUrl>#mileMarker</styleUrl><Point><coordinates>-117.24173959374706,32.799114887906256,0</coordinates></Point></Placemark>
+  </Folder></Document></kml>

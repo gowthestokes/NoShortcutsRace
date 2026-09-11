@@ -16,8 +16,8 @@ from nstt_course_planner.build_course import (
     load_google_routes_usage,
     HIGHWAY_1_VIA_POINTS,
     is_highway_1_pair,
+    is_i5_transfer_pair,
     is_strict_road_pair,
-    is_support_car_transfer_pair,
     point_from_cache,
     pedestrian_route_payload,
     reserve_google_routes_request,
@@ -34,6 +34,7 @@ from nstt_course_planner.build_course import (
 )
 from nstt_course_planner.route_spec import (
     OPERATIONAL_NOTES,
+    ROUTE_SPEC,
     ROUTE_CHECKPOINTS,
     RUNNER_INSTRUCTIONS,
 )
@@ -72,6 +73,15 @@ def test_route_builder_checkpoints_match_the_source_of_truth_exactly() -> None:
     ]
 
 
+def test_race_route_spec_owns_the_immutable_organizer_data() -> None:
+    assert ROUTE_SPEC.route_checkpoints == ROUTE_CHECKPOINTS
+    assert ROUTE_SPEC.runner_instructions == RUNNER_INSTRUCTIONS
+    assert ROUTE_SPEC.operational_notes == OPERATIONAL_NOTES
+    assert ROUTE_SPEC.checkpoint("El Camino Real / Avenida Valencia").query == (
+        "El Camino Real & Avenida Valencia, San Clemente, CA"
+    )
+
+
 def test_every_direction_that_requires_a_map_location_has_a_checkpoint() -> None:
     route_labels = {point.label for point in ROUTE_CHECKPOINTS}
     assert {item.checkpoint_label for item in RUNNER_INSTRUCTIONS if item.checkpoint_label} <= route_labels
@@ -103,13 +113,13 @@ def test_kml_splits_runner_segments_and_mile_checkpoints_into_separate_layers(tm
     checkpoints_kml = (tmp_path / "NSTT_2026_runner_mile_checkpoints.kml").read_text(encoding="utf-8")
 
     assert "Runner route segments - alternating green and blue" in segments_kml
-    assert "Segment 001 - Start to Mile 001" in segments_kml
+    assert "Segment 001 - Start to Checkpoint 001" in segments_kml
     assert "#segmentGreen" in segments_kml
     assert 'id="segmentBlue"' in segments_kml
     assert "<Point>" not in segments_kml
     assert "<MultiGeometry>" not in segments_kml
-    assert "Mile 001" in checkpoints_kml
-    assert "Segment 001" not in checkpoints_kml
+    assert "Checkpoint 001" in checkpoints_kml
+    assert "<LineString>" not in checkpoints_kml
     assert "Support car" not in checkpoints_kml
     assert "vehicle logistics" in checkpoints_kml
 
@@ -247,11 +257,11 @@ def test_organizer_turns_force_the_literal_sepulveda_w78_w79_sequence() -> None:
     assert is_strict_road_pair(w78, w79)
 
 
-def test_i5_chevron_transition_is_a_support_car_gap_not_a_runner_leg() -> None:
+def test_i5_chevron_transition_is_retained_in_the_runner_geometry() -> None:
     start = Point("San Mateo Point", "", 33.418, -117.604, "")
     end = Point("Chevron - I-5 exit 54C runner restart", "", 33.165, -117.354, "")
 
-    assert is_support_car_transfer_pair(start, end)
+    assert is_i5_transfer_pair(start, end)
 
 
 def test_exit_54c_chevron_is_pinned_to_oceanside_not_san_clemente() -> None:

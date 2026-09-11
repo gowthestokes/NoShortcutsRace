@@ -1,4 +1,4 @@
-"""Organizer-supplied runner and support-vehicle instructions.
+"""Organizer-supplied route data owned by :class:`RaceRouteSpec`.
 
 This module is deliberately independent of a routing provider.  It captures the
 turn sheet supplied by the team on 9 September 2026, and is the source of truth
@@ -169,4 +169,27 @@ CAR_CHECKPOINTS = (
     RouteCheckpoint("LA River Trail support access", "Los Angeles River Bike Path, Long Beach, CA"),
     RouteCheckpoint("Coast Highway car rendezvous", "Pacific Coast Highway, Dana Point, CA"),
     RouteCheckpoint("Chevron - I-5 exit 54C car stop", "Chevron, 1601 N Coast Hwy, Oceanside, CA 92054"),
+)
+
+
+@dataclass(frozen=True)
+class RaceRouteSpec:
+    """Immutable organizer route sheet consumed by the course builder."""
+
+    runner_instructions: tuple[Instruction, ...]
+    route_checkpoints: tuple[RouteCheckpoint, ...]
+    operational_notes: tuple[str, ...]
+
+    def checkpoint(self, label: str) -> RouteCheckpoint:
+        """Return a named organizer checkpoint or raise a useful error."""
+        try:
+            return next(point for point in self.route_checkpoints if point.label == label)
+        except StopIteration as error:
+            raise KeyError(f"Unknown organizer checkpoint: {label}") from error
+
+
+ROUTE_SPEC = RaceRouteSpec(
+    runner_instructions=RUNNER_INSTRUCTIONS,
+    route_checkpoints=ROUTE_CHECKPOINTS,
+    operational_notes=OPERATIONAL_NOTES,
 )
