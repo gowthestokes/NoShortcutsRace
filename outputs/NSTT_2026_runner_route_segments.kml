@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - Runner Route Segments</name><description>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed half-mile route segment and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The San Mateo Point to Oceanside section is pinned to the Old Pacific Highway corridor rather than an I-5 shortcut; field-verify access and safety before race day.</description>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - Runner Route Segments</name><description>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed half-mile route segment and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The Segment 162 to Oceanside Chevron transfer follows I-5 to Exit 54C as directed by the supplied route sheet; it is not runner-safety validation and must be field-reviewed before race day.</description>
   <Style id="segmentGreen"><LineStyle><color>ff00aa00</color><width>5</width></LineStyle></Style><Style id="segmentBlue"><LineStyle><color>ffe57300</color><width>5</width></LineStyle></Style>
-  <Folder><name>Runner route segments - alternating green and blue</name><description>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed half-mile route segment and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The San Mateo Point to Oceanside section is pinned to the Old Pacific Highway corridor rather than an I-5 shortcut; field-verify access and safety before race day. Approximate routed distance: 145.9 mi. Each line is independently editable.</description>
+  <Folder><name>Runner route segments - alternating green and blue</name><description>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed half-mile route segment and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The Segment 162 to Oceanside Chevron transfer follows I-5 to Exit 54C as directed by the supplied route sheet; it is not runner-safety validation and must be field-reviewed before race day. Approximate routed distance: 133.8 mi. Each line is independently editable.</description>
       <Placemark><name>Segment 001 - Start to Checkpoint 001</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
@@ -805,661 +805,541 @@
       <Placemark><name>Segment 161 - Checkpoint 160 to Checkpoint 161</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.6021449536024,33.41234369625395,0 -117.60202,33.41194,0 -117.60196,33.41171,0 -117.60188,33.41146,0 -117.60183,33.41139,0 -117.60116,33.41007,0 -117.60106,33.40979,0 -117.60096,33.40896,0 -117.60093,33.40885,0 -117.60107,33.40876,0 -117.60101,33.40865,0 -117.60085,33.4087,0 -117.60065,33.40844,0 -117.600482,33.408295,0 -117.60029,33.40813,0 -117.59995,33.40783,0 -117.59978,33.40762,0 -117.59897373269524,33.40600131067823,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.6021449536024,33.41234369625395,0 -117.60202,33.41194,0 -117.60196,33.41171,0 -117.60188,33.41146,0 -117.60183,33.41139,0 -117.60116,33.41007,0 -117.60106,33.40979,0 -117.60096,33.40896,0 -117.60093,33.40885,0 -117.60107,33.40876,0 -117.60101,33.40865,0 -117.60085,33.4087,0 -117.60065,33.40844,0 -117.600482,33.408295,0 -117.60052,33.40826,0 -117.60069,33.40842,0 -117.60096,33.40875,0 -117.60085,33.40875,0 -117.60065,33.40878,0 -117.60046,33.40876,0 -117.60028,33.40866,0 -117.5999,33.40809,0 -117.5998,33.4079,0 -117.59966,33.40788,0 -117.59947041420959,33.40750333711583,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 162 - Checkpoint 161 to Checkpoint 162</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.59897373269524,33.40600131067823,0 -117.59847,33.40499,0 -117.59776,33.40366,0 -117.59716,33.40259,0 -117.596766,33.401802,0 -117.59657,33.40141,0 -117.59559979662657,33.399337523684,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.59947041420959,33.40750333711583,0 -117.59611242202521,33.40083178742627,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 163 - Checkpoint 162 to Checkpoint 163</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.59559979662657,33.399337523684,0 -117.59466,33.39733,0 -117.5946,33.39705,0 -117.59453,33.39657,0 -117.59441,33.39602,0 -117.59439,33.39546,0 -117.5943,33.39518,0 -117.594152,33.394958,0 -117.59402,33.39489,0 -117.59382,33.39498,0 -117.5928435,33.3942496,0 -117.59207299045308,33.39319405735848,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.59611242202521,33.40083178742627,0 -117.59437,33.39737,0 -117.59367,33.39615,0 -117.59285,33.39487,0 -117.59244460249597,33.39428336596476,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 164 - Checkpoint 163 to Checkpoint 164</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.59207299045308,33.39319405735848,0 -117.5908004,33.3914507,0 -117.5902301,33.390599,0 -117.5893634,33.3894522,0 -117.5886241,33.3882072,0 -117.5876196,33.3872033,0 -117.58747299942992,33.38709208205159,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.59244460249597,33.39428336596476,0 -117.592,33.39364,0 -117.59038,33.39151,0 -117.5884,33.38898,0 -117.58773,33.38827,0 -117.58769412756091,33.38823707598056,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 165 - Checkpoint 164 to Checkpoint 165</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.58747299942992,33.38709208205159,0 -117.5840891,33.3845249,0 -117.5836343,33.3841122,0 -117.5822308,33.3836386,0 -117.5816014,33.3835114,0 -117.5813409,33.3835218,0 -117.5803579752688,33.38336454260074,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.58769412756091,33.38823707598056,0 -117.587,33.3876,0 -117.58643,33.38715,0 -117.5857,33.38665,0 -117.58493,33.38619,0 -117.58412,33.38577,0 -117.58314,33.38536,0 -117.58050407731943,33.38433021797155,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 166 - Checkpoint 165 to Checkpoint 166</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.5803579752688,33.38336454260074,0 -117.5794789,33.3832239,0 -117.5786366,33.3830251,0 -117.5767408,33.3824387,0 -117.5753299,33.3818729,0 -117.5735305,33.3811873,0 -117.57232521137759,33.380715275355215,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.58050407731943,33.38433021797155,0 -117.5726543511283,33.38126354723062,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 167 - Checkpoint 166 to Checkpoint 167</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.57232521137759,33.380715275355215,0 -117.5663949,33.3783928,0 -117.565442,33.3778185,0 -117.5649527,33.3774128,0 -117.56480275024957,33.37724441447795,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.5726543511283,33.38126354723062,0 -117.56663,33.37891,0 -117.56595,33.37859,0 -117.5653,33.37822,0 -117.56494664202941,33.37799003687628,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 168 - Checkpoint 167 to Checkpoint 168</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.56480275024957,33.37724441447795,0 -117.5642223,33.3765926,0 -117.5637256,33.3758547,0 -117.5629062,33.3746228,0 -117.5618885,33.3736443,0 -117.5606554,33.3729396,0 -117.5591927,33.3724167,0 -117.55884979718383,33.37234163468828,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.56494664202941,33.37799003687628,0 -117.56467,33.37781,0 -117.5641,33.37735,0 -117.56227,33.37573,0 -117.5617,33.37529,0 -117.56108,33.37488,0 -117.55911,33.37379,0 -117.55833653636965,33.373366101750634,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 169 - Checkpoint 168 to Checkpoint 169</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.55884979718383,33.37234163468828,0 -117.5580886,33.372175,0 -117.5572876,33.3718752,0 -117.5554005,33.370879,0 -117.5522028,33.3691561,0 -117.55139761967204,33.368715539956476,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.55833653636965,33.373366101750634,0 -117.55109198476823,33.36939571113272,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 170 - Checkpoint 169 to Checkpoint 170</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.55139761967204,33.368715539956476,0 -117.5508785,33.3684315,0 -117.55085,33.36846,0 -117.55042,33.36823,0 -117.55004,33.36805,0 -117.54906,33.36749,0 -117.54739,33.36646,0 -117.54511,33.36493,0 -117.5444423094598,33.36447203277051,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.55109198476823,33.36939571113272,0 -117.54756,33.36746,0 -117.54655,33.36682,0 -117.54409684613958,33.365140056498994,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 171 - Checkpoint 170 to Checkpoint 171</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.5444423094598,33.36447203277051,0 -117.54355,33.36386,0 -117.5426,33.3632,0 -117.54198,33.36292,0 -117.54097,33.36222,0 -117.53767728402507,33.35996681134408,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.54409684613958,33.365140056498994,0 -117.53739693728186,33.360551894083095,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 172 - Checkpoint 171 to Checkpoint 172</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.53767728402507,33.35996681134408,0 -117.53473,33.35795,0 -117.53453,33.35767,0 -117.53431,33.35751,0 -117.53424,33.35747,0 -117.5339,33.35737,0 -117.53316,33.35687,0 -117.53155,33.35576,0 -117.53134,33.35552,0 -117.53108460906968,33.355343868323914,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.53739693728186,33.360551894083095,0 -117.53069702842414,33.35596373166719,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 173 - Checkpoint 172 to Checkpoint 173</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.53108460906968,33.355343868323914,0 -117.53076,33.35512,0 -117.53052,33.35504,0 -117.5304,33.35498,0 -117.52878,33.35387,0 -117.52857,33.35361,0 -117.52842,33.35353,0 -117.52817,33.35342,0 -117.5275,33.35288,0 -117.52615,33.3517,0 -117.52605,33.35157,0 -117.52592,33.35132,0 -117.5257,33.35111,0 -117.52528,33.35092,0 -117.52479326117626,33.35049410352923,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.53069702842414,33.35596373166719,0 -117.52399711956643,33.35137556925129,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 174 - Checkpoint 173 to Checkpoint 174</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.52479326117626,33.35049410352923,0 -117.52432,33.35008,0 -117.52414,33.34984,0 -117.52403,33.34971,0 -117.52362,33.34938,0 -117.52344,33.34929,0 -117.52329,33.34923,0 -117.52238,33.34861,0 -117.52142,33.34803,0 -117.51996,33.34724,0 -117.51794152468958,33.34614931509542,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.52399711956643,33.35137556925129,0 -117.51844,33.34757,0 -117.517324547258,33.34676050001009,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 175 - Checkpoint 174 to Checkpoint 175</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.51794152468958,33.34614931509542,0 -117.51711,33.3457,0 -117.51635,33.34521,0 -117.51605,33.34492,0 -117.51571,33.3447,0 -117.51551,33.34464,0 -117.51528,33.3445,0 -117.51415,33.34367,0 -117.51384,33.34335,0 -117.51349,33.34319,0 -117.51233,33.34234,0 -117.51215,33.34215,0 -117.51203,33.34202,0 -117.5116,33.34172,0 -117.5112993203724,33.34158734722312,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.517324547258,33.34676050001009,0 -117.51319,33.34376,0 -117.51078824227632,33.34201170585435,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 176 - Checkpoint 175 to Checkpoint 176</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.5112993203724,33.34158734722312,0 -117.51126,33.34157,0 -117.51004,33.34067,0 -117.50988,33.34047,0 -117.50978,33.34041,0 -117.50958,33.34034,0 -117.50848,33.33951,0 -117.50789,33.33905,0 -117.50761,33.33888,0 -117.50508,33.33702,0 -117.50481254146038,33.33682288862835,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.51078824227632,33.34201170585435,0 -117.50425767217943,33.337257955151,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 177 - Checkpoint 176 to Checkpoint 177</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.50481254146038,33.33682288862835,0 -117.50124,33.33419,0 -117.50416492110013,33.33634257029619,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.50425767217943,33.337257955151,0 -117.49772710208256,33.33250420444766,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 178 - Checkpoint 177 to Checkpoint 178</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.50416492110013,33.33634257029619,0 -117.50533,33.3372,0 -117.50767,33.33892,0 -117.50789,33.33905,0 -117.50876,33.33973,0 -117.50958,33.34034,0 -117.50982,33.34043,0 -117.50993,33.34051,0 -117.51005,33.34068,0 -117.51064191587064,33.341115376136244,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.49772710208256,33.33250420444766,0 -117.49119653198568,33.327750453744315,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 179 - Checkpoint 178 to Checkpoint 179</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.51064191587064,33.341115376136244,0 -117.51126,33.34157,0 -117.51164,33.34174,0 -117.51205,33.34204,0 -117.51223,33.34226,0 -117.51233,33.34234,0 -117.51349,33.34319,0 -117.51384,33.34335,0 -117.51415,33.34367,0 -117.51542,33.34459,0 -117.51567,33.34469,0 -117.51589,33.34481,0 -117.51612,33.34498,0 -117.51637,33.34522,0 -117.51721314118235,33.34575921819801,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.49119653198568,33.327750453744315,0 -117.48522,33.3234,0 -117.48470161189506,33.322964924269066,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 180 - Checkpoint 179 to Checkpoint 180</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.51721314118235,33.34575921819801,0 -117.51723,33.34577,0 -117.52124,33.34793,0 -117.52222,33.34851,0 -117.52305,33.34906,0 -117.52329,33.34923,0 -117.52352,33.34932,0 -117.52364,33.3494,0 -117.52407,33.34974,0 -117.52422470540462,33.34995039935028,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.48470161189506,33.322964924269066,0 -117.48466,33.32293,0 -117.48416,33.32242,0 -117.4838,33.32199,0 -117.48342,33.32141,0 -117.48316,33.32093,0 -117.48291,33.32032,0 -117.48272,33.31967,0 -117.48261,33.31901,0 -117.48243,33.3169,0 -117.4823578490864,33.31618300029617,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 181 - Checkpoint 180 to Checkpoint 181</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.52422470540462,33.34995039935028,0 -117.52432,33.35008,0 -117.52528,33.35092,0 -117.5257,33.35111,0 -117.52592,33.35132,0 -117.5261,33.35164,0 -117.52644,33.35196,0 -117.52765,33.35301,0 -117.52819,33.35344,0 -117.5285,33.35357,0 -117.52863,33.35368,0 -117.52878,33.35387,0 -117.53036248847701,33.354956769195056,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.4823578490864,33.31618300029617,0 -117.48227,33.31531,0 -117.48214,33.31469,0 -117.48193,33.31405,0 -117.48165,33.31344,0 -117.48132,33.31285,0 -117.48091,33.31228,0 -117.48046,33.31176,0 -117.47995,33.31128,0 -117.47840549491697,33.31000534988022,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 182 - Checkpoint 181 to Checkpoint 182</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.53036248847701,33.354956769195056,0 -117.53044,33.35501,0 -117.53061,33.35507,0 -117.53081,33.35514,0 -117.53134,33.35552,0 -117.53155,33.35577,0 -117.53383,33.35733,0 -117.53405,33.35742,0 -117.53424,33.35747,0 -117.53449,33.35764,0 -117.5346,33.35775,0 -117.53473,33.35795,0 -117.53700508756025,33.35950555685596,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.47840549491697,33.31000534988022,0 -117.47224444565391,33.30492075529564,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 183 - Checkpoint 182 to Checkpoint 183</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.53700508756025,33.35950555685596,0 -117.54137,33.36249,0 -117.54198,33.36292,0 -117.5425,33.36316,0 -117.54255,33.3632,0 -117.54268,33.3634,0 -117.54368054883736,33.364079143484574,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.47224444565391,33.30492075529564,0 -117.46608339639087,33.29983616071106,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 184 - Checkpoint 183 to Checkpoint 184</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.54368054883736,33.364079143484574,0 -117.54626,33.36583,0 -117.54772,33.36677,0 -117.54883,33.36744,0 -117.55025,33.36826,0 -117.55058846204211,33.368440316022436,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.46608339639087,33.29983616071106,0 -117.45992234712783,33.29475156612648,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 185 - Checkpoint 184 to Checkpoint 185</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.55058846204211,33.368440316022436,0 -117.55254,33.36948,0 -117.55595,33.37131,0 -117.55695,33.37183,0 -117.55744,33.37204,0 -117.55791,33.37222,0 -117.55795863847369,33.37223335173787,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.45992234712783,33.29475156612648,0 -117.45946,33.29437,0 -117.45895,33.29388,0 -117.45842,33.29322,0 -117.45505539571704,33.28878803430613,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 186 - Checkpoint 185 to Checkpoint 186</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.55795863847369,33.37223335173787,0 -117.55842,33.37236,0 -117.55972,33.37268,0 -117.56023,33.37286,0 -117.56089,33.37316,0 -117.5616,33.37358,0 -117.56193,33.37382,0 -117.56223,33.37407,0 -117.5629,33.37481,0 -117.56322,33.37527,0 -117.56415,33.37671,0 -117.56419754798472,33.376764629599464,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.45505539571704,33.28878803430613,0 -117.4504168855295,33.282678038510795,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 187 - Checkpoint 186 to Checkpoint 187</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.56419754798472,33.376764629599464,0 -117.56462,33.37725,0 -117.56507,33.37766,0 -117.56559,33.37805,0 -117.56613,33.37839,0 -117.56665,33.37864,0 -117.56782,33.37911,0 -117.56859,33.37944,0 -117.56953,33.37982,0 -117.57057,33.38019,0 -117.57145113930022,33.3805238478094,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.4504168855295,33.282678038510795,0 -117.44577837534197,33.27656804271546,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 188 - Checkpoint 187 to Checkpoint 188</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.57145113930022,33.3805238478094,0 -117.57218,33.3808,0 -117.57483,33.38184,0 -117.57651,33.38247,0 -117.57862,33.38312,0 -117.5793,33.38329,0 -117.57943457266684,33.38331323556838,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.44577837534197,33.27656804271546,0 -117.4431,33.27304,0 -117.44244,33.27238,0 -117.44191,33.27194,0 -117.44049963961145,33.27089850309769,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 189 - Checkpoint 188 to Checkpoint 189</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.57943457266684,33.38331323556838,0 -117.58069,33.38353,0 -117.58154,33.38367,0 -117.58217,33.38382,0 -117.58307,33.38409,0 -117.5834,33.38424,0 -117.5835,33.38432,0 -117.58357,33.38444,0 -117.5836,33.38452,0 -117.58356,33.38457,0 -117.58354,33.38468,0 -117.58345,33.38475,0 -117.58333,33.38477,0 -117.58102,33.38436,0 -117.58047,33.3842,0 -117.58032,33.38425,0 -117.57979802354266,33.38404639486617,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.44049963961145,33.27089850309769,0 -117.43736,33.26858,0 -117.43424,33.26629,0 -117.4340076162455,33.26611268348589,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 190 - Checkpoint 189 to Checkpoint 190</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.57979802354266,33.38404639486617,0 -117.57194615053469,33.380983648199795,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.4340076162455,33.26611268348589,0 -117.43213,33.26468,0 -117.43155,33.26413,0 -117.43109,33.2636,0 -117.42863074565034,33.26049645469915,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 191 - Checkpoint 190 to Checkpoint 191</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.57194615053469,33.380983648199795,0 -117.56663,33.37891,0 -117.56595,33.37859,0 -117.5653,33.37822,0 -117.56467,33.37781,0 -117.56435884651582,33.37755889367943,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.42863074565034,33.26049645469915,0 -117.423850639084,33.25446402569333,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 192 - Checkpoint 191 to Checkpoint 192</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.56435884651582,33.37755889367943,0 -117.5641,33.37735,0 -117.56227,33.37573,0 -117.5617,33.37529,0 -117.56108,33.37488,0 -117.55911,33.37379,0 -117.55768159304152,33.37300715878379,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.423850639084,33.25446402569333,0 -117.41941,33.24886,0 -117.41907254015082,33.248430505646496,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 193 - Checkpoint 192 to Checkpoint 193</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.55768159304152,33.37300715878379,0 -117.5504370414401,33.36903676816588,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.41907254015082,33.248430505646496,0 -117.41864,33.24788,0 -117.41821,33.24713,0 -117.41649,33.24334,0 -117.41622,33.24287,0 -117.41584,33.2423,0 -117.41547774655271,33.24187952724868,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 194 - Checkpoint 193 to Checkpoint 194</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.5504370414401,33.36903676816588,0 -117.54756,33.36746,0 -117.54655,33.36682,0 -117.54349114121167,33.36472526390341,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.41547774655271,33.24187952724868,0 -117.41528,33.24165,0 -117.41468,33.24107,0 -117.4141,33.2406,0 -117.41335,33.24011,0 -117.4099,33.23807,0 -117.40922,33.23759,0 -117.40885221008352,33.23727928093263,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 195 - Checkpoint 194 to Checkpoint 195</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.54349114121167,33.36472526390341,0 -117.53679123235396,33.3601371014875,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.40885221008352,33.23727928093263,0 -117.40864,33.2371,0 -117.40292508406928,33.232007812839655,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 196 - Checkpoint 195 to Checkpoint 196</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.53679123235396,33.3601371014875,0 -117.53009132349625,33.3555489390716,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.40292508406928,33.232007812839655,0 -117.40139,33.23064,0 -117.39703619792817,33.226706641330274,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 197 - Checkpoint 196 to Checkpoint 197</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.53009132349625,33.3555489390716,0 -117.52339141463854,33.3509607766557,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.39703619792817,33.226706641330274,0 -117.39352,33.22353,0 -117.393,33.22295,0 -117.3926,33.22241,0 -117.39229,33.2219,0 -117.39204,33.22138,0 -117.39189673627611,33.22098326968771,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 198 - Checkpoint 197 to Checkpoint 198</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.52339141463854,33.3509607766557,0 -117.51844,33.34757,0 -117.5167333313376,33.34633144617072,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.39189673627611,33.22098326968771,0 -117.39178,33.22066,0 -117.39003,33.21483,0 -117.38973,33.21415,0 -117.38964883308549,33.21400178215611,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 199 - Checkpoint 198 to Checkpoint 199</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.5167333313376,33.34633144617072,0 -117.51319,33.34376,0 -117.51019784641069,33.34158194325785,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.38964883308549,33.21400178215611,0 -117.3895,33.21373,0 -117.38933,33.21345,0 -117.38934,33.21326,0 -117.38873,33.21204,0 -117.38869,33.21177,0 -117.3887,33.21159,0 -117.38896,33.21063,0 -117.38898,33.21036,0 -117.38895,33.21016,0 -117.38889,33.20997,0 -117.38879,33.20978,0 -117.38851,33.20946,0 -117.38826,33.20924,0 -117.38803,33.20923,0 -117.38791,33.20922,0 -117.38783,33.20927,0 -117.38781,33.20931,0 -117.3876,33.20925,0 -117.3875,33.20931,0 -117.3876,33.20925,0 -117.38749,33.20907,0 -117.38716,33.20928,0 -117.38696,33.20893,0 -117.3869,33.20875,0 -117.3868109939577,33.208606075335844,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 200 - Checkpoint 199 to Checkpoint 200</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.51019784641069,33.34158194325785,0 -117.50366727631382,33.3368281925545,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.3868109939577,33.208606075335844,0 -117.38643,33.20799,0 -117.3862,33.2078,0 -117.38584,33.2074,0 -117.38497,33.20587,0 -117.38451,33.20495,0 -117.38442,33.20472,0 -117.38445,33.20457,0 -117.38442,33.204,0 -117.38441,33.20395,0 -117.38437,33.20378,0 -117.38436,33.2032,0 -117.38438,33.20309,0 -117.38439,33.20247,0 -117.38441,33.20224,0 -117.38441,33.20204,0 -117.38438742203493,33.201891630515284,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 201 - Checkpoint 200 to Checkpoint 201</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.50366727631382,33.3368281925545,0 -117.49713670621693,33.332074441851155,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.38438742203493,33.201891630515284,0 -117.38434,33.20158,0 -117.38425,33.2014,0 -117.38377,33.20076,0 -117.38358,33.20056,0 -117.38346,33.20039,0 -117.38327,33.20017,0 -117.38312,33.20004,0 -117.38259,33.1994,0 -117.38212,33.19884,0 -117.38007,33.19641,0 -117.37964,33.19591,0 -117.37965236142911,33.19590175904726,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 202 - Checkpoint 201 to Checkpoint 202</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.49713670621693,33.332074441851155,0 -117.49060613612005,33.32732069114781,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.37965236142911,33.19590175904726,0 -117.37967,33.19589,0 -117.37958,33.19578,0 -117.37956,33.1958,0 -117.37469847222009,33.190032085684855,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 203 - Checkpoint 202 to Checkpoint 203</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.49060613612005,33.32732069114781,0 -117.48522,33.3234,0 -117.48466,33.32293,0 -117.48420121155405,33.32246203578513,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.37469847222009,33.190032085684855,0 -117.37366,33.1888,0 -117.37358,33.18866,0 -117.3735,33.18857,0 -117.37353,33.18855,0 -117.37345,33.18841,0 -117.3734,33.18843,0 -117.37307,33.188,0 -117.36982633785581,33.18414267204474,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 204 - Checkpoint 203 to Checkpoint 204</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.48420121155405,33.32246203578513,0 -117.48416,33.32242,0 -117.4838,33.32199,0 -117.48342,33.32141,0 -117.48316,33.32093,0 -117.48291,33.32032,0 -117.48272,33.31967,0 -117.48261,33.31901,0 -117.48243,33.3169,0 -117.482292246814,33.31553107771407,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.36982633785581,33.18414267204474,0 -117.36937,33.1836,0 -117.36941,33.18358,0 -117.36935,33.18347,0 -117.36931,33.18349,0 -117.36914,33.18328,0 -117.36889,33.18301,0 -117.36829,33.18231,0 -117.36499,33.17838,0 -117.36493,33.17828,0 -117.36492860639538,33.17827837412795,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 205 - Checkpoint 204 to Checkpoint 205</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.482292246814,33.31553107771407,0 -117.48227,33.31531,0 -117.48235,33.31521,0 -117.4823,33.31477,0 -117.48218,33.31422,0 -117.48202,33.31377,0 -117.48205,33.31364,0 -117.48212,33.31358,0 -117.48219,33.31357,0 -117.48228,33.31359,0 -117.48235,33.31365,0 -117.48236,33.31376,0 -117.48228,33.31397,0 -117.48228,33.31408,0 -117.48241,33.31448,0 -117.48248,33.31456,0 -117.48259,33.31459,0 -117.48265,33.31458,0 -117.48271,33.31456,0 -117.48278,33.31447,0 -117.48278,33.31439,0 -117.48265,33.31408,0 -117.48254,33.31386,0 -117.48247,33.31362,0 -117.4824,33.31352,0 -117.48228,33.31343,0 -117.48187,33.31331,0 -117.48173,33.3132,0 -117.48156,33.31298,0 -117.48138,33.3127,0 -117.48118,33.31264,0 -117.48081,33.31215,0 -117.48036,33.31166,0 -117.48027820413152,33.31158592072289,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.36492860639538,33.17827837412795,0 -117.36481,33.17814,0 -117.3647,33.17805,0 -117.36267,33.17565,0 -117.36259,33.17552,0 -117.36234,33.17523,0 -117.36236,33.17522,0 -117.36228,33.17513,0 -117.36225,33.17515,0 -117.35996434915234,33.172425184797326,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 206 - Checkpoint 205 to Checkpoint 206</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.48027820413152,33.31158592072289,0 -117.47983,33.31118,0 -117.47413903135657,33.306483623814614,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.35996434915234,33.172425184797326,0 -117.35996,33.17242,0 -117.35982,33.17223,0 -117.35918,33.17147,0 -117.35911,33.17135,0 -117.35846,33.17059,0 -117.35836,33.1705,0 -117.35818,33.1706,0 -117.3575,33.16978,0 -117.35737,33.1696,0 -117.35638,33.16842,0 -117.35624,33.16823,0 -117.35497085333057,33.16673802605274,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 207 - Checkpoint 206 to Checkpoint 207</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.47413903135657,33.306483623814614,0 -117.46797780904431,33.30139917869587,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.35497085333057,33.16673802605274,0 -117.35493,33.16669,0 -117.35489,33.16661,0 -117.35482,33.16654,0 -117.35449,33.16602,0 -117.35454,33.16599,0 -117.35449,33.16592,0 -117.35454,33.16591,0 -117.35457,33.16598,0 -117.35464,33.16597,0 -117.35461,33.16588,0 -117.35465,33.16579,0 -117.35462,33.16569,0 -117.35457,33.16566,0 -117.35456,33.16559,0 -117.35452,33.16552,0 -117.35442,33.1649,0 -117.35442,33.16481,0 -117.35445,33.16418,0 -117.3545,33.16362,0 -117.35456,33.16352,0 -117.35455,33.16321,0 -117.35447,33.16271,0 -117.35434,33.16232,0 -117.35414,33.16191,0 -117.35372,33.16137,0 -117.35346,33.16102,0 -117.35287032435933,33.16030328042049,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 208 - Checkpoint 207 to Checkpoint 208</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.46797780904431,33.30139917869587,0 -117.46181658673207,33.29631473357712,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.35287032435933,33.16030328042049,0 -117.351,33.15803,0 -117.35087,33.15776,0 -117.35079,33.15745,0 -117.35079,33.15717,0 -117.35085,33.15662,0 -117.35088,33.15663,0 -117.35089,33.15658,0 -117.35086,33.15655,0 -117.35097,33.15569,0 -117.35095,33.15525,0 -117.35092,33.1551,0 -117.3508,33.15475,0 -117.35057,33.1543,0 -117.35021094231472,33.15377157548203,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 209 - Checkpoint 208 to Checkpoint 209</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.46181658673207,33.29631473357712,0 -117.45946,33.29437,0 -117.45895,33.29388,0 -117.45842,33.29322,0 -117.45648147467018,33.290666511673905,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.35021094231472,33.15377157548203,0 -117.35004,33.15352,0 -117.34884,33.15184,0 -117.3479,33.15066,0 -117.34767,33.15034,0 -117.34752,33.15011,0 -117.34679,33.14914,0 -117.34603,33.14817,0 -117.34578,33.14788,0 -117.34559670404848,33.1476559716148,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 210 - Checkpoint 209 to Checkpoint 210</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.45648147467018,33.290666511673905,0 -117.45184296448265,33.28455651587858,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.34559670404848,33.1476559716148,0 -117.34551,33.14755,0 -117.34523,33.14719,0 -117.34477,33.14665,0 -117.34444,33.14623,0 -117.34324,33.14489,0 -117.34303,33.14468,0 -117.34298,33.14459,0 -117.34235,33.14388,0 -117.34177,33.14313,0 -117.34124,33.14233,0 -117.34099,33.1419,0 -117.34084341204768,33.14163347645031,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 211 - Checkpoint 210 to Checkpoint 211</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.45184296448265,33.28455651587858,0 -117.4472044542951,33.27844652008324,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.34084341204768,33.14163347645031,0 -117.33868,33.1377,0 -117.33861,33.13762,0 -117.33796,33.13623,0 -117.3377,33.13569,0 -117.33734180128046,33.13502244784085,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 212 - Checkpoint 211 to Checkpoint 212</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.4472044542951,33.27844652008324,0 -117.4431,33.27304,0 -117.4424607893235,33.272400789323505,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.33734180128046,33.13502244784085,0 -117.33726,33.13487,0 -117.33682,33.13419,0 -117.33609,33.13323,0 -117.33552,33.13244,0 -117.33536,33.13221,0 -117.33533,33.13214,0 -117.33519,33.13193,0 -117.33515,33.13191,0 -117.33389,33.13012,0 -117.33382,33.12998,0 -117.33374,33.12986,0 -117.33364,33.12977,0 -117.33295880627544,33.128800510804005,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 213 - Checkpoint 212 to Checkpoint 213</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.4424607893235,33.272400789323505,0 -117.44244,33.27238,0 -117.44191,33.27194,0 -117.43736,33.26858,0 -117.43600329499455,33.26758421331331,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.33295880627544,33.128800510804005,0 -117.33097,33.12597,0 -117.33075,33.12593,0 -117.3305,33.12572,0 -117.33036,33.12563,0 -117.33005,33.12553,0 -117.32926,33.12533,0 -117.32889,33.12516,0 -117.32863,33.12499,0 -117.3284,33.12478,0 -117.32823,33.12456,0 -117.32808,33.12427,0 -117.32799,33.12396,0 -117.32787736303575,33.12342994369763,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 214 - Checkpoint 213 to Checkpoint 214</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.43600329499455,33.26758421331331,0 -117.43424,33.26629,0 -117.43213,33.26468,0 -117.43155,33.26413,0 -117.43109,33.2636,0 -117.43010035746371,33.262351084675956,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.32787736303575,33.12342994369763,0 -117.32782,33.12316,0 -117.32764,33.12264,0 -117.32697,33.12108,0 -117.32686,33.12098,0 -117.32681,33.12087,0 -117.3268,33.12075,0 -117.32463079513576,33.11675448863494,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 215 - Checkpoint 214 to Checkpoint 215</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.43010035746371,33.262351084675956,0 -117.42532025089737,33.256318655670135,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.32463079513576,33.11675448863494,0 -117.32389,33.11539,0 -117.32357,33.11478,0 -117.3235,33.1147,0 -117.32336,33.11443,0 -117.32335,33.11431,0 -117.3216125029254,33.1099910787003,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 216 - Checkpoint 215 to Checkpoint 216</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.42532025089737,33.256318655670135,0 -117.42054014433101,33.250286226664315,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.3216125029254,33.1099910787003,0 -117.3209,33.10822,0 -117.32082,33.10809,0 -117.32032,33.10687,0 -117.32031,33.10676,0 -117.32024,33.10663,0 -117.32018,33.10656,0 -117.32005,33.10631,0 -117.32,33.10617,0 -117.31946,33.10513,0 -117.31863965159627,33.10320977706977,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 217 - Checkpoint 216 to Checkpoint 217</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.42054014433101,33.250286226664315,0 -117.41941,33.24886,0 -117.41864,33.24788,0 -117.41821,33.24713,0 -117.4167159503695,33.24383787901185,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.31863965159627,33.10320977706977,0 -117.31811,33.10197,0 -117.31807,33.10198,0 -117.31794,33.10178,0 -117.31797,33.10177,0 -117.31772,33.10118,0 -117.31771,33.10106,0 -117.31698,33.09933,0 -117.31674,33.0986,0 -117.31653,33.09787,0 -117.31632,33.09739,0 -117.31589882156945,33.09642284952983,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 218 - Checkpoint 217 to Checkpoint 218</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.4167159503695,33.24383787901185,0 -117.41649,33.24334,0 -117.41622,33.24287,0 -117.41584,33.2423,0 -117.41528,33.24165,0 -117.41468,33.24107,0 -117.4141,33.2406,0 -117.41335,33.24011,0 -117.41091861833014,33.238672313447395,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.31589882156945,33.09642284952983,0 -117.31578,33.09615,0 -117.31542,33.09546,0 -117.31502,33.09473,0 -117.31451,33.0937,0 -117.31391,33.09219,0 -117.31386,33.09203,0 -117.31376,33.09193,0 -117.31378,33.09192,0 -117.3137,33.09178,0 -117.31371,33.09177,0 -117.3131,33.09011,0 -117.31309,33.08999,0 -117.31296699707771,33.08966337737525,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 219 - Checkpoint 218 to Checkpoint 219</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.41091861833014,33.238672313447395,0 -117.4099,33.23807,0 -117.40922,33.23759,0 -117.40864,33.2371,0 -117.4047455620771,33.23362992151973,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.31296699707771,33.08966337737525,0 -117.31161,33.08606,0 -117.31132,33.08548,0 -117.31099,33.08497,0 -117.31052,33.0844,0 -117.3101,33.08398,0 -117.30937,33.0833,0 -117.30932,33.08323,0 -117.3093107563569,33.08322056771112,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 220 - Checkpoint 219 to Checkpoint 220</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.4047455620771,33.23362992151973,0 -117.40139,33.23064,0 -117.398843204091,33.22833914626264,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.3093107563569,33.08322056771112,0 -117.30883,33.08273,0 -117.30874,33.08264,0 -117.30862,33.08256,0 -117.30841,33.08231,0 -117.30805,33.08176,0 -117.30777,33.08125,0 -117.30775,33.08114,0 -117.30762,33.08087,0 -117.30732,33.07994,0 -117.30696,33.07892,0 -117.30684,33.07852,0 -117.306209346931,33.07657070869581,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 221 - Checkpoint 220 to Checkpoint 221</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.398843204091,33.22833914626264,0 -117.39352,33.22353,0 -117.3930304847403,33.222984002210325,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.306209346931,33.07657070869581,0 -117.30618,33.07648,0 -117.30608,33.07631,0 -117.30603,33.07616,0 -117.30601,33.07603,0 -117.30428,33.07078,0 -117.30424,33.07071,0 -117.30388411433063,33.069607452239985,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 222 - Checkpoint 221 to Checkpoint 222</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.3930304847403,33.222984002210325,0 -117.393,33.22295,0 -117.3926,33.22241,0 -117.39229,33.2219,0 -117.39204,33.22138,0 -117.39178,33.22066,0 -117.39041923389202,33.21612670490885,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.30388411433063,33.069607452239985,0 -117.30373,33.06913,0 -117.30229,33.06486,0 -117.30214,33.06439,0 -117.30211,33.06431,0 -117.30208,33.06429,0 -117.30194,33.06389,0 -117.30193,33.06374,0 -117.30162,33.06284,0 -117.30154800366778,33.06265100962792,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 223 - Checkpoint 222 to Checkpoint 223</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.39041923389202,33.21612670490885,0 -117.39003,33.21483,0 -117.38973,33.21415,0 -117.3895,33.21373,0 -117.38933,33.21345,0 -117.38934,33.21326,0 -117.38873,33.21204,0 -117.38869,33.21177,0 -117.3887,33.21159,0 -117.38896,33.21063,0 -117.38898,33.21036,0 -117.38895,33.21016,0 -117.38889,33.20997,0 -117.38879,33.20978,0 -117.38851,33.20946,0 -117.38836446195852,33.2093319265235,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.30154800366778,33.06265100962792,0 -117.30122,33.06179,0 -117.30107,33.06147,0 -117.30104,33.06135,0 -117.30066,33.06062,0 -117.3001,33.0597,0 -117.29841,33.05703,0 -117.29837,33.05693,0 -117.29831,33.05685,0 -117.29826,33.05682,0 -117.29818,33.05677,0 -117.29816,33.05669,0 -117.29818,33.05663,0 -117.29786477780779,33.05616422392493,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 224 - Checkpoint 223 to Checkpoint 224</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.38836446195852,33.2093319265235,0 -117.38826,33.20924,0 -117.38803,33.20923,0 -117.38791,33.20922,0 -117.38783,33.20927,0 -117.38781,33.20931,0 -117.3876,33.20925,0 -117.3875,33.20931,0 -117.3876,33.20925,0 -117.38749,33.20907,0 -117.38716,33.20928,0 -117.38696,33.20893,0 -117.3869,33.20875,0 -117.38643,33.20799,0 -117.3862,33.2078,0 -117.38584,33.2074,0 -117.38497,33.20587,0 -117.38451,33.20495,0 -117.38442,33.20472,0 -117.38445,33.20457,0 -117.38442574834694,33.20410921859177,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.29786477780779,33.05616422392493,0 -117.29751,33.05564,0 -117.29725,33.05528,0 -117.29651,33.05413,0 -117.29611,33.05347,0 -117.29591,33.05315,0 -117.29484,33.05149,0 -117.29468,33.05121,0 -117.29443,33.05063,0 -117.29434,33.05045,0 -117.29424,33.04999,0 -117.29422,33.04973,0 -117.29420947735693,33.04966281697118,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 225 - Checkpoint 224 to Checkpoint 225</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.38442574834694,33.20410921859177,0 -117.38442,33.204,0 -117.38441,33.20395,0 -117.38437,33.20378,0 -117.38436,33.2032,0 -117.38438,33.20309,0 -117.38439,33.20247,0 -117.38441,33.20224,0 -117.38441,33.20204,0 -117.38434,33.20158,0 -117.38425,33.2014,0 -117.38377,33.20076,0 -117.38358,33.20056,0 -117.38346,33.20039,0 -117.38327,33.20017,0 -117.38312,33.20004,0 -117.38259,33.1994,0 -117.38212,33.19884,0 -117.38116968136866,33.19771352474431,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.29420947735693,33.04966281697118,0 -117.29409,33.0489,0 -117.29404,33.04891,0 -117.29402,33.04871,0 -117.29406,33.04871,0 -117.29402,33.0484,0 -117.29389,33.0473,0 -117.29387,33.04707,0 -117.29383,33.04696,0 -117.29376,33.04611,0 -117.29374,33.04599,0 -117.29376,33.04596,0 -117.29375,33.04572,0 -117.29371,33.04548,0 -117.29362,33.04532,0 -117.29357,33.04493,0 -117.29361,33.04476,0 -117.29356,33.04477,0 -117.29354,33.0446,0 -117.2935,33.04435,0 -117.29355,33.04418,0 -117.29341,33.04376,0 -117.29339,33.04359,0 -117.29339,33.04346,0 -117.29331,33.04302,0 -117.29333,33.04291,0 -117.2933,33.04284,0 -117.29327466801844,33.04265543842012,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 226 - Checkpoint 225 to Checkpoint 226</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.38116968136866,33.19771352474431,0 -117.38007,33.19641,0 -117.37964,33.19591,0 -117.37967,33.19589,0 -117.37958,33.19578,0 -117.37956,33.1958,0 -117.37623086444077,33.19185017815008,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.29327466801844,33.04265543842012,0 -117.29323,33.04233,0 -117.29334,33.04212,0 -117.29332,33.04201,0 -117.29342,33.04185,0 -117.2933,33.04094,0 -117.29325,33.04081,0 -117.29327,33.0407,0 -117.29316,33.03991,0 -117.29317,33.03979,0 -117.29311,33.03933,0 -117.29308,33.03933,0 -117.29303,33.03899,0 -117.29302,33.03883,0 -117.29297,33.03844,0 -117.29285,33.0383,0 -117.29285,33.03821,0 -117.29273,33.03762,0 -117.29263,33.03737,0 -117.29239,33.03683,0 -117.29235,33.03679,0 -117.29222,33.03677,0 -117.29182,33.03601,0 -117.29174,33.03591,0 -117.29168584611104,33.0358089127406,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 227 - Checkpoint 226 to Checkpoint 227</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.37623086444077,33.19185017815008,0 -117.37366,33.1888,0 -117.37358,33.18866,0 -117.3735,33.18857,0 -117.37353,33.18855,0 -117.37345,33.18841,0 -117.3734,33.18843,0 -117.37307,33.188,0 -117.37135632464101,33.185962115789316,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.29168584611104,33.0358089127406,0 -117.29144,33.03535,0 -117.29141,33.03525,0 -117.29083,33.03409,0 -117.29055,33.03359,0 -117.28996,33.03243,0 -117.28827694564357,33.02916244852424,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 228 - Checkpoint 227 to Checkpoint 228</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.37135632464101,33.185962115789316,0 -117.36937,33.1836,0 -117.36941,33.18358,0 -117.36935,33.18347,0 -117.36931,33.18349,0 -117.36914,33.18328,0 -117.36889,33.18301,0 -117.36829,33.18231,0 -117.36644022519256,33.18010708636569,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.28827694564357,33.02916244852424,0 -117.28774,33.02812,0 -117.28771,33.02805,0 -117.28752,33.02776,0 -117.28682,33.02663,0 -117.28645,33.02605,0 -117.28547,33.02444,0 -117.28440041627844,33.022700315633614,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 229 - Checkpoint 228 to Checkpoint 229</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.36644022519256,33.18010708636569,0 -117.36499,33.17838,0 -117.36493,33.17828,0 -117.36481,33.17814,0 -117.3647,33.17805,0 -117.36267,33.17565,0 -117.36259,33.17552,0 -117.36234,33.17523,0 -117.36236,33.17522,0 -117.36228,33.17513,0 -117.36225,33.17515,0 -117.36149173121338,33.17424603764739,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.28440041627844,33.022700315633614,0 -117.28381,33.02174,0 -117.28375,33.02168,0 -117.2823,33.01928,0 -117.28223,33.01923,0 -117.28188,33.01855,0 -117.28183,33.01846,0 -117.28175,33.01822,0 -117.28174,33.01812,0 -117.28138,33.0173,0 -117.2813,33.01713,0 -117.28128,33.01704,0 -117.28088307193177,33.01612586263076,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 230 - Checkpoint 229 to Checkpoint 230</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.36149173121338,33.17424603764739,0 -117.35996,33.17242,0 -117.35982,33.17223,0 -117.35918,33.17147,0 -117.35911,33.17135,0 -117.35846,33.17059,0 -117.35836,33.1705,0 -117.35818,33.1706,0 -117.3575,33.16978,0 -117.35737,33.1696,0 -117.35649675066261,33.16855915735543,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.28088307193177,33.01612586263076,0 -117.28062,33.01552,0 -117.27993,33.01397,0 -117.27968,33.01333,0 -117.27942,33.01248,0 -117.27913,33.01114,0 -117.27895,33.01028,0 -117.2786960846782,33.009148517688864,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 231 - Checkpoint 230 to Checkpoint 231</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.35649675066261,33.16855915735543,0 -117.35638,33.16842,0 -117.35624,33.16823,0 -117.35493,33.16669,0 -117.35489,33.16661,0 -117.35482,33.16654,0 -117.35449,33.16602,0 -117.35454,33.16599,0 -117.35449,33.16592,0 -117.35454,33.16591,0 -117.35457,33.16598,0 -117.35464,33.16597,0 -117.35461,33.16588,0 -117.35465,33.16579,0 -117.35462,33.16569,0 -117.35457,33.16566,0 -117.35456,33.16559,0 -117.35452,33.16552,0 -117.35442,33.1649,0 -117.35442,33.16481,0 -117.35445,33.16418,0 -117.3545,33.16362,0 -117.35456,33.16352,0 -117.35455,33.16321,0 -117.35447,33.16271,0 -117.35434,33.16232,0 -117.35427459382205,33.16218591733522,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.2786960846782,33.009148517688864,0 -117.27838,33.00774,0 -117.27824,33.00686,0 -117.27803,33.00512,0 -117.27788,33.00439,0 -117.27768,33.00371,0 -117.27742,33.00312,0 -117.27706,33.00244,0 -117.27685365933601,33.00213288831406,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 232 - Checkpoint 231 to Checkpoint 232</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.35427459382205,33.16218591733522,0 -117.35414,33.16191,0 -117.35372,33.16137,0 -117.35346,33.16102,0 -117.351,33.15803,0 -117.35087,33.15776,0 -117.35079,33.15745,0 -117.35079,33.15717,0 -117.35085,33.15662,0 -117.35088,33.15663,0 -117.35089,33.15658,0 -117.35086,33.15655,0 -117.35094826613174,33.1558599193337,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27685365933601,33.00213288831406,0 -117.27663,33.0018,0 -117.2762,33.00129,0 -117.27509,33.00014,0 -117.27474,32.99969,0 -117.27432,32.99906,0 -117.27396,32.99837,0 -117.27273757088952,32.99583110877053,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 233 - Checkpoint 232 to Checkpoint 233</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.35094826613174,33.1558599193337,0 -117.35097,33.15569,0 -117.35095,33.15525,0 -117.35092,33.1551,0 -117.3508,33.15475,0 -117.35057,33.1543,0 -117.35004,33.15352,0 -117.34884,33.15184,0 -117.3479,33.15066,0 -117.34767,33.15034,0 -117.34752,33.15011,0 -117.34706732798999,33.14950850431547,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27273757088952,32.99583110877053,0 -117.27253,32.9954,0 -117.2723,32.9948,0 -117.27189,32.99319,0 -117.27179,32.9928,0 -117.27173,32.9927,0 -117.27161,32.99221,0 -117.27162,32.99206,0 -117.27157,32.99205,0 -117.2715,32.99172,0 -117.27153,32.99171,0 -117.27085709505471,32.988836514017365,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 234 - Checkpoint 233 to Checkpoint 234</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.34706732798999,33.14950850431547,0 -117.34679,33.14914,0 -117.34603,33.14817,0 -117.34578,33.14788,0 -117.34551,33.14755,0 -117.34523,33.14719,0 -117.34477,33.14665,0 -117.34444,33.14623,0 -117.34324,33.14489,0 -117.34303,33.14468,0 -117.34298,33.14459,0 -117.34235,33.14388,0 -117.34211944350743,33.143581866604436,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27085709505471,32.988836514017365,0 -117.27079,32.98855,0 -117.26978,32.98411,0 -117.26939,32.98252,0 -117.26919199105919,32.98173621460932,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 235 - Checkpoint 234 to Checkpoint 235</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.34211944350743,33.143581866604436,0 -117.34177,33.14313,0 -117.34124,33.14233,0 -117.34099,33.1419,0 -117.33868,33.1377,0 -117.33861,33.13762,0 -117.33835657490873,33.13707806018943,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26919199105919,32.98173621460932,0 -117.26915,32.98157,0 -117.26907,32.98114,0 -117.26902,32.98072,0 -117.269,32.98035,0 -117.26897,32.98035,0 -117.26895,32.98015,0 -117.26897,32.98015,0 -117.26903,32.97929,0 -117.2693,32.9793,0 -117.26927,32.97927,0 -117.26932,32.97868,0 -117.26939,32.97804,0 -117.26939,32.97711,0 -117.26933,32.97656,0 -117.26924,32.97608,0 -117.26915,32.97561,0 -117.26902262404029,32.974826637847734,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 236 - Checkpoint 235 to Checkpoint 236</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.33835657490873,33.13707806018943,0 -117.33796,33.13623,0 -117.3377,33.13569,0 -117.33726,33.13487,0 -117.33682,33.13419,0 -117.33609,33.13323,0 -117.33552,33.13244,0 -117.33536,33.13221,0 -117.33533,33.13214,0 -117.33519,33.13193,0 -117.33515,33.13191,0 -117.33430709177308,33.13071253513795,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26902262404029,32.974826637847734,0 -117.26895,32.97438,0 -117.26888,32.97379,0 -117.26863,32.97227,0 -117.26847,32.97158,0 -117.26814,32.96994,0 -117.26794,32.96897,0 -117.26772,32.9684,0 -117.26751,32.968,0 -117.26773,32.96781,0 -117.26772809927718,32.967803347470124,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 237 - Checkpoint 236 to Checkpoint 237</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.33430709177308,33.13071253513795,0 -117.33389,33.13012,0 -117.33382,33.12998,0 -117.33374,33.12986,0 -117.33364,33.12977,0 -117.33097,33.12597,0 -117.33075,33.12593,0 -117.3305,33.12572,0 -117.33036,33.12563,0 -117.33005,33.12553,0 -117.32926,33.12533,0 -117.32912881750485,33.12526972696169,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26772809927718,32.967803347470124,0 -117.26769,32.96767,0 -117.26759,32.96701,0 -117.2673,32.9636,0 -117.26725,32.96281,0 -117.26722,32.96272,0 -117.26722,32.96243,0 -117.26742,32.96201,0 -117.26761,32.96163,0 -117.26765,32.96142,0 -117.26761,32.96096,0 -117.26758,32.9608,0 -117.26758,32.96068,0 -117.2675641459879,32.96066414598791,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 238 - Checkpoint 237 to Checkpoint 238</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.32912881750485,33.12526972696169,0 -117.32889,33.12516,0 -117.32863,33.12499,0 -117.3284,33.12478,0 -117.32823,33.12456,0 -117.32808,33.12427,0 -117.32799,33.12396,0 -117.32782,33.12316,0 -117.32764,33.12264,0 -117.32697,33.12108,0 -117.32686,33.12098,0 -117.32681,33.12087,0 -117.3268,33.12075,0 -117.32573034786593,33.118779781636185,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.2675641459879,32.96066414598791,0 -117.26754,32.96064,0 -117.26743,32.96003,0 -117.26743,32.95994,0 -117.26713,32.95914,0 -117.26542,32.95961,0 -117.26541,32.95953,0 -117.26514,32.9596,0 -117.26506,32.95924,0 -117.26487,32.95867,0 -117.26485,32.95858,0 -117.2648,32.95854,0 -117.26478,32.95844,0 -117.26461,32.958,0 -117.26458,32.95789,0 -117.26411,32.95664,0 -117.26408,32.95649,0 -117.26377968647918,32.95596217623614,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 239 - Checkpoint 238 to Checkpoint 239</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.32573034786593,33.118779781636185,0 -117.32389,33.11539,0 -117.32357,33.11478,0 -117.3235,33.1147,0 -117.32336,33.11443,0 -117.32335,33.11431,0 -117.32246069289224,33.11209943661785,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26377968647918,32.95596217623614,0 -117.26375,32.95591,0 -117.26377,32.95575,0 -117.26368,32.95554,0 -117.26361,32.9554,0 -117.26328,32.95452,0 -117.26331,32.95451,0 -117.26342,32.95447,0 -117.26343,32.95444,0 -117.26351,32.95442,0 -117.26316,32.95344,0 -117.26312,32.95329,0 -117.26307,32.9532,0 -117.26224,32.95113,0 -117.26151610038268,32.949191557691385,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 240 - Checkpoint 239 to Checkpoint 240</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.32246069289224,33.11209943661785,0 -117.3209,33.10822,0 -117.32082,33.10809,0 -117.32032,33.10687,0 -117.32031,33.10676,0 -117.32024,33.10663,0 -117.32018,33.10656,0 -117.32005,33.10631,0 -117.32,33.10617,0 -117.3195482569574,33.1052999763624,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26151610038268,32.949191557691385,0 -117.26134,32.94872,0 -117.26111,32.94812,0 -117.26091,32.94762,0 -117.26077,32.94725,0 -117.2604,32.94626,0 -117.26029,32.94574,0 -117.26027,32.94521,0 -117.26032,32.94469,0 -117.26044,32.94423,0 -117.26102,32.94262,0 -117.26107,32.94244,0 -117.26112,32.94234,0 -117.26112,32.94224,0 -117.26112548041323,32.94220757422176,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 241 - Checkpoint 240 to Checkpoint 241</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.3195482569574,33.1052999763624,0 -117.31946,33.10513,0 -117.31811,33.10197,0 -117.31807,33.10198,0 -117.31794,33.10178,0 -117.31797,33.10177,0 -117.31772,33.10118,0 -117.31771,33.10106,0 -117.31698,33.09933,0 -117.31674,33.0986,0 -117.31672132244803,33.09853507327172,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26112548041323,32.94220757422176,0 -117.26124,32.94153,0 -117.26127,32.94112,0 -117.26128,32.94036,0 -117.26126,32.94022,0 -117.26126,32.93986,0 -117.26125,32.93951,0 -117.26127,32.9388,0 -117.26129,32.93767,0 -117.26122,32.93723,0 -117.26071653342363,32.93502402144834,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 242 - Checkpoint 241 to Checkpoint 242</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.31672132244803,33.09853507327172,0 -117.31653,33.09787,0 -117.31632,33.09739,0 -117.31578,33.09615,0 -117.31542,33.09546,0 -117.31502,33.09473,0 -117.31451,33.0937,0 -117.31391,33.09219,0 -117.31386,33.09203,0 -117.31376,33.09193,0 -117.31378,33.09192,0 -117.31370624628819,33.091790931004326,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26071653342363,32.93502402144834,0 -117.26046,32.9339,0 -117.26052,32.93377,0 -117.26045,32.93345,0 -117.25987,32.92945,0 -117.25973,32.92899,0 -117.25965,32.92884,0 -117.25957,32.92875,0 -117.25955,32.92866,0 -117.25924,32.92814,0 -117.25911723521745,32.928000494565275,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 243 - Checkpoint 242 to Checkpoint 243</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.31370624628819,33.091790931004326,0 -117.3137,33.09178,0 -117.31371,33.09177,0 -117.3131,33.09011,0 -117.31309,33.08999,0 -117.31161,33.08606,0 -117.31132,33.08548,0 -117.31099,33.08497,0 -117.31097351777171,33.08495001091463,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.25911723521745,32.928000494565275,0 -117.2588,32.92764,0 -117.25856,32.9274,0 -117.2545,32.92434,0 -117.2541,32.92411,0 -117.25258291274463,32.92334021868894,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 244 - Checkpoint 243 to Checkpoint 244</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.31097351777171,33.08495001091463,0 -117.31052,33.0844,0 -117.3101,33.08398,0 -117.30937,33.0833,0 -117.30932,33.08323,0 -117.30883,33.08273,0 -117.30874,33.08264,0 -117.30862,33.08256,0 -117.30841,33.08231,0 -117.30805,33.08176,0 -117.30777,33.08125,0 -117.30775,33.08114,0 -117.30762,33.08087,0 -117.30732,33.07994,0 -117.30696,33.07892,0 -117.30689969962111,33.07871899873707,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.25258291274463,32.92334021868894,0 -117.2514,32.92274,0 -117.25089,32.92242,0 -117.25045,32.92208,0 -117.25008,32.9217,0 -117.2498,32.92133,0 -117.24954,32.92089,0 -117.24938,32.92054,0 -117.24923,32.92003,0 -117.24901,32.91883,0 -117.2488,32.91819,0 -117.24854,32.91765,0 -117.2483946346054,32.91742156866563,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 245 - Checkpoint 244 to Checkpoint 245</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.30689969962111,33.07871899873707,0 -117.30684,33.07852,0 -117.30618,33.07648,0 -117.30608,33.07631,0 -117.30603,33.07616,0 -117.30601,33.07603,0 -117.30459924314962,33.0717488014656,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.2483946346054,32.91742156866563,0 -117.24819,32.9171,0 -117.24581,32.91411,0 -117.24556,32.91372,0 -117.24537,32.91332,0 -117.24518,32.91273,0 -117.24492,32.91147,0 -117.24492,32.91136,0 -117.24482709813984,32.910965167094346,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 246 - Checkpoint 245 to Checkpoint 246</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.30459924314962,33.0717488014656,0 -117.30428,33.07078,0 -117.30424,33.07071,0 -117.30373,33.06913,0 -117.30229,33.06486,0 -117.3022653698786,33.0647828256196,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.24482709813984,32.910965167094346,0 -117.24468,32.91034,0 -117.2447,32.91025,0 -117.24425,32.90833,0 -117.24330991687931,32.903847987545774,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 247 - Checkpoint 246 to Checkpoint 247</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.3022653698786,33.0647828256196,0 -117.30214,33.06439,0 -117.30211,33.06431,0 -117.30208,33.06429,0 -117.30194,33.06389,0 -117.30193,33.06374,0 -117.30162,33.06284,0 -117.30122,33.06179,0 -117.30107,33.06147,0 -117.30104,33.06135,0 -117.30066,33.06062,0 -117.3001,33.0597,0 -117.2990866712951,33.05809906056681,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.24330991687931,32.903847987545774,0 -117.24326,32.90361,0 -117.24305,32.90234,0 -117.24248,32.89971,0 -117.24243,32.8995,0 -117.24245,32.89936,0 -117.24218,32.89818,0 -117.24214,32.89807,0 -117.24214,32.89798,0 -117.24188019362134,32.89672093831883,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 248 - Checkpoint 247 to Checkpoint 248</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2990866712951,33.05809906056681,0 -117.29841,33.05703,0 -117.29837,33.05693,0 -117.29831,33.05685,0 -117.29826,33.05682,0 -117.29818,33.05677,0 -117.29816,33.05669,0 -117.29818,33.05663,0 -117.29751,33.05564,0 -117.29725,33.05528,0 -117.29651,33.05413,0 -117.29611,33.05347,0 -117.29591,33.05315,0 -117.29501390053376,33.051759789613136,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.24188019362134,32.89672093831883,0 -117.24188,32.89672,0 -117.24183,32.89661,0 -117.24109,32.89304,0 -117.2411,32.89293,0 -117.241,32.89259,0 -117.24087,32.89235,0 -117.2406,32.89192,0 -117.24167,32.89117,0 -117.24191,32.89095,0 -117.2423,32.89048,0 -117.2424409871838,32.890268519224314,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 249 - Checkpoint 248 to Checkpoint 249</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.29501390053376,33.051759789613136,0 -117.29484,33.05149,0 -117.29468,33.05121,0 -117.29443,33.05063,0 -117.29434,33.05045,0 -117.29424,33.04999,0 -117.29422,33.04973,0 -117.29409,33.0489,0 -117.29404,33.04891,0 -117.29402,33.04871,0 -117.29406,33.04871,0 -117.29402,33.0484,0 -117.29389,33.0473,0 -117.29387,33.04707,0 -117.29383,33.04696,0 -117.29376,33.04611,0 -117.29374,33.04599,0 -117.29376,33.04596,0 -117.29375,33.04572,0 -117.29371,33.04548,0 -117.29362,33.04532,0 -117.29357,33.04493,0 -117.29360303399562,33.04478960551861,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.2424409871838,32.890268519224314,0 -117.2425,32.89018,0 -117.24271,32.88993,0 -117.24306,32.88938,0 -117.24312,32.88923,0 -117.2435,32.88852,0 -117.2437,32.88805,0 -117.24388,32.88741,0 -117.24395,32.88697,0 -117.24399,32.88625,0 -117.24404,32.88396,0 -117.24404469401289,32.883302838196954,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 250 - Checkpoint 249 to Checkpoint 250</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.29360303399562,33.04478960551861,0 -117.29361,33.04476,0 -117.29356,33.04477,0 -117.29354,33.0446,0 -117.2935,33.04435,0 -117.29355,33.04418,0 -117.29341,33.04376,0 -117.29339,33.04359,0 -117.29339,33.04346,0 -117.29331,33.04302,0 -117.29333,33.04291,0 -117.2933,33.04284,0 -117.29323,33.04233,0 -117.29334,33.04212,0 -117.29332,33.04201,0 -117.29342,33.04185,0 -117.2933,33.04094,0 -117.29325,33.04081,0 -117.29327,33.0407,0 -117.29316,33.03991,0 -117.29317,33.03979,0 -117.29311,33.03933,0 -117.29308,33.03933,0 -117.29303,33.03899,0 -117.29302,33.03883,0 -117.29297,33.03844,0 -117.29285,33.0383,0 -117.29285,33.03821,0 -117.2927620768314,33.03777771108768,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.24404469401289,32.883302838196954,0 -117.24406,32.88116,0 -117.24405,32.88099,0 -117.24407,32.88089,0 -117.24406,32.8777,0 -117.24385710331237,32.87607682649887,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 251 - Checkpoint 250 to Checkpoint 251</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2927620768314,33.03777771108768,0 -117.29273,33.03762,0 -117.29263,33.03737,0 -117.29239,33.03683,0 -117.29235,33.03679,0 -117.29222,33.03677,0 -117.29182,33.03601,0 -117.29174,33.03591,0 -117.29144,33.03535,0 -117.29141,33.03525,0 -117.29083,33.03409,0 -117.29055,33.03359,0 -117.28996,33.03243,0 -117.2893290145199,33.03120497863998,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.24385710331237,32.87607682649887,0 -117.24383,32.87586,0 -117.24384,32.87561,0 -117.24435,32.87514,0 -117.24443,32.87505,0 -117.24455,32.87494,0 -117.24471,32.87471,0 -117.24489,32.87431,0 -117.24528,32.87306,0 -117.2457,32.87205,0 -117.24576,32.87192,0 -117.24596,32.87179,0 -117.2462,32.87167,0 -117.24688,32.87159,0 -117.24704,32.87156,0 -117.24736,32.87144,0 -117.24763,32.87128,0 -117.24784,32.8711,0 -117.24801,32.87086,0 -117.24816586214047,32.870470344648844,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 252 - Checkpoint 251 to Checkpoint 252</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2893290145199,33.03120497863998,0 -117.28774,33.02812,0 -117.28771,33.02805,0 -117.28752,33.02776,0 -117.28682,33.02663,0 -117.28645,33.02605,0 -117.28561509215464,33.024678365682625,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.24816586214047,32.870470344648844,0 -117.24841,32.86986,0 -117.24859,32.86942,0 -117.24868,32.86932,0 -117.24882,32.86923,0 -117.24901,32.86918,0 -117.24924,32.8692,0 -117.24939,32.86925,0 -117.24952,32.86935,0 -117.24961,32.86948,0 -117.24981,32.87007,0 -117.25025,32.87073,0 -117.25039,32.87091,0 -117.25053,32.87102,0 -117.25075,32.8711,0 -117.25095,32.87112,0 -117.2512,32.87107,0 -117.25133,32.871,0 -117.2515,32.87084,0 -117.25157,32.87072,0 -117.25171,32.86965,0 -117.25178,32.86908,0 -117.25191860855924,32.86849229970883,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 253 - Checkpoint 252 to Checkpoint 253</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.28561509215464,33.024678365682625,0 -117.28547,33.02444,0 -117.28381,33.02174,0 -117.28375,33.02168,0 -117.2823,33.01928,0 -117.28223,33.01923,0 -117.28188,33.01855,0 -117.28183,33.01846,0 -117.28175113826717,33.01822341480151,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.25191860855924,32.86849229970883,0 -117.25203,32.86802,0 -117.25235,32.86662,0 -117.25237,32.86615,0 -117.25233,32.86575,0 -117.25238,32.86558,0 -117.25237,32.86531,0 -117.2523,32.86514,0 -117.25238,32.86471,0 -117.25249,32.86446,0 -117.25261,32.86425,0 -117.25316,32.86358,0 -117.25328,32.86332,0 -117.25333,32.86307,0 -117.25342250970162,32.861520106691316,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 254 - Checkpoint 253 to Checkpoint 254</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.28175113826717,33.01822341480151,0 -117.28175,33.01822,0 -117.28174,33.01812,0 -117.28138,33.0173,0 -117.2813,33.01713,0 -117.28128,33.01704,0 -117.28062,33.01552,0 -117.27993,33.01397,0 -117.27968,33.01333,0 -117.27942,33.01248,0 -117.27917266289485,33.0113371319969,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.25342250970162,32.861520106691316,0 -117.25385390378835,32.85429259653054,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 255 - Checkpoint 254 to Checkpoint 255</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27917266289485,33.0113371319969,0 -117.27913,33.01114,0 -117.27895,33.01028,0 -117.27838,33.00774,0 -117.27824,33.00686,0 -117.27803,33.00512,0 -117.27788,33.00439,0 -117.27782258514658,33.004194789498364,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.25385390378835,32.85429259653054,0 -117.25398,32.85218,0 -117.25407,32.85184,0 -117.25431,32.85136,0 -117.25436,32.85126,0 -117.2546,32.85095,0 -117.25489,32.85069,0 -117.25512,32.85052,0 -117.25588,32.85029,0 -117.25584,32.85018,0 -117.25665,32.84983,0 -117.25689,32.84978,0 -117.25741,32.84975,0 -117.2585,32.84981,0 -117.2585454594791,32.84980655610006,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 256 - Checkpoint 255 to Checkpoint 256</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27782258514658,33.004194789498364,0 -117.27768,33.00371,0 -117.27742,33.00312,0 -117.27706,33.00244,0 -117.27663,33.0018,0 -117.2762,33.00129,0 -117.27509,33.00014,0 -117.27474,32.99969,0 -117.27432,32.99906,0 -117.27396,32.99837,0 -117.27373086013583,32.99789409412825,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.2585454594791,32.84980655610006,0 -117.25982,32.84971,0 -117.26093,32.8496,0 -117.26133,32.8495,0 -117.26162,32.8494,0 -117.26172,32.84935,0 -117.2618,32.84933,0 -117.26197,32.84921,0 -117.26242,32.84892,0 -117.26255,32.84887,0 -117.26277,32.84877,0 -117.26292,32.84868,0 -117.26399,32.84834,0 -117.26513,32.848,0 -117.26541,32.84794,0 -117.26586,32.84789,0 -117.26628,32.84779,0 -117.26662329962161,32.84764154610957,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 257 - Checkpoint 256 to Checkpoint 257</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27373086013583,32.99789409412825,0 -117.27253,32.9954,0 -117.2723,32.9948,0 -117.27189,32.99319,0 -117.27179,32.9928,0 -117.27173,32.9927,0 -117.27161,32.99221,0 -117.27162,32.99206,0 -117.27157,32.99205,0 -117.2715,32.99172,0 -117.27153,32.99171,0 -117.2713683334958,32.99101964033345,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26662329962161,32.84764154610957,0 -117.26665,32.84763,0 -117.26692,32.84746,0 -117.2675,32.847,0 -117.26857,32.84599,0 -117.26871,32.84584,0 -117.26881,32.84577,0 -117.27017,32.84448,0 -117.27028,32.84441,0 -117.27042,32.84425,0 -117.2706,32.84409,0 -117.2707,32.84402,0 -117.27089,32.84384,0 -117.27097,32.84373,0 -117.27199,32.84276,0 -117.27212,32.84267,0 -117.27241,32.84236,0 -117.27245599428556,32.842363538021964,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 258 - Checkpoint 257 to Checkpoint 258</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2713683334958,32.99101964033345,0 -117.27079,32.98855,0 -117.26978,32.98411,0 -117.26973203235815,32.98391443961398,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27245599428556,32.842363538021964,0 -117.27254,32.84237,0 -117.27288,32.84206,0 -117.27284,32.84198,0 -117.27288,32.84194,0 -117.27251,32.84088,0 -117.2724,32.84054,0 -117.2725,32.84044,0 -117.27366,32.84017,0 -117.27244018162283,32.836297076652464,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 259 - Checkpoint 258 to Checkpoint 259</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26973203235815,32.98391443961398,0 -117.26939,32.98252,0 -117.26915,32.98157,0 -117.26907,32.98114,0 -117.26902,32.98072,0 -117.269,32.98035,0 -117.26897,32.98035,0 -117.26895,32.98015,0 -117.26897,32.98015,0 -117.26903,32.97929,0 -117.2693,32.9793,0 -117.26927,32.97927,0 -117.26932,32.97868,0 -117.26939,32.97804,0 -117.26939,32.97711,0 -117.26938130891564,32.97703033172668,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27244018162283,32.836297076652464,0 -117.27206,32.83509,0 -117.27197,32.83488,0 -117.27142,32.83398,0 -117.27128,32.83365,0 -117.27123,32.83347,0 -117.27128,32.83328,0 -117.27128,32.83308,0 -117.27134,32.83286,0 -117.27142,32.83288,0 -117.27143,32.83278,0 -117.27145,32.83279,0 -117.27168,32.83284,0 -117.27194,32.83286,0 -117.27203,32.83283,0 -117.272,32.83284,0 -117.27215,32.83278,0 -117.27247,32.83272,0 -117.27530044952321,32.832072158692235,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 260 - Checkpoint 259 to Checkpoint 260</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26938130891564,32.97703033172668,0 -117.26933,32.97656,0 -117.26924,32.97608,0 -117.26915,32.97561,0 -117.26895,32.97438,0 -117.26888,32.97379,0 -117.26863,32.97227,0 -117.26847,32.97158,0 -117.26814,32.96994,0 -117.26812628237603,32.96987346952374,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27530044952321,32.832072158692235,0 -117.27614,32.83188,0 -117.27651,32.83178,0 -117.27634,32.83125,0 -117.27629,32.83114,0 -117.27634,32.8309,0 -117.27649,32.83058,0 -117.27697,32.82962,0 -117.27701,32.82947,0 -117.27698,32.82896,0 -117.27689,32.82774,0 -117.27681,32.82706,0 -117.27677,32.82679,0 -117.27674,32.8268,0 -117.27665,32.82633,0 -117.27650309979187,32.825806268823186,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 261 - Checkpoint 260 to Checkpoint 261</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26812628237603,32.96987346952374,0 -117.26794,32.96897,0 -117.26772,32.9684,0 -117.26751,32.968,0 -117.26773,32.96781,0 -117.26769,32.96767,0 -117.26759,32.96701,0 -117.2673,32.9636,0 -117.26725002972564,32.96281046966519,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27650309979187,32.825806268823186,0 -117.27642,32.82551,0 -117.2764,32.82532,0 -117.27611,32.82464,0 -117.27583,32.82409,0 -117.27579,32.82394,0 -117.27443,32.82176,0 -117.27457,32.82171,0 -117.27438,32.82144,0 -117.27306423976567,32.819350263157254,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 262 - Checkpoint 261 to Checkpoint 262</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26725002972564,32.96281046966519,0 -117.26725,32.96281,0 -117.26722,32.96272,0 -117.26722,32.96243,0 -117.26742,32.96201,0 -117.26761,32.96163,0 -117.26765,32.96142,0 -117.26761,32.96096,0 -117.26758,32.9608,0 -117.26758,32.96068,0 -117.26754,32.96064,0 -117.26743,32.96003,0 -117.26743,32.95994,0 -117.26713,32.95914,0 -117.26542,32.95961,0 -117.26541,32.95953,0 -117.26514,32.9596,0 -117.26506,32.95924,0 -117.26487,32.95867,0 -117.26485,32.95858,0 -117.2648,32.95854,0 -117.26478,32.95844,0 -117.26463362339915,32.958061142915426,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.27306423976567,32.819350263157254,0 -117.27217,32.81793,0 -117.27202,32.81765,0 -117.27204,32.81758,0 -117.27199,32.81751,0 -117.2719,32.81747,0 -117.27168,32.81716,0 -117.27168,32.81704,0 -117.2708,32.81562,0 -117.27079,32.81559,0 -117.27074,32.8155,0 -117.27066,32.81546,0 -117.27061,32.81546,0 -117.27055,32.81536,0 -117.27054,32.81524,0 -117.26985,32.81415,0 -117.26974,32.81407,0 -117.26962,32.81389,0 -117.26966,32.81382,0 -117.26963,32.81374,0 -117.26955,32.81369,0 -117.26951,32.81368,0 -117.26931,32.81344,0 -117.26929,32.81332,0 -117.2690863690159,32.81312339077396,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 263 - Checkpoint 262 to Checkpoint 263</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26463362339915,32.958061142915426,0 -117.26461,32.958,0 -117.26458,32.95789,0 -117.26411,32.95664,0 -117.26408,32.95649,0 -117.26375,32.95591,0 -117.26377,32.95575,0 -117.26368,32.95554,0 -117.26361,32.9554,0 -117.26328,32.95452,0 -117.26331,32.95451,0 -117.26342,32.95447,0 -117.26343,32.95444,0 -117.26351,32.95442,0 -117.26316,32.95344,0 -117.26312,32.95329,0 -117.26307,32.9532,0 -117.2623135158428,32.95131334674049,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.2690863690159,32.81312339077396,0 -117.26842,32.81248,0 -117.26836,32.81247,0 -117.26837,32.8124,0 -117.26829,32.81231,0 -117.26819,32.81229,0 -117.26809,32.81227,0 -117.26797,32.81217,0 -117.26792,32.81205,0 -117.26719,32.81143,0 -117.26705,32.81139,0 -117.26684,32.81119,0 -117.26684,32.8111,0 -117.2668,32.81105,0 -117.26651,32.81085,0 -117.26621,32.81058,0 -117.26613,32.81048,0 -117.26484,32.80939,0 -117.26468,32.80929,0 -117.26346,32.80827,0 -117.26316,32.80808,0 -117.26313662678172,32.8080709523026,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 264 - Checkpoint 263 to Checkpoint 264</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2623135158428,32.95131334674049,0 -117.26224,32.95113,0 -117.26134,32.94872,0 -117.26111,32.94812,0 -117.26091,32.94762,0 -117.26077,32.94725,0 -117.2604,32.94626,0 -117.26029,32.94574,0 -117.26027,32.94521,0 -117.26032,32.94469,0 -117.26041022270333,32.944344146303926,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.26313662678172,32.8080709523026,0 -117.26285,32.80796,0 -117.26277,32.80795,0 -117.26262,32.80795,0 -117.26239,32.8079,0 -117.26198,32.80787,0 -117.26164,32.80776,0 -117.26145,32.80765,0 -117.26093,32.80725,0 -117.25972,32.80622,0 -117.25938,32.80587,0 -117.25888,32.8053,0 -117.25864,32.80498,0 -117.25865,32.80497,0 -117.25856,32.80483,0 -117.25847,32.80488,0 -117.25841,32.80485,0 -117.25819,32.80485,0 -117.25822,32.80493,0 -117.25824,32.80493,0 -117.25822,32.80493,0 -117.25819,32.80485,0 -117.25816,32.80485,0 -117.25801,32.80443,0 -117.25771852834684,32.80347928356067,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 265 - Checkpoint 264 to Checkpoint 265</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26041022270333,32.944344146303926,0 -117.26044,32.94423,0 -117.26102,32.94262,0 -117.26107,32.94244,0 -117.26112,32.94234,0 -117.26112,32.94224,0 -117.26124,32.94153,0 -117.26127,32.94112,0 -117.26128,32.94036,0 -117.26126,32.94022,0 -117.26126,32.93986,0 -117.26125,32.93951,0 -117.26127,32.9388,0 -117.26129,32.93767,0 -117.26122,32.93723,0 -117.2612152384506,32.937209136895426,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.25771852834684,32.80347928356067,0 -117.2561,32.7982,0 -117.25604,32.7981,0 -117.25602,32.79804,0 -117.256,32.79788,0 -117.25569,32.79691,0 -117.2556,32.79657,0 -117.25548576908521,32.79658324416403,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 266 - Checkpoint 265 to Checkpoint 266</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2612152384506,32.937209136895426,0 -117.26046,32.9339,0 -117.26052,32.93377,0 -117.26045,32.93345,0 -117.25996024666621,32.93007239080142,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.25548576908521,32.79658324416403,0 -117.25491,32.79665,0 -117.25424,32.79678,0 -117.25371,32.79691,0 -117.253,32.79706,0 -117.25248,32.79719,0 -117.25228,32.7972,0 -117.25187,32.79729,0 -117.25168,32.79736,0 -117.25029,32.79767,0 -117.25018,32.79768,0 -117.25007,32.79769,0 -117.24989,32.79775,0 -117.24825,32.79811,0 -117.24806,32.79815,0 -117.24733,32.79831,0 -117.24728511431758,32.79816038105859,0</coordinates></LineString>
       </Placemark>
       <Placemark><name>Segment 267 - Checkpoint 266 to Checkpoint 267</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.25996024666621,32.93007239080142,0 -117.25987,32.92945,0 -117.25973,32.92899,0 -117.25965,32.92884,0 -117.25957,32.92875,0 -117.25955,32.92866,0 -117.25924,32.92814,0 -117.2588,32.92764,0 -117.25856,32.9274,0 -117.2547923850255,32.92456036900937,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.24728511431758,32.79816038105859,0 -117.24721,32.79791,0 -117.2391792254811,32.799678823492854,0</coordinates></LineString>
       </Placemark>
-      <Placemark><name>Segment 268 - Checkpoint 267 to Checkpoint 268</name>
+      <Placemark><name>Final segment - Checkpoint 267 to Finish</name>
         <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2547923850255,32.92456036900937,0 -117.2545,32.92434,0 -117.2541,32.92411,0 -117.2514,32.92274,0 -117.25089,32.92242,0 -117.25045,32.92208,0 -117.25008,32.9217,0 -117.2498,32.92133,0 -117.24954,32.92089,0 -117.24938,32.92054,0 -117.24923,32.92003,0 -117.24914038889149,32.91954121213542,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 269 - Checkpoint 268 to Checkpoint 269</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24914038889149,32.91954121213542,0 -117.24901,32.91883,0 -117.2488,32.91819,0 -117.24854,32.91765,0 -117.24819,32.9171,0 -117.24581,32.91411,0 -117.24556,32.91372,0 -117.24537,32.91332,0 -117.24531479883066,32.91314858584259,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 270 - Checkpoint 269 to Checkpoint 270</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24531479883066,32.91314858584259,0 -117.24518,32.91273,0 -117.24492,32.91147,0 -117.24492,32.91136,0 -117.24468,32.91034,0 -117.2447,32.91025,0 -117.24425,32.90833,0 -117.24376949660095,32.90603911510753,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 271 - Checkpoint 270 to Checkpoint 271</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24376949660095,32.90603911510753,0 -117.24326,32.90361,0 -117.24305,32.90234,0 -117.24248,32.89971,0 -117.24243,32.8995,0 -117.24245,32.89936,0 -117.24234673237459,32.89890868222968,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 272 - Checkpoint 271 to Checkpoint 272</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24234673237459,32.89890868222968,0 -117.24218,32.89818,0 -117.24214,32.89807,0 -117.24214,32.89798,0 -117.24188,32.89672,0 -117.24183,32.89661,0 -117.24109,32.89304,0 -117.2411,32.89293,0 -117.241,32.89259,0 -117.24087,32.89235,0 -117.2406,32.89192,0 -117.24065401805625,32.89188213687646,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 273 - Checkpoint 272 to Checkpoint 273</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24065401805625,32.89188213687646,0 -117.24167,32.89117,0 -117.24191,32.89095,0 -117.2423,32.89048,0 -117.2425,32.89018,0 -117.24271,32.88993,0 -117.24306,32.88938,0 -117.24312,32.88923,0 -117.2435,32.88852,0 -117.2437,32.88805,0 -117.24388,32.88741,0 -117.24395,32.88697,0 -117.24399,32.88625,0 -117.2440057772076,32.885527403891516,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 274 - Checkpoint 273 to Checkpoint 274</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2440057772076,32.885527403891516,0 -117.24404,32.88396,0 -117.24406,32.88116,0 -117.24405,32.88099,0 -117.24407,32.88089,0 -117.24406185813663,32.87829274558464,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 275 - Checkpoint 274 to Checkpoint 275</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24406185813663,32.87829274558464,0 -117.24406,32.8777,0 -117.24383,32.87586,0 -117.24384,32.87561,0 -117.24435,32.87514,0 -117.24443,32.87505,0 -117.24455,32.87494,0 -117.24471,32.87471,0 -117.24489,32.87431,0 -117.24528,32.87306,0 -117.2457,32.87205,0 -117.24576,32.87192,0 -117.24596,32.87179,0 -117.2462,32.87167,0 -117.24620442060689,32.871669479928606,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 276 - Checkpoint 275 to Checkpoint 276</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24620442060689,32.871669479928606,0 -117.24688,32.87159,0 -117.24704,32.87156,0 -117.24736,32.87144,0 -117.24763,32.87128,0 -117.24784,32.8711,0 -117.24801,32.87086,0 -117.24841,32.86986,0 -117.24859,32.86942,0 -117.24868,32.86932,0 -117.24882,32.86923,0 -117.24901,32.86918,0 -117.24924,32.8692,0 -117.24939,32.86925,0 -117.24952,32.86935,0 -117.24961,32.86948,0 -117.24981,32.87007,0 -117.25025,32.87073,0 -117.25039,32.87091,0 -117.25053,32.87102,0 -117.25075,32.8711,0 -117.25095,32.87112,0 -117.2512,32.87107,0 -117.25133,32.871,0 -117.2515,32.87084,0 -117.25157,32.87072,0 -117.25157308825374,32.87069639691784,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 277 - Checkpoint 276 to Checkpoint 277</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.25157308825374,32.87069639691784,0 -117.25171,32.86965,0 -117.25178,32.86908,0 -117.25203,32.86802,0 -117.25235,32.86662,0 -117.25237,32.86615,0 -117.25233,32.86575,0 -117.25238,32.86558,0 -117.25237,32.86531,0 -117.2523,32.86514,0 -117.25238,32.86471,0 -117.25249,32.86446,0 -117.25261,32.86425,0 -117.25306495144211,32.863695786425055,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 278 - Checkpoint 277 to Checkpoint 278</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.25306495144211,32.863695786425055,0 -117.25316,32.86358,0 -117.25328,32.86332,0 -117.25333,32.86307,0 -117.25372127455985,32.85651464622046,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 279 - Checkpoint 278 to Checkpoint 279</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.25372127455985,32.85651464622046,0 -117.25398,32.85218,0 -117.25407,32.85184,0 -117.25431,32.85136,0 -117.25436,32.85126,0 -117.2546,32.85095,0 -117.25489,32.85069,0 -117.25512,32.85052,0 -117.25588,32.85029,0 -117.25584,32.85018,0 -117.25599030259899,32.85011505443254,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 280 - Checkpoint 279 to Checkpoint 280</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.25599030259899,32.85011505443254,0 -117.25665,32.84983,0 -117.25689,32.84978,0 -117.25741,32.84975,0 -117.2585,32.84981,0 -117.25982,32.84971,0 -117.26093,32.8496,0 -117.26133,32.8495,0 -117.26162,32.8494,0 -117.26172,32.84935,0 -117.2618,32.84933,0 -117.26197,32.84921,0 -117.26242,32.84892,0 -117.26255,32.84887,0 -117.26277,32.84877,0 -117.26292,32.84868,0 -117.26399,32.84834,0 -117.26410965808034,32.84830431250236,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 281 - Checkpoint 280 to Checkpoint 281</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26410965808034,32.84830431250236,0 -117.26513,32.848,0 -117.26541,32.84794,0 -117.26586,32.84789,0 -117.26628,32.84779,0 -117.26665,32.84763,0 -117.26692,32.84746,0 -117.2675,32.847,0 -117.26857,32.84599,0 -117.26871,32.84584,0 -117.26881,32.84577,0 -117.27017,32.84448,0 -117.27028,32.84441,0 -117.27042,32.84425,0 -117.2706,32.84409,0 -117.2707,32.84402,0 -117.27071073933624,32.84400982589199,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 282 - Checkpoint 281 to Checkpoint 282</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27071073933624,32.84400982589199,0 -117.27089,32.84384,0 -117.27097,32.84373,0 -117.27199,32.84276,0 -117.27212,32.84267,0 -117.27241,32.84236,0 -117.27254,32.84237,0 -117.27288,32.84206,0 -117.27284,32.84198,0 -117.27288,32.84194,0 -117.27251,32.84088,0 -117.2724,32.84054,0 -117.2725,32.84044,0 -117.27366,32.84017,0 -117.27311760021136,32.83844788067107,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 283 - Checkpoint 282 to Checkpoint 283</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27311760021136,32.83844788067107,0 -117.27206,32.83509,0 -117.27197,32.83488,0 -117.27142,32.83398,0 -117.27128,32.83365,0 -117.27123,32.83347,0 -117.27128,32.83328,0 -117.27128,32.83308,0 -117.27134,32.83286,0 -117.27142,32.83288,0 -117.27143,32.83278,0 -117.27145,32.83279,0 -117.27168,32.83284,0 -117.27194,32.83286,0 -117.27203,32.83283,0 -117.272,32.83284,0 -117.27215,32.83278,0 -117.27247,32.83272,0 -117.27274573514013,32.832656888959754,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 284 - Checkpoint 283 to Checkpoint 284</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27274573514013,32.832656888959754,0 -117.27614,32.83188,0 -117.27651,32.83178,0 -117.27634,32.83125,0 -117.27629,32.83114,0 -117.27634,32.8309,0 -117.27649,32.83058,0 -117.27697,32.82962,0 -117.27701,32.82947,0 -117.27698,32.82896,0 -117.2769068016894,32.82796775623433,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 285 - Checkpoint 284 to Checkpoint 285</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.2769068016894,32.82796775623433,0 -117.27689,32.82774,0 -117.27681,32.82706,0 -117.27677,32.82679,0 -117.27674,32.8268,0 -117.27665,32.82633,0 -117.27642,32.82551,0 -117.2764,32.82532,0 -117.27611,32.82464,0 -117.27583,32.82409,0 -117.27579,32.82394,0 -117.27443,32.82176,0 -117.27457,32.82171,0 -117.27438,32.82144,0 -117.27430241771489,32.8213167810766,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 286 - Checkpoint 285 to Checkpoint 286</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27430241771489,32.8213167810766,0 -117.27217,32.81793,0 -117.27202,32.81765,0 -117.27204,32.81758,0 -117.27199,32.81751,0 -117.2719,32.81747,0 -117.27168,32.81716,0 -117.27168,32.81704,0 -117.2708,32.81562,0 -117.27079,32.81559,0 -117.27074,32.8155,0 -117.27066,32.81546,0 -117.27061,32.81546,0 -117.27055,32.81536,0 -117.27054,32.81524,0 -117.27037589901659,32.8149807680117,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 287 - Checkpoint 286 to Checkpoint 287</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.27037589901659,32.8149807680117,0 -117.26985,32.81415,0 -117.26974,32.81407,0 -117.26962,32.81389,0 -117.26966,32.81382,0 -117.26963,32.81374,0 -117.26955,32.81369,0 -117.26951,32.81368,0 -117.26931,32.81344,0 -117.26929,32.81332,0 -117.26842,32.81248,0 -117.26836,32.81247,0 -117.26837,32.8124,0 -117.26829,32.81231,0 -117.26819,32.81229,0 -117.26809,32.81227,0 -117.26797,32.81217,0 -117.26792,32.81205,0 -117.26719,32.81143,0 -117.26705,32.81139,0 -117.26684,32.81119,0 -117.26684,32.8111,0 -117.2668,32.81105,0 -117.26651,32.81085,0 -117.26621,32.81058,0 -117.26613,32.81048,0 -117.26506956941593,32.80958397725841,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 288 - Checkpoint 287 to Checkpoint 288</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.26506956941593,32.80958397725841,0 -117.26484,32.80939,0 -117.26468,32.80929,0 -117.26346,32.80827,0 -117.26316,32.80808,0 -117.26285,32.80796,0 -117.26277,32.80795,0 -117.26262,32.80795,0 -117.26239,32.8079,0 -117.26198,32.80787,0 -117.26164,32.80776,0 -117.26145,32.80765,0 -117.26093,32.80725,0 -117.25972,32.80622,0 -117.25938,32.80587,0 -117.25888,32.8053,0 -117.25868535559744,32.805040474129925,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 289 - Checkpoint 288 to Checkpoint 289</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.25868535559744,32.805040474129925,0 -117.25864,32.80498,0 -117.25865,32.80497,0 -117.25856,32.80483,0 -117.25847,32.80488,0 -117.25841,32.80485,0 -117.25819,32.80485,0 -117.25822,32.80493,0 -117.25824,32.80493,0 -117.25822,32.80493,0 -117.25819,32.80485,0 -117.25816,32.80485,0 -117.25801,32.80443,0 -117.25623063153273,32.79862609133449,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 290 - Checkpoint 289 to Checkpoint 290</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.25623063153273,32.79862609133449,0 -117.2561,32.7982,0 -117.25604,32.7981,0 -117.25602,32.79804,0 -117.256,32.79788,0 -117.25569,32.79691,0 -117.2556,32.79657,0 -117.25491,32.79665,0 -117.25424,32.79678,0 -117.25371,32.79691,0 -117.253,32.79706,0 -117.25248,32.79719,0 -117.25228,32.7972,0 -117.25187,32.79729,0 -117.25168,32.79736,0 -117.25029,32.79767,0 -117.25018,32.79768,0 -117.25007,32.79769,0 -117.24989,32.79775,0 -117.24971384400439,32.79778866838928,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Segment 291 - Checkpoint 290 to Checkpoint 291</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentGreen</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24971384400439,32.79778866838928,0 -117.24825,32.79811,0 -117.24806,32.79815,0 -117.24733,32.79831,0 -117.24721,32.79791,0 -117.24173959374706,32.799114887906256,0</coordinates></LineString>
-      </Placemark>
-      <Placemark><name>Final segment - Checkpoint 291 to Finish</name>
-        <description>Editable half-mile runner-route segment. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
-        <styleUrl>#segmentBlue</styleUrl>
-        <LineString><tessellate>1</tessellate><coordinates>-117.24173959374706,32.799114887906256,0 -117.23704,32.80015,0 -117.2372,32.80068,0 -117.2356,32.80104,0</coordinates></LineString>
+        <LineString><tessellate>1</tessellate><coordinates>-117.2391792254811,32.799678823492854,0 -117.23704,32.80015,0 -117.2372,32.80068,0 -117.2356,32.80104,0</coordinates></LineString>
       </Placemark>
   </Folder></Document></kml>

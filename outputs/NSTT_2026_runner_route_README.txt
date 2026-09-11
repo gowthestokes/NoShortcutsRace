@@ -8,14 +8,14 @@ Files
 This export is runner-only: no vehicle routing, support-car markers, runner assignments, pod blocks, or handoffs are included.
 
 Checkpoints
-- Checkpoint 001 through Checkpoint 291: one point at each completed half-mile runner segment, measured along the exported route geometry.
+- Checkpoint 001 through Checkpoint 267: one point at each completed half-mile runner segment, measured along the exported route geometry.
 - Start - Santa Monica Pier and Finish - Milestone Running Shop: course endpoints.
 - The final partial segment has no separate checkpoint; the finish point is its endpoint.
 
 Editable route lines
 - Each alternating green/blue line is an individual half-mile runner segment, named Segment 001, Segment 002, and so on.
 - Delete or redraw one line in Google My Maps without changing the remaining route segments or checkpoints.
-- The San Mateo Point to Oceanside section follows the Old Pacific Highway corridor; review access and safety before race day.
+- The Segment 162 to Oceanside Chevron transfer follows I-5 to Exit 54C in this runner-layer planning map; review safety and authorization before race day.
 
 Google My Maps import
 1. Go to https://www.google.com/mymaps and create a new map.

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="NSTT course planner" xmlns="http://www.topografix.com/GPX/1/1"><metadata><name>NSTT 2026 Runner Route with Half-Mile Checkpoints</name><desc>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed half-mile route segment and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The San Mateo Point to Oceanside section is pinned to the Old Pacific Highway corridor rather than an I-5 shortcut; field-verify access and safety before race day.</desc></metadata>
+<gpx version="1.1" creator="NSTT course planner" xmlns="http://www.topografix.com/GPX/1/1"><metadata><name>NSTT 2026 Runner Route with Half-Mile Checkpoints</name><desc>Runner-only draft course for the No Shortcuts Time Trial (Santa Monica to San Diego, 23 Oct 2026). Built from the organizer's published runner turn list. It includes one checkpoint at each completed half-mile route segment and intentionally excludes vehicle logistics, relay assignments, and handoffs. Important: validate the LA River Trail and coastal portions against the organizer's notes; this is a planning map, not a safety or navigation authority. The PCH exit is interpreted as Ocean Blue Environmental at 925 W Esther Street in Long Beach. The line from Ocean Blue to Del Prado is pinned to the organizer's Highway 1/PCH corridor and is a road-alignment reference, not a pedestrian-safety validation. The Segment 162 to Oceanside Chevron transfer follows I-5 to Exit 54C as directed by the supplied route sheet; it is not runner-safety validation and must be field-reviewed before race day.</desc></metadata>
   <wpt lat="34.007585667490744" lon="-118.49048460683026"><name>Checkpoint 001</name><desc>Completed half-mile Segment 001.</desc></wpt>
   <wpt lat="34.002970147229455" lon="-118.4847131516026"><name>Checkpoint 002</name><desc>Completed half-mile Segment 002.</desc></wpt>
   <wpt lat="33.99748623118127" lon="-118.47921924625831"><name>Checkpoint 003</name><desc>Completed half-mile Segment 003.</desc></wpt>
@@ -160,137 +160,113 @@
   <wpt lat="33.42446296084928" lon="-117.60991554593708"><name>Checkpoint 158</name><desc>Completed half-mile Segment 158.</desc></wpt>
   <wpt lat="33.418429712190395" lon="-117.60645751787277"><name>Checkpoint 159</name><desc>Completed half-mile Segment 159.</desc></wpt>
   <wpt lat="33.41234369625395" lon="-117.6021449536024"><name>Checkpoint 160</name><desc>Completed half-mile Segment 160.</desc></wpt>
-  <wpt lat="33.40600131067823" lon="-117.59897373269524"><name>Checkpoint 161</name><desc>Completed half-mile Segment 161.</desc></wpt>
-  <wpt lat="33.399337523684" lon="-117.59559979662657"><name>Checkpoint 162</name><desc>Completed half-mile Segment 162.</desc></wpt>
-  <wpt lat="33.39319405735848" lon="-117.59207299045308"><name>Checkpoint 163</name><desc>Completed half-mile Segment 163.</desc></wpt>
-  <wpt lat="33.38709208205159" lon="-117.58747299942992"><name>Checkpoint 164</name><desc>Completed half-mile Segment 164.</desc></wpt>
-  <wpt lat="33.38336454260074" lon="-117.5803579752688"><name>Checkpoint 165</name><desc>Completed half-mile Segment 165.</desc></wpt>
-  <wpt lat="33.380715275355215" lon="-117.57232521137759"><name>Checkpoint 166</name><desc>Completed half-mile Segment 166.</desc></wpt>
-  <wpt lat="33.37724441447795" lon="-117.56480275024957"><name>Checkpoint 167</name><desc>Completed half-mile Segment 167.</desc></wpt>
-  <wpt lat="33.37234163468828" lon="-117.55884979718383"><name>Checkpoint 168</name><desc>Completed half-mile Segment 168.</desc></wpt>
-  <wpt lat="33.368715539956476" lon="-117.55139761967204"><name>Checkpoint 169</name><desc>Completed half-mile Segment 169.</desc></wpt>
-  <wpt lat="33.36447203277051" lon="-117.5444423094598"><name>Checkpoint 170</name><desc>Completed half-mile Segment 170.</desc></wpt>
-  <wpt lat="33.35996681134408" lon="-117.53767728402507"><name>Checkpoint 171</name><desc>Completed half-mile Segment 171.</desc></wpt>
-  <wpt lat="33.355343868323914" lon="-117.53108460906968"><name>Checkpoint 172</name><desc>Completed half-mile Segment 172.</desc></wpt>
-  <wpt lat="33.35049410352923" lon="-117.52479326117626"><name>Checkpoint 173</name><desc>Completed half-mile Segment 173.</desc></wpt>
-  <wpt lat="33.34614931509542" lon="-117.51794152468958"><name>Checkpoint 174</name><desc>Completed half-mile Segment 174.</desc></wpt>
-  <wpt lat="33.34158734722312" lon="-117.5112993203724"><name>Checkpoint 175</name><desc>Completed half-mile Segment 175.</desc></wpt>
-  <wpt lat="33.33682288862835" lon="-117.50481254146038"><name>Checkpoint 176</name><desc>Completed half-mile Segment 176.</desc></wpt>
-  <wpt lat="33.33634257029619" lon="-117.50416492110013"><name>Checkpoint 177</name><desc>Completed half-mile Segment 177.</desc></wpt>
-  <wpt lat="33.341115376136244" lon="-117.51064191587064"><name>Checkpoint 178</name><desc>Completed half-mile Segment 178.</desc></wpt>
-  <wpt lat="33.34575921819801" lon="-117.51721314118235"><name>Checkpoint 179</name><desc>Completed half-mile Segment 179.</desc></wpt>
-  <wpt lat="33.34995039935028" lon="-117.52422470540462"><name>Checkpoint 180</name><desc>Completed half-mile Segment 180.</desc></wpt>
-  <wpt lat="33.354956769195056" lon="-117.53036248847701"><name>Checkpoint 181</name><desc>Completed half-mile Segment 181.</desc></wpt>
-  <wpt lat="33.35950555685596" lon="-117.53700508756025"><name>Checkpoint 182</name><desc>Completed half-mile Segment 182.</desc></wpt>
-  <wpt lat="33.364079143484574" lon="-117.54368054883736"><name>Checkpoint 183</name><desc>Completed half-mile Segment 183.</desc></wpt>
-  <wpt lat="33.368440316022436" lon="-117.55058846204211"><name>Checkpoint 184</name><desc>Completed half-mile Segment 184.</desc></wpt>
-  <wpt lat="33.37223335173787" lon="-117.55795863847369"><name>Checkpoint 185</name><desc>Completed half-mile Segment 185.</desc></wpt>
-  <wpt lat="33.376764629599464" lon="-117.56419754798472"><name>Checkpoint 186</name><desc>Completed half-mile Segment 186.</desc></wpt>
-  <wpt lat="33.3805238478094" lon="-117.57145113930022"><name>Checkpoint 187</name><desc>Completed half-mile Segment 187.</desc></wpt>
-  <wpt lat="33.38331323556838" lon="-117.57943457266684"><name>Checkpoint 188</name><desc>Completed half-mile Segment 188.</desc></wpt>
-  <wpt lat="33.38404639486617" lon="-117.57979802354266"><name>Checkpoint 189</name><desc>Completed half-mile Segment 189.</desc></wpt>
-  <wpt lat="33.380983648199795" lon="-117.57194615053469"><name>Checkpoint 190</name><desc>Completed half-mile Segment 190.</desc></wpt>
-  <wpt lat="33.37755889367943" lon="-117.56435884651582"><name>Checkpoint 191</name><desc>Completed half-mile Segment 191.</desc></wpt>
-  <wpt lat="33.37300715878379" lon="-117.55768159304152"><name>Checkpoint 192</name><desc>Completed half-mile Segment 192.</desc></wpt>
-  <wpt lat="33.36903676816588" lon="-117.5504370414401"><name>Checkpoint 193</name><desc>Completed half-mile Segment 193.</desc></wpt>
-  <wpt lat="33.36472526390341" lon="-117.54349114121167"><name>Checkpoint 194</name><desc>Completed half-mile Segment 194.</desc></wpt>
-  <wpt lat="33.3601371014875" lon="-117.53679123235396"><name>Checkpoint 195</name><desc>Completed half-mile Segment 195.</desc></wpt>
-  <wpt lat="33.3555489390716" lon="-117.53009132349625"><name>Checkpoint 196</name><desc>Completed half-mile Segment 196.</desc></wpt>
-  <wpt lat="33.3509607766557" lon="-117.52339141463854"><name>Checkpoint 197</name><desc>Completed half-mile Segment 197.</desc></wpt>
-  <wpt lat="33.34633144617072" lon="-117.5167333313376"><name>Checkpoint 198</name><desc>Completed half-mile Segment 198.</desc></wpt>
-  <wpt lat="33.34158194325785" lon="-117.51019784641069"><name>Checkpoint 199</name><desc>Completed half-mile Segment 199.</desc></wpt>
-  <wpt lat="33.3368281925545" lon="-117.50366727631382"><name>Checkpoint 200</name><desc>Completed half-mile Segment 200.</desc></wpt>
-  <wpt lat="33.332074441851155" lon="-117.49713670621693"><name>Checkpoint 201</name><desc>Completed half-mile Segment 201.</desc></wpt>
-  <wpt lat="33.32732069114781" lon="-117.49060613612005"><name>Checkpoint 202</name><desc>Completed half-mile Segment 202.</desc></wpt>
-  <wpt lat="33.32246203578513" lon="-117.48420121155405"><name>Checkpoint 203</name><desc>Completed half-mile Segment 203.</desc></wpt>
-  <wpt lat="33.31553107771407" lon="-117.482292246814"><name>Checkpoint 204</name><desc>Completed half-mile Segment 204.</desc></wpt>
-  <wpt lat="33.31158592072289" lon="-117.48027820413152"><name>Checkpoint 205</name><desc>Completed half-mile Segment 205.</desc></wpt>
-  <wpt lat="33.306483623814614" lon="-117.47413903135657"><name>Checkpoint 206</name><desc>Completed half-mile Segment 206.</desc></wpt>
-  <wpt lat="33.30139917869587" lon="-117.46797780904431"><name>Checkpoint 207</name><desc>Completed half-mile Segment 207.</desc></wpt>
-  <wpt lat="33.29631473357712" lon="-117.46181658673207"><name>Checkpoint 208</name><desc>Completed half-mile Segment 208.</desc></wpt>
-  <wpt lat="33.290666511673905" lon="-117.45648147467018"><name>Checkpoint 209</name><desc>Completed half-mile Segment 209.</desc></wpt>
-  <wpt lat="33.28455651587858" lon="-117.45184296448265"><name>Checkpoint 210</name><desc>Completed half-mile Segment 210.</desc></wpt>
-  <wpt lat="33.27844652008324" lon="-117.4472044542951"><name>Checkpoint 211</name><desc>Completed half-mile Segment 211.</desc></wpt>
-  <wpt lat="33.272400789323505" lon="-117.4424607893235"><name>Checkpoint 212</name><desc>Completed half-mile Segment 212.</desc></wpt>
-  <wpt lat="33.26758421331331" lon="-117.43600329499455"><name>Checkpoint 213</name><desc>Completed half-mile Segment 213.</desc></wpt>
-  <wpt lat="33.262351084675956" lon="-117.43010035746371"><name>Checkpoint 214</name><desc>Completed half-mile Segment 214.</desc></wpt>
-  <wpt lat="33.256318655670135" lon="-117.42532025089737"><name>Checkpoint 215</name><desc>Completed half-mile Segment 215.</desc></wpt>
-  <wpt lat="33.250286226664315" lon="-117.42054014433101"><name>Checkpoint 216</name><desc>Completed half-mile Segment 216.</desc></wpt>
-  <wpt lat="33.24383787901185" lon="-117.4167159503695"><name>Checkpoint 217</name><desc>Completed half-mile Segment 217.</desc></wpt>
-  <wpt lat="33.238672313447395" lon="-117.41091861833014"><name>Checkpoint 218</name><desc>Completed half-mile Segment 218.</desc></wpt>
-  <wpt lat="33.23362992151973" lon="-117.4047455620771"><name>Checkpoint 219</name><desc>Completed half-mile Segment 219.</desc></wpt>
-  <wpt lat="33.22833914626264" lon="-117.398843204091"><name>Checkpoint 220</name><desc>Completed half-mile Segment 220.</desc></wpt>
-  <wpt lat="33.222984002210325" lon="-117.3930304847403"><name>Checkpoint 221</name><desc>Completed half-mile Segment 221.</desc></wpt>
-  <wpt lat="33.21612670490885" lon="-117.39041923389202"><name>Checkpoint 222</name><desc>Completed half-mile Segment 222.</desc></wpt>
-  <wpt lat="33.2093319265235" lon="-117.38836446195852"><name>Checkpoint 223</name><desc>Completed half-mile Segment 223.</desc></wpt>
-  <wpt lat="33.20410921859177" lon="-117.38442574834694"><name>Checkpoint 224</name><desc>Completed half-mile Segment 224.</desc></wpt>
-  <wpt lat="33.19771352474431" lon="-117.38116968136866"><name>Checkpoint 225</name><desc>Completed half-mile Segment 225.</desc></wpt>
-  <wpt lat="33.19185017815008" lon="-117.37623086444077"><name>Checkpoint 226</name><desc>Completed half-mile Segment 226.</desc></wpt>
-  <wpt lat="33.185962115789316" lon="-117.37135632464101"><name>Checkpoint 227</name><desc>Completed half-mile Segment 227.</desc></wpt>
-  <wpt lat="33.18010708636569" lon="-117.36644022519256"><name>Checkpoint 228</name><desc>Completed half-mile Segment 228.</desc></wpt>
-  <wpt lat="33.17424603764739" lon="-117.36149173121338"><name>Checkpoint 229</name><desc>Completed half-mile Segment 229.</desc></wpt>
-  <wpt lat="33.16855915735543" lon="-117.35649675066261"><name>Checkpoint 230</name><desc>Completed half-mile Segment 230.</desc></wpt>
-  <wpt lat="33.16218591733522" lon="-117.35427459382205"><name>Checkpoint 231</name><desc>Completed half-mile Segment 231.</desc></wpt>
-  <wpt lat="33.1558599193337" lon="-117.35094826613174"><name>Checkpoint 232</name><desc>Completed half-mile Segment 232.</desc></wpt>
-  <wpt lat="33.14950850431547" lon="-117.34706732798999"><name>Checkpoint 233</name><desc>Completed half-mile Segment 233.</desc></wpt>
-  <wpt lat="33.143581866604436" lon="-117.34211944350743"><name>Checkpoint 234</name><desc>Completed half-mile Segment 234.</desc></wpt>
-  <wpt lat="33.13707806018943" lon="-117.33835657490873"><name>Checkpoint 235</name><desc>Completed half-mile Segment 235.</desc></wpt>
-  <wpt lat="33.13071253513795" lon="-117.33430709177308"><name>Checkpoint 236</name><desc>Completed half-mile Segment 236.</desc></wpt>
-  <wpt lat="33.12526972696169" lon="-117.32912881750485"><name>Checkpoint 237</name><desc>Completed half-mile Segment 237.</desc></wpt>
-  <wpt lat="33.118779781636185" lon="-117.32573034786593"><name>Checkpoint 238</name><desc>Completed half-mile Segment 238.</desc></wpt>
-  <wpt lat="33.11209943661785" lon="-117.32246069289224"><name>Checkpoint 239</name><desc>Completed half-mile Segment 239.</desc></wpt>
-  <wpt lat="33.1052999763624" lon="-117.3195482569574"><name>Checkpoint 240</name><desc>Completed half-mile Segment 240.</desc></wpt>
-  <wpt lat="33.09853507327172" lon="-117.31672132244803"><name>Checkpoint 241</name><desc>Completed half-mile Segment 241.</desc></wpt>
-  <wpt lat="33.091790931004326" lon="-117.31370624628819"><name>Checkpoint 242</name><desc>Completed half-mile Segment 242.</desc></wpt>
-  <wpt lat="33.08495001091463" lon="-117.31097351777171"><name>Checkpoint 243</name><desc>Completed half-mile Segment 243.</desc></wpt>
-  <wpt lat="33.07871899873707" lon="-117.30689969962111"><name>Checkpoint 244</name><desc>Completed half-mile Segment 244.</desc></wpt>
-  <wpt lat="33.0717488014656" lon="-117.30459924314962"><name>Checkpoint 245</name><desc>Completed half-mile Segment 245.</desc></wpt>
-  <wpt lat="33.0647828256196" lon="-117.3022653698786"><name>Checkpoint 246</name><desc>Completed half-mile Segment 246.</desc></wpt>
-  <wpt lat="33.05809906056681" lon="-117.2990866712951"><name>Checkpoint 247</name><desc>Completed half-mile Segment 247.</desc></wpt>
-  <wpt lat="33.051759789613136" lon="-117.29501390053376"><name>Checkpoint 248</name><desc>Completed half-mile Segment 248.</desc></wpt>
-  <wpt lat="33.04478960551861" lon="-117.29360303399562"><name>Checkpoint 249</name><desc>Completed half-mile Segment 249.</desc></wpt>
-  <wpt lat="33.03777771108768" lon="-117.2927620768314"><name>Checkpoint 250</name><desc>Completed half-mile Segment 250.</desc></wpt>
-  <wpt lat="33.03120497863998" lon="-117.2893290145199"><name>Checkpoint 251</name><desc>Completed half-mile Segment 251.</desc></wpt>
-  <wpt lat="33.024678365682625" lon="-117.28561509215464"><name>Checkpoint 252</name><desc>Completed half-mile Segment 252.</desc></wpt>
-  <wpt lat="33.01822341480151" lon="-117.28175113826717"><name>Checkpoint 253</name><desc>Completed half-mile Segment 253.</desc></wpt>
-  <wpt lat="33.0113371319969" lon="-117.27917266289485"><name>Checkpoint 254</name><desc>Completed half-mile Segment 254.</desc></wpt>
-  <wpt lat="33.004194789498364" lon="-117.27782258514658"><name>Checkpoint 255</name><desc>Completed half-mile Segment 255.</desc></wpt>
-  <wpt lat="32.99789409412825" lon="-117.27373086013583"><name>Checkpoint 256</name><desc>Completed half-mile Segment 256.</desc></wpt>
-  <wpt lat="32.99101964033345" lon="-117.2713683334958"><name>Checkpoint 257</name><desc>Completed half-mile Segment 257.</desc></wpt>
-  <wpt lat="32.98391443961398" lon="-117.26973203235815"><name>Checkpoint 258</name><desc>Completed half-mile Segment 258.</desc></wpt>
-  <wpt lat="32.97703033172668" lon="-117.26938130891564"><name>Checkpoint 259</name><desc>Completed half-mile Segment 259.</desc></wpt>
-  <wpt lat="32.96987346952374" lon="-117.26812628237603"><name>Checkpoint 260</name><desc>Completed half-mile Segment 260.</desc></wpt>
-  <wpt lat="32.96281046966519" lon="-117.26725002972564"><name>Checkpoint 261</name><desc>Completed half-mile Segment 261.</desc></wpt>
-  <wpt lat="32.958061142915426" lon="-117.26463362339915"><name>Checkpoint 262</name><desc>Completed half-mile Segment 262.</desc></wpt>
-  <wpt lat="32.95131334674049" lon="-117.2623135158428"><name>Checkpoint 263</name><desc>Completed half-mile Segment 263.</desc></wpt>
-  <wpt lat="32.944344146303926" lon="-117.26041022270333"><name>Checkpoint 264</name><desc>Completed half-mile Segment 264.</desc></wpt>
-  <wpt lat="32.937209136895426" lon="-117.2612152384506"><name>Checkpoint 265</name><desc>Completed half-mile Segment 265.</desc></wpt>
-  <wpt lat="32.93007239080142" lon="-117.25996024666621"><name>Checkpoint 266</name><desc>Completed half-mile Segment 266.</desc></wpt>
-  <wpt lat="32.92456036900937" lon="-117.2547923850255"><name>Checkpoint 267</name><desc>Completed half-mile Segment 267.</desc></wpt>
-  <wpt lat="32.91954121213542" lon="-117.24914038889149"><name>Checkpoint 268</name><desc>Completed half-mile Segment 268.</desc></wpt>
-  <wpt lat="32.91314858584259" lon="-117.24531479883066"><name>Checkpoint 269</name><desc>Completed half-mile Segment 269.</desc></wpt>
-  <wpt lat="32.90603911510753" lon="-117.24376949660095"><name>Checkpoint 270</name><desc>Completed half-mile Segment 270.</desc></wpt>
-  <wpt lat="32.89890868222968" lon="-117.24234673237459"><name>Checkpoint 271</name><desc>Completed half-mile Segment 271.</desc></wpt>
-  <wpt lat="32.89188213687646" lon="-117.24065401805625"><name>Checkpoint 272</name><desc>Completed half-mile Segment 272.</desc></wpt>
-  <wpt lat="32.885527403891516" lon="-117.2440057772076"><name>Checkpoint 273</name><desc>Completed half-mile Segment 273.</desc></wpt>
-  <wpt lat="32.87829274558464" lon="-117.24406185813663"><name>Checkpoint 274</name><desc>Completed half-mile Segment 274.</desc></wpt>
-  <wpt lat="32.871669479928606" lon="-117.24620442060689"><name>Checkpoint 275</name><desc>Completed half-mile Segment 275.</desc></wpt>
-  <wpt lat="32.87069639691784" lon="-117.25157308825374"><name>Checkpoint 276</name><desc>Completed half-mile Segment 276.</desc></wpt>
-  <wpt lat="32.863695786425055" lon="-117.25306495144211"><name>Checkpoint 277</name><desc>Completed half-mile Segment 277.</desc></wpt>
-  <wpt lat="32.85651464622046" lon="-117.25372127455985"><name>Checkpoint 278</name><desc>Completed half-mile Segment 278.</desc></wpt>
-  <wpt lat="32.85011505443254" lon="-117.25599030259899"><name>Checkpoint 279</name><desc>Completed half-mile Segment 279.</desc></wpt>
-  <wpt lat="32.84830431250236" lon="-117.26410965808034"><name>Checkpoint 280</name><desc>Completed half-mile Segment 280.</desc></wpt>
-  <wpt lat="32.84400982589199" lon="-117.27071073933624"><name>Checkpoint 281</name><desc>Completed half-mile Segment 281.</desc></wpt>
-  <wpt lat="32.83844788067107" lon="-117.27311760021136"><name>Checkpoint 282</name><desc>Completed half-mile Segment 282.</desc></wpt>
-  <wpt lat="32.832656888959754" lon="-117.27274573514013"><name>Checkpoint 283</name><desc>Completed half-mile Segment 283.</desc></wpt>
-  <wpt lat="32.82796775623433" lon="-117.2769068016894"><name>Checkpoint 284</name><desc>Completed half-mile Segment 284.</desc></wpt>
-  <wpt lat="32.8213167810766" lon="-117.27430241771489"><name>Checkpoint 285</name><desc>Completed half-mile Segment 285.</desc></wpt>
-  <wpt lat="32.8149807680117" lon="-117.27037589901659"><name>Checkpoint 286</name><desc>Completed half-mile Segment 286.</desc></wpt>
-  <wpt lat="32.80958397725841" lon="-117.26506956941593"><name>Checkpoint 287</name><desc>Completed half-mile Segment 287.</desc></wpt>
-  <wpt lat="32.805040474129925" lon="-117.25868535559744"><name>Checkpoint 288</name><desc>Completed half-mile Segment 288.</desc></wpt>
-  <wpt lat="32.79862609133449" lon="-117.25623063153273"><name>Checkpoint 289</name><desc>Completed half-mile Segment 289.</desc></wpt>
-  <wpt lat="32.79778866838928" lon="-117.24971384400439"><name>Checkpoint 290</name><desc>Completed half-mile Segment 290.</desc></wpt>
-  <wpt lat="32.799114887906256" lon="-117.24173959374706"><name>Checkpoint 291</name><desc>Completed half-mile Segment 291.</desc></wpt>
+  <wpt lat="33.40750333711583" lon="-117.59947041420959"><name>Checkpoint 161</name><desc>Completed half-mile Segment 161.</desc></wpt>
+  <wpt lat="33.40083178742627" lon="-117.59611242202521"><name>Checkpoint 162</name><desc>Completed half-mile Segment 162.</desc></wpt>
+  <wpt lat="33.39428336596476" lon="-117.59244460249597"><name>Checkpoint 163</name><desc>Completed half-mile Segment 163.</desc></wpt>
+  <wpt lat="33.38823707598056" lon="-117.58769412756091"><name>Checkpoint 164</name><desc>Completed half-mile Segment 164.</desc></wpt>
+  <wpt lat="33.38433021797155" lon="-117.58050407731943"><name>Checkpoint 165</name><desc>Completed half-mile Segment 165.</desc></wpt>
+  <wpt lat="33.38126354723062" lon="-117.5726543511283"><name>Checkpoint 166</name><desc>Completed half-mile Segment 166.</desc></wpt>
+  <wpt lat="33.37799003687628" lon="-117.56494664202941"><name>Checkpoint 167</name><desc>Completed half-mile Segment 167.</desc></wpt>
+  <wpt lat="33.373366101750634" lon="-117.55833653636965"><name>Checkpoint 168</name><desc>Completed half-mile Segment 168.</desc></wpt>
+  <wpt lat="33.36939571113272" lon="-117.55109198476823"><name>Checkpoint 169</name><desc>Completed half-mile Segment 169.</desc></wpt>
+  <wpt lat="33.365140056498994" lon="-117.54409684613958"><name>Checkpoint 170</name><desc>Completed half-mile Segment 170.</desc></wpt>
+  <wpt lat="33.360551894083095" lon="-117.53739693728186"><name>Checkpoint 171</name><desc>Completed half-mile Segment 171.</desc></wpt>
+  <wpt lat="33.35596373166719" lon="-117.53069702842414"><name>Checkpoint 172</name><desc>Completed half-mile Segment 172.</desc></wpt>
+  <wpt lat="33.35137556925129" lon="-117.52399711956643"><name>Checkpoint 173</name><desc>Completed half-mile Segment 173.</desc></wpt>
+  <wpt lat="33.34676050001009" lon="-117.517324547258"><name>Checkpoint 174</name><desc>Completed half-mile Segment 174.</desc></wpt>
+  <wpt lat="33.34201170585435" lon="-117.51078824227632"><name>Checkpoint 175</name><desc>Completed half-mile Segment 175.</desc></wpt>
+  <wpt lat="33.337257955151" lon="-117.50425767217943"><name>Checkpoint 176</name><desc>Completed half-mile Segment 176.</desc></wpt>
+  <wpt lat="33.33250420444766" lon="-117.49772710208256"><name>Checkpoint 177</name><desc>Completed half-mile Segment 177.</desc></wpt>
+  <wpt lat="33.327750453744315" lon="-117.49119653198568"><name>Checkpoint 178</name><desc>Completed half-mile Segment 178.</desc></wpt>
+  <wpt lat="33.322964924269066" lon="-117.48470161189506"><name>Checkpoint 179</name><desc>Completed half-mile Segment 179.</desc></wpt>
+  <wpt lat="33.31618300029617" lon="-117.4823578490864"><name>Checkpoint 180</name><desc>Completed half-mile Segment 180.</desc></wpt>
+  <wpt lat="33.31000534988022" lon="-117.47840549491697"><name>Checkpoint 181</name><desc>Completed half-mile Segment 181.</desc></wpt>
+  <wpt lat="33.30492075529564" lon="-117.47224444565391"><name>Checkpoint 182</name><desc>Completed half-mile Segment 182.</desc></wpt>
+  <wpt lat="33.29983616071106" lon="-117.46608339639087"><name>Checkpoint 183</name><desc>Completed half-mile Segment 183.</desc></wpt>
+  <wpt lat="33.29475156612648" lon="-117.45992234712783"><name>Checkpoint 184</name><desc>Completed half-mile Segment 184.</desc></wpt>
+  <wpt lat="33.28878803430613" lon="-117.45505539571704"><name>Checkpoint 185</name><desc>Completed half-mile Segment 185.</desc></wpt>
+  <wpt lat="33.282678038510795" lon="-117.4504168855295"><name>Checkpoint 186</name><desc>Completed half-mile Segment 186.</desc></wpt>
+  <wpt lat="33.27656804271546" lon="-117.44577837534197"><name>Checkpoint 187</name><desc>Completed half-mile Segment 187.</desc></wpt>
+  <wpt lat="33.27089850309769" lon="-117.44049963961145"><name>Checkpoint 188</name><desc>Completed half-mile Segment 188.</desc></wpt>
+  <wpt lat="33.26611268348589" lon="-117.4340076162455"><name>Checkpoint 189</name><desc>Completed half-mile Segment 189.</desc></wpt>
+  <wpt lat="33.26049645469915" lon="-117.42863074565034"><name>Checkpoint 190</name><desc>Completed half-mile Segment 190.</desc></wpt>
+  <wpt lat="33.25446402569333" lon="-117.423850639084"><name>Checkpoint 191</name><desc>Completed half-mile Segment 191.</desc></wpt>
+  <wpt lat="33.248430505646496" lon="-117.41907254015082"><name>Checkpoint 192</name><desc>Completed half-mile Segment 192.</desc></wpt>
+  <wpt lat="33.24187952724868" lon="-117.41547774655271"><name>Checkpoint 193</name><desc>Completed half-mile Segment 193.</desc></wpt>
+  <wpt lat="33.23727928093263" lon="-117.40885221008352"><name>Checkpoint 194</name><desc>Completed half-mile Segment 194.</desc></wpt>
+  <wpt lat="33.232007812839655" lon="-117.40292508406928"><name>Checkpoint 195</name><desc>Completed half-mile Segment 195.</desc></wpt>
+  <wpt lat="33.226706641330274" lon="-117.39703619792817"><name>Checkpoint 196</name><desc>Completed half-mile Segment 196.</desc></wpt>
+  <wpt lat="33.22098326968771" lon="-117.39189673627611"><name>Checkpoint 197</name><desc>Completed half-mile Segment 197.</desc></wpt>
+  <wpt lat="33.21400178215611" lon="-117.38964883308549"><name>Checkpoint 198</name><desc>Completed half-mile Segment 198.</desc></wpt>
+  <wpt lat="33.208606075335844" lon="-117.3868109939577"><name>Checkpoint 199</name><desc>Completed half-mile Segment 199.</desc></wpt>
+  <wpt lat="33.201891630515284" lon="-117.38438742203493"><name>Checkpoint 200</name><desc>Completed half-mile Segment 200.</desc></wpt>
+  <wpt lat="33.19590175904726" lon="-117.37965236142911"><name>Checkpoint 201</name><desc>Completed half-mile Segment 201.</desc></wpt>
+  <wpt lat="33.190032085684855" lon="-117.37469847222009"><name>Checkpoint 202</name><desc>Completed half-mile Segment 202.</desc></wpt>
+  <wpt lat="33.18414267204474" lon="-117.36982633785581"><name>Checkpoint 203</name><desc>Completed half-mile Segment 203.</desc></wpt>
+  <wpt lat="33.17827837412795" lon="-117.36492860639538"><name>Checkpoint 204</name><desc>Completed half-mile Segment 204.</desc></wpt>
+  <wpt lat="33.172425184797326" lon="-117.35996434915234"><name>Checkpoint 205</name><desc>Completed half-mile Segment 205.</desc></wpt>
+  <wpt lat="33.16673802605274" lon="-117.35497085333057"><name>Checkpoint 206</name><desc>Completed half-mile Segment 206.</desc></wpt>
+  <wpt lat="33.16030328042049" lon="-117.35287032435933"><name>Checkpoint 207</name><desc>Completed half-mile Segment 207.</desc></wpt>
+  <wpt lat="33.15377157548203" lon="-117.35021094231472"><name>Checkpoint 208</name><desc>Completed half-mile Segment 208.</desc></wpt>
+  <wpt lat="33.1476559716148" lon="-117.34559670404848"><name>Checkpoint 209</name><desc>Completed half-mile Segment 209.</desc></wpt>
+  <wpt lat="33.14163347645031" lon="-117.34084341204768"><name>Checkpoint 210</name><desc>Completed half-mile Segment 210.</desc></wpt>
+  <wpt lat="33.13502244784085" lon="-117.33734180128046"><name>Checkpoint 211</name><desc>Completed half-mile Segment 211.</desc></wpt>
+  <wpt lat="33.128800510804005" lon="-117.33295880627544"><name>Checkpoint 212</name><desc>Completed half-mile Segment 212.</desc></wpt>
+  <wpt lat="33.12342994369763" lon="-117.32787736303575"><name>Checkpoint 213</name><desc>Completed half-mile Segment 213.</desc></wpt>
+  <wpt lat="33.11675448863494" lon="-117.32463079513576"><name>Checkpoint 214</name><desc>Completed half-mile Segment 214.</desc></wpt>
+  <wpt lat="33.1099910787003" lon="-117.3216125029254"><name>Checkpoint 215</name><desc>Completed half-mile Segment 215.</desc></wpt>
+  <wpt lat="33.10320977706977" lon="-117.31863965159627"><name>Checkpoint 216</name><desc>Completed half-mile Segment 216.</desc></wpt>
+  <wpt lat="33.09642284952983" lon="-117.31589882156945"><name>Checkpoint 217</name><desc>Completed half-mile Segment 217.</desc></wpt>
+  <wpt lat="33.08966337737525" lon="-117.31296699707771"><name>Checkpoint 218</name><desc>Completed half-mile Segment 218.</desc></wpt>
+  <wpt lat="33.08322056771112" lon="-117.3093107563569"><name>Checkpoint 219</name><desc>Completed half-mile Segment 219.</desc></wpt>
+  <wpt lat="33.07657070869581" lon="-117.306209346931"><name>Checkpoint 220</name><desc>Completed half-mile Segment 220.</desc></wpt>
+  <wpt lat="33.069607452239985" lon="-117.30388411433063"><name>Checkpoint 221</name><desc>Completed half-mile Segment 221.</desc></wpt>
+  <wpt lat="33.06265100962792" lon="-117.30154800366778"><name>Checkpoint 222</name><desc>Completed half-mile Segment 222.</desc></wpt>
+  <wpt lat="33.05616422392493" lon="-117.29786477780779"><name>Checkpoint 223</name><desc>Completed half-mile Segment 223.</desc></wpt>
+  <wpt lat="33.04966281697118" lon="-117.29420947735693"><name>Checkpoint 224</name><desc>Completed half-mile Segment 224.</desc></wpt>
+  <wpt lat="33.04265543842012" lon="-117.29327466801844"><name>Checkpoint 225</name><desc>Completed half-mile Segment 225.</desc></wpt>
+  <wpt lat="33.0358089127406" lon="-117.29168584611104"><name>Checkpoint 226</name><desc>Completed half-mile Segment 226.</desc></wpt>
+  <wpt lat="33.02916244852424" lon="-117.28827694564357"><name>Checkpoint 227</name><desc>Completed half-mile Segment 227.</desc></wpt>
+  <wpt lat="33.022700315633614" lon="-117.28440041627844"><name>Checkpoint 228</name><desc>Completed half-mile Segment 228.</desc></wpt>
+  <wpt lat="33.01612586263076" lon="-117.28088307193177"><name>Checkpoint 229</name><desc>Completed half-mile Segment 229.</desc></wpt>
+  <wpt lat="33.009148517688864" lon="-117.2786960846782"><name>Checkpoint 230</name><desc>Completed half-mile Segment 230.</desc></wpt>
+  <wpt lat="33.00213288831406" lon="-117.27685365933601"><name>Checkpoint 231</name><desc>Completed half-mile Segment 231.</desc></wpt>
+  <wpt lat="32.99583110877053" lon="-117.27273757088952"><name>Checkpoint 232</name><desc>Completed half-mile Segment 232.</desc></wpt>
+  <wpt lat="32.988836514017365" lon="-117.27085709505471"><name>Checkpoint 233</name><desc>Completed half-mile Segment 233.</desc></wpt>
+  <wpt lat="32.98173621460932" lon="-117.26919199105919"><name>Checkpoint 234</name><desc>Completed half-mile Segment 234.</desc></wpt>
+  <wpt lat="32.974826637847734" lon="-117.26902262404029"><name>Checkpoint 235</name><desc>Completed half-mile Segment 235.</desc></wpt>
+  <wpt lat="32.967803347470124" lon="-117.26772809927718"><name>Checkpoint 236</name><desc>Completed half-mile Segment 236.</desc></wpt>
+  <wpt lat="32.96066414598791" lon="-117.2675641459879"><name>Checkpoint 237</name><desc>Completed half-mile Segment 237.</desc></wpt>
+  <wpt lat="32.95596217623614" lon="-117.26377968647918"><name>Checkpoint 238</name><desc>Completed half-mile Segment 238.</desc></wpt>
+  <wpt lat="32.949191557691385" lon="-117.26151610038268"><name>Checkpoint 239</name><desc>Completed half-mile Segment 239.</desc></wpt>
+  <wpt lat="32.94220757422176" lon="-117.26112548041323"><name>Checkpoint 240</name><desc>Completed half-mile Segment 240.</desc></wpt>
+  <wpt lat="32.93502402144834" lon="-117.26071653342363"><name>Checkpoint 241</name><desc>Completed half-mile Segment 241.</desc></wpt>
+  <wpt lat="32.928000494565275" lon="-117.25911723521745"><name>Checkpoint 242</name><desc>Completed half-mile Segment 242.</desc></wpt>
+  <wpt lat="32.92334021868894" lon="-117.25258291274463"><name>Checkpoint 243</name><desc>Completed half-mile Segment 243.</desc></wpt>
+  <wpt lat="32.91742156866563" lon="-117.2483946346054"><name>Checkpoint 244</name><desc>Completed half-mile Segment 244.</desc></wpt>
+  <wpt lat="32.910965167094346" lon="-117.24482709813984"><name>Checkpoint 245</name><desc>Completed half-mile Segment 245.</desc></wpt>
+  <wpt lat="32.903847987545774" lon="-117.24330991687931"><name>Checkpoint 246</name><desc>Completed half-mile Segment 246.</desc></wpt>
+  <wpt lat="32.89672093831883" lon="-117.24188019362134"><name>Checkpoint 247</name><desc>Completed half-mile Segment 247.</desc></wpt>
+  <wpt lat="32.890268519224314" lon="-117.2424409871838"><name>Checkpoint 248</name><desc>Completed half-mile Segment 248.</desc></wpt>
+  <wpt lat="32.883302838196954" lon="-117.24404469401289"><name>Checkpoint 249</name><desc>Completed half-mile Segment 249.</desc></wpt>
+  <wpt lat="32.87607682649887" lon="-117.24385710331237"><name>Checkpoint 250</name><desc>Completed half-mile Segment 250.</desc></wpt>
+  <wpt lat="32.870470344648844" lon="-117.24816586214047"><name>Checkpoint 251</name><desc>Completed half-mile Segment 251.</desc></wpt>
+  <wpt lat="32.86849229970883" lon="-117.25191860855924"><name>Checkpoint 252</name><desc>Completed half-mile Segment 252.</desc></wpt>
+  <wpt lat="32.861520106691316" lon="-117.25342250970162"><name>Checkpoint 253</name><desc>Completed half-mile Segment 253.</desc></wpt>
+  <wpt lat="32.85429259653054" lon="-117.25385390378835"><name>Checkpoint 254</name><desc>Completed half-mile Segment 254.</desc></wpt>
+  <wpt lat="32.84980655610006" lon="-117.2585454594791"><name>Checkpoint 255</name><desc>Completed half-mile Segment 255.</desc></wpt>
+  <wpt lat="32.84764154610957" lon="-117.26662329962161"><name>Checkpoint 256</name><desc>Completed half-mile Segment 256.</desc></wpt>
+  <wpt lat="32.842363538021964" lon="-117.27245599428556"><name>Checkpoint 257</name><desc>Completed half-mile Segment 257.</desc></wpt>
+  <wpt lat="32.836297076652464" lon="-117.27244018162283"><name>Checkpoint 258</name><desc>Completed half-mile Segment 258.</desc></wpt>
+  <wpt lat="32.832072158692235" lon="-117.27530044952321"><name>Checkpoint 259</name><desc>Completed half-mile Segment 259.</desc></wpt>
+  <wpt lat="32.825806268823186" lon="-117.27650309979187"><name>Checkpoint 260</name><desc>Completed half-mile Segment 260.</desc></wpt>
+  <wpt lat="32.819350263157254" lon="-117.27306423976567"><name>Checkpoint 261</name><desc>Completed half-mile Segment 261.</desc></wpt>
+  <wpt lat="32.81312339077396" lon="-117.2690863690159"><name>Checkpoint 262</name><desc>Completed half-mile Segment 262.</desc></wpt>
+  <wpt lat="32.8080709523026" lon="-117.26313662678172"><name>Checkpoint 263</name><desc>Completed half-mile Segment 263.</desc></wpt>
+  <wpt lat="32.80347928356067" lon="-117.25771852834684"><name>Checkpoint 264</name><desc>Completed half-mile Segment 264.</desc></wpt>
+  <wpt lat="32.79658324416403" lon="-117.25548576908521"><name>Checkpoint 265</name><desc>Completed half-mile Segment 265.</desc></wpt>
+  <wpt lat="32.79816038105859" lon="-117.24728511431758"><name>Checkpoint 266</name><desc>Completed half-mile Segment 266.</desc></wpt>
+  <wpt lat="32.799678823492854" lon="-117.2391792254811"><name>Checkpoint 267</name><desc>Completed half-mile Segment 267.</desc></wpt>
   <trk><name>NSTT 2026 Runner Route</name>
   <trkseg>
       <trkpt lat="34.00997" lon="-118.4966"/>
@@ -1975,220 +1951,29 @@
       <trkpt lat="33.4087" lon="-117.60085"/>
       <trkpt lat="33.40844" lon="-117.60065"/>
       <trkpt lat="33.408295" lon="-117.600482"/>
-      <trkpt lat="33.40813" lon="-117.60029"/>
-      <trkpt lat="33.40783" lon="-117.59995"/>
-      <trkpt lat="33.40762" lon="-117.59978"/>
-      <trkpt lat="33.40499" lon="-117.59847"/>
-      <trkpt lat="33.40366" lon="-117.59776"/>
-      <trkpt lat="33.40259" lon="-117.59716"/>
-      <trkpt lat="33.401802" lon="-117.596766"/>
-      <trkpt lat="33.40141" lon="-117.59657"/>
-      <trkpt lat="33.39733" lon="-117.59466"/>
-      <trkpt lat="33.39705" lon="-117.5946"/>
-      <trkpt lat="33.39657" lon="-117.59453"/>
-      <trkpt lat="33.39602" lon="-117.59441"/>
-      <trkpt lat="33.39546" lon="-117.59439"/>
-      <trkpt lat="33.39518" lon="-117.5943"/>
-      <trkpt lat="33.394958" lon="-117.594152"/>
-      <trkpt lat="33.39489" lon="-117.59402"/>
-      <trkpt lat="33.39498" lon="-117.59382"/>
-      <trkpt lat="33.3942496" lon="-117.5928435"/>
-      <trkpt lat="33.3914507" lon="-117.5908004"/>
-      <trkpt lat="33.390599" lon="-117.5902301"/>
-      <trkpt lat="33.3894522" lon="-117.5893634"/>
-      <trkpt lat="33.3882072" lon="-117.5886241"/>
-      <trkpt lat="33.3872033" lon="-117.5876196"/>
-      <trkpt lat="33.3845249" lon="-117.5840891"/>
-      <trkpt lat="33.3841122" lon="-117.5836343"/>
-      <trkpt lat="33.3836386" lon="-117.5822308"/>
-      <trkpt lat="33.3835114" lon="-117.5816014"/>
-      <trkpt lat="33.3835218" lon="-117.5813409"/>
-      <trkpt lat="33.3832239" lon="-117.5794789"/>
-      <trkpt lat="33.3830251" lon="-117.5786366"/>
-      <trkpt lat="33.3824387" lon="-117.5767408"/>
-      <trkpt lat="33.3818729" lon="-117.5753299"/>
-      <trkpt lat="33.3811873" lon="-117.5735305"/>
-      <trkpt lat="33.3783928" lon="-117.5663949"/>
-      <trkpt lat="33.3778185" lon="-117.565442"/>
-      <trkpt lat="33.3774128" lon="-117.5649527"/>
-      <trkpt lat="33.3765926" lon="-117.5642223"/>
-      <trkpt lat="33.3758547" lon="-117.5637256"/>
-      <trkpt lat="33.3746228" lon="-117.5629062"/>
-      <trkpt lat="33.3736443" lon="-117.5618885"/>
-      <trkpt lat="33.3729396" lon="-117.5606554"/>
-      <trkpt lat="33.3724167" lon="-117.5591927"/>
-      <trkpt lat="33.372175" lon="-117.5580886"/>
-      <trkpt lat="33.3718752" lon="-117.5572876"/>
-      <trkpt lat="33.370879" lon="-117.5554005"/>
-      <trkpt lat="33.3691561" lon="-117.5522028"/>
-      <trkpt lat="33.3684315" lon="-117.5508785"/>
-      <trkpt lat="33.36846" lon="-117.55085"/>
-      <trkpt lat="33.36823" lon="-117.55042"/>
-      <trkpt lat="33.36805" lon="-117.55004"/>
-      <trkpt lat="33.36749" lon="-117.54906"/>
-      <trkpt lat="33.36646" lon="-117.54739"/>
-      <trkpt lat="33.36493" lon="-117.54511"/>
-      <trkpt lat="33.36386" lon="-117.54355"/>
-      <trkpt lat="33.3632" lon="-117.5426"/>
-      <trkpt lat="33.36292" lon="-117.54198"/>
-      <trkpt lat="33.36222" lon="-117.54097"/>
-      <trkpt lat="33.35795" lon="-117.53473"/>
-      <trkpt lat="33.35767" lon="-117.53453"/>
-      <trkpt lat="33.35751" lon="-117.53431"/>
-      <trkpt lat="33.35747" lon="-117.53424"/>
-      <trkpt lat="33.35737" lon="-117.5339"/>
-      <trkpt lat="33.35687" lon="-117.53316"/>
-      <trkpt lat="33.35576" lon="-117.53155"/>
-      <trkpt lat="33.35552" lon="-117.53134"/>
-      <trkpt lat="33.35512" lon="-117.53076"/>
-      <trkpt lat="33.35504" lon="-117.53052"/>
-      <trkpt lat="33.35498" lon="-117.5304"/>
-      <trkpt lat="33.35387" lon="-117.52878"/>
-      <trkpt lat="33.35361" lon="-117.52857"/>
-      <trkpt lat="33.35353" lon="-117.52842"/>
-      <trkpt lat="33.35342" lon="-117.52817"/>
-      <trkpt lat="33.35288" lon="-117.5275"/>
-      <trkpt lat="33.3517" lon="-117.52615"/>
-      <trkpt lat="33.35157" lon="-117.52605"/>
-      <trkpt lat="33.35132" lon="-117.52592"/>
-      <trkpt lat="33.35111" lon="-117.5257"/>
-      <trkpt lat="33.35092" lon="-117.52528"/>
-      <trkpt lat="33.35008" lon="-117.52432"/>
-      <trkpt lat="33.34984" lon="-117.52414"/>
-      <trkpt lat="33.34971" lon="-117.52403"/>
-      <trkpt lat="33.34938" lon="-117.52362"/>
-      <trkpt lat="33.34929" lon="-117.52344"/>
-      <trkpt lat="33.34923" lon="-117.52329"/>
-      <trkpt lat="33.34861" lon="-117.52238"/>
-      <trkpt lat="33.34803" lon="-117.52142"/>
-      <trkpt lat="33.34724" lon="-117.51996"/>
-      <trkpt lat="33.3457" lon="-117.51711"/>
-      <trkpt lat="33.34521" lon="-117.51635"/>
-      <trkpt lat="33.34492" lon="-117.51605"/>
-      <trkpt lat="33.3447" lon="-117.51571"/>
-      <trkpt lat="33.34464" lon="-117.51551"/>
-      <trkpt lat="33.3445" lon="-117.51528"/>
-      <trkpt lat="33.34367" lon="-117.51415"/>
-      <trkpt lat="33.34335" lon="-117.51384"/>
-      <trkpt lat="33.34319" lon="-117.51349"/>
-      <trkpt lat="33.34234" lon="-117.51233"/>
-      <trkpt lat="33.34215" lon="-117.51215"/>
-      <trkpt lat="33.34202" lon="-117.51203"/>
-      <trkpt lat="33.34172" lon="-117.5116"/>
-      <trkpt lat="33.34157" lon="-117.51126"/>
-      <trkpt lat="33.34067" lon="-117.51004"/>
-      <trkpt lat="33.34047" lon="-117.50988"/>
-      <trkpt lat="33.34041" lon="-117.50978"/>
-      <trkpt lat="33.34034" lon="-117.50958"/>
-      <trkpt lat="33.33951" lon="-117.50848"/>
-      <trkpt lat="33.33905" lon="-117.50789"/>
-      <trkpt lat="33.33888" lon="-117.50761"/>
-      <trkpt lat="33.33702" lon="-117.50508"/>
-      <trkpt lat="33.33419" lon="-117.50124"/>
-      <trkpt lat="33.3372" lon="-117.50533"/>
-      <trkpt lat="33.33892" lon="-117.50767"/>
-      <trkpt lat="33.33905" lon="-117.50789"/>
-      <trkpt lat="33.33973" lon="-117.50876"/>
-      <trkpt lat="33.34034" lon="-117.50958"/>
-      <trkpt lat="33.34043" lon="-117.50982"/>
-      <trkpt lat="33.34051" lon="-117.50993"/>
-      <trkpt lat="33.34068" lon="-117.51005"/>
-      <trkpt lat="33.34157" lon="-117.51126"/>
-      <trkpt lat="33.34174" lon="-117.51164"/>
-      <trkpt lat="33.34204" lon="-117.51205"/>
-      <trkpt lat="33.34226" lon="-117.51223"/>
-      <trkpt lat="33.34234" lon="-117.51233"/>
-      <trkpt lat="33.34319" lon="-117.51349"/>
-      <trkpt lat="33.34335" lon="-117.51384"/>
-      <trkpt lat="33.34367" lon="-117.51415"/>
-      <trkpt lat="33.34459" lon="-117.51542"/>
-      <trkpt lat="33.34469" lon="-117.51567"/>
-      <trkpt lat="33.34481" lon="-117.51589"/>
-      <trkpt lat="33.34498" lon="-117.51612"/>
-      <trkpt lat="33.34522" lon="-117.51637"/>
-      <trkpt lat="33.34577" lon="-117.51723"/>
-      <trkpt lat="33.34793" lon="-117.52124"/>
-      <trkpt lat="33.34851" lon="-117.52222"/>
-      <trkpt lat="33.34906" lon="-117.52305"/>
-      <trkpt lat="33.34923" lon="-117.52329"/>
-      <trkpt lat="33.34932" lon="-117.52352"/>
-      <trkpt lat="33.3494" lon="-117.52364"/>
-      <trkpt lat="33.34974" lon="-117.52407"/>
-      <trkpt lat="33.35008" lon="-117.52432"/>
-      <trkpt lat="33.35092" lon="-117.52528"/>
-      <trkpt lat="33.35111" lon="-117.5257"/>
-      <trkpt lat="33.35132" lon="-117.52592"/>
-      <trkpt lat="33.35164" lon="-117.5261"/>
-      <trkpt lat="33.35196" lon="-117.52644"/>
-      <trkpt lat="33.35301" lon="-117.52765"/>
-      <trkpt lat="33.35344" lon="-117.52819"/>
-      <trkpt lat="33.35357" lon="-117.5285"/>
-      <trkpt lat="33.35368" lon="-117.52863"/>
-      <trkpt lat="33.35387" lon="-117.52878"/>
-      <trkpt lat="33.35501" lon="-117.53044"/>
-      <trkpt lat="33.35507" lon="-117.53061"/>
-      <trkpt lat="33.35514" lon="-117.53081"/>
-      <trkpt lat="33.35552" lon="-117.53134"/>
-      <trkpt lat="33.35577" lon="-117.53155"/>
-      <trkpt lat="33.35733" lon="-117.53383"/>
-      <trkpt lat="33.35742" lon="-117.53405"/>
-      <trkpt lat="33.35747" lon="-117.53424"/>
-      <trkpt lat="33.35764" lon="-117.53449"/>
-      <trkpt lat="33.35775" lon="-117.5346"/>
-      <trkpt lat="33.35795" lon="-117.53473"/>
-      <trkpt lat="33.36249" lon="-117.54137"/>
-      <trkpt lat="33.36292" lon="-117.54198"/>
-      <trkpt lat="33.36316" lon="-117.5425"/>
-      <trkpt lat="33.3632" lon="-117.54255"/>
-      <trkpt lat="33.3634" lon="-117.54268"/>
-      <trkpt lat="33.36583" lon="-117.54626"/>
-      <trkpt lat="33.36677" lon="-117.54772"/>
-      <trkpt lat="33.36744" lon="-117.54883"/>
-      <trkpt lat="33.36826" lon="-117.55025"/>
-      <trkpt lat="33.36948" lon="-117.55254"/>
-      <trkpt lat="33.37131" lon="-117.55595"/>
-      <trkpt lat="33.37183" lon="-117.55695"/>
-      <trkpt lat="33.37204" lon="-117.55744"/>
-      <trkpt lat="33.37222" lon="-117.55791"/>
-      <trkpt lat="33.37236" lon="-117.55842"/>
-      <trkpt lat="33.37268" lon="-117.55972"/>
-      <trkpt lat="33.37286" lon="-117.56023"/>
-      <trkpt lat="33.37316" lon="-117.56089"/>
-      <trkpt lat="33.37358" lon="-117.5616"/>
-      <trkpt lat="33.37382" lon="-117.56193"/>
-      <trkpt lat="33.37407" lon="-117.56223"/>
-      <trkpt lat="33.37481" lon="-117.5629"/>
-      <trkpt lat="33.37527" lon="-117.56322"/>
-      <trkpt lat="33.37671" lon="-117.56415"/>
-      <trkpt lat="33.37725" lon="-117.56462"/>
-      <trkpt lat="33.37766" lon="-117.56507"/>
-      <trkpt lat="33.37805" lon="-117.56559"/>
-      <trkpt lat="33.37839" lon="-117.56613"/>
-      <trkpt lat="33.37864" lon="-117.56665"/>
-      <trkpt lat="33.37911" lon="-117.56782"/>
-      <trkpt lat="33.37944" lon="-117.56859"/>
-      <trkpt lat="33.37982" lon="-117.56953"/>
-      <trkpt lat="33.38019" lon="-117.57057"/>
-      <trkpt lat="33.3808" lon="-117.57218"/>
-      <trkpt lat="33.38184" lon="-117.57483"/>
-      <trkpt lat="33.38247" lon="-117.57651"/>
-      <trkpt lat="33.38312" lon="-117.57862"/>
-      <trkpt lat="33.38329" lon="-117.5793"/>
-      <trkpt lat="33.38353" lon="-117.58069"/>
-      <trkpt lat="33.38367" lon="-117.58154"/>
-      <trkpt lat="33.38382" lon="-117.58217"/>
-      <trkpt lat="33.38409" lon="-117.58307"/>
-      <trkpt lat="33.38424" lon="-117.5834"/>
-      <trkpt lat="33.38432" lon="-117.5835"/>
-      <trkpt lat="33.38444" lon="-117.58357"/>
-      <trkpt lat="33.38452" lon="-117.5836"/>
-      <trkpt lat="33.38457" lon="-117.58356"/>
-      <trkpt lat="33.38468" lon="-117.58354"/>
-      <trkpt lat="33.38475" lon="-117.58345"/>
-      <trkpt lat="33.38477" lon="-117.58333"/>
-      <trkpt lat="33.38436" lon="-117.58102"/>
-      <trkpt lat="33.3842" lon="-117.58047"/>
-      <trkpt lat="33.38425" lon="-117.58032"/>
+      <trkpt lat="33.40826" lon="-117.60052"/>
+      <trkpt lat="33.40842" lon="-117.60069"/>
+      <trkpt lat="33.40875" lon="-117.60096"/>
+      <trkpt lat="33.40875" lon="-117.60085"/>
+      <trkpt lat="33.40878" lon="-117.60065"/>
+      <trkpt lat="33.40876" lon="-117.60046"/>
+      <trkpt lat="33.40866" lon="-117.60028"/>
+      <trkpt lat="33.40809" lon="-117.5999"/>
+      <trkpt lat="33.4079" lon="-117.5998"/>
+      <trkpt lat="33.40788" lon="-117.59966"/>
+      <trkpt lat="33.39737" lon="-117.59437"/>
+      <trkpt lat="33.39615" lon="-117.59367"/>
+      <trkpt lat="33.39487" lon="-117.59285"/>
+      <trkpt lat="33.39364" lon="-117.592"/>
+      <trkpt lat="33.39151" lon="-117.59038"/>
+      <trkpt lat="33.38898" lon="-117.5884"/>
+      <trkpt lat="33.38827" lon="-117.58773"/>
+      <trkpt lat="33.3876" lon="-117.587"/>
+      <trkpt lat="33.38715" lon="-117.58643"/>
+      <trkpt lat="33.38665" lon="-117.5857"/>
+      <trkpt lat="33.38619" lon="-117.58493"/>
+      <trkpt lat="33.38577" lon="-117.58412"/>
+      <trkpt lat="33.38536" lon="-117.58314"/>
       <trkpt lat="33.37891" lon="-117.56663"/>
       <trkpt lat="33.37859" lon="-117.56595"/>
       <trkpt lat="33.37822" lon="-117.5653"/>
@@ -2213,38 +1998,13 @@
       <trkpt lat="33.31901" lon="-117.48261"/>
       <trkpt lat="33.3169" lon="-117.48243"/>
       <trkpt lat="33.31531" lon="-117.48227"/>
-      <trkpt lat="33.31521" lon="-117.48235"/>
-      <trkpt lat="33.31477" lon="-117.4823"/>
-      <trkpt lat="33.31422" lon="-117.48218"/>
-      <trkpt lat="33.31377" lon="-117.48202"/>
-      <trkpt lat="33.31364" lon="-117.48205"/>
-      <trkpt lat="33.31358" lon="-117.48212"/>
-      <trkpt lat="33.31357" lon="-117.48219"/>
-      <trkpt lat="33.31359" lon="-117.48228"/>
-      <trkpt lat="33.31365" lon="-117.48235"/>
-      <trkpt lat="33.31376" lon="-117.48236"/>
-      <trkpt lat="33.31397" lon="-117.48228"/>
-      <trkpt lat="33.31408" lon="-117.48228"/>
-      <trkpt lat="33.31448" lon="-117.48241"/>
-      <trkpt lat="33.31456" lon="-117.48248"/>
-      <trkpt lat="33.31459" lon="-117.48259"/>
-      <trkpt lat="33.31458" lon="-117.48265"/>
-      <trkpt lat="33.31456" lon="-117.48271"/>
-      <trkpt lat="33.31447" lon="-117.48278"/>
-      <trkpt lat="33.31439" lon="-117.48278"/>
-      <trkpt lat="33.31408" lon="-117.48265"/>
-      <trkpt lat="33.31386" lon="-117.48254"/>
-      <trkpt lat="33.31362" lon="-117.48247"/>
-      <trkpt lat="33.31352" lon="-117.4824"/>
-      <trkpt lat="33.31343" lon="-117.48228"/>
-      <trkpt lat="33.31331" lon="-117.48187"/>
-      <trkpt lat="33.3132" lon="-117.48173"/>
-      <trkpt lat="33.31298" lon="-117.48156"/>
-      <trkpt lat="33.3127" lon="-117.48138"/>
-      <trkpt lat="33.31264" lon="-117.48118"/>
-      <trkpt lat="33.31215" lon="-117.48081"/>
-      <trkpt lat="33.31166" lon="-117.48036"/>
-      <trkpt lat="33.31118" lon="-117.47983"/>
+      <trkpt lat="33.31469" lon="-117.48214"/>
+      <trkpt lat="33.31405" lon="-117.48193"/>
+      <trkpt lat="33.31344" lon="-117.48165"/>
+      <trkpt lat="33.31285" lon="-117.48132"/>
+      <trkpt lat="33.31228" lon="-117.48091"/>
+      <trkpt lat="33.31176" lon="-117.48046"/>
+      <trkpt lat="33.31128" lon="-117.47995"/>
       <trkpt lat="33.29437" lon="-117.45946"/>
       <trkpt lat="33.29388" lon="-117.45895"/>
       <trkpt lat="33.29322" lon="-117.45842"/>
