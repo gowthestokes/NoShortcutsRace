@@ -64,6 +64,9 @@ order: official public beach facilities, grocery stores, coffee chains, then
 fast-food or branded-gas backups. Confirm operating hours, closures, safe
 access, and business restroom policies immediately before the race.
 
+The command also reports runner-mile intervals above three miles without a
+researched nearby stop. Treat those as explicit gaps for field verification.
+
 Import `NSTT_2026_runner_route_segments.kml` into a My Maps layer. The route
 lines alternate green and blue and can be deleted or redrawn independently.
 Each complete line is 0.5 mi according to the source geometry. The route layer

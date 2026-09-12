@@ -65,13 +65,19 @@ class CoverageGap:
         return self.end_miles - self.start_miles
 
 
+@dataclass(frozen=True)
+class BathroomLayerBuildResult:
+    """A generated layer and the intervals that still need field verification."""
+
+    stop_count: int
+    gaps: tuple[CoverageGap, ...]
+
+
 OFFICIAL_SOURCES = {
     "santa_monica": "https://www.santamonica.gov/places/parks/santa-monica-state-beach",
     "venice": "https://beaches.lacounty.gov/venice-beach/",
-    "long_beach": "https://longbeach.gov/park/marine/beaches-and-amenities/alamitos-beach",
     "bolsa_chica": "https://www.parks.ca.gov/AccessibleFeatures/Details/642",
     "huntington": "https://www.parks.ca.gov/AccessibleFeatures/Details/643",
-    "newport": "https://newportbeachca.gov/how-do-i-/find/beach-information",
     "laguna": "https://www.lagunabeachcity.net/government/departments/marine-safety/visiting-our-beaches",
     "doheny": "https://www.parks.ca.gov/AccessibleFeatures/Details/645",
     "san_clemente": "https://www.parks.ca.gov/?page_id=646",
@@ -101,13 +107,10 @@ def business_stop(name: str, category: BathroomCategory, latitude: float, longit
 BATHROOM_STOPS: tuple[BathroomStop, ...] = (
     official_stop("Santa Monica State Beach / Pier restrooms", 34.0089, -118.4972, "Santa Monica State Beach near Santa Monica Pier, Santa Monica, CA 90401", OFFICIAL_SOURCES["santa_monica"], "City of Santa Monica lists beach restrooms; confirm facility hours on race day."),
     official_stop("Venice Beach — Washington Boulevard restroom area", 33.9857, -118.4720, "Washington Blvd / Ocean Front Walk, Venice, CA 90291", OFFICIAL_SOURCES["venice"], "Los Angeles County lists restrooms and showers at Venice Beach."),
-    official_stop("Alamitos Beach — Shoreline restroom and rinse showers", 33.7671, -118.1819, "780 E Shoreline Dr, Long Beach, CA 90802", OFFICIAL_SOURCES["long_beach"], "City of Long Beach lists public restrooms with rinse showers at the beach head."),
-    official_stop("Belmont Shore / Bay Shore public restrooms", 33.7558, -118.1320, "Bay Shore Ave, Long Beach, CA 90803", "https://www.longbeach.gov/park/marine/beaches-and-amenities/bay-shore/", "City of Long Beach lists public restrooms and beach showers at either end of Bay Shore."),
     official_stop("Bolsa Chica State Beach — Warner-area restrooms", 33.7042, -118.0525, "17851 Pacific Coast Hwy, Huntington Beach, CA 92649", OFFICIAL_SOURCES["bolsa_chica"], "California State Parks lists restrooms and drinking water within each lot along the trail."),
     official_stop("Bolsa Chica State Beach — Seapoint-area restrooms", 33.6874, -118.0380, "Pacific Coast Hwy near Seapoint St, Huntington Beach, CA 92649", OFFICIAL_SOURCES["bolsa_chica"], "California State Parks lists restrooms and drinking water within each lot along the trail."),
     official_stop("Huntington State Beach — Magnolia-area restrooms", 33.6675, -118.0128, "Huntington State Beach near Magnolia St and Pacific Coast Hwy, Huntington Beach, CA 92646", OFFICIAL_SOURCES["huntington"], "California State Parks lists restrooms and drinking fountains along the beach bike trail."),
     official_stop("Huntington State Beach — southern trail restrooms", 33.6495, -117.9916, "Huntington State Beach near Brookhurst St, Huntington Beach, CA 92646", OFFICIAL_SOURCES["huntington"], "California State Parks lists restrooms and drinking fountains along the beach bike trail."),
-    official_stop("Newport Beach — Balboa Pier public restrooms", 33.6011, -117.9003, "Balboa Pier, Newport Beach, CA 92661", OFFICIAL_SOURCES["newport"], "City of Newport Beach lists public restroom facilities at the base of Balboa Pier."),
     official_stop("Laguna Beach — Main Beach public restrooms", 33.5426, -117.7838, "Main Beach, Laguna Beach, CA 92651", OFFICIAL_SOURCES["laguna"], "City of Laguna Beach lists Main Beach public restrooms and outdoor showers."),
     official_stop("Laguna Beach — Aliso Creek Beach restrooms", 33.5097, -117.7548, "31106 S Coast Hwy, Laguna Beach, CA 92651", OFFICIAL_SOURCES["laguna"], "City of Laguna Beach lists Aliso Creek Beach public restrooms and outdoor showers."),
     official_stop("Doheny State Beach — North Day-Use restrooms", 33.4606, -117.6854, "25300 Dana Point Harbor Dr, Dana Point, CA 92629", OFFICIAL_SOURCES["doheny"], "California State Parks lists accessible restrooms and outdoor rinsing showers in the day-use area."),
@@ -126,6 +129,8 @@ BATHROOM_STOPS: tuple[BathroomStop, ...] = (
     official_stop("La Jolla Cove public restrooms and showers", 32.8508, -117.2723, "1100 Coast Blvd, La Jolla, CA 92037", OFFICIAL_SOURCES["la_jolla"], "City of San Diego lists restrooms and showers at La Jolla Cove."),
     official_stop("Pacific Beach public restroom area", 32.7971, -117.2563, "Pacific Beach boardwalk area, San Diego, CA 92109", OFFICIAL_SOURCES["pacific_beach"], "City of San Diego lists public restrooms and showers at Pacific Beach."),
     business_stop("Vons / Target Starbucks — Sepulveda backup", BathroomCategory.COFFEE, 33.9846, -118.3944, "6000 Sepulveda Blvd, Culver City, CA 90230", "https://www.target.com/sl/culver-city-westfield-mall/2632/starbucks"),
+    business_stop("Starbucks — Firestone and Long Beach backup", BathroomCategory.COFFEE, 33.955165, -118.219045, "8924 Long Beach Blvd, South Gate, CA 90280", "https://www.starbucks.com/store-locator"),
+    business_stop("Starbucks — Firestone and California backup", BathroomCategory.COFFEE, 33.9542, -118.2061, "4704 Firestone Blvd, South Gate, CA 90280", "https://www.starbucks.com/store-locator/store/1019314"),
     business_stop("Chevron — Atlantic Avenue backup", BathroomCategory.FAST_FOOD_OR_GAS, 33.9291, -118.1850, "11401 Atlantic Ave, Lynwood, CA 90262", "https://www.chevronwithtechron.com/station/11401-Atlantic-Ave-Lynwood-CA-90262-id90495"),
     business_stop("Ralphs — South San Clemente", BathroomCategory.GROCERY, 33.4146, -117.6092, "903 S El Camino Real, San Clemente, CA 92672", "https://www.ralphs.com/stores/grocery/ca/san-clemente/s-san-clemente/703/00221"),
     business_stop("Starbucks — Carlsbad Village backup", BathroomCategory.COFFEE, 33.1604, -117.3505, "Carlsbad Village / Carlsbad Blvd area, Carlsbad, CA 92008", "https://www.starbucks.com/store-locator"),
@@ -167,11 +172,15 @@ class BathroomLayerBuilder:
 
     meters_per_degree_latitude = 111_320.0
 
-    def build(self, source_path: Path, output_path: Path) -> None:
+    def build(self, source_path: Path, output_path: Path) -> BathroomLayerBuildResult:
         route_runs = RunnerRouteKml.line_runs(source_path)
         placemarks = "\n".join(self._placemark(stop, route_runs) for stop in sorted(BATHROOM_STOPS, key=lambda stop: (stop.category.priority, stop.name)))
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(self._kml(placemarks), encoding="utf-8")
+        return BathroomLayerBuildResult(
+            len(BATHROOM_STOPS),
+            BathroomCoverageAnalyzer(self).gaps(BATHROOM_STOPS, route_runs),
+        )
 
     def _placemark(self, stop: BathroomStop, route_runs: tuple[tuple[tuple[float, float], ...], ...]) -> str:
         proximity = self.nearest_route_proximity((stop.latitude, stop.longitude), route_runs)
@@ -289,7 +298,11 @@ def main() -> None:
     parser.add_argument("--runner-kml", type=Path, default=Path("input/Runner.kml"), help="Immutable runner route KML used only to calculate proximity.")
     parser.add_argument("--output-kml", type=Path, default=Path("outputs/NSTT_2026_bathroom_stops.kml"), help="Bathroom-layer KML to create.")
     arguments = parser.parse_args()
-    BathroomLayerBuilder().build(arguments.runner_kml, arguments.output_kml)
+    result = BathroomLayerBuilder().build(arguments.runner_kml, arguments.output_kml)
+    print(f"Created {arguments.output_kml} with {result.stop_count} researched stops.")
+    if result.gaps:
+        intervals = ", ".join(f"{gap.start_miles:.1f}–{gap.end_miles:.1f} mi" for gap in result.gaps)
+        print(f"No researched nearby stop in these >3 mi intervals: {intervals}")
 
 
 if __name__ == "__main__":
