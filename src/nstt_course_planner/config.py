@@ -39,7 +39,8 @@ MANUAL_POINTS = {
 }
 
 HIGHWAY_1_VIA_POINTS = (
-    (33.767700, -118.197000), (33.758600, -118.178800),
+    # Start at the first unambiguous PCH/Highway 1 point in Seal Beach. Do not
+    # shape the route through Long Beach's Ocean Boulevard/beachfront network.
     (33.744000, -118.105000), (33.701000, -118.055000),
     (33.656000, -118.020000), (33.616000, -117.930000),
     (33.570000, -117.820000), (33.536000, -117.780000),

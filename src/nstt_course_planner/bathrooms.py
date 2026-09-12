@@ -45,82 +45,92 @@ class BathroomStop:
     source_note: str
 
 
-# Official locations are included only when the responsible public agency
-# explicitly lists restrooms. Business entries remain fallbacks because access
-# policies can change without notice.
+@dataclass(frozen=True)
+class RouteProximity:
+    """The nearest position on the runner geometry, excluding support-car gaps."""
+
+    runner_miles: float
+    straight_line_meters: float
+
+
+@dataclass(frozen=True)
+class CoverageGap:
+    """An interval without a researched bathroom option near its midpoint."""
+
+    start_miles: float
+    end_miles: float
+
+    @property
+    def length_miles(self) -> float:
+        return self.end_miles - self.start_miles
+
+
+OFFICIAL_SOURCES = {
+    "santa_monica": "https://www.santamonica.gov/places/parks/santa-monica-state-beach",
+    "venice": "https://beaches.lacounty.gov/venice-beach/",
+    "long_beach": "https://longbeach.gov/park/marine/beaches-and-amenities/alamitos-beach",
+    "bolsa_chica": "https://www.parks.ca.gov/AccessibleFeatures/Details/642",
+    "huntington": "https://www.parks.ca.gov/AccessibleFeatures/Details/643",
+    "newport": "https://newportbeachca.gov/how-do-i-/find/beach-information",
+    "laguna": "https://www.lagunabeachcity.net/government/departments/marine-safety/visiting-our-beaches",
+    "doheny": "https://www.parks.ca.gov/AccessibleFeatures/Details/645",
+    "san_clemente": "https://www.parks.ca.gov/?page_id=646",
+    "carlsbad": "https://www.carlsbadca.gov/residents/about-carlsbad/beaches/about-carlsbad-beaches",
+    "encinitas": "https://www.encinitasca.gov/government/departments/parks-recreation-cultural-arts/parks-beaches-trails/beaches/",
+    "torrey_pines": "https://parks.ca.gov/AccessibleFeatures/Details/658",
+    "del_mar": "https://www.delmar.ca.us/facilities/facility/details/Powerhouse-Park-10",
+    "la_jolla": "https://www.sandiego.gov/lifeguards/beaches/cove",
+    "kellogg": "https://www.sandiego.gov/park-and-recreation/parks/regional/shoreline/kelloggpark",
+    "pacific_beach": "https://www.sandiego.gov/lifeguards/safety/bchreg",
+}
+
+
+def official_stop(name: str, latitude: float, longitude: float, address: str, source: str, note: str) -> BathroomStop:
+    return BathroomStop(name, BathroomCategory.OFFICIAL_BEACH, latitude, longitude, address, source, note)
+
+
+def business_stop(name: str, category: BathroomCategory, latitude: float, longitude: float, address: str, source: str) -> BathroomStop:
+    return BathroomStop(
+        name, category, latitude, longitude, address, source,
+        "Business backup only; confirm race-day hours and customer restroom access before relying on it.",
+    )
+
+
+# Official stops are supported by the responsible agency. Private businesses
+# are deliberately kept as fallbacks because restroom access can change.
 BATHROOM_STOPS: tuple[BathroomStop, ...] = (
-    BathroomStop(
-        "Santa Monica State Beach / Pier restrooms", BathroomCategory.OFFICIAL_BEACH,
-        34.0089, -118.4972, "Santa Monica State Beach, near Santa Monica Pier, Santa Monica, CA 90401",
-        "https://www.santamonica.gov/places/parks/santa-monica-state-beach",
-        "City of Santa Monica lists restrooms at Santa Monica State Beach. Confirm beach-facility hours on race day.",
-    ),
-    BathroomStop(
-        "Huntington State Beach — Magnolia-area restrooms", BathroomCategory.OFFICIAL_BEACH,
-        33.6675, -118.0128, "Huntington State Beach, near Magnolia St and Pacific Coast Hwy, Huntington Beach, CA 92646",
-        "https://www.parks.ca.gov/AccessibleFeatures/Details/643",
-        "California State Parks lists usable restrooms and drinking fountains along the beach bike trail. Confirm access from the runner corridor.",
-    ),
-    BathroomStop(
-        "Doheny State Beach — North Day-Use restrooms", BathroomCategory.OFFICIAL_BEACH,
-        33.4606, -117.6854, "25300 Dana Point Harbor Dr, Dana Point, CA 92629",
-        "https://www.parks.ca.gov/AccessibleFeatures/Details/645",
-        "California State Parks lists accessible restrooms and outdoor rinsing showers throughout the day-use area. Day-use entry rules may apply.",
-    ),
-    BathroomStop(
-        "San Clemente State Beach — day-use restrooms", BathroomCategory.OFFICIAL_BEACH,
-        33.4130, -117.5920, "225 Avenida Calafia, San Clemente, CA 92672",
-        "https://www.parks.ca.gov/?page_id=646",
-        "California State Parks lists restrooms, showers, and drinking water. Confirm the park entrance and facility availability before race day.",
-    ),
-    BathroomStop(
-        "Carlsbad State Beach — Tamarack restroom/shower", BathroomCategory.OFFICIAL_BEACH,
-        33.1583, -117.3506, "Tamarack Ave beach access, Carlsbad, CA 92008",
-        "https://www.carlsbadca.gov/residents/about-carlsbad/beaches/about-carlsbad-beaches",
-        "City of Carlsbad lists public restrooms and showers at both ends of the Carlsbad State Beach seawall path, including Tamarack access.",
-    ),
-    BathroomStop(
-        "Moonlight Beach restrooms and showers", BathroomCategory.OFFICIAL_BEACH,
-        33.0467, -117.2978, "400 B St, Encinitas, CA 92024",
-        "https://www.encinitasca.gov/government/departments/parks-recreation-cultural-arts/parks-beaches-trails/beaches/",
-        "City of Encinitas lists restrooms and showers at Moonlight Beach.",
-    ),
-    BathroomStop(
-        "Kellogg Park / La Jolla Shores restrooms", BathroomCategory.OFFICIAL_BEACH,
-        32.8578, -117.2562, "8300 Camino del Oro, La Jolla, CA 92037",
-        "https://www.sandiego.gov/park-and-recreation/parks/regional/shoreline/kelloggpark",
-        "City of San Diego lists several restrooms with showers. Park hours are listed as 4 a.m.–10 p.m.; confirm race-day status.",
-    ),
-    BathroomStop(
-        "Pacific Beach public restroom area", BathroomCategory.OFFICIAL_BEACH,
-        32.7971, -117.2563, "Pacific Beach boardwalk area, San Diego, CA 92109",
-        "https://www.sandiego.gov/lifeguards/safety/bchreg",
-        "City of San Diego lists public restrooms and showers at Pacific Beach. Use only if safely accessible from the runner route.",
-    ),
-    BathroomStop(
-        "Ralphs — South San Clemente", BathroomCategory.GROCERY,
-        33.4146, -117.6092, "903 S El Camino Real, San Clemente, CA 92672",
-        "https://www.ralphs.com/stores/grocery/ca/san-clemente/s-san-clemente/703/00221",
-        "Official Ralphs location. Confirm hours and restroom access; this is not a public restroom.",
-    ),
-    BathroomStop(
-        "Starbucks — Carlsbad Village backup", BathroomCategory.COFFEE,
-        33.1604, -117.3505, "Carlsbad Village / Carlsbad Blvd area, Carlsbad, CA 92008",
-        "https://www.starbucks.com/store-locator",
-        "Use the official Starbucks locator to confirm the exact storefront, hours, and restroom access before race day.",
-    ),
-    BathroomStop(
-        "Starbucks — La Jolla Village backup", BathroomCategory.COFFEE,
-        32.8323, -117.2741, "Girard Ave / Pearl St area, La Jolla, CA 92037",
-        "https://www.starbucks.com/store-locator",
-        "Use the official Starbucks locator to confirm the exact storefront, hours, and restroom access before race day.",
-    ),
-    BathroomStop(
-        "Chevron — Oceanside runner restart", BathroomCategory.FAST_FOOD_OR_GAS,
-        33.2093, -117.3875, "Chevron near I-5 Exit 54C / Coast Highway, Oceanside, CA 92054",
-        "https://www.chevronwithtechron.com/station-finder",
-        "Organizer-designated runner restart after the San Mateo-to-Chevron support-car transfer. Confirm hours and restroom access.",
-    ),
+    official_stop("Santa Monica State Beach / Pier restrooms", 34.0089, -118.4972, "Santa Monica State Beach near Santa Monica Pier, Santa Monica, CA 90401", OFFICIAL_SOURCES["santa_monica"], "City of Santa Monica lists beach restrooms; confirm facility hours on race day."),
+    official_stop("Venice Beach — Washington Boulevard restroom area", 33.9857, -118.4720, "Washington Blvd / Ocean Front Walk, Venice, CA 90291", OFFICIAL_SOURCES["venice"], "Los Angeles County lists restrooms and showers at Venice Beach."),
+    official_stop("Alamitos Beach — Shoreline restroom and rinse showers", 33.7671, -118.1819, "780 E Shoreline Dr, Long Beach, CA 90802", OFFICIAL_SOURCES["long_beach"], "City of Long Beach lists public restrooms with rinse showers at the beach head."),
+    official_stop("Belmont Shore / Bay Shore public restrooms", 33.7558, -118.1320, "Bay Shore Ave, Long Beach, CA 90803", "https://www.longbeach.gov/park/marine/beaches-and-amenities/bay-shore/", "City of Long Beach lists public restrooms and beach showers at either end of Bay Shore."),
+    official_stop("Bolsa Chica State Beach — Warner-area restrooms", 33.7042, -118.0525, "17851 Pacific Coast Hwy, Huntington Beach, CA 92649", OFFICIAL_SOURCES["bolsa_chica"], "California State Parks lists restrooms and drinking water within each lot along the trail."),
+    official_stop("Bolsa Chica State Beach — Seapoint-area restrooms", 33.6874, -118.0380, "Pacific Coast Hwy near Seapoint St, Huntington Beach, CA 92649", OFFICIAL_SOURCES["bolsa_chica"], "California State Parks lists restrooms and drinking water within each lot along the trail."),
+    official_stop("Huntington State Beach — Magnolia-area restrooms", 33.6675, -118.0128, "Huntington State Beach near Magnolia St and Pacific Coast Hwy, Huntington Beach, CA 92646", OFFICIAL_SOURCES["huntington"], "California State Parks lists restrooms and drinking fountains along the beach bike trail."),
+    official_stop("Huntington State Beach — southern trail restrooms", 33.6495, -117.9916, "Huntington State Beach near Brookhurst St, Huntington Beach, CA 92646", OFFICIAL_SOURCES["huntington"], "California State Parks lists restrooms and drinking fountains along the beach bike trail."),
+    official_stop("Newport Beach — Balboa Pier public restrooms", 33.6011, -117.9003, "Balboa Pier, Newport Beach, CA 92661", OFFICIAL_SOURCES["newport"], "City of Newport Beach lists public restroom facilities at the base of Balboa Pier."),
+    official_stop("Laguna Beach — Main Beach public restrooms", 33.5426, -117.7838, "Main Beach, Laguna Beach, CA 92651", OFFICIAL_SOURCES["laguna"], "City of Laguna Beach lists Main Beach public restrooms and outdoor showers."),
+    official_stop("Laguna Beach — Aliso Creek Beach restrooms", 33.5097, -117.7548, "31106 S Coast Hwy, Laguna Beach, CA 92651", OFFICIAL_SOURCES["laguna"], "City of Laguna Beach lists Aliso Creek Beach public restrooms and outdoor showers."),
+    official_stop("Doheny State Beach — North Day-Use restrooms", 33.4606, -117.6854, "25300 Dana Point Harbor Dr, Dana Point, CA 92629", OFFICIAL_SOURCES["doheny"], "California State Parks lists accessible restrooms and outdoor rinsing showers in the day-use area."),
+    official_stop("Capistrano Beach public restroom area", 33.4582, -117.6718, "Capistrano Beach Park, Dana Point, CA 92624", "https://www.danapoint.org/department/general-services/parks/parks-trails/capistrano-beach-park", "City park listing identifies restroom facilities; confirm beach access before race day."),
+    official_stop("San Clemente State Beach — day-use restrooms", 33.4130, -117.5920, "225 Avenida Calafia, San Clemente, CA 92672", OFFICIAL_SOURCES["san_clemente"], "California State Parks lists restrooms, showers, and drinking water."),
+    official_stop("Oceanside Harbor Beach public restrooms", 33.2081, -117.3952, "Oceanside Harbor Beach, Oceanside, CA 92054", "https://www.ci.oceanside.ca.us/government/parks-recreation/parks-beaches-and-trails/beaches", "City beach listing identifies public amenities; confirm the runner-accessible entrance."),
+    official_stop("Carlsbad State Beach — Tamarack restroom/shower", 33.1583, -117.3506, "Tamarack Ave beach access, Carlsbad, CA 92008", OFFICIAL_SOURCES["carlsbad"], "City of Carlsbad lists public restrooms and showers at the seawall path."),
+    official_stop("South Carlsbad State Beach restrooms", 33.1200, -117.3208, "South Carlsbad State Beach, Carlsbad, CA 92008", "https://www.parks.ca.gov/?page_id=660", "California State Parks lists restrooms and showers; confirm entry/access from Coast Highway."),
+    official_stop("Moonlight Beach restrooms and showers", 33.0467, -117.2978, "400 B St, Encinitas, CA 92024", OFFICIAL_SOURCES["encinitas"], "City of Encinitas lists restrooms and showers at Moonlight Beach."),
+    official_stop("Cardiff State Beach public restrooms", 33.0201, -117.2817, "2488 Highway 101, Cardiff-by-the-Sea, CA 92007", "https://www.parks.ca.gov/?page_id=660", "California State Parks lists facilities at Cardiff State Beach; confirm the accessible beach entry."),
+    official_stop("Fletcher Cove public restrooms", 32.9929, -117.2746, "111 S Sierra Ave, Solana Beach, CA 92075", "https://www.cityofsolanabeach.org/enjoy-sb/beaches-parks/fletcher-cove", "City of Solana Beach identifies public facilities at Fletcher Cove; confirm hours and access."),
+    official_stop("Powerhouse Park public restrooms", 32.9595, -117.2657, "Coast Blvd, Del Mar, CA 92014", OFFICIAL_SOURCES["del_mar"], "City of Del Mar lists accessible public restrooms, showers, and water at Powerhouse Park."),
+    official_stop("Torrey Pines State Beach — North Beach restrooms", 32.9347, -117.2587, "Carmel Valley Rd / McGonigle Rd, San Diego, CA 92037", OFFICIAL_SOURCES["torrey_pines"], "California State Parks lists restrooms, showers, and a ramp at North Beach."),
+    official_stop("Torrey Pines State Beach — South Beach restrooms", 32.9212, -117.2552, "N Torrey Pines Rd beach entrance, San Diego, CA 92037", OFFICIAL_SOURCES["torrey_pines"], "California State Parks lists restrooms at the South Beach parking area."),
+    official_stop("Kellogg Park / La Jolla Shores restrooms", 32.8578, -117.2562, "8300 Camino del Oro, La Jolla, CA 92037", OFFICIAL_SOURCES["kellogg"], "City of San Diego lists several restrooms with showers; published park hours are 4 a.m.–10 p.m."),
+    official_stop("La Jolla Cove public restrooms and showers", 32.8508, -117.2723, "1100 Coast Blvd, La Jolla, CA 92037", OFFICIAL_SOURCES["la_jolla"], "City of San Diego lists restrooms and showers at La Jolla Cove."),
+    official_stop("Pacific Beach public restroom area", 32.7971, -117.2563, "Pacific Beach boardwalk area, San Diego, CA 92109", OFFICIAL_SOURCES["pacific_beach"], "City of San Diego lists public restrooms and showers at Pacific Beach."),
+    business_stop("Vons / Target Starbucks — Sepulveda backup", BathroomCategory.COFFEE, 33.9846, -118.3944, "6000 Sepulveda Blvd, Culver City, CA 90230", "https://www.target.com/sl/culver-city-westfield-mall/2632/starbucks"),
+    business_stop("Chevron — Atlantic Avenue backup", BathroomCategory.FAST_FOOD_OR_GAS, 33.9291, -118.1850, "11401 Atlantic Ave, Lynwood, CA 90262", "https://www.chevronwithtechron.com/station/11401-Atlantic-Ave-Lynwood-CA-90262-id90495"),
+    business_stop("Ralphs — South San Clemente", BathroomCategory.GROCERY, 33.4146, -117.6092, "903 S El Camino Real, San Clemente, CA 92672", "https://www.ralphs.com/stores/grocery/ca/san-clemente/s-san-clemente/703/00221"),
+    business_stop("Starbucks — Carlsbad Village backup", BathroomCategory.COFFEE, 33.1604, -117.3505, "Carlsbad Village / Carlsbad Blvd area, Carlsbad, CA 92008", "https://www.starbucks.com/store-locator"),
+    business_stop("Starbucks — La Jolla Village backup", BathroomCategory.COFFEE, 32.8323, -117.2741, "Girard Ave / Pearl St area, La Jolla, CA 92037", "https://www.starbucks.com/store-locator"),
+    business_stop("Chevron — Oceanside runner restart", BathroomCategory.FAST_FOOD_OR_GAS, 33.2093, -117.3875, "Chevron near I-5 Exit 54C / Coast Highway, Oceanside, CA 92054", "https://www.chevronwithtechron.com/station-finder"),
 )
 
 
@@ -164,11 +174,12 @@ class BathroomLayerBuilder:
         output_path.write_text(self._kml(placemarks), encoding="utf-8")
 
     def _placemark(self, stop: BathroomStop, route_runs: tuple[tuple[tuple[float, float], ...], ...]) -> str:
-        nearest_meters = self.nearest_route_distance_meters((stop.latitude, stop.longitude), route_runs)
+        proximity = self.nearest_route_proximity((stop.latitude, stop.longitude), route_runs)
         description = (
             f"Priority {stop.category.priority}: {stop.category.display_name}.<br/>"
             f"Address: {stop.address}<br/>"
-            f"Nearest runner geometry: approximately {nearest_meters / 1609.344:.2f} mi straight-line "
+            f"Approximate runner mile: {proximity.runner_miles:.1f}.<br/>"
+            f"Nearest runner geometry: approximately {proximity.straight_line_meters / 1609.344:.2f} mi straight-line "
             "(not a walking detour).<br/>"
             f"Verification: {stop.source_note}<br/>"
             f"Source: <a href=\"{stop.source_url}\">official / current listing</a>"
@@ -183,17 +194,30 @@ class BathroomLayerBuilder:
     def nearest_route_distance_meters(
         cls, stop: tuple[float, float], route_runs: tuple[tuple[tuple[float, float], ...], ...],
     ) -> float:
-        nearest = math.inf
-        for run in route_runs:
-            for start, end in zip(run, run[1:], strict=False):
-                nearest = min(nearest, cls._point_to_segment_meters(stop, start, end))
-        if math.isinf(nearest):
-            raise ValueError("Runner route geometry has no usable edges for bathroom distance calculations.")
-        return nearest
+        return cls.nearest_route_proximity(stop, route_runs).straight_line_meters
 
     @classmethod
-    def _point_to_segment_meters(
-        cls, point: tuple[float, float], start: tuple[float, float], end: tuple[float, float]) -> float:
+    def nearest_route_proximity(
+        cls, stop: tuple[float, float], route_runs: tuple[tuple[tuple[float, float], ...], ...],
+    ) -> RouteProximity:
+        nearest = math.inf
+        nearest_miles = 0.0
+        route_meters = 0.0
+        for run in route_runs:
+            for start, end in zip(run, run[1:], strict=False):
+                distance, fraction = cls._point_to_segment(stop, start, end)
+                if distance < nearest:
+                    nearest = distance
+                    nearest_miles = (route_meters + cls._segment_meters(start, end) * fraction) / 1609.344
+                route_meters += cls._segment_meters(start, end)
+        if math.isinf(nearest):
+            raise ValueError("Runner route geometry has no usable edges for bathroom distance calculations.")
+        return RouteProximity(nearest_miles, nearest)
+
+    @classmethod
+    def _point_to_segment(
+        cls, point: tuple[float, float], start: tuple[float, float], end: tuple[float, float],
+    ) -> tuple[float, float]:
         reference_latitude = math.radians(point[0])
         longitude_scale = cls.meters_per_degree_latitude * math.cos(reference_latitude)
         point_xy = (point[1] * longitude_scale, point[0] * cls.meters_per_degree_latitude)
@@ -202,9 +226,15 @@ class BathroomLayerBuilder:
         delta_x, delta_y = end_xy[0] - start_xy[0], end_xy[1] - start_xy[1]
         length_squared = delta_x * delta_x + delta_y * delta_y
         if length_squared == 0:
-            return math.dist(point_xy, start_xy)
+            return math.dist(point_xy, start_xy), 0.0
         fraction = max(0.0, min(1.0, ((point_xy[0] - start_xy[0]) * delta_x + (point_xy[1] - start_xy[1]) * delta_y) / length_squared))
-        return math.dist(point_xy, (start_xy[0] + fraction * delta_x, start_xy[1] + fraction * delta_y))
+        return math.dist(point_xy, (start_xy[0] + fraction * delta_x, start_xy[1] + fraction * delta_y)), fraction
+
+    @classmethod
+    def _segment_meters(cls, start: tuple[float, float], end: tuple[float, float]) -> float:
+        latitude_scale = cls.meters_per_degree_latitude
+        longitude_scale = latitude_scale * math.cos(math.radians((start[0] + end[0]) / 2))
+        return math.hypot((end[1] - start[1]) * longitude_scale, (end[0] - start[0]) * latitude_scale)
 
     @staticmethod
     def _kml(placemarks: str) -> str:
@@ -219,6 +249,39 @@ class BathroomLayerBuilder:
 {placemarks}
   </Folder></Document></kml>
 '''
+
+
+class BathroomCoverageAnalyzer:
+    """Finds runner-mile intervals without a researched bathroom option."""
+
+    def __init__(self, builder: BathroomLayerBuilder | None = None) -> None:
+        self.builder = builder or BathroomLayerBuilder()
+
+    def gaps(
+        self,
+        stops: tuple[BathroomStop, ...],
+        route_runs: tuple[tuple[tuple[float, float], ...], ...],
+        maximum_spacing_miles: float = 3.0,
+    ) -> tuple[CoverageGap, ...]:
+        if maximum_spacing_miles <= 0:
+            raise ValueError("Maximum bathroom spacing must be positive.")
+        stop_miles = sorted(
+            self.builder.nearest_route_proximity((stop.latitude, stop.longitude), route_runs).runner_miles
+            for stop in stops
+        )
+        boundaries = (0.0, *stop_miles, self.route_length_miles(route_runs))
+        return tuple(
+            CoverageGap(start, end)
+            for start, end in zip(boundaries, boundaries[1:], strict=False)
+            if end - start > maximum_spacing_miles
+        )
+
+    def route_length_miles(self, route_runs: tuple[tuple[tuple[float, float], ...], ...]) -> float:
+        return sum(
+            self.builder._segment_meters(start, end)
+            for run in route_runs
+            for start, end in zip(run, run[1:], strict=False)
+        ) / 1609.344
 
 
 def main() -> None:
