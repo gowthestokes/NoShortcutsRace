@@ -56,16 +56,23 @@ Create a separate, non-routing bathroom-stop layer from the final runner KML:
 uv run build-nstt-bathroom-layer
 ```
 
-It writes `outputs/NSTT_2026_bathroom_stops.kml`. Import it into a third My
-Maps layer after the runner segments and official directions. It never rewrites
+It writes category KML files (public, grocery, coffee, and backups) to
+`outputs/`. Import each as its own My Maps layer after the runner segments and
+official directions. It never rewrites
 `input/Runner.kml`; it only calculates each stop's approximate straight-line
-proximity to the runner geometry. Stops are ranked in the team's requested
-order: official public beach facilities, grocery stores, coffee chains, then
-fast-food or branded-gas backups. Confirm operating hours, closures, safe
-access, and business restroom policies immediately before the race.
+proximity to the runner geometry. It combines researched public beach facilities
+with cached Google Places results within one mile of the route. The priorities
+and colors are: public facilities (green, priority 1), grocery stores (green,
+priority 2), coffee shops (blue, priority 3), and fast-food or gas backups
+(gray, priority 4). Confirm operating hours, closures, safe access, and any
+customer-only policy immediately before the race.
 
-The command also reports runner-mile intervals above three miles without a
-researched nearby stop. Treat those as explicit gaps for field verification.
+Enable the Places API (New) for the existing Google Maps key before running the
+command. The first pass searches every 2.4 km along each continuous runner run,
+then writes reusable responses to `data/google-places-bathrooms-cache.json`.
+`data/google-places-usage.json` separately records every uncached request and
+stops at 1,000 searches. Preview the exact uncached count without contacting
+Google with `uv run build-nstt-bathroom-layer --dry-run`.
 
 Import `NSTT_2026_runner_route_segments.kml` into a My Maps layer. The route
 lines alternate green and blue and can be deleted or redrawn independently.

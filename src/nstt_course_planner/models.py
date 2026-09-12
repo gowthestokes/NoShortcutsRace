@@ -68,3 +68,7 @@ class GoogleRoutesRequestLimitError(RuntimeError):
 
 class GoogleElevationSampleLimitError(RuntimeError):
     """Raised before elevation sampling exceeds the local conservative cap."""
+
+
+class GooglePlacesRequestLimitError(RuntimeError):
+    """Raised before bathroom discovery exceeds its local Google Places cap."""

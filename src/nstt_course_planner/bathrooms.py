@@ -15,6 +15,7 @@ class BathroomCategory(Enum):
     """Stop categories in the team's required planning order."""
 
     OFFICIAL_BEACH = (1, "Official beach restroom", "beachRestroom")
+    PLACES_PUBLIC = (1, "Places-listed public restroom", "placesRestroom")
     GROCERY = (2, "Grocery-store backup", "groceryBackup")
     COFFEE = (3, "Coffee-chain backup", "coffeeBackup")
     FAST_FOOD_OR_GAS = (4, "Fast-food or branded-gas backup", "businessBackup")
@@ -102,8 +103,6 @@ def business_stop(name: str, category: BathroomCategory, latitude: float, longit
     )
 
 
-# Official stops are supported by the responsible agency. Private businesses
-# are deliberately kept as fallbacks because restroom access can change.
 BATHROOM_STOPS: tuple[BathroomStop, ...] = (
     official_stop("Santa Monica State Beach / Pier restrooms", 34.0089, -118.4972, "Santa Monica State Beach near Santa Monica Pier, Santa Monica, CA 90401", OFFICIAL_SOURCES["santa_monica"], "City of Santa Monica lists beach restrooms; confirm facility hours on race day."),
     official_stop("Venice Beach — Washington Boulevard restroom area", 33.9857, -118.4720, "Washington Blvd / Ocean Front Walk, Venice, CA 90291", OFFICIAL_SOURCES["venice"], "Los Angeles County lists restrooms and showers at Venice Beach."),
@@ -172,14 +171,14 @@ class BathroomLayerBuilder:
 
     meters_per_degree_latitude = 111_320.0
 
-    def build(self, source_path: Path, output_path: Path) -> BathroomLayerBuildResult:
+    def build(self, source_path: Path, output_path: Path, stops: tuple[BathroomStop, ...] = BATHROOM_STOPS) -> BathroomLayerBuildResult:
         route_runs = RunnerRouteKml.line_runs(source_path)
-        placemarks = "\n".join(self._placemark(stop, route_runs) for stop in sorted(BATHROOM_STOPS, key=lambda stop: (stop.category.priority, stop.name)))
+        placemarks = "\n".join(self._placemark(stop, route_runs) for stop in sorted(stops, key=lambda stop: (stop.category.priority, stop.name)))
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(self._kml(placemarks), encoding="utf-8")
         return BathroomLayerBuildResult(
-            len(BATHROOM_STOPS),
-            BathroomCoverageAnalyzer(self).gaps(BATHROOM_STOPS, route_runs),
+            len(stops),
+            (),
         )
 
     def _placemark(self, stop: BathroomStop, route_runs: tuple[tuple[tuple[float, float], ...], ...]) -> str:
@@ -251,46 +250,14 @@ class BathroomLayerBuilder:
 <kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - Bathroom Stops</name>
   <description>Research-backed bathroom stop planning layer. It does not change runner geometry. Priorities are official public beach restrooms, grocery backups, coffee-chain backups, then fast-food or branded-gas backups. Confirm access, hours, closures, and any customer-only policy on race day.</description>
   <Style id="beachRestroom"><IconStyle><color>ff00aa00</color><scale>1.15</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style>
-  <Style id="groceryBackup"><IconStyle><color>ffb46900</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-circle.png</href></Icon></IconStyle></Style>
-  <Style id="coffeeBackup"><IconStyle><color>ff336699</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/brown-circle.png</href></Icon></IconStyle></Style>
-  <Style id="businessBackup"><IconStyle><color>ff00a5ff</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/orange-circle.png</href></Icon></IconStyle></Style>
+  <Style id="placesRestroom"><IconStyle><color>ff00aa00</color><scale>1.05</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style>
+  <Style id="groceryBackup"><IconStyle><color>ff00aa00</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style>
+  <Style id="coffeeBackup"><IconStyle><color>ffff0000</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon></IconStyle></Style>
+  <Style id="businessBackup"><IconStyle><color>ff808080</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon></IconStyle></Style>
   <Folder><name>Bathroom stops — priority order</name>
 {placemarks}
   </Folder></Document></kml>
 '''
-
-
-class BathroomCoverageAnalyzer:
-    """Finds runner-mile intervals without a researched bathroom option."""
-
-    def __init__(self, builder: BathroomLayerBuilder | None = None) -> None:
-        self.builder = builder or BathroomLayerBuilder()
-
-    def gaps(
-        self,
-        stops: tuple[BathroomStop, ...],
-        route_runs: tuple[tuple[tuple[float, float], ...], ...],
-        maximum_spacing_miles: float = 3.0,
-    ) -> tuple[CoverageGap, ...]:
-        if maximum_spacing_miles <= 0:
-            raise ValueError("Maximum bathroom spacing must be positive.")
-        stop_miles = sorted(
-            self.builder.nearest_route_proximity((stop.latitude, stop.longitude), route_runs).runner_miles
-            for stop in stops
-        )
-        boundaries = (0.0, *stop_miles, self.route_length_miles(route_runs))
-        return tuple(
-            CoverageGap(start, end)
-            for start, end in zip(boundaries, boundaries[1:], strict=False)
-            if end - start > maximum_spacing_miles
-        )
-
-    def route_length_miles(self, route_runs: tuple[tuple[tuple[float, float], ...], ...]) -> float:
-        return sum(
-            self.builder._segment_meters(start, end)
-            for run in route_runs
-            for start, end in zip(run, run[1:], strict=False)
-        ) / 1609.344
 
 
 def main() -> None:
@@ -300,9 +267,6 @@ def main() -> None:
     arguments = parser.parse_args()
     result = BathroomLayerBuilder().build(arguments.runner_kml, arguments.output_kml)
     print(f"Created {arguments.output_kml} with {result.stop_count} researched stops.")
-    if result.gaps:
-        intervals = ", ".join(f"{gap.start_miles:.1f}–{gap.end_miles:.1f} mi" for gap in result.gaps)
-        print(f"No researched nearby stop in these >3 mi intervals: {intervals}")
 
 
 if __name__ == "__main__":

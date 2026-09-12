@@ -6,8 +6,8 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
-from nstt_course_planner.config import GOOGLE_ELEVATION_SAMPLE_LIMIT, GOOGLE_ROUTES_REQUEST_LIMIT
-from nstt_course_planner.models import GoogleElevationSampleLimitError, GoogleRoutesRequestLimitError
+from nstt_course_planner.config import GOOGLE_ELEVATION_SAMPLE_LIMIT, GOOGLE_PLACES_REQUEST_LIMIT, GOOGLE_ROUTES_REQUEST_LIMIT
+from nstt_course_planner.models import GoogleElevationSampleLimitError, GooglePlacesRequestLimitError, GoogleRoutesRequestLimitError
 
 
 class JsonStore:
@@ -31,9 +31,13 @@ class JsonStore:
 class GoogleUsageTracker:
     """Conservatively reserves and records billable Google Routes calls."""
 
-    @staticmethod
-    def default_usage() -> dict[str, object]:
-        return {"request_limit": GOOGLE_ROUTES_REQUEST_LIMIT, "requests_sent": 0, "last_request_at": None, "last_request_status": None}
+    request_limit = GOOGLE_ROUTES_REQUEST_LIMIT
+    service_name = "Google Routes"
+    limit_error = GoogleRoutesRequestLimitError
+
+    @classmethod
+    def default_usage(cls) -> dict[str, object]:
+        return {"request_limit": cls.request_limit, "requests_sent": 0, "last_request_at": None, "last_request_status": None}
 
     @classmethod
     def load(cls, path: Path) -> dict[str, object]:
@@ -42,7 +46,7 @@ class GoogleUsageTracker:
         usage = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(usage, dict) or not isinstance(usage.get("requests_sent"), int):
             raise RuntimeError(f"Invalid Google Routes usage file: {path}")
-        usage["request_limit"] = GOOGLE_ROUTES_REQUEST_LIMIT
+        usage["request_limit"] = cls.request_limit
         return usage
 
     @staticmethod
@@ -53,9 +57,9 @@ class GoogleUsageTracker:
     @classmethod
     def reserve(cls, usage: dict[str, object], path: Path) -> None:
         requests_sent = int(usage["requests_sent"])
-        if requests_sent >= GOOGLE_ROUTES_REQUEST_LIMIT:
-            raise GoogleRoutesRequestLimitError(
-                f"Google Routes request limit reached ({GOOGLE_ROUTES_REQUEST_LIMIT:,}); no request was sent."
+        if requests_sent >= cls.request_limit:
+            raise cls.limit_error(
+                f"{cls.service_name} request limit reached ({cls.request_limit:,}); no request was sent."
             )
         usage["requests_sent"] = requests_sent + 1
         usage["last_request_at"] = datetime.now(UTC).isoformat()
@@ -66,6 +70,14 @@ class GoogleUsageTracker:
     def set_status(cls, usage: dict[str, object], path: Path, status: str) -> None:
         usage["last_request_status"] = status
         cls.save(path, usage)
+
+
+class GooglePlacesUsageTracker(GoogleUsageTracker):
+    """Records Places searches separately from route-building calls."""
+
+    request_limit = GOOGLE_PLACES_REQUEST_LIMIT
+    service_name = "Google Places"
+    limit_error = GooglePlacesRequestLimitError
 
 
 class GoogleElevationUsageTracker:

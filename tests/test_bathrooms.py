@@ -7,7 +7,6 @@ import pytest
 from nstt_course_planner.bathrooms import (
     BATHROOM_STOPS,
     BathroomCategory,
-    BathroomCoverageAnalyzer,
     BathroomLayerBuilder,
     BathroomStop,
     RunnerRouteKml,
@@ -15,8 +14,13 @@ from nstt_course_planner.bathrooms import (
 
 
 def test_bathroom_categories_follow_the_team_priority_order() -> None:
-    assert [category.priority for category in BathroomCategory] == [1, 2, 3, 4]
-    assert {stop.category for stop in BATHROOM_STOPS} == set(BathroomCategory)
+    assert [category.priority for category in BathroomCategory] == [1, 1, 2, 3, 4]
+    assert {stop.category for stop in BATHROOM_STOPS} == {
+        BathroomCategory.OFFICIAL_BEACH,
+        BathroomCategory.GROCERY,
+        BathroomCategory.COFFEE,
+        BathroomCategory.FAST_FOOD_OR_GAS,
+    }
 
 
 def test_official_beach_stops_use_public_agency_sources() -> None:
@@ -66,19 +70,6 @@ def test_nearest_route_distance_uses_each_route_run_without_crossing_a_gap() -> 
     distance = BathroomLayerBuilder.nearest_route_distance_meters((0.001, 0.005), route_runs)
 
     assert distance == pytest.approx(111.32, abs=1.0)
-
-
-def test_coverage_analyzer_reports_only_intervals_over_target_spacing() -> None:
-    route_runs = (((0.0, 0.0), (0.0, 0.1)),)
-    first = BATHROOM_STOPS[0]
-    stops = (
-        BathroomStop(first.name, first.category, 0.0, 0.01, first.address, first.source_url, first.source_note),
-        BathroomStop(first.name, first.category, 0.0, 0.08, first.address, first.source_url, first.source_note),
-    )
-
-    gaps = BathroomCoverageAnalyzer().gaps(stops, route_runs, maximum_spacing_miles=2.0)
-
-    assert [(round(gap.start_miles, 1), round(gap.end_miles, 1)) for gap in gaps] == [(0.7, 5.5)]
 
 
 def test_researched_stops_are_explicitly_nearby_not_long_detours() -> None:
