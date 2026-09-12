@@ -191,9 +191,6 @@ class BathroomLayerBuilder:
             f"Priority {stop.category.priority}: {stop.category.display_name}.<br/>"
             f"Address: {stop.address}<br/>"
             f"Approximate runner mile: {proximity.runner_miles:.1f}.<br/>"
-            f"Nearest runner geometry: approximately {proximity.straight_line_meters / 1609.344:.2f} mi straight-line "
-            "(not a walking detour).<br/>"
-            f"Verification: {stop.source_note}<br/>"
             f"Source: <a href=\"{stop.source_url}\">official / current listing</a>"
         )
         return f'''    <Placemark><name>{xml.sax.saxutils.escape(f"{stop.category.symbol} {stop.name}")}</name>
