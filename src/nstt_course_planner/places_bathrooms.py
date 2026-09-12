@@ -33,7 +33,7 @@ class PlacesBathroomBuildConfig:
     """Inputs and local state for one Places bathroom discovery pass."""
 
     source_kml: Path
-    output_dir: Path
+    output_kml: Path
     cache_path: Path
     usage_path: Path
     anchor_spacing_meters: float
@@ -238,6 +238,8 @@ class PlacesBathroomDiscovery:
 class PlacesBathroomLayerBuilder:
     """Builds the merged curated-and-Places bathroom KML without touching the route."""
 
+    my_maps_feature_limit = 2_000
+
     def __init__(self, config: PlacesBathroomBuildConfig) -> None:
         self.config = config
         self.cache = JsonStore.load_cache(config.cache_path)
@@ -246,7 +248,7 @@ class PlacesBathroomLayerBuilder:
     @staticmethod
     def add_arguments(parser: argparse.ArgumentParser) -> None:
         parser.add_argument("--source-kml", type=Path, default=PROJECT_ROOT / "input" / "Runner.kml", help="Immutable finalized runner-route KML.")
-        parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help="Directory for the bathroom-category KML files.")
+        parser.add_argument("--output-kml", type=Path, default=DEFAULT_OUTPUT_DIR / "NSTT_2026_bathroom_stops.kml", help="Merged color-coded bathroom KML to create.")
         parser.add_argument("--places-cache", type=Path, default=DEFAULT_GOOGLE_PLACES_CACHE, help="Cached Google Places results.")
         parser.add_argument("--places-usage", type=Path, default=DEFAULT_GOOGLE_PLACES_USAGE, help="Local conservative Google Places request counter.")
         parser.add_argument("--anchor-spacing-meters", type=float, default=DEFAULT_PLACES_ANCHOR_SPACING_METERS, help="Distance between route-near search centers; 2,400 m by default.")
@@ -258,7 +260,7 @@ class PlacesBathroomLayerBuilder:
     def from_arguments(cls, arguments: argparse.Namespace) -> "PlacesBathroomLayerBuilder":
         return cls(PlacesBathroomBuildConfig(
             arguments.source_kml,
-            arguments.output_dir,
+            arguments.output_kml,
             arguments.places_cache,
             arguments.places_usage,
             arguments.anchor_spacing_meters,
@@ -297,25 +299,45 @@ class PlacesBathroomLayerBuilder:
             route_runs,
             self.config.search_radius_meters,
         )
-        output_paths = self.write_category_layers((*BATHROOM_STOPS, *discovered))
-        print(f"Created {len(output_paths)} bathroom-category KML files with {len(BATHROOM_STOPS)} curated and {len(discovered)} Google Places stops.")
+        selected = self.select_for_my_maps((*BATHROOM_STOPS, *discovered), route_runs)
+        BathroomLayerBuilder().build(self.config.source_kml, self.config.output_kml, selected)
+        omitted = len(BATHROOM_STOPS) + len(discovered) - len(selected)
+        print(
+            f"Created {self.config.output_kml} with {len(selected)} stops "
+            f"({omitted} fast-food/gas backups omitted for My Maps' 2,000-feature limit)."
+        )
 
-    def write_category_layers(self, stops: tuple[BathroomStop, ...]) -> tuple[Path, ...]:
-        names = {
-            1: "public",
-            2: "grocery",
-            3: "coffee",
-            4: "backups",
-        }
-        output_paths: list[Path] = []
-        for priority, name in names.items():
-            matching = tuple(stop for stop in stops if stop.category.priority == priority)
-            for part, batch_start in enumerate(range(0, len(matching), 2_000), start=1):
-                suffix = "" if part == 1 else f"_part_{part}"
-                output_path = self.config.output_dir / f"NSTT_2026_bathroom_{name}{suffix}.kml"
-                BathroomLayerBuilder().build(self.config.source_kml, output_path, matching[batch_start:batch_start + 2_000])
-                output_paths.append(output_path)
-        return tuple(output_paths)
+    @classmethod
+    def select_for_my_maps(
+        cls,
+        stops: tuple[BathroomStop, ...],
+        route_runs: tuple[tuple[Coordinate, ...], ...],
+    ) -> tuple[BathroomStop, ...]:
+        priority_stops = tuple(stop for stop in stops if stop.category.priority < 4)
+        backup_stops = tuple(stop for stop in stops if stop.category.priority == 4)
+        backup_capacity = cls.my_maps_feature_limit - len(priority_stops)
+        if backup_capacity < 0:
+            raise RuntimeError("Public, grocery, and coffee bathroom stops exceed the My Maps feature limit.")
+        if len(backup_stops) <= backup_capacity:
+            return (*priority_stops, *backup_stops)
+        curated = tuple(stop for stop in backup_stops if stop in BATHROOM_STOPS)
+        remaining_capacity = max(0, backup_capacity - len(curated))
+        builder = BathroomLayerBuilder()
+        candidates = sorted(
+            (stop for stop in backup_stops if stop not in BATHROOM_STOPS),
+            key=lambda stop: builder.nearest_route_proximity((stop.latitude, stop.longitude), route_runs).runner_miles,
+        )
+        return (*priority_stops, *curated, *cls.evenly_spaced(candidates, remaining_capacity))
+
+    @staticmethod
+    def evenly_spaced(stops: list[BathroomStop], count: int) -> tuple[BathroomStop, ...]:
+        if count <= 0:
+            return ()
+        if count >= len(stops):
+            return tuple(stops)
+        if count == 1:
+            return (stops[0],)
+        return tuple(stops[round(index * (len(stops) - 1) / (count - 1))] for index in range(count))
 
 
 def main() -> None:

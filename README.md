@@ -56,15 +56,15 @@ Create a separate, non-routing bathroom-stop layer from the final runner KML:
 uv run build-nstt-bathroom-layer
 ```
 
-It writes category KML files (public, grocery, coffee, and backups) to
-`outputs/`. Import each as its own My Maps layer after the runner segments and
-official directions. It never rewrites
+It writes `outputs/NSTT_2026_bathroom_stops.kml`, a single color-coded layer.
+It never rewrites
 `input/Runner.kml`; it only calculates each stop's approximate straight-line
 proximity to the runner geometry. It combines researched public beach facilities
 with cached Google Places results within one mile of the route. The priorities
 and colors are: public facilities (green, priority 1), grocery stores (green,
 priority 2), coffee shops (blue, priority 3), and fast-food or gas backups
-(gray, priority 4). Confirm operating hours, closures, safe access, and any
+(gray, priority 4). To fit My Maps' 2,000-feature import limit, it preserves
+all priorities 1–3 and evenly thins only priority-4 backups. Confirm operating hours, closures, safe access, and any
 customer-only policy immediately before the race.
 
 Enable the Places API (New) for the existing Google Maps key before running the
