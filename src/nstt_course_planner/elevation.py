@@ -1,0 +1,314 @@
+"""Elevation sampling, grade analysis, and KML export for the finalized route."""
+
+from __future__ import annotations
+
+import json
+import xml.sax.saxutils
+from dataclasses import dataclass
+from pathlib import Path
+from urllib.error import HTTPError
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+
+from nstt_course_planner.config import GOOGLE_ELEVATION_BATCH_SIZE, GOOGLE_ELEVATION_URL, USER_AGENT
+from nstt_course_planner.geometry import RouteGeometry
+from nstt_course_planner.models import RunnerRouteSection
+from nstt_course_planner.storage import GoogleElevationUsageTracker, JsonStore
+
+Coordinate = tuple[float, float]
+
+
+@dataclass(frozen=True)
+class DistanceSample:
+    """One coordinate at a known distance along a continuous runner run."""
+
+    coordinate: Coordinate
+    distance_meters: float
+
+
+@dataclass(frozen=True)
+class ElevationProfile:
+    """Terrain elevations and their distance-window-smoothed equivalents."""
+
+    samples: tuple[DistanceSample, ...]
+    elevation_meters: tuple[float, ...]
+    smoothed_elevation_meters: tuple[float, ...]
+
+    def smoothed_at(self, distance_meters: float) -> float:
+        if not self.samples:
+            raise RuntimeError("Cannot read elevation from an empty profile.")
+        if distance_meters <= self.samples[0].distance_meters:
+            return self.smoothed_elevation_meters[0]
+        if distance_meters >= self.samples[-1].distance_meters:
+            return self.smoothed_elevation_meters[-1]
+        for left_index, right_sample in enumerate(self.samples[1:], start=1):
+            if distance_meters <= right_sample.distance_meters:
+                left_sample = self.samples[left_index - 1]
+                fraction = (distance_meters - left_sample.distance_meters) / (
+                    right_sample.distance_meters - left_sample.distance_meters
+                )
+                return self.smoothed_elevation_meters[left_index - 1] + fraction * (
+                    self.smoothed_elevation_meters[left_index] - self.smoothed_elevation_meters[left_index - 1]
+                )
+        raise AssertionError("Distance lookup should return within the profile range.")
+
+
+@dataclass(frozen=True)
+class ElevatedRouteSection:
+    """An editable runner segment with terrain elevation summary information."""
+
+    section: RunnerRouteSection
+    distance_meters: float
+    start_elevation_meters: float
+    end_elevation_meters: float
+    average_grade_percent: float
+
+    @property
+    def net_elevation_meters(self) -> float:
+        return self.end_elevation_meters - self.start_elevation_meters
+
+
+class RouteGeometrySampler:
+    """Samples a continuous route run at fixed-distance intervals."""
+
+    @staticmethod
+    def sample(coordinates: list[Coordinate], spacing_meters: float) -> tuple[DistanceSample, ...]:
+        if spacing_meters <= 0:
+            raise ValueError("Elevation sample spacing must be greater than zero.")
+        if len(coordinates) < 2:
+            raise RuntimeError("A runner route run needs at least two coordinates for elevation sampling.")
+        samples = [DistanceSample(coordinates[0], 0.0)]
+        distance_so_far = 0.0
+        next_sample_distance = spacing_meters
+        for start, end in zip(coordinates, coordinates[1:], strict=False):
+            edge_meters = RouteGeometry.haversine_meters(start, end)
+            if edge_meters == 0:
+                continue
+            while next_sample_distance <= distance_so_far + edge_meters + 1e-6:
+                fraction = (next_sample_distance - distance_so_far) / edge_meters
+                samples.append(DistanceSample(RouteGeometry.interpolate(start, end, fraction), next_sample_distance))
+                next_sample_distance += spacing_meters
+            distance_so_far += edge_meters
+        if samples[-1].coordinate != coordinates[-1]:
+            samples.append(DistanceSample(coordinates[-1], distance_so_far))
+        return tuple(samples)
+
+
+class GoogleElevationClient:
+    """Caches Google Elevation values and reserves all uncached samples first."""
+
+    def __init__(
+        self,
+        cache: dict[str, dict[str, object]],
+        cache_path: Path,
+        api_key: str,
+        usage: dict[str, object],
+        usage_path: Path,
+    ) -> None:
+        self.cache = cache
+        self.cache_path = cache_path
+        self.api_key = api_key
+        self.usage = usage
+        self.usage_path = usage_path
+
+    @staticmethod
+    def cache_key(coordinate: Coordinate) -> str:
+        latitude, longitude = coordinate
+        return f"{latitude:.7f},{longitude:.7f}"
+
+    def uncached_coordinates(self, coordinates: list[Coordinate]) -> list[Coordinate]:
+        seen: set[str] = set()
+        uncached: list[Coordinate] = []
+        for coordinate in coordinates:
+            key = self.cache_key(coordinate)
+            if key not in seen and key not in self.cache:
+                seen.add(key)
+                uncached.append(coordinate)
+        return uncached
+
+    def elevations(self, coordinates: list[Coordinate]) -> list[float]:
+        uncached = self.uncached_coordinates(coordinates)
+        GoogleElevationUsageTracker.ensure_capacity(self.usage, len(uncached))
+        for start in range(0, len(uncached), GOOGLE_ELEVATION_BATCH_SIZE):
+            batch = uncached[start:start + GOOGLE_ELEVATION_BATCH_SIZE]
+            GoogleElevationUsageTracker.reserve(self.usage, self.usage_path, len(batch))
+            try:
+                batch_elevations = self._request_batch(batch)
+            except RuntimeError as error:
+                GoogleElevationUsageTracker.set_status(self.usage, self.usage_path, f"failed: {error}")
+                raise
+            for coordinate, elevation_meters in zip(batch, batch_elevations, strict=True):
+                self.cache[self.cache_key(coordinate)] = {"elevation_meters": elevation_meters}
+            JsonStore.save_cache(self.cache_path, self.cache)
+            GoogleElevationUsageTracker.set_status(self.usage, self.usage_path, "success")
+        return [float(self.cache[self.cache_key(coordinate)]["elevation_meters"]) for coordinate in coordinates]
+
+    def _request_batch(self, coordinates: list[Coordinate]) -> list[float]:
+        locations = "|".join(f"{latitude:.7f},{longitude:.7f}" for latitude, longitude in coordinates)
+        request = Request(
+            f"{GOOGLE_ELEVATION_URL}?{urlencode({'locations': locations, 'key': self.api_key})}",
+            headers={"User-Agent": USER_AGENT},
+        )
+        try:
+            with urlopen(request, timeout=60) as response:  # noqa: S310 - fixed Google endpoint
+                data = json.load(response)
+        except HTTPError as error:
+            raise RuntimeError(f"Google Elevation request failed with HTTP {error.code}.") from error
+        except (OSError, json.JSONDecodeError) as error:
+            raise RuntimeError("Google Elevation request failed due to a network or response error.") from error
+        if not isinstance(data, dict) or data.get("status") != "OK":
+            raise RuntimeError("Google Elevation returned an unsuccessful response; check the API key and Elevation API setup.")
+        results = data.get("results")
+        if not isinstance(results, list) or len(results) != len(coordinates):
+            raise RuntimeError("Google Elevation returned an incomplete elevation batch.")
+        try:
+            return [float(result["elevation"]) for result in results]
+        except (KeyError, TypeError, ValueError) as error:
+            raise RuntimeError("Google Elevation returned a batch without usable elevations.") from error
+
+
+class ElevationAnalyzer:
+    """Builds smoothed elevation profiles and segment grade summaries."""
+
+    @staticmethod
+    def smooth(elevations: list[float], samples: tuple[DistanceSample, ...], window_meters: float) -> tuple[float, ...]:
+        if not 150 <= window_meters <= 250:
+            raise ValueError("Elevation smoothing window must be between 150 and 250 meters.")
+        if len(elevations) != len(samples):
+            raise ValueError("Elevation values must match the route sample count.")
+        half_window = window_meters / 2
+        return tuple(
+            sum(elevation for elevation, other in zip(elevations, samples, strict=True) if abs(other.distance_meters - sample.distance_meters) <= half_window) /
+            sum(1 for other in samples if abs(other.distance_meters - sample.distance_meters) <= half_window)
+            for sample in samples
+        )
+
+    @classmethod
+    def profile(cls, coordinates: list[Coordinate], elevations: list[float], spacing_meters: float, smoothing_meters: float) -> ElevationProfile:
+        samples = RouteGeometrySampler.sample(coordinates, spacing_meters)
+        return ElevationProfile(samples, tuple(elevations), cls.smooth(elevations, samples, smoothing_meters))
+
+    @staticmethod
+    def run_coordinates(sections: list[RunnerRouteSection]) -> list[Coordinate]:
+        coordinates = list(sections[0].coordinates)
+        for section in sections[1:]:
+            coordinates.extend(section.coordinates[1:] if coordinates[-1] == section.coordinates[0] else section.coordinates)
+        return coordinates
+
+    @staticmethod
+    def summarize_section(section: RunnerRouteSection, profile: ElevationProfile, start_distance_meters: float) -> ElevatedRouteSection:
+        section_meters = RouteGeometry.distance_meters([list(section.coordinates)])
+        start_elevation = profile.smoothed_at(start_distance_meters)
+        end_elevation = profile.smoothed_at(start_distance_meters + section_meters)
+        grade = 100 * (end_elevation - start_elevation) / section_meters if section_meters else 0.0
+        return ElevatedRouteSection(section, section_meters, start_elevation, end_elevation, grade)
+
+    @classmethod
+    def sections(
+        cls,
+        section_runs: list[list[RunnerRouteSection]],
+        client: GoogleElevationClient,
+        spacing_meters: float,
+        smoothing_meters: float,
+    ) -> list[ElevatedRouteSection]:
+        elevated_sections: list[ElevatedRouteSection] = []
+        for sections in section_runs:
+            coordinates = cls.run_coordinates(sections)
+            samples = RouteGeometrySampler.sample(coordinates, spacing_meters)
+            elevations = client.elevations([sample.coordinate for sample in samples])
+            profile = cls.profile(coordinates, elevations, spacing_meters, smoothing_meters)
+            offset_meters = 0.0
+            previous_end: Coordinate | None = None
+            for section in sections:
+                if previous_end is not None:
+                    offset_meters += RouteGeometry.haversine_meters(previous_end, section.coordinates[0])
+                elevated_section = cls.summarize_section(section, profile, offset_meters)
+                elevated_sections.append(elevated_section)
+                offset_meters += elevated_section.distance_meters
+                previous_end = section.coordinates[-1]
+        return elevated_sections
+
+
+class ElevationLayerExporter:
+    """Writes the grade-colored runner overlay and concise import notes."""
+
+    COLORS = {
+        "darkBlue": "ff913d0b",
+        "blue": "ffd27619",
+        "lightBlue": "fff6b564",
+        "gray": "ff808080",
+        "lightOrange": "ff80ccff",
+        "orange": "ff0098ff",
+        "red": "ff2f2fd3",
+    }
+    LEGEND = (
+        "Dark blue: ≤ -6%; blue: -6% to -3%; light blue: -3% to -1%; gray: -1% to +1%; "
+        "light orange: +1% to +3%; orange: +3% to +6%; red: ≥ +6%."
+    )
+    CAVEAT = "Google reports terrain elevation; verify bridge decks, ramps, tunnels, and other grade-separated sections in person."
+
+    @classmethod
+    def style_name(cls, grade_percent: float) -> str:
+        if grade_percent <= -6:
+            return "darkBlue"
+        if grade_percent <= -3:
+            return "blue"
+        if grade_percent < -1:
+            return "lightBlue"
+        if grade_percent <= 1:
+            return "gray"
+        if grade_percent <= 3:
+            return "lightOrange"
+        if grade_percent < 6:
+            return "orange"
+        return "red"
+
+    @classmethod
+    def write(cls, output_dir: Path, sections: list[ElevatedRouteSection]) -> None:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        styles = "".join(
+            f'<Style id="{name}"><LineStyle><color>{color}</color><width>6</width></LineStyle></Style>'
+            for name, color in cls.COLORS.items()
+        )
+        placemarks = "".join(cls._placemark(section) for section in sections)
+        description = xml.sax.saxutils.escape(f"Terrain-elevation overlay for the finalized runner route. {cls.LEGEND} {cls.CAVEAT}")
+        kml = f'''<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - Elevation by Grade</name><description>{description}</description>
+  {styles}
+  <Folder><name>Runner route elevation grade</name><description>{description}</description>{placemarks}
+  </Folder></Document></kml>
+'''
+        notes = f'''NSTT 2026 elevation overlay
+
+Files
+- NSTT_2026_elevation.kml: import as a separate Google My Maps layer above the runner segments.
+
+Legend
+- {cls.LEGEND}
+
+Method
+- Samples the immutable Runner.kml geometry about every 50 m using Google Elevation terrain data.
+- Smooths elevations over a configurable 150–250 m window (default 200 m), then colors each existing editable runner segment by signed average grade.
+- Each segment pop-up lists smoothed start/end elevation, net elevation change, and average grade.
+
+Caveat
+- {cls.CAVEAT}
+'''
+        (output_dir / "NSTT_2026_elevation.kml").write_text(kml, encoding="utf-8")
+        (output_dir / "NSTT_2026_elevation_README.txt").write_text(notes, encoding="utf-8")
+
+    @classmethod
+    def _placemark(cls, section: ElevatedRouteSection) -> str:
+        start_feet = section.start_elevation_meters * 3.28084
+        end_feet = section.end_elevation_meters * 3.28084
+        net_feet = section.net_elevation_meters * 3.28084
+        description = xml.sax.saxutils.escape(
+            f"{section.section.label}. Smoothed terrain elevation: {start_feet:.0f} ft to {end_feet:.0f} ft; "
+            f"net gain/loss: {net_feet:+.0f} ft; signed average grade: {section.average_grade_percent:+.1f}%. "
+            f"{cls.CAVEAT}"
+        )
+        coordinates = " ".join(f"{longitude},{latitude},0" for latitude, longitude in section.section.coordinates)
+        return f'''\n      <Placemark><name>{xml.sax.saxutils.escape(section.section.label)}</name>
+        <description>{description}</description><styleUrl>#{cls.style_name(section.average_grade_percent)}</styleUrl>
+        <LineString><tessellate>1</tessellate><coordinates>{coordinates}</coordinates></LineString>
+      </Placemark>'''

@@ -6,8 +6,8 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
-from nstt_course_planner.config import GOOGLE_ROUTES_REQUEST_LIMIT
-from nstt_course_planner.models import GoogleRoutesRequestLimitError
+from nstt_course_planner.config import GOOGLE_ELEVATION_SAMPLE_LIMIT, GOOGLE_ROUTES_REQUEST_LIMIT
+from nstt_course_planner.models import GoogleElevationSampleLimitError, GoogleRoutesRequestLimitError
 
 
 class JsonStore:
@@ -61,6 +61,62 @@ class GoogleUsageTracker:
         usage["last_request_at"] = datetime.now(UTC).isoformat()
         usage["last_request_status"] = "reserved"
         cls.save(path, usage)
+
+    @classmethod
+    def set_status(cls, usage: dict[str, object], path: Path, status: str) -> None:
+        usage["last_request_status"] = status
+        cls.save(path, usage)
+
+
+class GoogleElevationUsageTracker:
+    """Conservatively reserves billable Google Elevation samples."""
+
+    @staticmethod
+    def default_usage() -> dict[str, object]:
+        return {
+            "sample_limit": GOOGLE_ELEVATION_SAMPLE_LIMIT,
+            "samples_sent": 0,
+            "requests_sent": 0,
+            "last_request_at": None,
+            "last_request_status": None,
+        }
+
+    @classmethod
+    def load(cls, path: Path) -> dict[str, object]:
+        if not path.exists():
+            return cls.default_usage()
+        usage = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(usage, dict) or not isinstance(usage.get("samples_sent"), int):
+            raise RuntimeError(f"Invalid Google Elevation usage file: {path}")
+        usage["sample_limit"] = GOOGLE_ELEVATION_SAMPLE_LIMIT
+        usage.setdefault("requests_sent", 0)
+        return usage
+
+    @staticmethod
+    def save(path: Path, usage: dict[str, object]) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(usage, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    @classmethod
+    def reserve(cls, usage: dict[str, object], path: Path, sample_count: int) -> None:
+        if sample_count <= 0:
+            return
+        cls.ensure_capacity(usage, sample_count)
+        samples_sent = int(usage["samples_sent"])
+        usage["samples_sent"] = samples_sent + sample_count
+        usage["requests_sent"] = int(usage.get("requests_sent", 0)) + 1
+        usage["last_request_at"] = datetime.now(UTC).isoformat()
+        usage["last_request_status"] = "reserved"
+        cls.save(path, usage)
+
+    @staticmethod
+    def ensure_capacity(usage: dict[str, object], sample_count: int) -> None:
+        if sample_count <= 0:
+            return
+        if int(usage["samples_sent"]) + sample_count > GOOGLE_ELEVATION_SAMPLE_LIMIT:
+            raise GoogleElevationSampleLimitError(
+                f"Google Elevation sample limit would be exceeded ({GOOGLE_ELEVATION_SAMPLE_LIMIT:,}); no request was sent."
+            )
 
     @classmethod
     def set_status(cls, usage: dict[str, object], path: Path, status: str) -> None:

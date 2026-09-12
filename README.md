@@ -137,6 +137,32 @@ gap and writes `outputs/NSTT_2026_official_directions.kml` as an unchanged
 reference layer for the verified turn checkpoints. The final line of each
 continuous runner run may be shorter than half a mile.
 
+### Create the elevation overlay
+
+The elevation command reads `input/Runner.kml` without editing it and writes a
+separate grade-colored overlay. First inspect the exact Google Elevation sample
+count without sending a request:
+
+```bash
+uv run build-nstt-elevation --dry-run
+```
+
+Then, after enabling the Google Elevation API for the existing key, create the
+layer:
+
+```bash
+uv run build-nstt-elevation
+```
+
+It samples the route about every 50 m, batches at most 128 locations per
+request, smooths terrain elevations over 200 m, and colors each existing
+editable runner segment by signed average grade. The separate local files
+`data/google-elevation-cache.json` and `data/google-elevation-usage.json`
+reuse samples and stop new sampling before 4,500 locations. Import
+`outputs/NSTT_2026_elevation.kml` as a layer above the runner route. Its legend
+and segment pop-ups report the smoothed elevation and grade; bridge decks,
+ramps, and tunnels still need field verification.
+
 ## Important
 
 The organizer's turn list is the source of truth. The builder geocodes its
