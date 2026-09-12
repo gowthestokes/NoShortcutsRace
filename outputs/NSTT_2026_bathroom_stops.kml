@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - Bathroom Stops</name>
+  <description>Research-backed bathroom stop planning layer. It does not change runner geometry. Priorities are official public beach restrooms, grocery backups, coffee-chain backups, then fast-food or branded-gas backups. Confirm access, hours, closures, and any customer-only policy on race day.</description>
+  <Style id="beachRestroom"><IconStyle><color>ff00aa00</color><scale>1.15</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style>
+  <Style id="groceryBackup"><IconStyle><color>ffb46900</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-circle.png</href></Icon></IconStyle></Style>
+  <Style id="coffeeBackup"><IconStyle><color>ff336699</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/brown-circle.png</href></Icon></IconStyle></Style>
+  <Style id="businessBackup"><IconStyle><color>ff00a5ff</color><Icon><href>http://maps.google.com/mapfiles/kml/paddle/orange-circle.png</href></Icon></IconStyle></Style>
+  <Folder><name>Bathroom stops — priority order</name>
+    <Placemark><name>Carlsbad State Beach — Tamarack restroom/shower</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: Tamarack Ave beach access, Carlsbad, CA 92008<br/>Nearest runner geometry: approximately 0.03 mi straight-line (not a walking detour).<br/>Verification: City of Carlsbad lists public restrooms and showers at both ends of the Carlsbad State Beach seawall path, including Tamarack access.<br/>Source: <a href="https://www.carlsbadca.gov/residents/about-carlsbad/beaches/about-carlsbad-beaches">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-117.3506,33.1583,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Doheny State Beach — North Day-Use restrooms</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: 25300 Dana Point Harbor Dr, Dana Point, CA 92629<br/>Nearest runner geometry: approximately 0.25 mi straight-line (not a walking detour).<br/>Verification: California State Parks lists accessible restrooms and outdoor rinsing showers throughout the day-use area. Day-use entry rules may apply.<br/>Source: <a href="https://www.parks.ca.gov/AccessibleFeatures/Details/645">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-117.6854,33.4606,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Huntington State Beach — Magnolia-area restrooms</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: Huntington State Beach, near Magnolia St and Pacific Coast Hwy, Huntington Beach, CA 92646<br/>Nearest runner geometry: approximately 0.14 mi straight-line (not a walking detour).<br/>Verification: California State Parks lists usable restrooms and drinking fountains along the beach bike trail. Confirm access from the runner corridor.<br/>Source: <a href="https://www.parks.ca.gov/AccessibleFeatures/Details/643">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-118.0128,33.6675,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Kellogg Park / La Jolla Shores restrooms</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: 8300 Camino del Oro, La Jolla, CA 92037<br/>Nearest runner geometry: approximately 0.15 mi straight-line (not a walking detour).<br/>Verification: City of San Diego lists several restrooms with showers. Park hours are listed as 4 a.m.–10 p.m.; confirm race-day status.<br/>Source: <a href="https://www.sandiego.gov/park-and-recreation/parks/regional/shoreline/kelloggpark">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-117.2562,32.8578,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Moonlight Beach restrooms and showers</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: 400 B St, Encinitas, CA 92024<br/>Nearest runner geometry: approximately 0.23 mi straight-line (not a walking detour).<br/>Verification: City of Encinitas lists restrooms and showers at Moonlight Beach.<br/>Source: <a href="https://www.encinitasca.gov/government/departments/parks-recreation-cultural-arts/parks-beaches-trails/beaches/">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-117.2978,33.0467,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Pacific Beach public restroom area</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: Pacific Beach boardwalk area, San Diego, CA 92109<br/>Nearest runner geometry: approximately 0.03 mi straight-line (not a walking detour).<br/>Verification: City of San Diego lists public restrooms and showers at Pacific Beach. Use only if safely accessible from the runner route.<br/>Source: <a href="https://www.sandiego.gov/lifeguards/safety/bchreg">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-117.2563,32.7971,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>San Clemente State Beach — day-use restrooms</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: 225 Avenida Calafia, San Clemente, CA 92672<br/>Nearest runner geometry: approximately 0.57 mi straight-line (not a walking detour).<br/>Verification: California State Parks lists restrooms, showers, and drinking water. Confirm the park entrance and facility availability before race day.<br/>Source: <a href="https://www.parks.ca.gov/?page_id=646">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-117.592,33.413,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Santa Monica State Beach / Pier restrooms</name>
+      <description><![CDATA[Priority 1: Official beach restroom.<br/>Address: Santa Monica State Beach, near Santa Monica Pier, Santa Monica, CA 90401<br/>Nearest runner geometry: approximately 0.08 mi straight-line (not a walking detour).<br/>Verification: City of Santa Monica lists restrooms at Santa Monica State Beach. Confirm beach-facility hours on race day.<br/>Source: <a href="https://www.santamonica.gov/places/parks/santa-monica-state-beach">official / current listing</a>]]></description>
+      <styleUrl>#beachRestroom</styleUrl>
+      <Point><coordinates>-118.4972,34.0089,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Ralphs — South San Clemente</name>
+      <description><![CDATA[Priority 2: Grocery-store backup.<br/>Address: 903 S El Camino Real, San Clemente, CA 92672<br/>Nearest runner geometry: approximately 0.30 mi straight-line (not a walking detour).<br/>Verification: Official Ralphs location. Confirm hours and restroom access; this is not a public restroom.<br/>Source: <a href="https://www.ralphs.com/stores/grocery/ca/san-clemente/s-san-clemente/703/00221">official / current listing</a>]]></description>
+      <styleUrl>#groceryBackup</styleUrl>
+      <Point><coordinates>-117.6092,33.4146,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Starbucks — Carlsbad Village backup</name>
+      <description><![CDATA[Priority 3: Coffee-chain backup.<br/>Address: Carlsbad Village / Carlsbad Blvd area, Carlsbad, CA 92008<br/>Nearest runner geometry: approximately 0.12 mi straight-line (not a walking detour).<br/>Verification: Use the official Starbucks locator to confirm the exact storefront, hours, and restroom access before race day.<br/>Source: <a href="https://www.starbucks.com/store-locator">official / current listing</a>]]></description>
+      <styleUrl>#coffeeBackup</styleUrl>
+      <Point><coordinates>-117.3505,33.1604,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Starbucks — La Jolla Village backup</name>
+      <description><![CDATA[Priority 3: Coffee-chain backup.<br/>Address: Girard Ave / Pearl St area, La Jolla, CA 92037<br/>Nearest runner geometry: approximately 0.00 mi straight-line (not a walking detour).<br/>Verification: Use the official Starbucks locator to confirm the exact storefront, hours, and restroom access before race day.<br/>Source: <a href="https://www.starbucks.com/store-locator">official / current listing</a>]]></description>
+      <styleUrl>#coffeeBackup</styleUrl>
+      <Point><coordinates>-117.2741,32.8323,0</coordinates></Point>
+    </Placemark>
+    <Placemark><name>Chevron — Oceanside runner restart</name>
+      <description><![CDATA[Priority 4: Fast-food or branded-gas backup.<br/>Address: Chevron near I-5 Exit 54C / Coast Highway, Oceanside, CA 92054<br/>Nearest runner geometry: approximately 0.00 mi straight-line (not a walking detour).<br/>Verification: Organizer-designated runner restart after the San Mateo-to-Chevron support-car transfer. Confirm hours and restroom access.<br/>Source: <a href="https://www.chevronwithtechron.com/station-finder">official / current listing</a>]]></description>
+      <styleUrl>#businessBackup</styleUrl>
+      <Point><coordinates>-117.3875,33.2093,0</coordinates></Point>
+    </Placemark>
+  </Folder></Document></kml>

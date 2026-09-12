@@ -8,6 +8,7 @@ dependencies = []
 
 [project.scripts]
 build-nstt-course = "nstt_course_planner.build_course:main"
+build-nstt-bathroom-layer = "nstt_course_planner.bathrooms:main"
 
 [build-system]
 requires = ["uv_build>=0.12.0,<0.13.0"]
