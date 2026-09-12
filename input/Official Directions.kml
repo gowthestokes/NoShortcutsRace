@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Official Directions</name>
+    <Style id="icon-1541-F9A825-nodesc-normal">
+      <IconStyle>
+        <color>ff25a8f9</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1541-F9A825-nodesc-highlight">
+      <IconStyle>
+        <color>ff25a8f9</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1541-F9A825-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1541-F9A825-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1541-F9A825-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1661-F57C00-nodesc-normal">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1661-F57C00-nodesc-highlight">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1661-F57C00-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1661-F57C00-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1661-F57C00-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-F57C00-normal">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-F57C00-highlight">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-F57C00">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-F57C00-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-F57C00-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-F57C00-nodesc-normal">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-F57C00-nodesc-highlight">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-F57C00-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-F57C00-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-F57C00-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Right on Ocean</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.49495,34.01136,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on Pico</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.49031,34.0074385,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Main</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.48974,34.00784,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left abbot Kinney</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.47412,33.99243,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on Washington</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.45216,33.98837,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Fork right on west washington</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.43547,33.99652,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right in Inglewood</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.42203,33.99756,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left culver drive</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.41135,33.98963,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right Mesmer Ave</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.409,33.99101,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left W Centinela Ave</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.39831,33.9832,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on sepulveda</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.3950076,33.9812978,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on w 78th street</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.3955169,33.9699835,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Becomes w 79th street</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.3816983,33.9683349,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on isis Ave</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.3754056,33.9646385,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left w 83rd street</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.3753788,33.9636145,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on La cienega</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.37089,33.96369,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on Manchester</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.36997,33.96175,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Manchester becomes firestone</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.25656,33.96005,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on atlantic</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.18326,33.9518,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left rosecrans</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.19382,33.90346,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on to LA River trail
+</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.1816111,33.9035112,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Follow trail south until go under PCH 1
+</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.204283,33.790325,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Meet at car bike path exit immediately after PCH - ocean blue environmental</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.203588,33.7898612,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Pick up PCH</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.2018975,33.7897505,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>⚠️ Careful on the Roundabout ⚠️ </name>
+      <styleUrl>#icon-1541-F9A825-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -118.1447901,33.7897423,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on del Prado</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.7058348,33.4655894,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Goldern lantern</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.6974567,33.4655018,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on Dana point highway rd</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.6937289,33.4624563,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Park Lantern</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.6887279,33.4637376,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Fork right towards coast highway</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.6842125,33.4641248,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Becomes el camino real</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.6450462,33.4415598,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Valencia</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.60613,33.419,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left Avenida Del Presidente</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.6065004,33.4183634,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>*Team photo San Mateo Point*</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.5939508,33.3948876,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Drive on 5</name>
+      <description>Everyone including runner due to Camp Pendleton</description>
+      <styleUrl>#icon-1899-F57C00</styleUrl>
+      <Point>
+        <coordinates>
+          -117.5931593,33.3952228,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Runner starts again at this Chevron</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.3873987,33.2092359,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Follow coast highway</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.3865806,33.2082208,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Becomes Carlsbad Blvd</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.35836,33.1705,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Becomes coast hwy 101</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.30862,33.08256,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right Camino del mar</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.26895,32.98015,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right N Torrey Pines Rd</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.26126,32.94022,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Turn Right to Stay on N Torrey Pines Rd</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.2406,32.89192,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on La Jolla Shores Dr</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.24384,32.87561,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Torrey Pines Rd</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.2550288,32.8505869,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on Girard Ave</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.27288,32.84206,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Pearl St</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.2724295,32.840637,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on Fay Ave</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.27366,32.84017,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Nautilus St</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.27134,32.83286,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on La jolla Blvd</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.27651,32.83178,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Right on Mission Blvd</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.25819,32.80485,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Left on Garnet Ave</name>
+      <styleUrl>#icon-1899-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.2556386,32.7966571,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>FINISH: Milestone Running Shop PB</name>
+      <styleUrl>#icon-1661-F57C00-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          -117.236033,32.8018318,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

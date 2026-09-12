@@ -51,6 +51,11 @@ class CourseBuildConfig:
     approved_segments_kml: Path | None = None
     approved_through_segment: int | None = None
     resume_at_checkpoint: str = "Del Prado / Golden Lantern"
+    source_of_truth_kml: Path | None = None
+    source_prefix_through_segment: int | None = None
+    source_prefix_end_marker: str = "San Mateo Point"
+    normalized_source_kml: Path | None = None
+    official_directions_kml: Path | None = None
 
 
 class UnsafePedestrianRouteError(RuntimeError):
@@ -59,3 +64,7 @@ class UnsafePedestrianRouteError(RuntimeError):
 
 class GoogleRoutesRequestLimitError(RuntimeError):
     """Raised before the planner exceeds its conservative Google request cap."""
+
+
+class GoogleElevationSampleLimitError(RuntimeError):
+    """Raised before elevation sampling exceeds the local conservative cap."""

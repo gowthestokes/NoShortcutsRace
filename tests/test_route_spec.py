@@ -2,6 +2,7 @@
 
 import json
 import math
+from types import SimpleNamespace
 
 import pytest
 
@@ -28,16 +29,22 @@ from nstt_course_planner.build_course import (
     google_walking_route_payload,
     google_route_distance_meters,
     load_approved_route_progress,
-    mile_markers,
     runner_route_sections,
     write_outputs,
+    CourseBuilder,
 )
+from nstt_course_planner.models import CourseBuildConfig
+from nstt_course_planner.geometry import RouteGeometry, RouteSegmenter
+from nstt_course_planner.progress import ApprovedProgressLoader
 from nstt_course_planner.route_spec import (
+    CAR_CHECKPOINTS,
+    CAR_INSTRUCTIONS,
     OPERATIONAL_NOTES,
     ROUTE_SPEC,
     ROUTE_CHECKPOINTS,
     RUNNER_INSTRUCTIONS,
 )
+from nstt_course_planner.routing import RunnerRouter
 
 
 def test_every_runner_direction_is_present_and_in_organizer_order() -> None:
@@ -94,6 +101,18 @@ def test_river_and_coast_safety_requirements_remain_explicit() -> None:
     assert "coast highway" in runner_text
 
 
+def test_i5_leg_is_an_explicit_support_car_pickup_and_drop_off() -> None:
+    assert [(item.action, item.checkpoint_label) for item in CAR_INSTRUCTIONS[-3:]] == [
+        ("pick up runner", "I-5 runner pickup - San Mateo Point"),
+        ("drive I-5", "I-5 runner drop-off - Chevron exit 54C"),
+        ("cross road after exit, pull into Chevron, and drop runner", "I-5 runner drop-off - Chevron exit 54C"),
+    ]
+    assert [point.label for point in CAR_CHECKPOINTS[-2:]] == [
+        "I-5 runner pickup - San Mateo Point",
+        "I-5 runner drop-off - Chevron exit 54C",
+    ]
+
+
 def test_operational_safety_notes_are_retained_for_future_pod_planning() -> None:
     assert OPERATIONAL_NOTES == (
         "Runner must always carry a phone during the LA River Trail section.",
@@ -104,13 +123,12 @@ def test_operational_safety_notes_are_retained_for_future_pod_planning() -> None
     )
 
 
-def test_kml_splits_runner_segments_and_mile_checkpoints_into_separate_layers(tmp_path) -> None:
+def test_kml_exports_only_the_editable_runner_segments_layer(tmp_path) -> None:
     runner_point = Point("Runner point", "runner query", 34.0, -118.0, "Runner point")
     finish_point = Point("Finish", "finish query", 34.1, -118.1, "Finish point")
-    write_outputs(tmp_path, [runner_point, finish_point], [[(34.0, -118.0), (34.1, -118.1)]], 1609.344)
+    write_outputs(tmp_path, [[(34.0, -118.0), (34.1, -118.1)]], 1609.344)
 
     segments_kml = (tmp_path / "NSTT_2026_runner_route_segments.kml").read_text(encoding="utf-8")
-    checkpoints_kml = (tmp_path / "NSTT_2026_runner_mile_checkpoints.kml").read_text(encoding="utf-8")
 
     assert "Runner route segments - alternating green and blue" in segments_kml
     assert "Segment 001 - Start to Checkpoint 001" in segments_kml
@@ -118,25 +136,7 @@ def test_kml_splits_runner_segments_and_mile_checkpoints_into_separate_layers(tm
     assert 'id="segmentBlue"' in segments_kml
     assert "<Point>" not in segments_kml
     assert "<MultiGeometry>" not in segments_kml
-    assert "Checkpoint 001" in checkpoints_kml
-    assert "<LineString>" not in checkpoints_kml
-    assert "Support car" not in checkpoints_kml
-    assert "vehicle logistics" in checkpoints_kml
-
-
-def test_mile_markers_continue_after_a_route_gap_without_bridging_it() -> None:
-    latitude_delta_per_mile = 1609.344 * 180 / (math.pi * 6_371_000)
-    segments = [
-        [(0.0, 0.0), (latitude_delta_per_mile * 1.5, 0.0)],
-        [(10.0, 0.0), (10.0 + latitude_delta_per_mile * 1.5, 0.0)],
-    ]
-
-    markers = mile_markers(segments)
-
-    assert [mile for mile, _, _ in markers] == [1, 2, 3]
-    assert math.isclose(markers[0][1], latitude_delta_per_mile, abs_tol=1e-9)
-    assert math.isclose(markers[1][1], 10.0 + latitude_delta_per_mile * 0.5, abs_tol=1e-9)
-    assert math.isclose(markers[2][1], 10.0 + latitude_delta_per_mile * 1.5, abs_tol=1e-9)
+    assert not (tmp_path / "NSTT_2026_runner_mile_checkpoints.kml").exists()
 
 
 def test_route_sections_are_editable_mile_lines_without_bridging_a_gap() -> None:
@@ -179,6 +179,93 @@ def test_approved_kml_preserves_consecutive_user_edited_segments(tmp_path) -> No
         "Segment 002 - Mile 001 to Mile 002",
     ]
     assert progress.sections[-1].coordinates[-1] == (34.02, -118.02)
+
+
+def test_approved_kml_ignores_an_orphan_duplicate_when_canonical_segment_exists(tmp_path) -> None:
+    approved_kml = tmp_path / "Runner.kml"
+    approved_kml.write_text(
+        """<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+  <Placemark><name>Segment 001 - Start to Checkpoint 001</name><LineString><coordinates>-118.0,34.0,0 -118.01,34.01,0</coordinates></LineString></Placemark>
+  <Placemark><name>Segment 002 - Checkpoint 001 to Checkpoint 002</name><LineString><coordinates>-118.01,34.01,0 -118.02,34.02,0</coordinates></LineString></Placemark>
+  <Placemark><name>Segment 002 - Checkpoint 200 to Checkpoint 002</name><LineString><coordinates>-117.0,33.0,0 -117.01,33.01,0</coordinates></LineString></Placemark>
+</Document></kml>""",
+        encoding="utf-8",
+    )
+
+    progress = load_approved_route_progress(approved_kml, 2)
+
+    assert [section.label for section in progress.sections] == [
+        "Segment 001 - Start to Checkpoint 001",
+        "Segment 002 - Checkpoint 001 to Checkpoint 002",
+    ]
+    assert progress.sections[-1].coordinates[-1] == (34.02, -118.02)
+
+
+def test_source_of_truth_build_preserves_both_sides_of_the_i5_transfer(tmp_path) -> None:
+    source_kml = tmp_path / "Runner route segments.kml"
+    source_kml.write_text(
+        """<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+  <Placemark><name>Segment 001 - Start to Checkpoint 001</name><LineString><coordinates>-118.0,34.0,0 -118.01,34.01,0</coordinates></LineString></Placemark>
+  <Placemark><name>Segment 002 - Checkpoint 001 to Checkpoint 002</name><LineString><coordinates>-118.01,34.01,0 -118.02,34.02,0</coordinates></LineString></Placemark>
+  <Placemark><name>Segment 003 - Runner restart to Checkpoint 003</name><LineString><coordinates>-117.0,33.0,0 -117.01,33.01,0</coordinates></LineString></Placemark>
+  <Placemark><name>San Mateo Point</name><Point><coordinates>-118.03,34.03,0</coordinates></Point></Placemark>
+</Document></kml>""",
+        encoding="utf-8",
+    )
+    builder = CourseBuilder.__new__(CourseBuilder)
+    builder.config = CourseBuildConfig(
+        tmp_path / "outputs", tmp_path / "geocoding.json", tmp_path / "routing.json", tmp_path / "path.json", tmp_path / "usage.json",
+        source_of_truth_kml=source_kml, source_prefix_through_segment=2,
+    )
+    builder.router = SimpleNamespace(
+        trace=lambda route: ([[
+            (route[0].latitude, route[0].longitude),
+            (34.025, -118.025),
+            (route[1].latitude, route[1].longitude),
+        ]], 1.0)
+    )
+
+    segments, sections = builder.build_from_source_of_truth()
+
+    assert sections[0].coordinates == ((34.0, -118.0), (34.01, -118.01))
+    assert sections[1].coordinates == ((34.01, -118.01), (34.02, -118.02))
+    assert sections[2].label == "Segment 002b - Checkpoint 002 to San Mateo Point"
+    assert sections[3].coordinates == ((33.0, -117.0), (33.01, -117.01))
+    assert segments == [
+        [(34.0, -118.0), (34.01, -118.01), (34.02, -118.02), (34.025, -118.025), (34.03, -118.03)],
+        [(33.0, -117.0), (33.01, -117.01)],
+    ]
+
+
+def test_normalization_uses_segment_numbers_not_kml_placement_and_keeps_transfer_gap(tmp_path) -> None:
+    latitude_per_mile = 1609.344 * 180 / (math.pi * 6_371_000)
+    source_kml = tmp_path / "manual.kml"
+    source_kml.write_text(
+        f'''<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+  <Placemark><name>Segment 001 - Start to Checkpoint 001</name><LineString><coordinates>0,0,0 0,{latitude_per_mile * .4},0</coordinates></LineString></Placemark>
+  <Placemark><name>Segment 003 - Runner restart to Checkpoint 003</name><LineString><coordinates>1,1,0 1,{1 + latitude_per_mile * .75},0</coordinates></LineString></Placemark>
+  <Placemark><name>Segment 002 - Checkpoint 001 to support-car pickup</name><LineString><coordinates>0,{latitude_per_mile * .4},0 0,{latitude_per_mile * .75},0</coordinates></LineString></Placemark>
+</Document></kml>''',
+        encoding="utf-8",
+    )
+
+    runs = ApprovedProgressLoader.source_geometry_runs(source_kml)
+    sections = RouteSegmenter.normalized_sections(runs, interval_meters=1609.344 / 2)
+
+    assert len(runs) == 2
+    assert [section.label for section in sections] == [
+        "Segment 001 - Start to Checkpoint 001",
+        "Segment 002 - Checkpoint 001 to support-car pickup",
+        "Segment 003 - Runner restart to Checkpoint 003",
+        "Segment 004 - Checkpoint 003 to Finish",
+    ]
+    assert all(
+        RouteGeometry.distance_meters([list(section.coordinates)]) <= 1609.344 / 2 + 1e-6
+        for section in sections
+    )
 
 
 def test_geocoding_cache_round_trips_and_reuses_coordinates(tmp_path) -> None:
@@ -243,7 +330,12 @@ def test_highway_1_replaces_the_unrequested_long_beach_beach_path_detour() -> No
     start = Point("PCH / river-trail exit area", "", 33.7739, -118.2024, "")
     end = Point("Del Prado / Golden Lantern", "", 33.465, -117.698, "")
     assert is_highway_1_pair(start, end)
-    assert len(HIGHWAY_1_VIA_POINTS) >= 10
+    assert len(HIGHWAY_1_VIA_POINTS) >= 8
+    # The PCH profile deliberately omits the old Ocean Blvd/Long Beach
+    # beachfront shaping points and begins at the unambiguous Seal Beach PCH.
+    assert HIGHWAY_1_VIA_POINTS[0] == (33.744000, -118.105000)
+    assert (33.767700, -118.197000) not in HIGHWAY_1_VIA_POINTS
+    assert (33.758600, -118.178800) not in HIGHWAY_1_VIA_POINTS
 
 
 def test_organizer_turns_force_the_literal_sepulveda_w78_w79_sequence() -> None:
@@ -257,11 +349,31 @@ def test_organizer_turns_force_the_literal_sepulveda_w78_w79_sequence() -> None:
     assert is_strict_road_pair(w78, w79)
 
 
-def test_i5_chevron_transition_is_retained_in_the_runner_geometry() -> None:
+def test_i5_chevron_transition_is_a_support_car_gap_not_runner_geometry(tmp_path, monkeypatch) -> None:
+    before = Point("Before", "", 33.42, -117.61, "")
     start = Point("San Mateo Point", "", 33.418, -117.604, "")
     end = Point("Chevron - I-5 exit 54C runner restart", "", 33.165, -117.354, "")
+    after = Point("After", "", 33.16, -117.35, "")
+    router = RunnerRouter({}, tmp_path / "routing-cache.json", "unused", {}, tmp_path / "usage.json")
+    router.routing_cache = {
+        router.route_cache_key(before, start): {
+            "geometry": [(before.latitude, before.longitude), (start.latitude, start.longitude)],
+            "distance_meters": 100,
+        },
+        router.route_cache_key(end, after): {
+            "geometry": [(end.latitude, end.longitude), (after.latitude, after.longitude)],
+            "distance_meters": 100,
+        },
+    }
+    monkeypatch.setattr(router, "google_route", lambda *args, **kwargs: pytest.fail("I-5 transfer must not be routed"))
 
     assert is_i5_transfer_pair(start, end)
+    segments, distance = router.trace([before, start, end, after])
+    assert segments == [
+        [(before.latitude, before.longitude), (start.latitude, start.longitude)],
+        [(end.latitude, end.longitude), (after.latitude, after.longitude)],
+    ]
+    assert distance == 200
 
 
 def test_exit_54c_chevron_is_pinned_to_oceanside_not_san_clemente() -> None:

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import shutil
 import time
 from pathlib import Path
 
@@ -28,15 +29,14 @@ point_from_cache = CheckpointGeocoder().point_from_cache
 load_approved_route_progress = ApprovedProgressLoader.load
 approved_route_geometry = ApprovedProgressLoader.geometry
 approved_route_sections = ApprovedProgressLoader.sections
-approved_mile_markers = ApprovedProgressLoader.markers
 haversine_meters = RouteGeometry.haversine_meters
 geometry_distance_meters = RouteGeometry.distance_meters
 interpolate_coordinate = RouteGeometry.interpolate
-mile_markers = RouteSegmenter.markers
 runner_route_sections = RouteSegmenter.sections
 write_outputs = CourseExporter().write
 route_cache_key = RunnerRouter.route_cache_key
 is_i5_transfer_pair = RunnerRouter.is_i5_transfer_pair
+is_i5_support_car_transfer_pair = RunnerRouter.is_i5_support_car_transfer_pair
 is_strict_road_pair = RunnerRouter.is_strict_road_pair
 is_highway_1_pair = RunnerRouter.is_highway_1_pair
 highway_1_via_points_from = RunnerRouter.highway_1_via_points_from
@@ -71,10 +71,15 @@ class CourseBuilder:
         parser.add_argument("--approved-segments-kml", type=Path, help="Google My Maps KML containing user-edited route segments to preserve.")
         parser.add_argument("--approved-through-segment", type=int, help="Last consecutively approved source segment number.")
         parser.add_argument("--resume-at-checkpoint", default="Del Prado / Golden Lantern", help="Organizer checkpoint at which rerouting resumes.")
+        parser.add_argument("--source-of-truth-kml", type=Path, help="KML whose route segments are retained exactly on both sides of a transfer gap.")
+        parser.add_argument("--source-prefix-through-segment", type=int, help="Last immutable source segment before the transfer gap.")
+        parser.add_argument("--source-prefix-end-marker", default="San Mateo Point", help="Named point that extends the final immutable source segment before the transfer gap.")
+        parser.add_argument("--normalize-source-kml", type=Path, help="Manual runner KML whose exact geometry is re-cut into half-mile lines.")
+        parser.add_argument("--official-directions-kml", type=Path, help="Verified organizer-directions KML copied into outputs as a reference layer.")
 
     @classmethod
     def from_arguments(cls, args: argparse.Namespace) -> "CourseBuilder":
-        return cls(CourseBuildConfig(args.output_dir, args.geocoding_cache, args.routing_cache, args.path_cache, args.google_usage, args.approved_segments_kml, args.approved_through_segment, args.resume_at_checkpoint))
+        return cls(CourseBuildConfig(args.output_dir, args.geocoding_cache, args.routing_cache, args.path_cache, args.google_usage, args.approved_segments_kml, args.approved_through_segment, args.resume_at_checkpoint, args.source_of_truth_kml, args.source_prefix_through_segment, args.source_prefix_end_marker, args.normalize_source_kml, args.official_directions_kml))
 
     def resolve_points(self) -> list[Point]:
         points: list[Point] = []
@@ -87,7 +92,7 @@ class CourseBuilder:
                 time.sleep(1.1)
         return points
 
-    def build_from_approved_progress(self, points: list[Point]) -> tuple[list[list[tuple[float, float]]], list[RunnerRouteSection], list[tuple[int, float, float]]]:
+    def build_from_approved_progress(self, points: list[Point]) -> tuple[list[list[tuple[float, float]]], list[RunnerRouteSection]]:
         if not self.config.approved_segments_kml or self.config.approved_through_segment is None:
             raise RuntimeError("Approved KML and approved-through segment are required for a progress rebuild.")
         progress = ApprovedProgressLoader.load(self.config.approved_segments_kml, self.config.approved_through_segment)
@@ -102,25 +107,139 @@ class CourseBuilder:
         manual_resume = Point(f"Manual runner resume after Segment {progress.through_segment:03d}", "Approved My Maps route endpoint", latitude, longitude, "Approved My Maps route endpoint")
         print(f"Preserving approved My Maps segments through {progress.sections[-1].label}; rerouting from its endpoint to {self.config.resume_at_checkpoint}.")
         downstream, _ = self.router.trace([manual_resume, *points[resume_index:]], manual_highway_1_resume=True)
-        if downstream and downstream[0][0] != (latitude, longitude):
-            downstream[0].insert(0, (latitude, longitude))
-        output = [[*approved_geometry, *downstream[0][1:]], *downstream[1:]]
+        support_car_gap = self.router.is_i5_support_car_transfer_pair(
+            manual_resume, points[resume_index]
+        )
+        if support_car_gap:
+            # The last immutable source segment ends at the support-car pickup.
+            # Keep it intact and begin a new runner geometry segment at Chevron.
+            output = [approved_geometry, *downstream]
+            downstream_start_label = "Runner restart"
+        else:
+            if downstream and downstream[0][0] != (latitude, longitude):
+                downstream[0].insert(0, (latitude, longitude))
+            output = [[*approved_geometry, *downstream[0][1:]], *downstream[1:]]
+            downstream_start_label = f"Checkpoint {progress.through_segment:03d}"
         distance = RouteGeometry.distance_meters(output)
-        return output, RouteSegmenter.sections(output, distance, interval_meters=SEGMENT_METERS, checkpoint_label="Checkpoint"), RouteSegmenter.markers(output, distance, interval_meters=SEGMENT_METERS)
+        source_sections = list(progress.sections)
+        downstream_distance = RouteGeometry.distance_meters(downstream)
+        downstream_sections = RouteSegmenter.sections(
+            downstream,
+            downstream_distance,
+            first_segment_number=progress.through_segment + 1,
+            start_label=downstream_start_label,
+            interval_meters=SEGMENT_METERS,
+            checkpoint_label="Checkpoint",
+        )
+        return output, [*source_sections, *downstream_sections]
+
+    @staticmethod
+    def _combine_sections(sections: list[RunnerRouteSection]) -> list[tuple[float, float]]:
+        """Join continuous source lines without modifying their individual geometry."""
+        if not sections:
+            return []
+        coordinates = list(sections[0].coordinates)
+        for section in sections[1:]:
+            coordinates.extend(section.coordinates[1:])
+        return coordinates
+
+    def build_from_source_of_truth(self) -> tuple[list[list[tuple[float, float]]], list[RunnerRouteSection]]:
+        """Retain the user's KML exactly, adding only the San Mateo connector."""
+        source_path = self.config.source_of_truth_kml
+        through_segment = self.config.source_prefix_through_segment
+        if source_path is None or through_segment is None:
+            raise RuntimeError("Source KML and source-prefix-through-segment are required for a source-of-truth rebuild.")
+
+        prefix = list(ApprovedProgressLoader.load(source_path, through_segment).sections)
+        tail = list(ApprovedProgressLoader.load_tail(source_path, through_segment + 1))
+        marker_latitude, marker_longitude = ApprovedProgressLoader.named_point(source_path, self.config.source_prefix_end_marker)
+        endpoint_latitude, endpoint_longitude = prefix[-1].coordinates[-1]
+        source_endpoint = Point(
+            f"Checkpoint {through_segment:03d}",
+            "Endpoint of immutable user-drawn route segment",
+            endpoint_latitude,
+            endpoint_longitude,
+            f"Checkpoint {through_segment:03d}",
+        )
+        san_mateo = Point(
+            self.config.source_prefix_end_marker,
+            "User-placed San Mateo Point team photo and support-car pickup",
+            marker_latitude,
+            marker_longitude,
+            self.config.source_prefix_end_marker,
+        )
+        print(f"Preserving source Segment 001 through Segment {through_segment:03d} exactly; adding only the walkable connector to {san_mateo.label}.")
+        connector_segments, _ = self.router.trace([source_endpoint, san_mateo])
+        if len(connector_segments) != 1 or len(connector_segments[0]) < 2:
+            raise RuntimeError("Could not create the runner connector from the source endpoint to San Mateo Point.")
+        connector = RunnerRouteSection(
+            f"Segment {through_segment:03d}b - Checkpoint {through_segment:03d} to {san_mateo.label}",
+            tuple(connector_segments[0]),
+        )
+
+        # The two geometries deliberately remain separate: runners stop at San
+        # Mateo, ride with the support car on I-5, then resume at the source
+        # KML's Chevron/Coast Highway segment. No source line is regenerated.
+        route_segments = [
+            self._combine_sections([*prefix, connector]),
+            self._combine_sections(tail),
+        ]
+        source_sections = [*prefix, connector, *tail]
+        return route_segments, source_sections
+
+    def build_from_normalized_source(self) -> tuple[list[list[tuple[float, float]]], list[RunnerRouteSection]]:
+        """Use the manual KML geometry verbatim while normalizing its line cuts."""
+        source_path = self.config.normalized_source_kml
+        if source_path is None:
+            raise RuntimeError("A normalized source KML is required for a normalization rebuild.")
+        runs = ApprovedProgressLoader.source_geometry_runs(source_path)
+        if len(runs) != 2:
+            raise RuntimeError(f"Expected one runner run before and one after the support-car transfer, found {len(runs)} source runs.")
+        sections = RouteSegmenter.normalized_sections(runs, interval_meters=SEGMENT_METERS)
+        return runs, sections
 
     def build(self) -> None:
-        points = self.resolve_points()
-        if self.config.approved_segments_kml:
-            segments, sections, markers = self.build_from_approved_progress(points)
+        if self.config.normalized_source_kml:
+            segments, sections = self.build_from_normalized_source()
             distance = RouteGeometry.distance_meters(segments)
-            self.exporter.write(self.config.output_dir, points, segments, distance, route_sections_override=sections, markers_override=markers, gpx_segments_override=segments)
+            self.exporter.write(
+                self.config.output_dir,
+                segments,
+                distance,
+                route_sections_override=sections,
+                gpx_segments_override=segments,
+            )
+            if self.config.official_directions_kml:
+                official_output = self.config.output_dir / "NSTT_2026_official_directions.kml"
+                shutil.copyfile(self.config.official_directions_kml, official_output)
+                notes_path = self.config.output_dir / "NSTT_2026_runner_route_README.txt"
+                notes_path.write_text(
+                    notes_path.read_text(encoding="utf-8")
+                    + "\n- NSTT_2026_official_directions.kml: unchanged reference layer containing the manually verified organizer turn checkpoints.\n",
+                    encoding="utf-8",
+                )
+        elif self.config.source_of_truth_kml:
+            segments, sections = self.build_from_source_of_truth()
+            distance = RouteGeometry.distance_meters(segments)
+            self.exporter.write(
+                self.config.output_dir,
+                segments,
+                distance,
+                route_sections_override=sections,
+                gpx_segments_override=segments,
+            )
         else:
-            print("Tracing pedestrian routes between organizer checkpoints")
-            segments, _ = self.router.trace(points)
+            points = self.resolve_points()
+            if self.config.approved_segments_kml:
+                segments, sections = self.build_from_approved_progress(points)
+            else:
+                print("Tracing pedestrian routes between organizer checkpoints")
+                segments, _ = self.router.trace(points)
+                distance = RouteGeometry.distance_meters(segments)
+                sections = RouteSegmenter.sections(segments, distance, interval_meters=SEGMENT_METERS, checkpoint_label="Checkpoint")
             distance = RouteGeometry.distance_meters(segments)
-            self.exporter.write(self.config.output_dir, points, segments, distance)
-            markers = RouteSegmenter.markers(segments, distance, interval_meters=SEGMENT_METERS)
-        print(f"Created {sum(len(segment) for segment in segments)} runner trace points in {len(segments)} runner segments, {distance / 1609.344:.1f} mi, {len(markers)} half-mile checkpoints.")
+            self.exporter.write(self.config.output_dir, segments, distance, route_sections_override=sections, gpx_segments_override=segments)
+        print(f"Created {sum(len(segment) for segment in segments)} runner trace points in {len(segments)} runner runs, {distance / 1609.344:.1f} mi, {len(sections)} editable route lines.")
 
 
 def main() -> None:

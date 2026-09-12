@@ -41,12 +41,19 @@ class RunnerRouter:
         return f"google-{travel_mode.casefold()}:{start.latitude:.7f},{start.longitude:.7f}:{end.latitude:.7f},{end.longitude:.7f}{suffix}"
 
     @staticmethod
-    def is_i5_transfer_pair(start: Point, end: Point) -> bool:
-        """Identify the requested I-5 transfer to the Exit 54C Chevron restart."""
-        return end.label == "Chevron - I-5 exit 54C runner restart" and (
-            start.label == "San Mateo Point"
-            or start.label.startswith("Manual runner resume after Segment")
+    def is_i5_support_car_transfer_pair(start: Point, end: Point) -> bool:
+        """Identify the runner-off-course I-5 support-car transport gap."""
+        return (
+            (
+                start.label == "San Mateo Point"
+                or start.label.startswith("Manual runner resume after Segment")
+            )
+            and end.label == "Chevron - I-5 exit 54C runner restart"
         )
+
+    # Keep the earlier public helper name working for callers while making the
+    # runner-off-course transport semantics explicit in new code.
+    is_i5_transfer_pair = is_i5_support_car_transfer_pair
 
     @staticmethod
     def is_strict_road_pair(start: Point, end: Point) -> bool:
@@ -126,12 +133,15 @@ class RunnerRouter:
         for index in range(len(points) - 1):
             start, end = points[index:index + 2]
             manual_highway = manual_highway_1_resume and index == 0 and end.label == "Del Prado / Golden Lantern"
-            if self.is_i5_transfer_pair(start, end):
-                # The supplied direction explicitly sends this leg on I-5 to
-                # Exit 54C. No coastal-trail pins are permitted for this leg.
-                mode, variant, vias = "DRIVE", "i5-runner-transfer-v1", ()
+            if self.is_i5_support_car_transfer_pair(start, end):
+                # The organizer sends the *car* on I-5 to exit 54C. The car
+                # picks up the runner at San Mateo and drops them at Chevron,
+                # so never generate or cache runner geometry for this leg.
+                if segments[-1]:
+                    segments.append([])
+                continue
             elif self.is_highway_1_pair(start, end) or manual_highway:
-                mode, variant = "DRIVE", "manual-highway-1-v1" if manual_highway else "highway-1-v1"
+                mode, variant = "DRIVE", "manual-highway-1-pch-v2" if manual_highway else "highway-1-pch-v2"
                 vias = self.highway_1_via_points_from(start) if manual_highway else HIGHWAY_1_VIA_POINTS
             elif self.is_strict_road_pair(start, end):
                 mode, variant, vias = "DRIVE", "organizer-turn-v1", ()

@@ -30,34 +30,7 @@ class RouteGeometry:
 
 
 class RouteSegmenter:
-    """Places interval markers and creates independently editable KML lines."""
-
-    @classmethod
-    def markers(
-        cls, segments: list[list[tuple[float, float]]], distance_meters: float | None = None,
-        *, first_mile_number: int = 1, interval_meters: float = MILE_METERS,
-    ) -> list[tuple[int, float, float]]:
-        geometry_meters = RouteGeometry.distance_meters(segments)
-        if geometry_meters == 0:
-            return []
-        geometry_scale = distance_meters / geometry_meters if distance_meters is not None else 1.0
-        markers: list[tuple[int, float, float]] = []
-        route_meters = 0.0
-        next_mile = first_mile_number
-        next_target_meters = interval_meters
-        for segment in segments:
-            for start, end in zip(segment, segment[1:], strict=False):
-                edge_meters = RouteGeometry.haversine_meters(start, end) * geometry_scale
-                if edge_meters == 0:
-                    continue
-                while route_meters + edge_meters + 1e-6 >= next_target_meters:
-                    fraction = max(0.0, min(1.0, (next_target_meters - route_meters) / edge_meters))
-                    latitude, longitude = RouteGeometry.interpolate(start, end, fraction)
-                    markers.append((next_mile, latitude, longitude))
-                    next_mile += 1
-                    next_target_meters += interval_meters
-                route_meters += edge_meters
-        return markers
+    """Creates independently editable fixed-distance KML lines."""
 
     @classmethod
     def sections(
@@ -100,4 +73,52 @@ class RouteSegmenter:
                 start_label, suffix = "Runner restart", "b"
             elif len(section_coordinates) > 1:
                 sections.append(RunnerRouteSection(f"Final segment - {start_label} to Finish", tuple(section_coordinates)))
+        return sections
+
+    @classmethod
+    def normalized_sections(
+        cls, segments: list[list[tuple[float, float]]], *, interval_meters: float = MILE_METERS,
+    ) -> list[RunnerRouteSection]:
+        """Re-cut independently continuous route runs into fixed-distance lines.
+
+        A gap between source runs is a support-car transfer, not a geometric
+        edge. Each run therefore restarts its distance counter; only a run's
+        terminal line may be shorter than the requested interval.
+        """
+        sections: list[RunnerRouteSection] = []
+        next_segment = 1
+        for run_index, segment in enumerate(segments):
+            if len(segment) < 2:
+                continue
+            start_label = "Start" if run_index == 0 else "Runner restart"
+            section_coordinates = [segment[0]]
+            run_meters = 0.0
+            next_target_meters = interval_meters
+            for start, end in zip(segment, segment[1:], strict=False):
+                edge_meters = RouteGeometry.haversine_meters(start, end)
+                if edge_meters == 0:
+                    continue
+                while run_meters + edge_meters + 1e-6 >= next_target_meters:
+                    fraction = max(0.0, min(1.0, (next_target_meters - run_meters) / edge_meters))
+                    marker = RouteGeometry.interpolate(start, end, fraction)
+                    if section_coordinates[-1] != marker:
+                        section_coordinates.append(marker)
+                    sections.append(RunnerRouteSection(
+                        f"Segment {next_segment:03d} - {start_label} to Checkpoint {next_segment:03d}",
+                        tuple(section_coordinates),
+                    ))
+                    start_label = f"Checkpoint {next_segment:03d}"
+                    next_segment += 1
+                    next_target_meters += interval_meters
+                    section_coordinates = [marker]
+                if section_coordinates[-1] != end:
+                    section_coordinates.append(end)
+                run_meters += edge_meters
+            if len(section_coordinates) > 1:
+                terminal = "support-car pickup" if run_index < len(segments) - 1 else "Finish"
+                sections.append(RunnerRouteSection(
+                    f"Segment {next_segment:03d} - {start_label} to {terminal}",
+                    tuple(section_coordinates),
+                ))
+                next_segment += 1
         return sections

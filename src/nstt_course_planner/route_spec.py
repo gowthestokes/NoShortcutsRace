@@ -91,8 +91,9 @@ CAR_INSTRUCTIONS = (
     Instruction("car", "send replacement runner onto trail and collect outgoing runner", "LA River Trail", "LA River Trail support access"),
     Instruction("car", "fork right to avoid I-5 / Coast Highway conflict", "after Park Lantern", "Coast Highway car rendezvous"),
     Instruction("car", "meet runners on Coast Highway", "coastal section", "Coast Highway car rendezvous"),
-    Instruction("car", "drive I-5", "to exit 54C", "Chevron - I-5 exit 54C car stop"),
-    Instruction("car", "cross road after exit and pull into", "Chevron gas station", "Chevron - I-5 exit 54C car stop"),
+    Instruction("car", "pick up runner", "San Mateo Point before the I-5 transfer", "I-5 runner pickup - San Mateo Point"),
+    Instruction("car", "drive I-5", "from San Mateo Point to exit 54C", "I-5 runner drop-off - Chevron exit 54C"),
+    Instruction("car", "cross road after exit, pull into Chevron, and drop runner", "Chevron gas station", "I-5 runner drop-off - Chevron exit 54C"),
 )
 
 
@@ -162,13 +163,14 @@ ROUTE_CHECKPOINTS = (
 )
 
 
-# A separate layer source for the support vehicle.  Three points intentionally
-# retain provisional wording: the organizer needs to provide the exact safe
-# trail access, coastal rendezvous, and Chevron pin before these are routed.
+# A separate layer source for the support vehicle. The I-5 transfer is explicit:
+# the runner is picked up at San Mateo Point, transported by car, and dropped
+# at the Chevron after exit 54C. It is never a runner-route leg.
 CAR_CHECKPOINTS = (
     RouteCheckpoint("LA River Trail support access", "Los Angeles River Bike Path, Long Beach, CA"),
     RouteCheckpoint("Coast Highway car rendezvous", "Pacific Coast Highway, Dana Point, CA"),
-    RouteCheckpoint("Chevron - I-5 exit 54C car stop", "Chevron, 1601 N Coast Hwy, Oceanside, CA 92054"),
+    RouteCheckpoint("I-5 runner pickup - San Mateo Point", "San Mateo Point, San Clemente, CA"),
+    RouteCheckpoint("I-5 runner drop-off - Chevron exit 54C", "Chevron, 1601 N Coast Hwy, Oceanside, CA 92054"),
 )
 
 
