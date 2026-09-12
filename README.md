@@ -67,6 +67,11 @@ priority 2), coffee shops (blue, priority 3), and fast-food or gas backups
 all priorities 1–3 and evenly thins only priority-4 backups. Confirm operating hours, closures, safe access, and any
 customer-only policy immediately before the race.
 
+My Maps may replace imported KML icons with its default blue marker. The KML
+includes `Category` and `Priority` fields and emoji-prefixed names so you can
+choose **Style → Group places by → Category**, then apply My Maps' restroom
+emoji to the two public-restroom categories in a few clicks.
+
 Enable the Places API (New) for the existing Google Maps key before running the
 command. The first pass searches every 2.4 km along each continuous runner run,
 then writes reusable responses to `data/google-places-bathrooms-cache.json`.

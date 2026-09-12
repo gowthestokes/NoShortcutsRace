@@ -51,6 +51,8 @@ def test_builder_preserves_source_and_writes_ranked_kml(tmp_path: Path) -> None:
     assert text.count("<Placemark>") == len(BATHROOM_STOPS)
     assert "Priority 1: Official beach restroom" in text
     assert "Priority 4: Fast-food or branded-gas backup" in text
+    assert '<Data name="Category"><value>Official beach restroom</value></Data>' in text
+    assert "🚻 Santa Monica State Beach" in text
     assert "Approximate runner mile:" in text
     assert "not a walking detour" in text
     assert result.stop_count == len(BATHROOM_STOPS)

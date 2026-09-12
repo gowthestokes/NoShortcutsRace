@@ -14,11 +14,11 @@ from pathlib import Path
 class BathroomCategory(Enum):
     """Stop categories in the team's required planning order."""
 
-    OFFICIAL_BEACH = (1, "Official beach restroom", "beachRestroom")
-    PLACES_PUBLIC = (1, "Places-listed public restroom", "placesRestroom")
-    GROCERY = (2, "Grocery-store backup", "groceryBackup")
-    COFFEE = (3, "Coffee-chain backup", "coffeeBackup")
-    FAST_FOOD_OR_GAS = (4, "Fast-food or branded-gas backup", "businessBackup")
+    OFFICIAL_BEACH = (1, "Official beach restroom", "beachRestroom", "🚻")
+    PLACES_PUBLIC = (1, "Places-listed public restroom", "placesRestroom", "🚻")
+    GROCERY = (2, "Grocery-store backup", "groceryBackup", "🛒")
+    COFFEE = (3, "Coffee-chain backup", "coffeeBackup", "☕")
+    FAST_FOOD_OR_GAS = (4, "Fast-food or branded-gas backup", "businessBackup", "⛽")
 
     @property
     def priority(self) -> int:
@@ -31,6 +31,10 @@ class BathroomCategory(Enum):
     @property
     def style_id(self) -> str:
         return self.value[2]
+
+    @property
+    def symbol(self) -> str:
+        return self.value[3]
 
 
 @dataclass(frozen=True)
@@ -192,7 +196,9 @@ class BathroomLayerBuilder:
             f"Verification: {stop.source_note}<br/>"
             f"Source: <a href=\"{stop.source_url}\">official / current listing</a>"
         )
-        return f'''    <Placemark><name>{xml.sax.saxutils.escape(stop.name)}</name>
+        return f'''    <Placemark><name>{xml.sax.saxutils.escape(f"{stop.category.symbol} {stop.name}")}</name>
+      <ExtendedData><Data name="Category"><value>{xml.sax.saxutils.escape(stop.category.display_name)}</value></Data>
+      <Data name="Priority"><value>{stop.category.priority}</value></Data></ExtendedData>
       <description><![CDATA[{description}]]></description>
       <styleUrl>#{stop.category.style_id}</styleUrl>
       <Point><coordinates>{stop.longitude},{stop.latitude},0</coordinates></Point>
