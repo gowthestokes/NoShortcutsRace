@@ -118,4 +118,4 @@ def test_exporter_writes_all_visibility_styles(tmp_path) -> None:
     assert 'id="twilight"' in kml
     assert 'id="sunriseSunset"' in kml
     assert 'id="daylight"' in kml
-    assert "Runner: A" in kml
+    assert "Runner:" not in kml

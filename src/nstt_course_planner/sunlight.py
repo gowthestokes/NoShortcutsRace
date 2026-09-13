@@ -268,7 +268,7 @@ class SunlightLayerExporter:
     def _placemark(segment: ScheduledSegment) -> str:
         midpoint = segment.start_time + (segment.end_time - segment.start_time) / 2
         description = xml.sax.saxutils.escape(
-            f"Runner: {segment.runner.name}. Estimated segment: {segment.start_time:%-I:%M %p} to {segment.end_time:%-I:%M %p %Z}. "
+            f"Estimated segment: {segment.start_time:%-I:%M %p} to {segment.end_time:%-I:%M %p %Z}. "
             f"Midpoint: {midpoint:%-I:%M %p %Z}; 10K planning pace: {segment.runner.minutes_per_mile:.1f} min/mi. "
             f"Solar altitude: {segment.solar_altitude_degrees:.1f}°; visibility: {segment.sunlight.display_name}.",
         )
