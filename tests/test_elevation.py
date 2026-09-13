@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import math
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -157,12 +159,22 @@ def test_elevation_export_contains_legend_and_segment_popup_data(tmp_path) -> No
     )
     summary = ElevationAnalyzer.summarize_section(section, profile, 0)
 
-    ElevationLayerExporter.write(tmp_path, [summary])
+    ElevationLayerExporter.write(
+        tmp_path,
+        [summary],
+        {
+            section.label: (
+                datetime(2026, 10, 23, 5, tzinfo=ZoneInfo("UTC")),
+                datetime(2026, 10, 23, 5, 4, tzinfo=ZoneInfo("UTC")),
+            ),
+        },
+    )
 
     kml = (tmp_path / "NSTT_2026_elevation.kml").read_text(encoding="utf-8")
     assert "Dark blue: ≤ -6%" in kml
     assert "Smoothed terrain elevation" in kml
     assert "Runner miles: 0.0" in kml
+    assert "ETA: 5:00 AM to 5:04 AM UTC" in kml
     assert "<name>Segment 001</name>" in kml
     assert "Segment 001 - Start to Checkpoint 001. Runner miles" not in kml
     assert "verify bridge decks" not in kml

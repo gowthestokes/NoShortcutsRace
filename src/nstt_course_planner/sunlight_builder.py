@@ -5,9 +5,13 @@ from __future__ import annotations
 import argparse
 from datetime import datetime
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
-from nstt_course_planner.config import DEFAULT_OUTPUT_DIR, PROJECT_ROOT
+from nstt_course_planner.config import (
+    DEFAULT_OUTPUT_DIR,
+    DEFAULT_RACE_START,
+    DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES,
+    PROJECT_ROOT,
+)
 from nstt_course_planner.models.sunlight import SunlightBuildConfig
 from nstt_course_planner.progress import ApprovedProgressLoader
 from nstt_course_planner.sunlight import (
@@ -15,8 +19,6 @@ from nstt_course_planner.sunlight import (
     SunlightLayerExporter,
     TeamPaceLoader,
 )
-
-DEFAULT_RACE_START = datetime(2026, 10, 23, 5, tzinfo=ZoneInfo("America/Los_Angeles"))
 
 
 class SunlightLayerBuilder:
@@ -57,6 +59,7 @@ class SunlightLayerBuilder:
         parser.add_argument(
             "--transfer-minutes",
             type=float,
+            default=DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES,
             help="Confirmed San Mateo-to-Chevron support-car travel time; required to schedule the post-I-5 restart.",
         )
 

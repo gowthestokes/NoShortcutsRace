@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 import xml.sax.saxutils
+from collections.abc import Mapping
+from datetime import datetime
 from itertools import pairwise
 from pathlib import Path
 from typing import ClassVar
@@ -321,13 +323,21 @@ class ElevationLayerExporter:
         return "red"
 
     @classmethod
-    def write(cls, output_dir: Path, sections: list[ElevatedRouteSection]) -> None:
+    def write(
+        cls,
+        output_dir: Path,
+        sections: list[ElevatedRouteSection],
+        eta_by_section: Mapping[str, tuple[datetime, datetime]] | None = None,
+    ) -> None:
         output_dir.mkdir(parents=True, exist_ok=True)
         styles = "".join(
             f'<Style id="{name}"><LineStyle><color>{color}</color><width>6</width></LineStyle></Style>'
             for name, color in cls.COLORS.items()
         )
-        placemarks = "".join(cls._placemark(section) for section in sections)
+        placemarks = "".join(
+            cls._placemark(section, (eta_by_section or {}).get(section.section.label))
+            for section in sections
+        )
         description = xml.sax.saxutils.escape(
             f"Terrain-elevation overlay for the finalized runner route. {cls.LEGEND}",
         )
@@ -357,13 +367,19 @@ Method
         )
 
     @classmethod
-    def _placemark(cls, section: ElevatedRouteSection) -> str:
+    def _placemark(
+        cls,
+        section: ElevatedRouteSection,
+        eta: tuple[datetime, datetime] | None,
+    ) -> str:
         start_feet = section.start_elevation_meters * 3.28084
         end_feet = section.end_elevation_meters * 3.28084
         net_feet = section.net_elevation_meters * 3.28084
+        eta_text = f"ETA: {eta[0]:%-I:%M %p} to {eta[1]:%-I:%M %p %Z}. " if eta else ""
         description = xml.sax.saxutils.escape(
             f"Runner miles: {section.start_runner_miles:.1f}-{section.end_runner_miles:.1f}. "
-            f"Smoothed terrain elevation: {start_feet:.0f} ft to {end_feet:.0f} ft; "
+            + eta_text
+            + f"Smoothed terrain elevation: {start_feet:.0f} ft to {end_feet:.0f} ft; "
             f"net gain/loss: {net_feet:+.0f} ft; signed average grade: {section.average_grade_percent:+.1f}%.",
         )
         coordinates = " ".join(

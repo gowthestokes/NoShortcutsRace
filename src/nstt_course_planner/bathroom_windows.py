@@ -6,7 +6,9 @@ import argparse
 import re
 import xml.etree.ElementTree as element_tree
 import xml.sax.saxutils
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
+from datetime import datetime
+from itertools import pairwise
 from pathlib import Path
 from typing import ClassVar
 
@@ -16,7 +18,13 @@ from nstt_course_planner.catalog.bathroom_windows import (
     BATHROOM_WINDOW_MAX_OFFSET_MILES,
     CAR_ACCESS_CONSTRAINTS,
 )
-from nstt_course_planner.config import DEFAULT_OUTPUT_DIR, MILE_METERS, PROJECT_ROOT
+from nstt_course_planner.config import (
+    DEFAULT_OUTPUT_DIR,
+    DEFAULT_RACE_START,
+    DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES,
+    MILE_METERS,
+    PROJECT_ROOT,
+)
 from nstt_course_planner.geometry import RouteGeometry
 from nstt_course_planner.models.bathrooms import (
     BathroomCategory,
@@ -25,6 +33,9 @@ from nstt_course_planner.models.bathrooms import (
     CarAccessConstraint,
 )
 from nstt_course_planner.models.route import Coordinate, RouteProximity
+from nstt_course_planner.models.sunlight import SunlightBuildConfig
+from nstt_course_planner.progress import ApprovedProgressLoader
+from nstt_course_planner.sunlight import RelaySunlightSimulator, TeamPaceLoader
 
 
 @dataclass(frozen=True)
@@ -36,6 +47,10 @@ class BathroomWindowBuildConfig:
     output_kml: Path
     interval_miles: float = BATHROOM_WINDOW_INTERVAL_MILES
     max_offset_miles: float = BATHROOM_WINDOW_MAX_OFFSET_MILES
+    pace_path: Path = PROJECT_ROOT / "data" / "team-pace.json"
+    race_start: datetime = DEFAULT_RACE_START
+    half_segments_per_turn: int = 2
+    transfer_minutes: float = DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES
 
 
 class BathroomStopsKml:
@@ -141,8 +156,9 @@ class BathroomWindowSelector:
         windows: list[BathroomWindow] = []
         target_miles = interval_miles
         while target_miles < self.route_miles:
-            windows.append(
-                self._window(target_miles, candidates, max_offset_miles),
+            anchor = self._window(target_miles, candidates, max_offset_miles)
+            windows.extend(
+                self._nearby_windows(anchor, candidates),
             )
             target_miles += interval_miles
         return tuple(windows)
@@ -165,6 +181,7 @@ class BathroomWindowSelector:
             (stop, proximity)
             for stop, proximity in candidates
             if abs(proximity.runner_miles - target_miles) <= max_offset_miles
+            and proximity.straight_line_meters <= MILE_METERS / 2
             and not self._constraint(proximity.runner_miles)
         ]
         if not eligible:
@@ -192,6 +209,51 @@ class BathroomWindowSelector:
             stop,
             note,
         )
+
+    def _nearby_windows(
+        self,
+        anchor: BathroomWindow,
+        candidates: tuple[tuple[BathroomStop, RouteProximity], ...],
+    ) -> tuple[BathroomWindow, ...]:
+        center = self._coordinate_at_miles(anchor.actual_runner_miles)
+        nearby = [
+            (stop, proximity)
+            for stop, proximity in candidates
+            if RouteGeometry.haversine_meters(center, (stop.latitude, stop.longitude))
+            <= MILE_METERS / 2
+            and not self._constraint(proximity.runner_miles)
+        ]
+        return tuple(
+            BathroomWindow(
+                anchor.target_miles,
+                anchor.actual_runner_miles,
+                proximity.straight_line_meters,
+                stop,
+                anchor.constraint_note,
+                stop is anchor.stop,
+            )
+            for stop, proximity in sorted(
+                nearby,
+                key=lambda candidate: (
+                    candidate[0].category.priority,
+                    candidate[0].name,
+                ),
+            )
+        )
+
+    def _coordinate_at_miles(self, runner_miles: float) -> Coordinate:
+        remaining_meters = runner_miles * MILE_METERS
+        for run in self.route_runs:
+            for start, end in pairwise(run):
+                edge_meters = RouteGeometry.haversine_meters(start, end)
+                if remaining_meters <= edge_meters:
+                    return RouteGeometry.interpolate(
+                        start,
+                        end,
+                        remaining_meters / edge_meters,
+                    )
+                remaining_meters -= edge_meters
+        return self.route_runs[-1][-1]
 
     def _constraint(self, runner_miles: float) -> CarAccessConstraint | None:
         return next(
@@ -252,10 +314,14 @@ class BathroomWindowExporter:
         description = (
             f"Rolling bathroom window target: mile {window.target_miles:.0f}.<br/>"
             f"Selected runner mile: {window.actual_runner_miles:.1f}.<br/>"
-            f"{stop.category.display_name}.<br/>Address: {stop.address}<br/>"
-            f'Source: <a href="{stop.source_url}">full bathroom layer</a>.{note}'
         )
-        return f"""<Placemark><name>{xml.sax.saxutils.escape(f"Bathroom window {window.target_miles:.0f} mi — {stop.name}")}</name>
+        if window.eta:
+            description += f"ETA: {window.eta:%-I:%M %p %Z}.<br/>"
+        description += (
+            f"{stop.category.display_name}.<br/>Address: {stop.address}{note}"
+        )
+        prefix = "Bathroom window" if window.is_primary else "Bathroom option"
+        return f"""<Placemark><name>{xml.sax.saxutils.escape(f"{prefix} {window.target_miles:.0f} mi — {stop.name}")}</name>
       <ExtendedData><Data name="Target runner mile"><value>{window.target_miles:.0f}</value></Data>
       <Data name="Selected runner mile"><value>{window.actual_runner_miles:.1f}</value></Data>
       <Data name="Category"><value>{xml.sax.saxutils.escape(stop.category.display_name)}</value></Data></ExtendedData>
@@ -277,8 +343,29 @@ class BathroomWindowLayerBuilder:
             self.config.interval_miles,
             self.config.max_offset_miles,
         )
-        BathroomWindowExporter.write(self.config.output_kml, windows)
-        return windows
+        scheduled = RelaySunlightSimulator(
+            SunlightBuildConfig(
+                self.config.runner_kml,
+                self.config.pace_path,
+                self.config.output_kml,
+                self.config.race_start,
+                self.config.half_segments_per_turn,
+                self.config.transfer_minutes,
+            ),
+            TeamPaceLoader.load(self.config.pace_path),
+        ).schedule(ApprovedProgressLoader.source_section_runs(self.config.runner_kml))
+        timed_windows = tuple(
+            replace(
+                window,
+                eta=RelaySunlightSimulator.eta_at_runner_miles(
+                    scheduled,
+                    window.actual_runner_miles,
+                ),
+            )
+            for window in windows
+        )
+        BathroomWindowExporter.write(self.config.output_kml, timed_windows)
+        return timed_windows
 
 
 def main() -> None:

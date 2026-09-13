@@ -122,5 +122,6 @@ def test_exporter_writes_all_visibility_styles(tmp_path) -> None:
     assert 'id="daylight"' in kml
     assert "Runner:" not in kml
     assert "Runner miles:" in kml
+    assert "ETA:" in kml
     assert "Dark: Segment 001" in kml
     assert "Dark: Segment 001 - Start to Checkpoint 001" not in kml

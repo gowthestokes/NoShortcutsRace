@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 from pathlib import Path
 
 from nstt_course_planner.config import (
@@ -11,6 +12,8 @@ from nstt_course_planner.config import (
     DEFAULT_GOOGLE_ELEVATION_CACHE,
     DEFAULT_GOOGLE_ELEVATION_USAGE,
     DEFAULT_OUTPUT_DIR,
+    DEFAULT_RACE_START,
+    DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES,
     PROJECT_ROOT,
 )
 from nstt_course_planner.elevation import (
@@ -20,16 +23,30 @@ from nstt_course_planner.elevation import (
     RouteGeometrySampler,
 )
 from nstt_course_planner.models.elevation import ElevationBuildConfig
+from nstt_course_planner.models.sunlight import SunlightBuildConfig
 from nstt_course_planner.progress import ApprovedProgressLoader
 from nstt_course_planner.storage import GoogleElevationUsageTracker, JsonStore
+from nstt_course_planner.sunlight import RelaySunlightSimulator, TeamPaceLoader
 from nstt_course_planner.utils import Environment
 
 
 class ElevationLayerBuilder:
     """Coordinates an opt-in, capped Google Elevation build."""
 
-    def __init__(self, config: ElevationBuildConfig) -> None:
+    def __init__(
+        self,
+        config: ElevationBuildConfig,
+        *,
+        pace_path: Path = PROJECT_ROOT / "data" / "team-pace.json",
+        race_start: datetime = DEFAULT_RACE_START,
+        half_segments_per_turn: int = 2,
+        transfer_minutes: float = DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES,
+    ) -> None:
         self.config = config
+        self.pace_path = pace_path
+        self.race_start = race_start
+        self.half_segments_per_turn = half_segments_per_turn
+        self.transfer_minutes = transfer_minutes
         self.cache = JsonStore.load_cache(config.cache_path)
         self.usage = GoogleElevationUsageTracker.load(config.usage_path)
 
@@ -76,6 +93,30 @@ class ElevationLayerBuilder:
             action="store_true",
             help="Report uncached sample count and cap status without calling Google or writing outputs.",
         )
+        parser.add_argument(
+            "--team-pace",
+            type=Path,
+            default=PROJECT_ROOT / "data" / "team-pace.json",
+            help="Ordered runner paces used to add planning ETAs.",
+        )
+        parser.add_argument(
+            "--race-start",
+            type=datetime.fromisoformat,
+            default=DEFAULT_RACE_START,
+            help="Timezone-aware ISO start time used to add planning ETAs.",
+        )
+        parser.add_argument(
+            "--half-segments-per-turn",
+            type=int,
+            default=2,
+            help="Consecutive half-mile segments assigned to one runner.",
+        )
+        parser.add_argument(
+            "--transfer-minutes",
+            type=float,
+            default=DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES,
+            help="Confirmed San Mateo-to-Chevron support-car travel time.",
+        )
 
     @classmethod
     def from_arguments(cls, args: argparse.Namespace) -> ElevationLayerBuilder:
@@ -89,6 +130,10 @@ class ElevationLayerBuilder:
                 args.smoothing_meters,
                 args.dry_run,
             ),
+            pace_path=args.team_pace,
+            race_start=args.race_start,
+            half_segments_per_turn=args.half_segments_per_turn,
+            transfer_minutes=args.transfer_minutes,
         )
 
     def _section_runs(self):
@@ -111,6 +156,23 @@ class ElevationLayerBuilder:
                 )
             )
         return coordinates
+
+    def _eta_by_section(self, section_runs) -> dict[str, tuple[datetime, datetime]]:
+        scheduled = RelaySunlightSimulator(
+            SunlightBuildConfig(
+                self.config.source_kml,
+                self.pace_path,
+                self.config.output_dir / "unused-sunlight.kml",
+                self.race_start,
+                self.half_segments_per_turn,
+                self.transfer_minutes,
+            ),
+            TeamPaceLoader.load(self.pace_path),
+        ).schedule(section_runs)
+        return {
+            segment.section.label: (segment.start_time, segment.end_time)
+            for segment in scheduled
+        }
 
     def build(self) -> None:
         if not self.config.source_kml.exists():
@@ -151,7 +213,11 @@ class ElevationLayerBuilder:
             self.config.sample_spacing_meters,
             self.config.smoothing_meters,
         )
-        ElevationLayerExporter.write(self.config.output_dir, elevated_sections)
+        ElevationLayerExporter.write(
+            self.config.output_dir,
+            elevated_sections,
+            self._eta_by_section(section_runs),
+        )
         print(
             f"Created NSTT_2026_elevation.kml with {len(elevated_sections)} editable grade-colored segments.",
         )

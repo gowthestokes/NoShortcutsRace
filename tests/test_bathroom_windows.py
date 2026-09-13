@@ -21,7 +21,7 @@ from nstt_course_planner.models.bathrooms import (
 def runner_kml(path: Path) -> None:
     path.write_text(
         """<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document>
-<Placemark><LineString><coordinates>0,0,0 0,0.25,0</coordinates></LineString></Placemark>
+<Placemark><name>Segment 001 - Start to Checkpoint 001</name><LineString><coordinates>0,0,0 0,0.25,0</coordinates></LineString></Placemark>
 </Document></kml>""",
         encoding="utf-8",
     )
@@ -31,6 +31,7 @@ def bathroom_kml(path: Path) -> None:
     path.write_text(
         """<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document>
 <Placemark><name>🚻 Near mile twelve</name><ExtendedData><Data name="Category"><value>Official beach restroom</value></Data></ExtendedData><description>Address: Test address&lt;br/&gt;Source: &lt;a href="https://example.com"&gt;source&lt;/a&gt;</description><Point><coordinates>0,0.1735,0</coordinates></Point></Placemark>
+<Placemark><name>☕ Nearby coffee</name><ExtendedData><Data name="Category"><value>Coffee-chain backup</value></Data></ExtendedData><description>Address: Nearby address&lt;br/&gt;Source: &lt;a href="https://example.com/coffee"&gt;source&lt;/a&gt;</description><Point><coordinates>0.002,0.174,0</coordinates></Point></Placemark>
 </Document></kml>""",
         encoding="utf-8",
     )
@@ -51,12 +52,19 @@ def test_builder_selects_a_twelve_mile_window_without_rewriting_runner_geometry(
     ).build()
 
     assert runner.read_text(encoding="utf-8") == source
-    assert len(windows) == 1
+    assert len(windows) == 2
     assert windows[0].target_miles == 12
     assert windows[0].actual_runner_miles == pytest.approx(12.0, abs=0.1)
+    assert windows[0].eta is not None
+    assert {window.stop.name for window in windows} == {
+        "🚻 Near mile twelve",
+        "☕ Nearby coffee",
+    }
     assert "Rolling bathroom window target: mile 12" in output.read_text(
         encoding="utf-8"
     )
+    assert "ETA:" in output.read_text(encoding="utf-8")
+    assert "Source: full bathroom layer" not in output.read_text(encoding="utf-8")
 
 
 def test_selector_moves_a_window_outside_a_car_access_constraint(

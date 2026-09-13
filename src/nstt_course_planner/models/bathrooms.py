@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime
 from enum import Enum
 from pathlib import Path
 
@@ -64,6 +65,8 @@ class BathroomWindow:
     straight_line_meters: float
     stop: BathroomStop
     constraint_note: str | None = None
+    is_primary: bool = True
+    eta: datetime | None = None
 
 
 @dataclass(frozen=True)

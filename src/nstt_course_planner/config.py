@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import re
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "outputs"
@@ -30,6 +32,8 @@ DEFAULT_PLACES_SEARCH_RADIUS_METERS = 2_000.0
 DEFAULT_PLACES_MAX_ROUTE_DISTANCE_METERS = 1_609.344
 DEFAULT_ELEVATION_SAMPLE_METERS = 50.0
 DEFAULT_ELEVATION_SMOOTHING_METERS = 200.0
+DEFAULT_RACE_START = datetime(2026, 10, 23, 5, tzinfo=ZoneInfo("America/Los_Angeles"))
+DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES = 55.0
 MILE_METERS = 1609.344
 SEGMENT_METERS = MILE_METERS / 2
 SEGMENT_NAME_PATTERN = re.compile(r"^Segment\s+(\d{3})([a-z]?)\s+-", re.IGNORECASE)

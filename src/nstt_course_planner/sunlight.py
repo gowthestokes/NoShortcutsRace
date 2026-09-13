@@ -229,6 +229,20 @@ class RelaySunlightSimulator:
         return tuple(scheduled)
 
     @staticmethod
+    def eta_at_runner_miles(
+        scheduled: tuple[ScheduledSegment, ...],
+        runner_miles: float,
+    ) -> datetime:
+        for segment in scheduled:
+            if segment.start_runner_miles <= runner_miles <= segment.end_runner_miles:
+                span_miles = segment.end_runner_miles - segment.start_runner_miles
+                fraction = (runner_miles - segment.start_runner_miles) / span_miles
+                return segment.start_time + fraction * (
+                    segment.end_time - segment.start_time
+                )
+        raise ValueError(f"Runner mile {runner_miles:.1f} is outside the schedule.")
+
+    @staticmethod
     def _section_miles(section: RunnerRouteSection) -> float:
         return RouteGeometry.distance_meters([list(section.coordinates)]) / 1_609.344
 
@@ -272,7 +286,7 @@ class SunlightLayerExporter:
         midpoint = segment.start_time + (segment.end_time - segment.start_time) / 2
         description = xml.sax.saxutils.escape(
             f"Runner miles: {segment.start_runner_miles:.1f}-{segment.end_runner_miles:.1f}. "
-            f"Estimated segment: {segment.start_time:%-I:%M %p} to {segment.end_time:%-I:%M %p %Z}. "
+            f"ETA: {segment.start_time:%-I:%M %p} to {segment.end_time:%-I:%M %p %Z}. "
             f"Midpoint: {midpoint:%-I:%M %p %Z}; 10K planning pace: {segment.runner.minutes_per_mile:.1f} min/mi. "
             f"Solar altitude: {segment.solar_altitude_degrees:.1f}°; visibility: {segment.sunlight.display_name}.",
         )
