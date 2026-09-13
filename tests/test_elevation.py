@@ -163,5 +163,7 @@ def test_elevation_export_contains_legend_and_segment_popup_data(tmp_path) -> No
     assert "Dark blue: ≤ -6%" in kml
     assert "Smoothed terrain elevation" in kml
     assert "Runner miles: 0.0" in kml
+    assert "<name>Segment 001</name>" in kml
+    assert "Segment 001 - Start to Checkpoint 001. Runner miles" not in kml
     assert "verify bridge decks" not in kml
     assert "#red" in kml

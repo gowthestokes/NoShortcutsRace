@@ -362,7 +362,7 @@ Method
         end_feet = section.end_elevation_meters * 3.28084
         net_feet = section.net_elevation_meters * 3.28084
         description = xml.sax.saxutils.escape(
-            f"{section.section.label}. Runner miles: {section.start_runner_miles:.1f}-{section.end_runner_miles:.1f}. "
+            f"Runner miles: {section.start_runner_miles:.1f}-{section.end_runner_miles:.1f}. "
             f"Smoothed terrain elevation: {start_feet:.0f} ft to {end_feet:.0f} ft; "
             f"net gain/loss: {net_feet:+.0f} ft; signed average grade: {section.average_grade_percent:+.1f}%.",
         )
@@ -370,7 +370,7 @@ Method
             f"{longitude},{latitude},0"
             for latitude, longitude in section.section.coordinates
         )
-        return f"""\n      <Placemark><name>{xml.sax.saxutils.escape(section.section.label)}</name>
+        return f"""\n      <Placemark><name>{xml.sax.saxutils.escape(section.section.segment_name)}</name>
         <description>{description}</description><styleUrl>#{cls.style_name(section.average_grade_percent)}</styleUrl>
         <LineString><tessellate>1</tessellate><coordinates>{coordinates}</coordinates></LineString>
       </Placemark>"""

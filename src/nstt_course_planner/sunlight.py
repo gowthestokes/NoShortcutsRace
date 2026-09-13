@@ -280,6 +280,6 @@ class SunlightLayerExporter:
             f"{longitude},{latitude},0"
             for latitude, longitude in segment.section.coordinates
         )
-        return f"""<Placemark><name>{xml.sax.saxutils.escape(f"{segment.sunlight.display_name}: {segment.section.label}")}</name>
+        return f"""<Placemark><name>{xml.sax.saxutils.escape(f"{segment.sunlight.display_name}: {segment.section.segment_name}")}</name>
       <description>{description}</description><styleUrl>#{segment.sunlight.style_id}</styleUrl>
       <LineString><tessellate>1</tessellate><coordinates>{coordinates}</coordinates></LineString></Placemark>"""

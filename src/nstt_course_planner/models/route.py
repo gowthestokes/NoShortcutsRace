@@ -23,6 +23,10 @@ class RunnerRouteSection:
     label: str
     coordinates: tuple[Coordinate, ...]
 
+    @property
+    def segment_name(self) -> str:
+        return self.label.split(" -", maxsplit=1)[0]
+
 
 @dataclass(frozen=True)
 class ApprovedRouteProgress:
