@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from nstt_course_planner.bathrooms import BathroomCategory, BathroomStop
+from nstt_course_planner.models.bathrooms import BathroomCategory, BathroomStop
 from nstt_course_planner.places_bathrooms import (
     GooglePlacesBathroomClient,
     PlacesBathroomLayerBuilder,

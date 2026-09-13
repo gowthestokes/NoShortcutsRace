@@ -8,11 +8,7 @@ import pytest
 
 from nstt_course_planner.build_course import (
     CHECKPOINTS,
-    Checkpoint,
     GOOGLE_ROUTES_REQUEST_LIMIT,
-    GoogleRoutesRequestLimitError,
-    Point,
-    UnsafePedestrianRouteError,
     load_geocoding_cache,
     load_google_routes_usage,
     HIGHWAY_1_VIA_POINTS,
@@ -33,7 +29,10 @@ from nstt_course_planner.build_course import (
     write_outputs,
     CourseBuilder,
 )
-from nstt_course_planner.models import CourseBuildConfig
+from nstt_course_planner.errors import GoogleRoutesRequestLimitError, UnsafePedestrianRouteError
+from nstt_course_planner.models.course import CourseBuildConfig
+from nstt_course_planner.models.course import Checkpoint
+from nstt_course_planner.models.route import Point
 from nstt_course_planner.geometry import RouteGeometry, RouteSegmenter
 from nstt_course_planner.progress import ApprovedProgressLoader
 from nstt_course_planner.route_spec import (

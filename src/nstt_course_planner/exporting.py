@@ -7,7 +7,7 @@ from pathlib import Path
 
 from nstt_course_planner.config import MILE_METERS, SEGMENT_METERS
 from nstt_course_planner.geometry import RouteSegmenter
-from nstt_course_planner.models import RunnerRouteSection
+from nstt_course_planner.models.route import RunnerRouteSection
 
 
 class CourseExporter:

@@ -7,7 +7,7 @@ from pathlib import Path
 
 from nstt_course_planner.config import SEGMENT_METERS, SEGMENT_NAME_PATTERN
 from nstt_course_planner.geometry import RouteGeometry, RouteSegmenter
-from nstt_course_planner.models import ApprovedRouteProgress, RunnerRouteSection
+from nstt_course_planner.models.route import ApprovedRouteProgress, RunnerRouteSection
 
 
 class ApprovedProgressLoader:

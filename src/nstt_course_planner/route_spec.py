@@ -9,25 +9,7 @@ retains every direction, including road-name changes that are not turns.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-
-
-@dataclass(frozen=True)
-class RouteCheckpoint:
-    """A named location used to shape the runner route."""
-
-    label: str
-    query: str
-
-
-@dataclass(frozen=True)
-class Instruction:
-    """A direction or operational instruction from the organizer turn sheet."""
-
-    role: str  # "runner" or "car"
-    action: str
-    road_or_place: str
-    checkpoint_label: str | None = None
+from nstt_course_planner.models.route import Instruction, RaceRouteSpec, RouteCheckpoint
 
 
 # Ordered, including name changes and non-turn instructions.  Spelling is
@@ -172,22 +154,6 @@ CAR_CHECKPOINTS = (
     RouteCheckpoint("I-5 runner pickup - San Mateo Point", "San Mateo Point, San Clemente, CA"),
     RouteCheckpoint("I-5 runner drop-off - Chevron exit 54C", "Chevron, 1601 N Coast Hwy, Oceanside, CA 92054"),
 )
-
-
-@dataclass(frozen=True)
-class RaceRouteSpec:
-    """Immutable organizer route sheet consumed by the course builder."""
-
-    runner_instructions: tuple[Instruction, ...]
-    route_checkpoints: tuple[RouteCheckpoint, ...]
-    operational_notes: tuple[str, ...]
-
-    def checkpoint(self, label: str) -> RouteCheckpoint:
-        """Return a named organizer checkpoint or raise a useful error."""
-        try:
-            return next(point for point in self.route_checkpoints if point.label == label)
-        except StopIteration as error:
-            raise KeyError(f"Unknown organizer checkpoint: {label}") from error
 
 
 ROUTE_SPEC = RaceRouteSpec(

@@ -5,11 +5,11 @@ from __future__ import annotations
 import argparse
 import json
 from collections.abc import Callable
-from dataclasses import dataclass
 from pathlib import Path
 from urllib.error import HTTPError
 
-from nstt_course_planner.bathrooms import BATHROOM_STOPS, BathroomCategory, BathroomLayerBuilder, BathroomStop, RunnerRouteKml
+from nstt_course_planner.bathrooms import BathroomLayerBuilder, RunnerRouteKml
+from nstt_course_planner.catalog.bathrooms import BATHROOM_STOPS
 from nstt_course_planner.config import (
     DEFAULT_GOOGLE_PLACES_CACHE,
     DEFAULT_GOOGLE_PLACES_USAGE,
@@ -21,25 +21,12 @@ from nstt_course_planner.config import (
     PROJECT_ROOT,
 )
 from nstt_course_planner.elevation import RouteGeometrySampler
+from nstt_course_planner.models.bathrooms import BathroomCategory, BathroomStop, PlacesBathroomBuildConfig
 from nstt_course_planner.storage import GooglePlacesUsageTracker, JsonStore
 from nstt_course_planner.utils import Environment, HttpClient
 
 Coordinate = tuple[float, float]
 PlaceRequester = Callable[[str, object, dict[str, str] | None], object]
-
-
-@dataclass(frozen=True)
-class PlacesBathroomBuildConfig:
-    """Inputs and local state for one Places bathroom discovery pass."""
-
-    source_kml: Path
-    output_kml: Path
-    cache_path: Path
-    usage_path: Path
-    anchor_spacing_meters: float
-    search_radius_meters: float
-    max_route_distance_meters: float
-    dry_run: bool = False
 
 
 class RouteAnchorSampler:

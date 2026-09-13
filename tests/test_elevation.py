@@ -7,15 +7,15 @@ import math
 import pytest
 
 from nstt_course_planner.elevation import (
-    DistanceSample,
     ElevationAnalyzer,
     ElevationLayerExporter,
-    ElevationProfile,
     GoogleElevationClient,
     RouteGeometrySampler,
 )
 from nstt_course_planner.geometry import RouteGeometry
-from nstt_course_planner.models import GoogleElevationSampleLimitError, RunnerRouteSection
+from nstt_course_planner.errors import GoogleElevationSampleLimitError
+from nstt_course_planner.models.elevation import DistanceSample, ElevationProfile
+from nstt_course_planner.models.route import RunnerRouteSection
 from nstt_course_planner.storage import GoogleElevationUsageTracker
 
 

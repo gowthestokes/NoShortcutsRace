@@ -5,7 +5,8 @@ from __future__ import annotations
 from urllib.parse import urlencode
 
 from nstt_course_planner.config import MANUAL_POINTS
-from nstt_course_planner.models import Checkpoint, Point
+from nstt_course_planner.models.course import Checkpoint
+from nstt_course_planner.models.route import Point
 from nstt_course_planner.utils import HttpClient
 
 

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
 from pathlib import Path
 
 from nstt_course_planner.config import (
@@ -15,22 +14,10 @@ from nstt_course_planner.config import (
     PROJECT_ROOT,
 )
 from nstt_course_planner.elevation import ElevationAnalyzer, ElevationLayerExporter, GoogleElevationClient, RouteGeometrySampler
+from nstt_course_planner.models.elevation import ElevationBuildConfig
 from nstt_course_planner.progress import ApprovedProgressLoader
 from nstt_course_planner.storage import GoogleElevationUsageTracker, JsonStore
 from nstt_course_planner.utils import Environment
-
-
-@dataclass(frozen=True)
-class ElevationBuildConfig:
-    """Inputs and local state used for one elevation-overlay build."""
-
-    source_kml: Path
-    output_dir: Path
-    cache_path: Path
-    usage_path: Path
-    sample_spacing_meters: float
-    smoothing_meters: float
-    dry_run: bool = False
 
 
 class ElevationLayerBuilder:

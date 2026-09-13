@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import xml.sax.saxutils
-from dataclasses import dataclass
 from pathlib import Path
 from urllib.error import HTTPError
 from urllib.parse import urlencode
@@ -12,61 +11,9 @@ from urllib.request import Request, urlopen
 
 from nstt_course_planner.config import GOOGLE_ELEVATION_BATCH_SIZE, GOOGLE_ELEVATION_URL, USER_AGENT
 from nstt_course_planner.geometry import RouteGeometry
-from nstt_course_planner.models import RunnerRouteSection
+from nstt_course_planner.models.elevation import DistanceSample, ElevatedRouteSection, ElevationProfile
+from nstt_course_planner.models.route import Coordinate, RunnerRouteSection
 from nstt_course_planner.storage import GoogleElevationUsageTracker, JsonStore
-
-Coordinate = tuple[float, float]
-
-
-@dataclass(frozen=True)
-class DistanceSample:
-    """One coordinate at a known distance along a continuous runner run."""
-
-    coordinate: Coordinate
-    distance_meters: float
-
-
-@dataclass(frozen=True)
-class ElevationProfile:
-    """Terrain elevations and their distance-window-smoothed equivalents."""
-
-    samples: tuple[DistanceSample, ...]
-    elevation_meters: tuple[float, ...]
-    smoothed_elevation_meters: tuple[float, ...]
-
-    def smoothed_at(self, distance_meters: float) -> float:
-        if not self.samples:
-            raise RuntimeError("Cannot read elevation from an empty profile.")
-        if distance_meters <= self.samples[0].distance_meters:
-            return self.smoothed_elevation_meters[0]
-        if distance_meters >= self.samples[-1].distance_meters:
-            return self.smoothed_elevation_meters[-1]
-        for left_index, right_sample in enumerate(self.samples[1:], start=1):
-            if distance_meters <= right_sample.distance_meters:
-                left_sample = self.samples[left_index - 1]
-                fraction = (distance_meters - left_sample.distance_meters) / (
-                    right_sample.distance_meters - left_sample.distance_meters
-                )
-                return self.smoothed_elevation_meters[left_index - 1] + fraction * (
-                    self.smoothed_elevation_meters[left_index] - self.smoothed_elevation_meters[left_index - 1]
-                )
-        raise AssertionError("Distance lookup should return within the profile range.")
-
-
-@dataclass(frozen=True)
-class ElevatedRouteSection:
-    """An editable runner segment with terrain elevation summary information."""
-
-    section: RunnerRouteSection
-    distance_meters: float
-    start_elevation_meters: float
-    end_elevation_meters: float
-    average_grade_percent: float
-
-    @property
-    def net_elevation_meters(self) -> float:
-        return self.end_elevation_meters - self.start_elevation_meters
-
 
 class RouteGeometrySampler:
     """Samples a continuous route run at fixed-distance intervals."""

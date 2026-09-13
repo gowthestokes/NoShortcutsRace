@@ -5,7 +5,7 @@ from __future__ import annotations
 import math
 
 from nstt_course_planner.config import MILE_METERS
-from nstt_course_planner.models import RunnerRouteSection
+from nstt_course_planner.models.route import RunnerRouteSection
 
 
 class RouteGeometry:

@@ -4,13 +4,9 @@ from pathlib import Path
 
 import pytest
 
-from nstt_course_planner.bathrooms import (
-    BATHROOM_STOPS,
-    BathroomCategory,
-    BathroomLayerBuilder,
-    BathroomStop,
-    RunnerRouteKml,
-)
+from nstt_course_planner.bathrooms import BathroomLayerBuilder, RunnerRouteKml
+from nstt_course_planner.catalog.bathrooms import BATHROOM_STOPS
+from nstt_course_planner.models.bathrooms import BathroomCategory, BathroomStop
 
 
 def test_bathroom_categories_follow_the_team_priority_order() -> None:

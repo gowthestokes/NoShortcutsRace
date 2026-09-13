@@ -1,0 +1,71 @@
+"""Curated bathroom stops and their official source pages."""
+
+from nstt_course_planner.models.bathrooms import BathroomCategory, BathroomStop
+
+OFFICIAL_SOURCES = {
+    "santa_monica": "https://www.santamonica.gov/places/parks/santa-monica-state-beach",
+    "venice": "https://beaches.lacounty.gov/venice-beach/",
+    "bolsa_chica": "https://www.parks.ca.gov/AccessibleFeatures/Details/642",
+    "huntington": "https://www.parks.ca.gov/AccessibleFeatures/Details/643",
+    "laguna": "https://www.lagunabeachcity.net/government/departments/marine-safety/visiting-our-beaches",
+    "doheny": "https://www.parks.ca.gov/AccessibleFeatures/Details/645",
+    "san_clemente": "https://www.parks.ca.gov/?page_id=646",
+    "carlsbad": "https://www.carlsbadca.gov/residents/about-carlsbad/beaches/about-carlsbad-beaches",
+    "encinitas": "https://www.encinitasca.gov/government/departments/parks-recreation-cultural-arts/parks-beaches-trails/beaches/",
+    "torrey_pines": "https://parks.ca.gov/AccessibleFeatures/Details/658",
+    "del_mar": "https://www.delmar.ca.us/facilities/facility/details/Powerhouse-Park-10",
+    "la_jolla": "https://www.sandiego.gov/lifeguards/beaches/cove",
+    "kellogg": "https://www.sandiego.gov/park-and-recreation/parks/regional/shoreline/kelloggpark",
+    "pacific_beach": "https://www.sandiego.gov/lifeguards/safety/bchreg",
+}
+
+
+def _official_stop(name: str, latitude: float, longitude: float, address: str, source: str, note: str) -> BathroomStop:
+    return BathroomStop(name, BathroomCategory.OFFICIAL_BEACH, latitude, longitude, address, source, note)
+
+
+def _business_stop(name: str, category: BathroomCategory, latitude: float, longitude: float, address: str, source: str) -> BathroomStop:
+    return BathroomStop(
+        name,
+        category,
+        latitude,
+        longitude,
+        address,
+        source,
+        "Business backup only; confirm race-day hours and customer restroom access before relying on it.",
+    )
+
+
+BATHROOM_STOPS: tuple[BathroomStop, ...] = (
+    _official_stop("Santa Monica State Beach / Pier restrooms", 34.0089, -118.4972, "Santa Monica State Beach near Santa Monica Pier, Santa Monica, CA 90401", OFFICIAL_SOURCES["santa_monica"], "City of Santa Monica lists beach restrooms; confirm facility hours on race day."),
+    _official_stop("Venice Beach — Washington Boulevard restroom area", 33.9857, -118.4720, "Washington Blvd / Ocean Front Walk, Venice, CA 90291", OFFICIAL_SOURCES["venice"], "Los Angeles County lists restrooms and showers at Venice Beach."),
+    _official_stop("Bolsa Chica State Beach — Warner-area restrooms", 33.7042, -118.0525, "17851 Pacific Coast Hwy, Huntington Beach, CA 92649", OFFICIAL_SOURCES["bolsa_chica"], "California State Parks lists restrooms and drinking water within each lot along the trail."),
+    _official_stop("Bolsa Chica State Beach — Seapoint-area restrooms", 33.6874, -118.0380, "Pacific Coast Hwy near Seapoint St, Huntington Beach, CA 92649", OFFICIAL_SOURCES["bolsa_chica"], "California State Parks lists restrooms and drinking water within each lot along the trail."),
+    _official_stop("Huntington State Beach — Magnolia-area restrooms", 33.6675, -118.0128, "Huntington State Beach near Magnolia St and Pacific Coast Hwy, Huntington Beach, CA 92646", OFFICIAL_SOURCES["huntington"], "California State Parks lists restrooms and drinking fountains along the beach bike trail."),
+    _official_stop("Huntington State Beach — southern trail restrooms", 33.6495, -117.9916, "Huntington State Beach near Brookhurst St, Huntington Beach, CA 92646", OFFICIAL_SOURCES["huntington"], "California State Parks lists restrooms and drinking fountains along the beach bike trail."),
+    _official_stop("Laguna Beach — Main Beach public restrooms", 33.5426, -117.7838, "Main Beach, Laguna Beach, CA 92651", OFFICIAL_SOURCES["laguna"], "City of Laguna Beach lists Main Beach public restrooms and outdoor showers."),
+    _official_stop("Laguna Beach — Aliso Creek Beach restrooms", 33.5097, -117.7548, "31106 S Coast Hwy, Laguna Beach, CA 92651", OFFICIAL_SOURCES["laguna"], "City of Laguna Beach lists Aliso Creek Beach public restrooms and outdoor showers."),
+    _official_stop("Doheny State Beach — North Day-Use restrooms", 33.4606, -117.6854, "25300 Dana Point Harbor Dr, Dana Point, CA 92629", OFFICIAL_SOURCES["doheny"], "California State Parks lists accessible restrooms and outdoor rinsing showers in the day-use area."),
+    _official_stop("Capistrano Beach public restroom area", 33.4582, -117.6718, "Capistrano Beach Park, Dana Point, CA 92624", "https://www.danapoint.org/department/general-services/parks/parks-trails/capistrano-beach-park", "City park listing identifies restroom facilities; confirm beach access before race day."),
+    _official_stop("San Clemente State Beach — day-use restrooms", 33.4130, -117.5920, "225 Avenida Calafia, San Clemente, CA 92672", OFFICIAL_SOURCES["san_clemente"], "California State Parks lists restrooms, showers, and drinking water."),
+    _official_stop("Oceanside Harbor Beach public restrooms", 33.2081, -117.3952, "Oceanside Harbor Beach, Oceanside, CA 92054", "https://www.ci.oceanside.ca.us/government/parks-recreation/parks-beaches-and-trails/beaches", "City beach listing identifies public amenities; confirm the runner-accessible entrance."),
+    _official_stop("Carlsbad State Beach — Tamarack restroom/shower", 33.1583, -117.3506, "Tamarack Ave beach access, Carlsbad, CA 92008", OFFICIAL_SOURCES["carlsbad"], "City of Carlsbad lists public restrooms and showers at the seawall path."),
+    _official_stop("South Carlsbad State Beach restrooms", 33.1200, -117.3208, "South Carlsbad State Beach, Carlsbad, CA 92008", "https://www.parks.ca.gov/?page_id=660", "California State Parks lists restrooms and showers; confirm entry/access from Coast Highway."),
+    _official_stop("Moonlight Beach restrooms and showers", 33.0467, -117.2978, "400 B St, Encinitas, CA 92024", OFFICIAL_SOURCES["encinitas"], "City of Encinitas lists restrooms and showers at Moonlight Beach."),
+    _official_stop("Cardiff State Beach public restrooms", 33.0201, -117.2817, "2488 Highway 101, Cardiff-by-the-Sea, CA 92007", "https://www.parks.ca.gov/?page_id=660", "California State Parks lists facilities at Cardiff State Beach; confirm the accessible beach entry."),
+    _official_stop("Fletcher Cove public restrooms", 32.9929, -117.2746, "111 S Sierra Ave, Solana Beach, CA 92075", "https://www.cityofsolanabeach.org/enjoy-sb/beaches-parks/fletcher-cove", "City of Solana Beach identifies public facilities at Fletcher Cove; confirm hours and access."),
+    _official_stop("Powerhouse Park public restrooms", 32.9595, -117.2657, "Coast Blvd, Del Mar, CA 92014", OFFICIAL_SOURCES["del_mar"], "City of Del Mar lists accessible public restrooms, showers, and water at Powerhouse Park."),
+    _official_stop("Torrey Pines State Beach — North Beach restrooms", 32.9347, -117.2587, "Carmel Valley Rd / McGonigle Rd, San Diego, CA 92037", OFFICIAL_SOURCES["torrey_pines"], "California State Parks lists restrooms, showers, and a ramp at North Beach."),
+    _official_stop("Torrey Pines State Beach — South Beach restrooms", 32.9212, -117.2552, "N Torrey Pines Rd beach entrance, San Diego, CA 92037", OFFICIAL_SOURCES["torrey_pines"], "California State Parks lists restrooms at the South Beach parking area."),
+    _official_stop("Kellogg Park / La Jolla Shores restrooms", 32.8578, -117.2562, "8300 Camino del Oro, La Jolla, CA 92037", OFFICIAL_SOURCES["kellogg"], "City of San Diego lists several restrooms with showers; published park hours are 4 a.m.–10 p.m."),
+    _official_stop("La Jolla Cove public restrooms and showers", 32.8508, -117.2723, "1100 Coast Blvd, La Jolla, CA 92037", OFFICIAL_SOURCES["la_jolla"], "City of San Diego lists restrooms and showers at La Jolla Cove."),
+    _official_stop("Pacific Beach public restroom area", 32.7971, -117.2563, "Pacific Beach boardwalk area, San Diego, CA 92109", OFFICIAL_SOURCES["pacific_beach"], "City of San Diego lists public restrooms and showers at Pacific Beach."),
+    _business_stop("Vons / Target Starbucks — Sepulveda backup", BathroomCategory.COFFEE, 33.9846, -118.3944, "6000 Sepulveda Blvd, Culver City, CA 90230", "https://www.target.com/sl/culver-city-westfield-mall/2632/starbucks"),
+    _business_stop("Starbucks — Firestone and Long Beach backup", BathroomCategory.COFFEE, 33.955165, -118.219045, "8924 Long Beach Blvd, South Gate, CA 90280", "https://www.starbucks.com/store-locator"),
+    _business_stop("Starbucks — Firestone and California backup", BathroomCategory.COFFEE, 33.9542, -118.2061, "4704 Firestone Blvd, South Gate, CA 90280", "https://www.starbucks.com/store-locator/store/1019314"),
+    _business_stop("Chevron — Atlantic Avenue backup", BathroomCategory.FAST_FOOD_OR_GAS, 33.9291, -118.1850, "11401 Atlantic Ave, Lynwood, CA 90262", "https://www.chevronwithtechron.com/station/11401-Atlantic-Ave-Lynwood-CA-90262-id90495"),
+    _business_stop("Ralphs — South San Clemente", BathroomCategory.GROCERY, 33.4146, -117.6092, "903 S El Camino Real, San Clemente, CA 92672", "https://www.ralphs.com/stores/grocery/ca/san-clemente/s-san-clemente/703/00221"),
+    _business_stop("Starbucks — Carlsbad Village backup", BathroomCategory.COFFEE, 33.1604, -117.3505, "Carlsbad Village / Carlsbad Blvd area, Carlsbad, CA 92008", "https://www.starbucks.com/store-locator"),
+    _business_stop("Starbucks — La Jolla Village backup", BathroomCategory.COFFEE, 32.8323, -117.2741, "Girard Ave / Pearl St area, La Jolla, CA 92037", "https://www.starbucks.com/store-locator"),
+    _business_stop("Chevron — Oceanside runner restart", BathroomCategory.FAST_FOOD_OR_GAS, 33.2093, -117.3875, "Chevron near I-5 Exit 54C / Coast Highway, Oceanside, CA 92054", "https://www.chevronwithtechron.com/station-finder"),
+)

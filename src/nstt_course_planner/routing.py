@@ -14,7 +14,8 @@ from nstt_course_planner.config import (
     USER_AGENT,
 )
 from nstt_course_planner.geometry import RouteGeometry
-from nstt_course_planner.models import Point, UnsafePedestrianRouteError
+from nstt_course_planner.errors import UnsafePedestrianRouteError
+from nstt_course_planner.models.route import Point
 from nstt_course_planner.storage import GoogleUsageTracker, JsonStore
 from nstt_course_planner.utils import PolylineCodec
 

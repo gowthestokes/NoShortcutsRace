@@ -11,9 +11,12 @@ from nstt_course_planner.config import DEFAULT_GEOCODING_CACHE, DEFAULT_GOOGLE_U
 from nstt_course_planner.exporting import CourseExporter
 from nstt_course_planner.geocoding import CheckpointGeocoder
 from nstt_course_planner.geometry import RouteGeometry, RouteSegmenter
-from nstt_course_planner.models import ApprovedRouteProgress, Checkpoint, CourseBuildConfig, GoogleRoutesRequestLimitError, Point, RunnerRouteSection, UnsafePedestrianRouteError
+from nstt_course_planner.errors import GoogleRoutesRequestLimitError, UnsafePedestrianRouteError
+from nstt_course_planner.models.course import Checkpoint, CourseBuildConfig
+from nstt_course_planner.models.route import ApprovedRouteProgress, Point, RunnerRouteSection
 from nstt_course_planner.progress import ApprovedProgressLoader
-from nstt_course_planner.route_spec import ROUTE_SPEC, RaceRouteSpec
+from nstt_course_planner.models.route import RaceRouteSpec
+from nstt_course_planner.route_spec import ROUTE_SPEC
 from nstt_course_planner.routing import RunnerRouter
 from nstt_course_planner.storage import GoogleUsageTracker, JsonStore
 from nstt_course_planner.utils import Environment

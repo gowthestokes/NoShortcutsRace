@@ -7,7 +7,11 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from nstt_course_planner.config import GOOGLE_ELEVATION_SAMPLE_LIMIT, GOOGLE_PLACES_REQUEST_LIMIT, GOOGLE_ROUTES_REQUEST_LIMIT
-from nstt_course_planner.models import GoogleElevationSampleLimitError, GooglePlacesRequestLimitError, GoogleRoutesRequestLimitError
+from nstt_course_planner.errors import (
+    GoogleElevationSampleLimitError,
+    GooglePlacesRequestLimitError,
+    GoogleRoutesRequestLimitError,
+)
 
 
 class JsonStore:
