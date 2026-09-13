@@ -6,7 +6,11 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
-from nstt_course_planner.config import GOOGLE_ELEVATION_SAMPLE_LIMIT, GOOGLE_PLACES_REQUEST_LIMIT, GOOGLE_ROUTES_REQUEST_LIMIT
+from nstt_course_planner.config import (
+    GOOGLE_ELEVATION_SAMPLE_LIMIT,
+    GOOGLE_PLACES_REQUEST_LIMIT,
+    GOOGLE_ROUTES_REQUEST_LIMIT,
+)
 from nstt_course_planner.errors import (
     GoogleElevationSampleLimitError,
     GooglePlacesRequestLimitError,
@@ -23,13 +27,16 @@ class JsonStore:
             return {}
         contents = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(contents, dict):
-            raise RuntimeError(f"Invalid geocoding cache: {path}")
+            raise TypeError(f"Invalid geocoding cache: {path}")
         return contents
 
     @staticmethod
     def save_cache(path: Path, cache: dict[str, dict[str, object]]) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        path.write_text(
+            json.dumps(cache, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
 
 
 class GoogleUsageTracker:
@@ -41,29 +48,40 @@ class GoogleUsageTracker:
 
     @classmethod
     def default_usage(cls) -> dict[str, object]:
-        return {"request_limit": cls.request_limit, "requests_sent": 0, "last_request_at": None, "last_request_status": None}
+        return {
+            "request_limit": cls.request_limit,
+            "requests_sent": 0,
+            "last_request_at": None,
+            "last_request_status": None,
+        }
 
     @classmethod
     def load(cls, path: Path) -> dict[str, object]:
         if not path.exists():
             return cls.default_usage()
         usage = json.loads(path.read_text(encoding="utf-8"))
-        if not isinstance(usage, dict) or not isinstance(usage.get("requests_sent"), int):
-            raise RuntimeError(f"Invalid Google Routes usage file: {path}")
+        if not isinstance(usage, dict) or not isinstance(
+            usage.get("requests_sent"),
+            int,
+        ):
+            raise TypeError(f"Invalid Google Routes usage file: {path}")
         usage["request_limit"] = cls.request_limit
         return usage
 
     @staticmethod
     def save(path: Path, usage: dict[str, object]) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(usage, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        path.write_text(
+            json.dumps(usage, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
 
     @classmethod
     def reserve(cls, usage: dict[str, object], path: Path) -> None:
         requests_sent = int(usage["requests_sent"])
         if requests_sent >= cls.request_limit:
             raise cls.limit_error(
-                f"{cls.service_name} request limit reached ({cls.request_limit:,}); no request was sent."
+                f"{cls.service_name} request limit reached ({cls.request_limit:,}); no request was sent.",
             )
         usage["requests_sent"] = requests_sent + 1
         usage["last_request_at"] = datetime.now(UTC).isoformat()
@@ -102,8 +120,11 @@ class GoogleElevationUsageTracker:
         if not path.exists():
             return cls.default_usage()
         usage = json.loads(path.read_text(encoding="utf-8"))
-        if not isinstance(usage, dict) or not isinstance(usage.get("samples_sent"), int):
-            raise RuntimeError(f"Invalid Google Elevation usage file: {path}")
+        if not isinstance(usage, dict) or not isinstance(
+            usage.get("samples_sent"),
+            int,
+        ):
+            raise TypeError(f"Invalid Google Elevation usage file: {path}")
         usage["sample_limit"] = GOOGLE_ELEVATION_SAMPLE_LIMIT
         usage.setdefault("requests_sent", 0)
         return usage
@@ -111,7 +132,10 @@ class GoogleElevationUsageTracker:
     @staticmethod
     def save(path: Path, usage: dict[str, object]) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(usage, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        path.write_text(
+            json.dumps(usage, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
 
     @classmethod
     def reserve(cls, usage: dict[str, object], path: Path, sample_count: int) -> None:
@@ -131,7 +155,7 @@ class GoogleElevationUsageTracker:
             return
         if int(usage["samples_sent"]) + sample_count > GOOGLE_ELEVATION_SAMPLE_LIMIT:
             raise GoogleElevationSampleLimitError(
-                f"Google Elevation sample limit would be exceeded ({GOOGLE_ELEVATION_SAMPLE_LIMIT:,}); no request was sent."
+                f"Google Elevation sample limit would be exceeded ({GOOGLE_ELEVATION_SAMPLE_LIMIT:,}); no request was sent.",
             )
 
     @classmethod

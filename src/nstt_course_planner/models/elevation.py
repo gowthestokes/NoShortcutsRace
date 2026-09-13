@@ -38,7 +38,8 @@ class ElevationProfile:
                     right_sample.distance_meters - left_sample.distance_meters
                 )
                 return self.smoothed_elevation_meters[left_index - 1] + fraction * (
-                    self.smoothed_elevation_meters[left_index] - self.smoothed_elevation_meters[left_index - 1]
+                    self.smoothed_elevation_meters[left_index]
+                    - self.smoothed_elevation_meters[left_index - 1]
                 )
         raise AssertionError("Distance lookup should return within the profile range.")
 

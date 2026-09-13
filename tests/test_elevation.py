@@ -12,8 +12,8 @@ from nstt_course_planner.elevation import (
     GoogleElevationClient,
     RouteGeometrySampler,
 )
-from nstt_course_planner.geometry import RouteGeometry
 from nstt_course_planner.errors import GoogleElevationSampleLimitError
+from nstt_course_planner.geometry import RouteGeometry
 from nstt_course_planner.models.elevation import DistanceSample, ElevationProfile
 from nstt_course_planner.models.route import RunnerRouteSection
 from nstt_course_planner.storage import GoogleElevationUsageTracker
@@ -31,7 +31,9 @@ def test_geometry_sampler_uses_roughly_fixed_spacing_and_keeps_the_endpoint() ->
 
 
 def test_smoothing_uses_a_distance_window() -> None:
-    samples = tuple(DistanceSample((0.0, 0.0), distance) for distance in (0, 50, 100, 150, 200))
+    samples = tuple(
+        DistanceSample((0.0, 0.0), distance) for distance in (0, 50, 100, 150, 200)
+    )
 
     smoothed = ElevationAnalyzer.smooth([0, 100, 0, 100, 0], samples, 150)
 
@@ -56,24 +58,42 @@ def test_section_summary_calculates_signed_average_grade() -> None:
 
 @pytest.mark.parametrize(
     ("grade", "style"),
-    [(-6, "darkBlue"), (-3, "blue"), (-1.01, "lightBlue"), (-1, "gray"), (1, "gray"), (1.01, "lightOrange"), (3, "lightOrange"), (3.01, "orange"), (6, "red")],
+    [
+        (-6, "darkBlue"),
+        (-3, "blue"),
+        (-1.01, "lightBlue"),
+        (-1, "gray"),
+        (1, "gray"),
+        (1.01, "lightOrange"),
+        (3, "lightOrange"),
+        (3.01, "orange"),
+        (6, "red"),
+    ],
 )
 def test_grade_colors_match_the_published_legend(grade: float, style: str) -> None:
     assert ElevationLayerExporter.style_name(grade) == style
 
 
-def test_elevation_client_caches_values_and_reserves_each_batch(tmp_path, monkeypatch) -> None:
+def test_elevation_client_caches_values_and_reserves_each_batch(
+    tmp_path,
+    monkeypatch,
+) -> None:
     cache_path = tmp_path / "elevation-cache.json"
     usage_path = tmp_path / "elevation-usage.json"
     coordinates = [(30.0 + index / 10_000, -118.0) for index in range(129)]
-    cache = {GoogleElevationClient.cache_key(coordinates[0]): {"elevation_meters": 99.0}}
+    cache = {
+        GoogleElevationClient.cache_key(coordinates[0]): {"elevation_meters": 99.0},
+    }
     usage = GoogleElevationUsageTracker.default_usage()
     client = GoogleElevationClient(cache, cache_path, "not-used", usage, usage_path)
     requested_batches: list[list[tuple[float, float]]] = []
     monkeypatch.setattr(
         client,
         "_request_batch",
-        lambda batch: (requested_batches.append(batch), [float(index) for index in range(len(batch))])[1],
+        lambda batch: (
+            requested_batches.append(batch),
+            [float(index) for index in range(len(batch))],
+        )[1],
     )
 
     elevations = client.elevations(coordinates)
@@ -82,14 +102,25 @@ def test_elevation_client_caches_values_and_reserves_each_batch(tmp_path, monkey
     assert [len(batch) for batch in requested_batches] == [128]
     assert usage["samples_sent"] == 128
     assert usage["requests_sent"] == 1
-    assert GoogleElevationUsageTracker.load(usage_path)["last_request_status"] == "success"
+    assert (
+        GoogleElevationUsageTracker.load(usage_path)["last_request_status"] == "success"
+    )
 
 
-def test_elevation_client_stops_before_calling_google_when_the_cap_would_be_exceeded(tmp_path, monkeypatch) -> None:
+def test_elevation_client_stops_before_calling_google_when_the_cap_would_be_exceeded(
+    tmp_path,
+    monkeypatch,
+) -> None:
     usage_path = tmp_path / "elevation-usage.json"
     usage = GoogleElevationUsageTracker.default_usage()
     usage["samples_sent"] = 4_499
-    client = GoogleElevationClient({}, tmp_path / "elevation-cache.json", "not-used", usage, usage_path)
+    client = GoogleElevationClient(
+        {},
+        tmp_path / "elevation-cache.json",
+        "not-used",
+        usage,
+        usage_path,
+    )
     called = False
 
     def unexpected_request(_batch):
@@ -107,9 +138,18 @@ def test_elevation_client_stops_before_calling_google_when_the_cap_would_be_exce
 
 
 def test_elevation_export_contains_legend_and_segment_popup_data(tmp_path) -> None:
-    section = RunnerRouteSection("Segment 001 - Start to Checkpoint 001", ((34.0, -118.0), (34.01, -118.0)))
+    section = RunnerRouteSection(
+        "Segment 001 - Start to Checkpoint 001",
+        ((34.0, -118.0), (34.01, -118.0)),
+    )
     profile = ElevationProfile(
-        (DistanceSample(section.coordinates[0], 0), DistanceSample(section.coordinates[-1], RouteGeometry.distance_meters([list(section.coordinates)]))),
+        (
+            DistanceSample(section.coordinates[0], 0),
+            DistanceSample(
+                section.coordinates[-1],
+                RouteGeometry.distance_meters([list(section.coordinates)]),
+            ),
+        ),
         (10, 120),
         (10, 120),
     )

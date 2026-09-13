@@ -69,6 +69,8 @@ class RaceRouteSpec:
     def checkpoint(self, label: str) -> RouteCheckpoint:
         """Return a named organizer checkpoint or raise a useful error."""
         try:
-            return next(point for point in self.route_checkpoints if point.label == label)
+            return next(
+                point for point in self.route_checkpoints if point.label == label
+            )
         except StopIteration as error:
             raise KeyError(f"Unknown organizer checkpoint: {label}") from error

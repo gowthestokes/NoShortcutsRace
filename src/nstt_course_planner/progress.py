@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import xml.etree.ElementTree as element_tree
+from itertools import pairwise
 from pathlib import Path
 
 from nstt_course_planner.config import SEGMENT_METERS, SEGMENT_NAME_PATTERN
@@ -23,7 +24,9 @@ class ApprovedProgressLoader:
             longitude, latitude = map(float, values[:2])
             coordinates.append((latitude, longitude))
         if len(coordinates) < 2:
-            raise RuntimeError("An approved runner segment must contain at least two coordinates.")
+            raise RuntimeError(
+                "An approved runner segment must contain at least two coordinates.",
+            )
         return tuple(coordinates)
 
     @staticmethod
@@ -41,26 +44,46 @@ class ApprovedProgressLoader:
         return found
 
     @classmethod
-    def source_sections(cls, path: Path, *, include_suffixes: bool = True) -> tuple[RunnerRouteSection, ...]:
+    def source_sections(
+        cls,
+        path: Path,
+        *,
+        include_suffixes: bool = True,
+    ) -> tuple[RunnerRouteSection, ...]:
         """Read the runner lines in KML order, including manual suffix lines."""
         try:
             root = element_tree.parse(path).getroot()
         except (OSError, element_tree.ParseError) as error:
-            raise RuntimeError(f"Could not read approved segment KML: {path}") from error
+            raise RuntimeError(
+                f"Could not read approved segment KML: {path}",
+            ) from error
         namespace = {"kml": "http://www.opengis.net/kml/2.2"}
         sections: list[RunnerRouteSection] = []
         for placemark in root.findall(".//kml:Placemark", namespace):
-            name = placemark.findtext("kml:name", default="", namespaces=namespace).strip()
+            name = placemark.findtext(
+                "kml:name",
+                default="",
+                namespaces=namespace,
+            ).strip()
             match = SEGMENT_NAME_PATTERN.match(name)
             if not match or (match.group(2) and not include_suffixes):
                 continue
-            raw = placemark.findtext(".//kml:LineString/kml:coordinates", default="", namespaces=namespace)
+            raw = placemark.findtext(
+                ".//kml:LineString/kml:coordinates",
+                default="",
+                namespaces=namespace,
+            )
             if raw:
                 sections.append(RunnerRouteSection(name, cls.parse_coordinates(raw)))
         return tuple(sections)
 
     @classmethod
-    def source_geometry_runs(cls, path: Path, *, connection_tolerance_meters: float = 50) -> list[list[tuple[float, float]]]:
+    def source_geometry_runs(
+        cls,
+        path: Path,
+        *,
+        connection_tolerance_meters: float = 50,
+    ) -> list[list[tuple[float, float]]]:
         """Join numbered source lines while retaining support-car gaps.
 
         My Maps may append a manually repaired line to the end of a KML export.
@@ -69,11 +92,19 @@ class ApprovedProgressLoader:
         """
         return [
             [coordinate for section in run for coordinate in section.coordinates]
-            for run in cls.source_section_runs(path, connection_tolerance_meters=connection_tolerance_meters)
+            for run in cls.source_section_runs(
+                path,
+                connection_tolerance_meters=connection_tolerance_meters,
+            )
         ]
 
     @classmethod
-    def source_section_runs(cls, path: Path, *, connection_tolerance_meters: float = 50) -> list[list[RunnerRouteSection]]:
+    def source_section_runs(
+        cls,
+        path: Path,
+        *,
+        connection_tolerance_meters: float = 50,
+    ) -> list[list[RunnerRouteSection]]:
         """Group ordered editable source lines into runner runs separated by car gaps."""
         sections = sorted(
             cls.source_sections(path),
@@ -86,17 +117,33 @@ class ApprovedProgressLoader:
             raise RuntimeError(f"Source KML has no named runner-route segments: {path}")
         runs: list[list[RunnerRouteSection]] = []
         for section in sections:
-            if not runs or RouteGeometry.haversine_meters(runs[-1][-1].coordinates[-1], section.coordinates[0]) > connection_tolerance_meters:
+            if (
+                not runs
+                or RouteGeometry.haversine_meters(
+                    runs[-1][-1].coordinates[-1],
+                    section.coordinates[0],
+                )
+                > connection_tolerance_meters
+            ):
                 runs.append([section])
             else:
                 runs[-1].append(section)
         return runs
 
     @classmethod
-    def _sections(cls, path: Path, start_segment: int, through_segment: int, *, require_continuity: bool) -> tuple[RunnerRouteSection, ...]:
+    def _sections(
+        cls,
+        path: Path,
+        start_segment: int,
+        through_segment: int,
+        *,
+        require_continuity: bool,
+    ) -> tuple[RunnerRouteSection, ...]:
         found = cls._found_sections(path)
         if start_segment not in found or through_segment not in found:
-            raise RuntimeError(f"Approved KML must contain Segment {start_segment:03d} and Segment {through_segment:03d}.")
+            raise RuntimeError(
+                f"Approved KML must contain Segment {start_segment:03d} and Segment {through_segment:03d}.",
+            )
         sections: list[RunnerRouteSection] = []
         for number in range(start_segment, through_segment + 1):
             if number not in found:
@@ -106,34 +153,61 @@ class ApprovedProgressLoader:
             # When the normal half-mile source segment is present, it is the
             # authoritative one; do not let an orphan duplicate move it.
             canonical = [
-                piece for piece in pieces
-                if piece.label.casefold() == cls.canonical_section_name(number).casefold()
+                piece
+                for piece in pieces
+                if piece.label.casefold()
+                == cls.canonical_section_name(number).casefold()
             ]
             if canonical:
                 pieces = canonical
             coordinates = list(pieces[0].coordinates)
-            for previous, current in zip(pieces, pieces[1:], strict=False):
-                if RouteGeometry.haversine_meters(previous.coordinates[-1], current.coordinates[0]) > 25:
-                    raise RuntimeError(f"Google My Maps split Segment {number:03d} into pieces that do not connect; join or rename those lines before rebuilding.")
+            for previous, current in pairwise(pieces):
+                if (
+                    RouteGeometry.haversine_meters(
+                        previous.coordinates[-1],
+                        current.coordinates[0],
+                    )
+                    > 25
+                ):
+                    raise RuntimeError(
+                        f"Google My Maps split Segment {number:03d} into pieces that do not connect; join or rename those lines before rebuilding.",
+                    )
                 coordinates.extend(current.coordinates[1:])
             sections.append(RunnerRouteSection(pieces[0].label, tuple(coordinates)))
         if require_continuity:
-            for previous, current in zip(sections, sections[1:], strict=False):
-                if RouteGeometry.haversine_meters(previous.coordinates[-1], current.coordinates[0]) > 50:
-                    raise RuntimeError(f"{previous.label} does not connect to {current.label}; join their endpoints in My Maps before rebuilding.")
+            for previous, current in pairwise(sections):
+                if (
+                    RouteGeometry.haversine_meters(
+                        previous.coordinates[-1],
+                        current.coordinates[0],
+                    )
+                    > 50
+                ):
+                    raise RuntimeError(
+                        f"{previous.label} does not connect to {current.label}; join their endpoints in My Maps before rebuilding.",
+                    )
         return tuple(sections)
 
     @classmethod
     def load(cls, path: Path, through_segment: int) -> ApprovedRouteProgress:
-        return ApprovedRouteProgress(cls._sections(path, 1, through_segment, require_continuity=True), through_segment)
+        return ApprovedRouteProgress(
+            cls._sections(path, 1, through_segment, require_continuity=True),
+            through_segment,
+        )
 
     @classmethod
-    def load_tail(cls, path: Path, start_segment: int) -> tuple[RunnerRouteSection, ...]:
+    def load_tail(
+        cls,
+        path: Path,
+        start_segment: int,
+    ) -> tuple[RunnerRouteSection, ...]:
         """Read an immutable downstream KML tail without crossing a transfer gap."""
         found = cls._found_sections(path)
         numbers = [number for number in found if number >= start_segment]
         if not numbers:
-            raise RuntimeError(f"Source KML has no Segment {start_segment:03d} or later.")
+            raise RuntimeError(
+                f"Source KML has no Segment {start_segment:03d} or later.",
+            )
         return cls._sections(path, start_segment, max(numbers), require_continuity=True)
 
     @classmethod
@@ -145,9 +219,16 @@ class ApprovedProgressLoader:
             raise RuntimeError(f"Could not read source KML: {path}") from error
         namespace = {"kml": "http://www.opengis.net/kml/2.2"}
         for placemark in root.findall(".//kml:Placemark", namespace):
-            if placemark.findtext("kml:name", default="", namespaces=namespace).strip() != name:
+            if (
+                placemark.findtext("kml:name", default="", namespaces=namespace).strip()
+                != name
+            ):
                 continue
-            raw = placemark.findtext(".//kml:Point/kml:coordinates", default="", namespaces=namespace).strip()
+            raw = placemark.findtext(
+                ".//kml:Point/kml:coordinates",
+                default="",
+                namespaces=namespace,
+            ).strip()
             if raw:
                 longitude, latitude, *_ = raw.split()[0].split(",")
                 return float(latitude), float(longitude)
@@ -163,4 +244,9 @@ class ApprovedProgressLoader:
     @classmethod
     def sections(cls, progress: ApprovedRouteProgress) -> list[RunnerRouteSection]:
         geometry = cls.geometry(progress)
-        return RouteSegmenter.sections([geometry], RouteGeometry.distance_meters([geometry]), interval_meters=SEGMENT_METERS, checkpoint_label="Checkpoint")
+        return RouteSegmenter.sections(
+            [geometry],
+            RouteGeometry.distance_meters([geometry]),
+            interval_meters=SEGMENT_METERS,
+            checkpoint_label="Checkpoint",
+        )

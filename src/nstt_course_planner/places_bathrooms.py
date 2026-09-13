@@ -21,7 +21,11 @@ from nstt_course_planner.config import (
     PROJECT_ROOT,
 )
 from nstt_course_planner.elevation import RouteGeometrySampler
-from nstt_course_planner.models.bathrooms import BathroomCategory, BathroomStop, PlacesBathroomBuildConfig
+from nstt_course_planner.models.bathrooms import (
+    BathroomCategory,
+    BathroomStop,
+    PlacesBathroomBuildConfig,
+)
 from nstt_course_planner.storage import GooglePlacesUsageTracker, JsonStore
 from nstt_course_planner.utils import Environment, HttpClient
 
@@ -33,7 +37,9 @@ class RouteAnchorSampler:
     """Creates search centers along each continuous runner run."""
 
     @staticmethod
-    def continuous_runs(route_lines: tuple[tuple[Coordinate, ...], ...]) -> tuple[tuple[Coordinate, ...], ...]:
+    def continuous_runs(
+        route_lines: tuple[tuple[Coordinate, ...], ...],
+    ) -> tuple[tuple[Coordinate, ...], ...]:
         runs: list[tuple[Coordinate, ...]] = []
         current: list[Coordinate] = []
         for line in route_lines:
@@ -49,7 +55,11 @@ class RouteAnchorSampler:
         return tuple(runs)
 
     @classmethod
-    def anchors(cls, route_lines: tuple[tuple[Coordinate, ...], ...], spacing_meters: float) -> tuple[Coordinate, ...]:
+    def anchors(
+        cls,
+        route_lines: tuple[tuple[Coordinate, ...], ...],
+        spacing_meters: float,
+    ) -> tuple[Coordinate, ...]:
         if spacing_meters <= 0:
             raise ValueError("Places anchor spacing must be greater than zero.")
         return tuple(
@@ -62,16 +72,10 @@ class RouteAnchorSampler:
 class GooglePlacesBathroomClient:
     """Caches Nearby Search responses and counts every uncached request."""
 
-    field_mask = ",".join((
-        "places.id",
-        "places.displayName",
-        "places.formattedAddress",
-        "places.location",
-        "places.primaryType",
-        "places.types",
-        "places.businessStatus",
-        "places.googleMapsUri",
-    ))
+    field_mask = (
+        "places.id,places.displayName,places.formattedAddress,places.location,"
+        "places.primaryType,places.types,places.businessStatus,places.googleMapsUri"
+    )
 
     def __init__(
         self,
@@ -91,9 +95,16 @@ class GooglePlacesBathroomClient:
 
     @staticmethod
     def cache_key(coordinate: Coordinate, place_type: str, radius_meters: float) -> str:
-        return f"{coordinate[0]:.5f},{coordinate[1]:.5f}|{place_type}|{radius_meters:.0f}"
+        return (
+            f"{coordinate[0]:.5f},{coordinate[1]:.5f}|{place_type}|{radius_meters:.0f}"
+        )
 
-    def search(self, coordinate: Coordinate, place_type: str, radius_meters: float) -> tuple[dict[str, object], ...]:
+    def search(
+        self,
+        coordinate: Coordinate,
+        place_type: str,
+        radius_meters: float,
+    ) -> tuple[dict[str, object], ...]:
         key = self.cache_key(coordinate, place_type, radius_meters)
         cached = self.cache.get(key)
         if cached is not None:
@@ -106,7 +117,7 @@ class GooglePlacesBathroomClient:
                 "circle": {
                     "center": {"latitude": coordinate[0], "longitude": coordinate[1]},
                     "radius": radius_meters,
-                }
+                },
             },
         }
         GooglePlacesUsageTracker.reserve(self.usage, self.usage_path)
@@ -117,14 +128,30 @@ class GooglePlacesBathroomClient:
                 {"X-Goog-Api-Key": self.api_key, "X-Goog-FieldMask": self.field_mask},
             )
         except HTTPError as error:
-            GooglePlacesUsageTracker.set_status(self.usage, self.usage_path, f"failed HTTP {error.code}")
-            raise RuntimeError(f"Google Places request failed with HTTP {error.code}.") from error
+            GooglePlacesUsageTracker.set_status(
+                self.usage,
+                self.usage_path,
+                f"failed HTTP {error.code}",
+            )
+            raise RuntimeError(
+                f"Google Places request failed with HTTP {error.code}.",
+            ) from error
         except (OSError, json.JSONDecodeError) as error:
-            GooglePlacesUsageTracker.set_status(self.usage, self.usage_path, "failed network error")
-            raise RuntimeError("Google Places request failed due to a network or response error.") from error
+            GooglePlacesUsageTracker.set_status(
+                self.usage,
+                self.usage_path,
+                "failed network error",
+            )
+            raise RuntimeError(
+                "Google Places request failed due to a network or response error.",
+            ) from error
         if not isinstance(response, dict):
-            GooglePlacesUsageTracker.set_status(self.usage, self.usage_path, "failed invalid response")
-            raise RuntimeError("Google Places returned an invalid response.")
+            GooglePlacesUsageTracker.set_status(
+                self.usage,
+                self.usage_path,
+                "failed invalid response",
+            )
+            raise TypeError("Google Places returned an invalid response.")
         places = self._places(response)
         self.cache[key] = {"places": list(places)}
         JsonStore.save_cache(self.cache_path, self.cache)
@@ -135,7 +162,9 @@ class GooglePlacesBathroomClient:
     def _places(response: dict[str, object]) -> tuple[dict[str, object], ...]:
         raw_places = response.get("places", [])
         if not isinstance(raw_places, list):
-            raise RuntimeError("Google Places returned a response without a usable places list.")
+            raise TypeError(
+                "Google Places returned a response without a usable places list.",
+            )
         return tuple(place for place in raw_places if isinstance(place, dict))
 
 
@@ -150,7 +179,11 @@ class PlacesBathroomDiscovery:
         ("gas_station", BathroomCategory.FAST_FOOD_OR_GAS),
     )
 
-    def __init__(self, client: GooglePlacesBathroomClient, max_route_distance_meters: float) -> None:
+    def __init__(
+        self,
+        client: GooglePlacesBathroomClient,
+        max_route_distance_meters: float,
+    ) -> None:
         self.client = client
         self.max_route_distance_meters = max_route_distance_meters
 
@@ -175,7 +208,9 @@ class PlacesBathroomDiscovery:
             for category, place in candidates.values()
             if self._is_route_near(place, route_runs, builder)
         )
-        return tuple(sorted(stops, key=lambda stop: (stop.category.priority, stop.name)))
+        return tuple(
+            sorted(stops, key=lambda stop: (stop.category.priority, stop.name)),
+        )
 
     def _is_route_near(
         self,
@@ -184,19 +219,45 @@ class PlacesBathroomDiscovery:
         builder: BathroomLayerBuilder,
     ) -> bool:
         coordinate = self._coordinate(place)
-        return coordinate is not None and builder.nearest_route_distance_meters(coordinate, route_runs) <= self.max_route_distance_meters
+        return (
+            coordinate is not None
+            and builder.nearest_route_distance_meters(coordinate, route_runs)
+            <= self.max_route_distance_meters
+        )
 
     @classmethod
-    def _stop(cls, category: BathroomCategory, place: dict[str, object]) -> BathroomStop:
+    def _stop(
+        cls,
+        category: BathroomCategory,
+        place: dict[str, object],
+    ) -> BathroomStop:
         coordinate = cls._coordinate(place)
         if coordinate is None:
-            raise RuntimeError("Google Places returned a place without usable coordinates.")
+            raise RuntimeError(
+                "Google Places returned a place without usable coordinates.",
+            )
         name = cls._name(place)
         address = str(place.get("formattedAddress", "Google Maps location"))
         maps_url = place.get("googleMapsUri")
-        source_url = str(maps_url) if isinstance(maps_url, str) else "https://www.google.com/maps"
-        status = str(place.get("businessStatus", "status not supplied")).replace("_", " ").lower()
-        return BathroomStop(name, category, coordinate[0], coordinate[1], address, source_url, cls._note(category, status))
+        source_url = (
+            str(maps_url)
+            if isinstance(maps_url, str)
+            else "https://www.google.com/maps"
+        )
+        status = (
+            str(place.get("businessStatus", "status not supplied"))
+            .replace("_", " ")
+            .lower()
+        )
+        return BathroomStop(
+            name,
+            category,
+            coordinate[0],
+            coordinate[1],
+            address,
+            source_url,
+            cls._note(category, status),
+        )
 
     @staticmethod
     def _coordinate(place: dict[str, object]) -> Coordinate | None:
@@ -205,7 +266,7 @@ class PlacesBathroomDiscovery:
             return None
         try:
             return float(location["latitude"]), float(location["longitude"])
-        except (KeyError, TypeError, ValueError):
+        except KeyError, TypeError, ValueError:
             return None
 
     @staticmethod
@@ -234,45 +295,104 @@ class PlacesBathroomLayerBuilder:
 
     @staticmethod
     def add_arguments(parser: argparse.ArgumentParser) -> None:
-        parser.add_argument("--source-kml", type=Path, default=PROJECT_ROOT / "input" / "Runner.kml", help="Immutable finalized runner-route KML.")
-        parser.add_argument("--output-kml", type=Path, default=DEFAULT_OUTPUT_DIR / "NSTT_2026_bathroom_stops.kml", help="Merged color-coded bathroom KML to create.")
-        parser.add_argument("--places-cache", type=Path, default=DEFAULT_GOOGLE_PLACES_CACHE, help="Cached Google Places results.")
-        parser.add_argument("--places-usage", type=Path, default=DEFAULT_GOOGLE_PLACES_USAGE, help="Local conservative Google Places request counter.")
-        parser.add_argument("--anchor-spacing-meters", type=float, default=DEFAULT_PLACES_ANCHOR_SPACING_METERS, help="Distance between route-near search centers; 2,400 m by default.")
-        parser.add_argument("--search-radius-meters", type=float, default=DEFAULT_PLACES_SEARCH_RADIUS_METERS, help="Google Places radius around each center; 2,000 m by default.")
-        parser.add_argument("--max-route-distance-meters", type=float, default=DEFAULT_PLACES_MAX_ROUTE_DISTANCE_METERS, help="Keep results within this straight-line distance of the route; one mile by default.")
-        parser.add_argument("--dry-run", action="store_true", help="Report uncached Places searches without calling Google or writing output.")
+        parser.add_argument(
+            "--source-kml",
+            type=Path,
+            default=PROJECT_ROOT / "input" / "Runner.kml",
+            help="Immutable finalized runner-route KML.",
+        )
+        parser.add_argument(
+            "--output-kml",
+            type=Path,
+            default=DEFAULT_OUTPUT_DIR / "NSTT_2026_bathroom_stops.kml",
+            help="Merged color-coded bathroom KML to create.",
+        )
+        parser.add_argument(
+            "--places-cache",
+            type=Path,
+            default=DEFAULT_GOOGLE_PLACES_CACHE,
+            help="Cached Google Places results.",
+        )
+        parser.add_argument(
+            "--places-usage",
+            type=Path,
+            default=DEFAULT_GOOGLE_PLACES_USAGE,
+            help="Local conservative Google Places request counter.",
+        )
+        parser.add_argument(
+            "--anchor-spacing-meters",
+            type=float,
+            default=DEFAULT_PLACES_ANCHOR_SPACING_METERS,
+            help="Distance between route-near search centers; 2,400 m by default.",
+        )
+        parser.add_argument(
+            "--search-radius-meters",
+            type=float,
+            default=DEFAULT_PLACES_SEARCH_RADIUS_METERS,
+            help="Google Places radius around each center; 2,000 m by default.",
+        )
+        parser.add_argument(
+            "--max-route-distance-meters",
+            type=float,
+            default=DEFAULT_PLACES_MAX_ROUTE_DISTANCE_METERS,
+            help="Keep results within this straight-line distance of the route; one mile by default.",
+        )
+        parser.add_argument(
+            "--dry-run",
+            action="store_true",
+            help="Report uncached Places searches without calling Google or writing output.",
+        )
 
     @classmethod
-    def from_arguments(cls, arguments: argparse.Namespace) -> "PlacesBathroomLayerBuilder":
-        return cls(PlacesBathroomBuildConfig(
-            arguments.source_kml,
-            arguments.output_kml,
-            arguments.places_cache,
-            arguments.places_usage,
-            arguments.anchor_spacing_meters,
-            arguments.search_radius_meters,
-            arguments.max_route_distance_meters,
-            arguments.dry_run,
-        ))
+    def from_arguments(
+        cls,
+        arguments: argparse.Namespace,
+    ) -> PlacesBathroomLayerBuilder:
+        return cls(
+            PlacesBathroomBuildConfig(
+                arguments.source_kml,
+                arguments.output_kml,
+                arguments.places_cache,
+                arguments.places_usage,
+                arguments.anchor_spacing_meters,
+                arguments.search_radius_meters,
+                arguments.max_route_distance_meters,
+                arguments.dry_run,
+            ),
+        )
 
     def build(self) -> None:
-        if self.config.search_radius_meters <= 0 or self.config.max_route_distance_meters <= 0:
-            raise ValueError("Places search radius and route distance must be positive.")
+        if (
+            self.config.search_radius_meters <= 0
+            or self.config.max_route_distance_meters <= 0
+        ):
+            raise ValueError(
+                "Places search radius and route distance must be positive.",
+            )
         route_runs = RunnerRouteKml.line_runs(self.config.source_kml)
-        anchors = RouteAnchorSampler.anchors(route_runs, self.config.anchor_spacing_meters)
+        anchors = RouteAnchorSampler.anchors(
+            route_runs,
+            self.config.anchor_spacing_meters,
+        )
         planned_queries = len(anchors) * len(PlacesBathroomDiscovery.place_types)
         cached_queries = sum(
-            GooglePlacesBathroomClient.cache_key(anchor, place_type, self.config.search_radius_meters) in self.cache
+            GooglePlacesBathroomClient.cache_key(
+                anchor,
+                place_type,
+                self.config.search_radius_meters,
+            )
+            in self.cache
             for anchor in anchors
             for place_type, _ in PlacesBathroomDiscovery.place_types
         )
         print(
             f"Places plan: {len(anchors)} route anchors, {planned_queries - cached_queries} uncached searches, "
-            f"{int(self.usage['requests_sent']):,}/{int(self.usage['request_limit']):,} searches already recorded."
+            f"{int(self.usage['requests_sent']):,}/{int(self.usage['request_limit']):,} searches already recorded.",
         )
         if self.config.dry_run:
-            print("Dry run complete: no Google request was sent and no bathroom output was written.")
+            print(
+                "Dry run complete: no Google request was sent and no bathroom output was written.",
+            )
             return
         client = GooglePlacesBathroomClient(
             self.cache,
@@ -281,17 +401,24 @@ class PlacesBathroomLayerBuilder:
             self.config.usage_path,
             Environment.google_maps_api_key(),
         )
-        discovered = PlacesBathroomDiscovery(client, self.config.max_route_distance_meters).discover(
+        discovered = PlacesBathroomDiscovery(
+            client,
+            self.config.max_route_distance_meters,
+        ).discover(
             anchors,
             route_runs,
             self.config.search_radius_meters,
         )
         selected = self.select_for_my_maps((*BATHROOM_STOPS, *discovered), route_runs)
-        BathroomLayerBuilder().build(self.config.source_kml, self.config.output_kml, selected)
+        BathroomLayerBuilder().build(
+            self.config.source_kml,
+            self.config.output_kml,
+            selected,
+        )
         omitted = len(BATHROOM_STOPS) + len(discovered) - len(selected)
         print(
             f"Created {self.config.output_kml} with {len(selected)} stops "
-            f"({omitted} fast-food/gas backups omitted for My Maps' 2,000-feature limit)."
+            f"({omitted} fast-food/gas backups omitted for My Maps' 2,000-feature limit).",
         )
 
     @classmethod
@@ -304,7 +431,9 @@ class PlacesBathroomLayerBuilder:
         backup_stops = tuple(stop for stop in stops if stop.category.priority == 4)
         backup_capacity = cls.my_maps_feature_limit - len(priority_stops)
         if backup_capacity < 0:
-            raise RuntimeError("Public, grocery, and coffee bathroom stops exceed the My Maps feature limit.")
+            raise RuntimeError(
+                "Public, grocery, and coffee bathroom stops exceed the My Maps feature limit.",
+            )
         if len(backup_stops) <= backup_capacity:
             return (*priority_stops, *backup_stops)
         curated = tuple(stop for stop in backup_stops if stop in BATHROOM_STOPS)
@@ -312,19 +441,34 @@ class PlacesBathroomLayerBuilder:
         builder = BathroomLayerBuilder()
         candidates = sorted(
             (stop for stop in backup_stops if stop not in BATHROOM_STOPS),
-            key=lambda stop: builder.nearest_route_proximity((stop.latitude, stop.longitude), route_runs).runner_miles,
+            key=lambda stop: (
+                builder.nearest_route_proximity(
+                    (stop.latitude, stop.longitude),
+                    route_runs,
+                ).runner_miles
+            ),
         )
-        return (*priority_stops, *curated, *cls.evenly_spaced(candidates, remaining_capacity))
+        return (
+            *priority_stops,
+            *curated,
+            *cls.evenly_spaced(candidates, remaining_capacity),
+        )
 
     @staticmethod
-    def evenly_spaced(stops: list[BathroomStop], count: int) -> tuple[BathroomStop, ...]:
+    def evenly_spaced(
+        stops: list[BathroomStop],
+        count: int,
+    ) -> tuple[BathroomStop, ...]:
         if count <= 0:
             return ()
         if count >= len(stops):
             return tuple(stops)
         if count == 1:
             return (stops[0],)
-        return tuple(stops[round(index * (len(stops) - 1) / (count - 1))] for index in range(count))
+        return tuple(
+            stops[round(index * (len(stops) - 1) / (count - 1))]
+            for index in range(count)
+        )
 
 
 def main() -> None:

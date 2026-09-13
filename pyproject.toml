@@ -26,8 +26,14 @@ python-preference = "only-system"
 
 [dependency-groups]
 dev = [
+    "pre-commit>=4.6.2",
     "pytest>=9.0.0",
+    "ruff>=0.16.7",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF", "TRY004", "FLY002"]
+ignore = ["E501"]

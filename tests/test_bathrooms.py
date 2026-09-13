@@ -6,7 +6,7 @@ import pytest
 
 from nstt_course_planner.bathrooms import BathroomLayerBuilder, RunnerRouteKml
 from nstt_course_planner.catalog.bathrooms import BATHROOM_STOPS
-from nstt_course_planner.models.bathrooms import BathroomCategory, BathroomStop
+from nstt_course_planner.models.bathrooms import BathroomCategory
 
 
 def test_bathroom_categories_follow_the_team_priority_order() -> None:
@@ -21,9 +21,17 @@ def test_bathroom_categories_follow_the_team_priority_order() -> None:
 
 def test_official_beach_stops_use_public_agency_sources() -> None:
     official_hosts = (
-        "santamonica.gov", "beaches.lacounty.gov", "parks.ca.gov", "carlsbadca.gov",
-        "encinitasca.gov", "sandiego.gov", "lagunabeachcity.net", "danapoint.org",
-        "ci.oceanside.ca.us", "cityofsolanabeach.org", "delmar.ca.us",
+        "santamonica.gov",
+        "beaches.lacounty.gov",
+        "parks.ca.gov",
+        "carlsbadca.gov",
+        "encinitasca.gov",
+        "sandiego.gov",
+        "lagunabeachcity.net",
+        "danapoint.org",
+        "ci.oceanside.ca.us",
+        "cityofsolanabeach.org",
+        "delmar.ca.us",
     )
     for stop in BATHROOM_STOPS:
         if stop.category is BathroomCategory.OFFICIAL_BEACH:
@@ -34,9 +42,9 @@ def test_official_beach_stops_use_public_agency_sources() -> None:
 
 def test_builder_preserves_source_and_writes_ranked_kml(tmp_path: Path) -> None:
     source = tmp_path / "Runner.kml"
-    source_text = '''<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+    source_text = """<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document>
       <Placemark><LineString><coordinates>-118.50,34.00,0 -118.49,34.01,0</coordinates></LineString></Placemark>
-    </Document></kml>'''
+    </Document></kml>"""
     source.write_text(source_text, encoding="utf-8")
     output = tmp_path / "bathrooms.kml"
 
@@ -57,7 +65,10 @@ def test_builder_preserves_source_and_writes_ranked_kml(tmp_path: Path) -> None:
 
 def test_route_reader_requires_line_geometry(tmp_path: Path) -> None:
     source = tmp_path / "empty.kml"
-    source.write_text('<kml xmlns="http://www.opengis.net/kml/2.2"><Document/></kml>', encoding="utf-8")
+    source.write_text(
+        '<kml xmlns="http://www.opengis.net/kml/2.2"><Document/></kml>',
+        encoding="utf-8",
+    )
 
     with pytest.raises(ValueError, match="no usable LineString geometry"):
         RunnerRouteKml.line_runs(source)
@@ -66,7 +77,10 @@ def test_route_reader_requires_line_geometry(tmp_path: Path) -> None:
 def test_nearest_route_distance_uses_each_route_run_without_crossing_a_gap() -> None:
     route_runs = (((0.0, 0.0), (0.0, 0.01)), ((1.0, 1.0), (1.0, 1.01)))
 
-    distance = BathroomLayerBuilder.nearest_route_distance_meters((0.001, 0.005), route_runs)
+    distance = BathroomLayerBuilder.nearest_route_distance_meters(
+        (0.001, 0.005),
+        route_runs,
+    )
 
     assert distance == pytest.approx(111.32, abs=1.0)
 
@@ -76,6 +90,12 @@ def test_researched_stops_are_explicitly_nearby_not_long_detours() -> None:
     source = Path(__file__).parents[1] / "input" / "Runner.kml"
     route_runs = RunnerRouteKml.line_runs(source)
 
-    distances = [builder.nearest_route_distance_meters((stop.latitude, stop.longitude), route_runs) for stop in BATHROOM_STOPS]
+    distances = [
+        builder.nearest_route_distance_meters(
+            (stop.latitude, stop.longitude),
+            route_runs,
+        )
+        for stop in BATHROOM_STOPS
+    ]
 
     assert max(distances) < 1_000

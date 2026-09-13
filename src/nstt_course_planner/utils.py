@@ -17,14 +17,27 @@ class HttpClient:
     @staticmethod
     def get_json(url: str) -> object:
         request = Request(url, headers={"User-Agent": USER_AGENT})
-        with urlopen(request, timeout=60) as response:  # noqa: S310 - fixed endpoints
+        with urlopen(request, timeout=60) as response:
             return json.load(response)
 
     @staticmethod
-    def post_json(url: str, payload: object, headers: dict[str, str] | None = None) -> object:
-        request_headers = {"User-Agent": USER_AGENT, "Content-Type": "application/json", **(headers or {})}
-        request = Request(url, data=json.dumps(payload).encode("utf-8"), headers=request_headers, method="POST")
-        with urlopen(request, timeout=60) as response:  # noqa: S310 - fixed endpoints
+    def post_json(
+        url: str,
+        payload: object,
+        headers: dict[str, str] | None = None,
+    ) -> object:
+        request_headers = {
+            "User-Agent": USER_AGENT,
+            "Content-Type": "application/json",
+            **(headers or {}),
+        }
+        request = Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers=request_headers,
+            method="POST",
+        )
+        with urlopen(request, timeout=60) as response:
             return json.load(response)
 
     @staticmethod
@@ -32,10 +45,13 @@ class HttpClient:
         request = Request(
             url,
             data=urlencode(values).encode("utf-8"),
-            headers={"User-Agent": USER_AGENT, "Content-Type": "application/x-www-form-urlencoded"},
+            headers={
+                "User-Agent": USER_AGENT,
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
             method="POST",
         )
-        with urlopen(request, timeout=60) as response:  # noqa: S310 - fixed endpoints
+        with urlopen(request, timeout=60) as response:
             return json.load(response)
 
 
@@ -57,7 +73,9 @@ class Environment:
         cls.load_dotenv()
         api_key = os.environ.get("GOOGLE_MAPS_API_KEY", "").strip()
         if not api_key:
-            raise RuntimeError("Missing GOOGLE_MAPS_API_KEY. Add it to the local .env file before building.")
+            raise RuntimeError(
+                "Missing GOOGLE_MAPS_API_KEY. Add it to the local .env file before building.",
+            )
         return api_key
 
 
