@@ -11,6 +11,7 @@ build-nstt-course = "nstt_course_planner.build_course:main"
 build-nstt-elevation = "nstt_course_planner.elevation_builder:main"
 build-nstt-bathroom-layer = "nstt_course_planner.places_bathrooms:main"
 build-nstt-curated-bathroom-layer = "nstt_course_planner.bathrooms:main"
+build-nstt-sunlight-layer = "nstt_course_planner.sunlight_builder:main"
 
 [build-system]
 requires = ["uv_build>=0.12.0,<0.13.0"]
