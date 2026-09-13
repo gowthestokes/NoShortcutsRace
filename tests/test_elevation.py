@@ -120,5 +120,5 @@ def test_elevation_export_contains_legend_and_segment_popup_data(tmp_path) -> No
     kml = (tmp_path / "NSTT_2026_elevation.kml").read_text(encoding="utf-8")
     assert "Dark blue: ≤ -6%" in kml
     assert "Smoothed terrain elevation" in kml
-    assert "verify bridge decks" in kml
+    assert "verify bridge decks" not in kml
     assert "#red" in kml

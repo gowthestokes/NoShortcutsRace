@@ -245,8 +245,6 @@ class ElevationLayerExporter:
         "Dark blue: ≤ -6%; blue: -6% to -3%; light blue: -3% to -1%; gray: -1% to +1%; "
         "light orange: +1% to +3%; orange: +3% to +6%; red: ≥ +6%."
     )
-    CAVEAT = "Google reports terrain elevation; verify bridge decks, ramps, tunnels, and other grade-separated sections in person."
-
     @classmethod
     def style_name(cls, grade_percent: float) -> str:
         if grade_percent <= -6:
@@ -271,7 +269,7 @@ class ElevationLayerExporter:
             for name, color in cls.COLORS.items()
         )
         placemarks = "".join(cls._placemark(section) for section in sections)
-        description = xml.sax.saxutils.escape(f"Terrain-elevation overlay for the finalized runner route. {cls.LEGEND} {cls.CAVEAT}")
+        description = xml.sax.saxutils.escape(f"Terrain-elevation overlay for the finalized runner route. {cls.LEGEND}")
         kml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - Elevation by Grade</name><description>{description}</description>
   {styles}
@@ -290,9 +288,6 @@ Method
 - Samples the immutable Runner.kml geometry about every 50 m using Google Elevation terrain data.
 - Smooths elevations over a configurable 150–250 m window (default 200 m), then colors each existing editable runner segment by signed average grade.
 - Each segment pop-up lists smoothed start/end elevation, net elevation change, and average grade.
-
-Caveat
-- {cls.CAVEAT}
 '''
         (output_dir / "NSTT_2026_elevation.kml").write_text(kml, encoding="utf-8")
         (output_dir / "NSTT_2026_elevation_README.txt").write_text(notes, encoding="utf-8")
@@ -304,8 +299,7 @@ Caveat
         net_feet = section.net_elevation_meters * 3.28084
         description = xml.sax.saxutils.escape(
             f"{section.section.label}. Smoothed terrain elevation: {start_feet:.0f} ft to {end_feet:.0f} ft; "
-            f"net gain/loss: {net_feet:+.0f} ft; signed average grade: {section.average_grade_percent:+.1f}%. "
-            f"{cls.CAVEAT}"
+            f"net gain/loss: {net_feet:+.0f} ft; signed average grade: {section.average_grade_percent:+.1f}%."
         )
         coordinates = " ".join(f"{longitude},{latitude},0" for latitude, longitude in section.section.coordinates)
         return f'''\n      <Placemark><name>{xml.sax.saxutils.escape(section.section.label)}</name>

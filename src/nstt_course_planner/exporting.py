@@ -35,7 +35,6 @@ class CourseExporter:
         description = xml.sax.saxutils.escape(self.DESCRIPTION)
         section_placemarks = "".join(
             f'''\n      <Placemark><name>{xml.sax.saxutils.escape(section.label)}</name>
-        <description>Editable runner-route segment derived from the source geometry. Standard segments are one half-mile; a transfer-boundary or final segment may be shorter. Delete or redraw this line independently without changing the other route segments. Colors alternate green and blue to make adjacent segments easier to distinguish.</description>
         <styleUrl>#{'segmentGreen' if index % 2 else 'segmentBlue'}</styleUrl>
         <LineString><tessellate>1</tessellate><coordinates>{' '.join(f'{longitude},{latitude},0' for latitude, longitude in section.coordinates)}</coordinates></LineString>
       </Placemark>'''
