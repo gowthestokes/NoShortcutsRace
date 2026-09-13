@@ -80,6 +80,8 @@ def test_simulator_assigns_two_half_mile_sections_per_runner(tmp_path) -> None:
     )
 
     assert [entry.runner.name for entry in scheduled] == ["A", "A", "B", "B"]
+    assert scheduled[0].start_runner_miles == 0
+    assert scheduled[1].end_runner_miles > scheduled[1].start_runner_miles
     assert (scheduled[1].start_time - RACE_START).total_seconds() == pytest.approx(
         240, abs=2
     )
@@ -119,3 +121,4 @@ def test_exporter_writes_all_visibility_styles(tmp_path) -> None:
     assert 'id="sunriseSunset"' in kml
     assert 'id="daylight"' in kml
     assert "Runner:" not in kml
+    assert "Runner miles:" in kml

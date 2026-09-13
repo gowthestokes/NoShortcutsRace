@@ -72,6 +72,18 @@ includes `Category` and `Priority` fields and emoji-prefixed names so you can
 choose **Style → Group places by → Category**, then apply My Maps' restroom
 emoji to the two public-restroom categories in a few clicks.
 
+Create the smaller team-operations subset at fixed 12-runner-mile intervals:
+
+```bash
+uv run build-nstt-bathroom-windows
+```
+
+It writes `outputs/NSTT_2026_bathroom_windows.kml` from the already generated
+bathroom layer without changing `input/Runner.kml`. The selection prefers the
+highest-priority available facility within two miles of each target and moves
+the LA River Trail and constrained Dana Point coast-highway targets outside
+their support-car access corridors.
+
 Enable the Places API (New) for the existing Google Maps key before running the
 command. The first pass searches every 2.4 km along each continuous runner run,
 then writes reusable responses to `data/google-places-bathrooms-cache.json`.

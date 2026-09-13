@@ -14,6 +14,7 @@ from urllib.request import Request, urlopen
 from nstt_course_planner.config import (
     GOOGLE_ELEVATION_BATCH_SIZE,
     GOOGLE_ELEVATION_URL,
+    MILE_METERS,
     USER_AGENT,
 )
 from nstt_course_planner.geometry import RouteGeometry
@@ -225,6 +226,7 @@ class ElevationAnalyzer:
         section: RunnerRouteSection,
         profile: ElevationProfile,
         start_distance_meters: float,
+        start_runner_miles: float = 0.0,
     ) -> ElevatedRouteSection:
         section_meters = RouteGeometry.distance_meters([list(section.coordinates)])
         start_elevation = profile.smoothed_at(start_distance_meters)
@@ -240,6 +242,8 @@ class ElevationAnalyzer:
             start_elevation,
             end_elevation,
             grade,
+            start_runner_miles,
+            start_runner_miles + section_meters / MILE_METERS,
         )
 
     @classmethod
@@ -251,6 +255,7 @@ class ElevationAnalyzer:
         smoothing_meters: float,
     ) -> list[ElevatedRouteSection]:
         elevated_sections: list[ElevatedRouteSection] = []
+        runner_miles = 0.0
         for sections in section_runs:
             coordinates = cls.run_coordinates(sections)
             samples = RouteGeometrySampler.sample(coordinates, spacing_meters)
@@ -273,10 +278,12 @@ class ElevationAnalyzer:
                     section,
                     profile,
                     offset_meters,
+                    runner_miles,
                 )
                 elevated_sections.append(elevated_section)
                 offset_meters += elevated_section.distance_meters
                 previous_end = section.coordinates[-1]
+                runner_miles = elevated_section.end_runner_miles
         return elevated_sections
 
 
@@ -355,7 +362,8 @@ Method
         end_feet = section.end_elevation_meters * 3.28084
         net_feet = section.net_elevation_meters * 3.28084
         description = xml.sax.saxutils.escape(
-            f"{section.section.label}. Smoothed terrain elevation: {start_feet:.0f} ft to {end_feet:.0f} ft; "
+            f"{section.section.label}. Runner miles: {section.start_runner_miles:.1f}-{section.end_runner_miles:.1f}. "
+            f"Smoothed terrain elevation: {start_feet:.0f} ft to {end_feet:.0f} ft; "
             f"net gain/loss: {net_feet:+.0f} ft; signed average grade: {section.average_grade_percent:+.1f}%.",
         )
         coordinates = " ".join(

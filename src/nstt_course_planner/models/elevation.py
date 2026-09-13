@@ -53,6 +53,8 @@ class ElevatedRouteSection:
     start_elevation_meters: float
     end_elevation_meters: float
     average_grade_percent: float
+    start_runner_miles: float
+    end_runner_miles: float
 
     @property
     def net_elevation_meters(self) -> float:

@@ -47,6 +47,26 @@ class BathroomStop:
 
 
 @dataclass(frozen=True)
+class CarAccessConstraint:
+    """A runner-mile interval where the support car cannot make a bathroom stop."""
+
+    start_miles: float
+    end_miles: float
+    label: str
+
+
+@dataclass(frozen=True)
+class BathroomWindow:
+    """One rolling restroom opportunity selected near a fixed runner-mile target."""
+
+    target_miles: float
+    actual_runner_miles: float
+    straight_line_meters: float
+    stop: BathroomStop
+    constraint_note: str | None = None
+
+
+@dataclass(frozen=True)
 class CoverageGap:
     """An interval without a researched bathroom option near its midpoint."""
 

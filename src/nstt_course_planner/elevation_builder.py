@@ -143,7 +143,8 @@ class ElevationLayerBuilder:
                 "Dry run complete: no Google request was sent and no elevation output was written.",
             )
             return
-        client.api_key = Environment.google_maps_api_key()
+        if uncached:
+            client.api_key = Environment.google_maps_api_key()
         elevated_sections = ElevationAnalyzer.sections(
             section_runs,
             client,

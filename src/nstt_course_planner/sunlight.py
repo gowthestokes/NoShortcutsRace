@@ -191,6 +191,7 @@ class RelaySunlightSimulator:
         scheduled: list[ScheduledSegment] = []
         moment = self.config.race_start
         section_number = 0
+        runner_miles = 0.0
         for run_number, sections in enumerate(section_runs):
             if run_number:
                 if self.config.transfer_duration_minutes is None:
@@ -203,9 +204,8 @@ class RelaySunlightSimulator:
                     (section_number // self.config.half_segments_per_turn)
                     % len(self.paces)
                 ]
-                duration_seconds = runner.seconds_per_mile * self._section_miles(
-                    section
-                )
+                section_miles = self._section_miles(section)
+                duration_seconds = runner.seconds_per_mile * section_miles
                 end_time = moment + timedelta(seconds=duration_seconds)
                 midpoint = self._midpoint(section.coordinates)
                 solar_altitude = SolarPosition.altitude_degrees(
@@ -219,10 +219,13 @@ class RelaySunlightSimulator:
                         end_time,
                         solar_altitude,
                         SolarPosition.category(solar_altitude),
+                        runner_miles,
+                        runner_miles + section_miles,
                     ),
                 )
                 moment = end_time
                 section_number += 1
+                runner_miles += section_miles
         return tuple(scheduled)
 
     @staticmethod
@@ -268,6 +271,7 @@ class SunlightLayerExporter:
     def _placemark(segment: ScheduledSegment) -> str:
         midpoint = segment.start_time + (segment.end_time - segment.start_time) / 2
         description = xml.sax.saxutils.escape(
+            f"Runner miles: {segment.start_runner_miles:.1f}-{segment.end_runner_miles:.1f}. "
             f"Estimated segment: {segment.start_time:%-I:%M %p} to {segment.end_time:%-I:%M %p %Z}. "
             f"Midpoint: {midpoint:%-I:%M %p %Z}; 10K planning pace: {segment.runner.minutes_per_mile:.1f} min/mi. "
             f"Solar altitude: {segment.solar_altitude_degrees:.1f}°; visibility: {segment.sunlight.display_name}.",

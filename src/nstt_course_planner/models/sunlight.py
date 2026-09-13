@@ -65,3 +65,5 @@ class ScheduledSegment:
     end_time: datetime
     solar_altitude_degrees: float
     sunlight: SunlightCategory
+    start_runner_miles: float
+    end_runner_miles: float

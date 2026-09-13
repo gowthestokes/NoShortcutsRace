@@ -8,5 +8,5 @@ Legend
 
 Method
 - Samples the immutable Runner.kml geometry about every 50 m using Google Elevation terrain data.
-- Smooths elevations over a configurable 150–250 m window (default 200 m), then colors each existing editable runner segment by signed average grade.
+- Smooths elevations over a configurable 150 to 250 m window (default 200 m), then colors each existing editable runner segment by signed average grade.
 - Each segment pop-up lists smoothed start/end elevation, net elevation change, and average grade.

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>NSTT 2026 - 12-Mile Bathroom Windows</name>
+  <description>Rolling bathroom opportunities selected every 12 runner miles from the full bathroom-stop layer. They do not change runner geometry or require a group reset. Confirm car access, hours, and restroom policy on race day.</description>
+  <Style id="beachRestroom"><IconStyle><color>ff00aa00</color><scale>1.15</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style><Style id="placesRestroom"><IconStyle><color>ff00aa00</color><scale>1.15</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style><Style id="groceryBackup"><IconStyle><color>ff00aa00</color><scale>1.15</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style><Style id="coffeeBackup"><IconStyle><color>ffff0000</color><scale>1.15</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon></IconStyle></Style><Style id="businessBackup"><IconStyle><color>ff808080</color><scale>1.15</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon></IconStyle></Style><Folder><name>Bathroom windows — every 12 runner miles</name><Placemark><name>Bathroom window 12 mi — 🚻 Bathroom</name>
+      <ExtendedData><Data name="Target runner mile"><value>12</value></Data>
+      <Data name="Selected runner mile"><value>12.4</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 12.<br/>Selected runner mile: 12.4.<br/>Places-listed public restroom.<br/>Address: Inglewood, CA 90305, USA<br/>Source: <a href="https://maps.google.com/?cid=2819008742955960558&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-118.32959749999999,33.9482466,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 24 mi — 🛒 Lynwood Farmers Market</name>
+      <ExtendedData><Data name="Target runner mile"><value>24</value></Data>
+      <Data name="Selected runner mile"><value>24.1</value></Data>
+      <Data name="Category"><value>Grocery-store backup</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 24.<br/>Selected runner mile: 24.1.<br/>Grocery-store backup.<br/>Address: 12301 Atlantic Ave, Lynwood, CA 90262, USA<br/>Source: <a href="https://maps.google.com/?cid=5681128716848170753&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#groceryBackup</styleUrl>
+      <Point><coordinates>-118.19230819999999,33.9108205,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 36 mi — 🚻 Restrooms</name>
+      <ExtendedData><Data name="Target runner mile"><value>36</value></Data>
+      <Data name="Selected runner mile"><value>35.8</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 36.<br/>Selected runner mile: 35.8.<br/>Places-listed public restroom.<br/>Address: 2351 Dawson Ave, Signal Hill, CA 90755, USA<br/>Source: <a href="https://maps.google.com/?cid=6377589171984015221&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-118.1651588,33.7993966,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 48 mi — 🚻 Restroom Beach Trail Dog Beach</name>
+      <ExtendedData><Data name="Target runner mile"><value>48</value></Data>
+      <Data name="Selected runner mile"><value>48.0</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 48.<br/>Selected runner mile: 48.0.<br/>Places-listed public restroom.<br/>Address: 19341 Pacific Coast Hwy, Huntington Beach, CA 92648, USA<br/>Source: <a href="https://maps.google.com/?cid=10052651853056566849&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-118.02275039999999,33.6717295,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 60 mi — 🚻 Restrooms</name>
+      <ExtendedData><Data name="Target runner mile"><value>60</value></Data>
+      <Data name="Selected runner mile"><value>59.9</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 60.<br/>Selected runner mile: 59.9.<br/>Places-listed public restroom.<br/>Address: Newport Coast, CA 92657, USA<br/>Source: <a href="https://maps.google.com/?cid=1807449677958562243&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-117.85464200000001,33.5851354,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 72 mi — 🚻 Public bathrooms</name>
+      <ExtendedData><Data name="Target runner mile"><value>72</value></Data>
+      <Data name="Selected runner mile"><value>71.0</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 72.<br/>Selected runner mile: 71.0.<br/>Places-listed public restroom.<br/>Address: Parking lot, 33333 Pacific Coast Hwy, Dana Point, CA 92629, USA<br/>Source: <a href="https://maps.google.com/?cid=15390445342840190681&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>. Moved outside the Dana Point coast-highway corridor support-car constraint.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-117.7189513,33.4769994,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 84 mi — 🚻 Bathroom</name>
+      <ExtendedData><Data name="Target runner mile"><value>84</value></Data>
+      <Data name="Selected runner mile"><value>84.2</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 84.<br/>Selected runner mile: 84.2.<br/>Places-listed public restroom.<br/>Address: S Coast Hwy, Oceanside, CA 92054, USA<br/>Source: <a href="https://maps.google.com/?cid=8537149591025542697&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-117.36151849999999,33.1737914,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 96 mi — 🚻 Bathroom</name>
+      <ExtendedData><Data name="Target runner mile"><value>96</value></Data>
+      <Data name="Selected runner mile"><value>96.0</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 96.<br/>Selected runner mile: 96.0.<br/>Places-listed public restroom.<br/>Address: 2050 S Coast Hwy 101, Cardiff, CA 92007, USA<br/>Source: <a href="https://maps.google.com/?cid=4343939380166963073&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-117.2841979,33.0208647,0</coordinates></Point></Placemark><Placemark><name>Bathroom window 108 mi — 🚻 Bathroom</name>
+      <ExtendedData><Data name="Target runner mile"><value>108</value></Data>
+      <Data name="Selected runner mile"><value>107.9</value></Data>
+      <Data name="Category"><value>Places-listed public restroom</value></Data></ExtendedData>
+      <description><![CDATA[Rolling bathroom window target: mile 108.<br/>Selected runner mile: 107.9.<br/>Places-listed public restroom.<br/>Address: 2300 Expedition Way, La Jolla, CA 92037, USA<br/>Source: <a href="https://maps.google.com/?cid=16422468144108984866&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA">full bathroom layer</a>.]]></description><styleUrl>#placesRestroom</styleUrl>
+      <Point><coordinates>-117.25054910000001,32.8656562,0</coordinates></Point></Placemark>
+  </Folder></Document></kml>

@@ -54,6 +54,8 @@ def test_section_summary_calculates_signed_average_grade() -> None:
 
     assert summary.average_grade_percent == pytest.approx(8, abs=0.01)
     assert summary.net_elevation_meters == pytest.approx(8)
+    assert summary.start_runner_miles == 0
+    assert summary.end_runner_miles == pytest.approx(distance / 1_609.344)
 
 
 @pytest.mark.parametrize(
@@ -160,5 +162,6 @@ def test_elevation_export_contains_legend_and_segment_popup_data(tmp_path) -> No
     kml = (tmp_path / "NSTT_2026_elevation.kml").read_text(encoding="utf-8")
     assert "Dark blue: ≤ -6%" in kml
     assert "Smoothed terrain elevation" in kml
+    assert "Runner miles: 0.0" in kml
     assert "verify bridge decks" not in kml
     assert "#red" in kml
