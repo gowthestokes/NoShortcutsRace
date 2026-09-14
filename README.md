@@ -84,6 +84,15 @@ highest-priority available facility within two miles of each target and moves
 the LA River Trail and constrained Dana Point coast-highway targets outside
 their support-car access corridors.
 
+All ETA-bearing layers accept the same schedule overrides. For example, a
+different team's 42-minute transfer uses:
+
+```bash
+uv run --active build-nstt-sunlight-layer --transfer-minutes 42
+uv run --active build-nstt-elevation --transfer-minutes 42
+uv run --active build-nstt-bathroom-windows --transfer-minutes 42
+```
+
 Enable the Places API (New) for the existing Google Maps key before running the
 command. The first pass searches every 2.4 km along each continuous runner run,
 then writes reusable responses to `data/google-places-bathrooms-cache.json`.

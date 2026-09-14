@@ -389,6 +389,30 @@ def main() -> None:
     parser.add_argument(
         "--max-offset-miles", type=float, default=BATHROOM_WINDOW_MAX_OFFSET_MILES
     )
+    parser.add_argument(
+        "--team-pace",
+        type=Path,
+        default=PROJECT_ROOT / "data" / "team-pace.json",
+        help="Ordered runner paces used to add planning ETAs.",
+    )
+    parser.add_argument(
+        "--race-start",
+        type=datetime.fromisoformat,
+        default=DEFAULT_RACE_START,
+        help="Timezone-aware ISO start time used to add planning ETAs.",
+    )
+    parser.add_argument(
+        "--half-segments-per-turn",
+        type=int,
+        default=2,
+        help="Consecutive half-mile segments assigned to one runner.",
+    )
+    parser.add_argument(
+        "--transfer-minutes",
+        type=float,
+        default=DEFAULT_SUPPORT_CAR_TRANSFER_MINUTES,
+        help="Support-car transfer time between disconnected runner-route runs.",
+    )
     arguments = parser.parse_args()
     windows = BathroomWindowLayerBuilder(
         BathroomWindowBuildConfig(
@@ -397,6 +421,10 @@ def main() -> None:
             arguments.output_kml,
             arguments.interval_miles,
             arguments.max_offset_miles,
+            arguments.team_pace,
+            arguments.race_start,
+            arguments.half_segments_per_turn,
+            arguments.transfer_minutes,
         ),
     ).build()
     print(
